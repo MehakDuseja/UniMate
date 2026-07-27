@@ -1,0 +1,439 @@
+{
+  "university": "DHA Suffa",
+  "location": "DHA City Karachi (DCK) Campus, Karachi",
+  "latitude": 25.010542459123045,
+  "longitude": 67.45820784122958,
+  "tuition_fee_amount": null,
+  "tuition_fee_period": null,
+  "province": "Sindh",
+  "is_public": false,
+  "hec_recognized": true,
+  "official_website": "https://www.dsu.edu.pk",
+  "eligibility_criteria": [],
+  "test_pattern": [
+    "there are NO SEPARATE SECTIONS.",
+    "The number of electrons passing through any cross-section per second is A) 3×1019 B) 3×1020 C) 7.68×1019 D) 7.68×1020 4.",
+    "Description Percentage 1 DSU Test / Interview Weightage 50% 2 Intermediate/ A Levels / Equivalent 25% 3 Matric /O Levels / Equivalent 15% 4 Departmental Interview 10% 5 TOTAL 100% Faculty of EAS & CIT: S.",
+    "Description Percentage 1 Matric /O Levels / Equivalent 10% 2 Intermediate/ A Levels / Equivalent 40% 3 DSU Test / Interview Weightage 50% 4 TOTAL 100%"
+  ],
+  "min_eligibility_percentage": null,
+  "entry_test_name": null,
+  "scholarships": [
+    "The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU.",
+    "Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession.",
+    "5.3 It is also ensured that the scholarships on Need-basis or Merit-basis shall cover a minimum of 10% of the student population in each Academic Year.",
+    "General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees.",
+    "5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC).",
+    "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
+  ],
+  "offered_courses": [
+    "BS(Computer Engineering Technology) 123,875 98,875 13 + 4",
+    "BS (Software Engineering) 163,320 138,320 16 + 2",
+    "BS(Artificial Intelligence) 163,320 138,320 16 + 2",
+    "BS (Computer Engineering) 154,510 129,510 13 + 3",
+    "BS(Multimedia & Gamming) 168,050 143,050 15 + 3",
+    "BS(International Relation) 122,650 97,650 15 + 0",
+    "BS(Business Analytics and Programming) 133,000 108,000 15 + 0",
+    "BS (Accounting and Finance) 133,000 108,000 15 + 0",
+    "BS(Financial Technology) 133,000 108,000 15 + 0",
+    "BS(Computer Science) 124,133 99,133 13 + 2",
+    "BS(Artificial Intelligence) 138,240 113,240 16 + 2"
+  ],
+  "fee_structure": {
+    "fees": [
+      {
+        "label": "fee_snippet",
+        "value": "The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU."
+      },
+      {
+        "label": "fee_snippet",
+        "value": "Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession."
+      },
+      {
+        "label": "fee_snippet",
+        "value": "General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees."
+      },
+      {
+        "label": "fee_snippet",
+        "value": "5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC)."
+      },
+      {
+        "label": "fee_snippet",
+        "value": "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
+      },
+      {
+        "label": "BS Computer Engineering Technology",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 3,000 | 3,375"
+      },
+      {
+        "label": "BS(Computer Science)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "label": "BS (Software Engineering)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "label": "BS(Artificial Intelligence)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "label": "BS (Computer Engineering)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "label": "BS(Multimedia & Gaming)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "label": "BS(International Relation)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+      },
+      {
+        "label": "BS(Business Analytics and Programming)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,000"
+      },
+      {
+        "label": "BS (Accounting and Finance)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
+      },
+      {
+        "label": "BS(Financial Technology)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
+      },
+      {
+        "label": "MPhil (Psychology/International Relations)",
+        "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+      },
+      {
+        "label": "BS(Computer Science)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship)"
+      },
+      {
+        "label": "BS(Artificial Intelligence)",
+        "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship)"
+      },
+      {
+        "label": "BE(Mechanical)",
+        "value": "1st Semester Fee Amount: 184,750 | Semester Fee Amount (Without Admission Fee + Caution Money): 159,750 | Credit Hour 1st Semester: 12 + 5"
+      },
+      {
+        "label": "BE(Electrical)",
+        "value": "1st Semester Fee Amount: 158,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 133,000 | Credit Hour 1st Semester: 13 + 4"
+      },
+      {
+        "label": "BS(Computer Engineering Technology)",
+        "value": "1st Semester Fee Amount: 123,875 | Semester Fee Amount (Without Admission Fee + Caution Money): 98,875 | Credit Hour 1st Semester: 13 + 4"
+      },
+      {
+        "label": "BS(Computer Science)",
+        "value": "1st Semester Fee Amount: 144,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 119,510 | Credit Hour 1st Semester: 13 + 2"
+      },
+      {
+        "label": "BS (Software Engineering)",
+        "value": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "label": "BS(Data Science)",
+        "value": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "label": "BS(Artificial Intelligence)",
+        "value": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "label": "BS (Cyber Security)",
+        "value": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "label": "BS (Computer Engineering)",
+        "value": "1st Semester Fee Amount: 154,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 129,510 | Credit Hour 1st Semester: 13 + 3"
+      },
+      {
+        "label": "BS(Multimedia & Gamming)",
+        "value": "1st Semester Fee Amount: 168,050 | Semester Fee Amount (Without Admission Fee + Caution Money): 143,050 | Credit Hour 1st Semester: 15 + 3"
+      },
+      {
+        "label": "BS(International Relation)",
+        "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "label": "BS(Psychology)",
+        "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "label": "BS(Business Analytics and Programming)",
+        "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "label": "BS (Accounting and Finance)",
+        "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "label": "BS(Financial Technology)",
+        "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "label": "MS / ME / MBA (1.5 Years)",
+        "value": "1st Semester Fee Amount: 167,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 137,000 | Credit Hour 1st Semester: 12 + 0"
+      },
+      {
+        "label": "MPhil (Psychology/International Relations)",
+        "value": "1st Semester Fee Amount: 136,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 106,000 | Credit Hour 1st Semester: 9 + 0"
+      },
+      {
+        "label": "B.Architecture",
+        "value": "1st Semester Fee Amount: 134,250 | Semester Fee Amount (Without Admission Fee + Caution Money): 109,250 | Credit Hours (1st Semester Updated): 17 + 1"
+      },
+      {
+        "label": "BS(Computer Science)",
+        "value": "1st Semester Fee Amount: 124,133 | Semester Fee Amount (Without Admission Fee + Caution Money): 99,133 | Credit Hours (1st Semester Updated): 13 + 2"
+      },
+      {
+        "label": "BS(Artificial Intelligence)",
+        "value": "1st Semester Fee Amount: 138,240 | Semester Fee Amount (Without Admission Fee + Caution Money): 113,240 | Credit Hours (1st Semester Updated): 16 + 2"
+      }
+    ],
+    "numeric_summary": [
+      {
+        "amount_min": 2,
+        "amount_max": 10,
+        "currency": "PKR",
+        "raw_text": "Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession."
+      },
+      {
+        "amount_min": 4,
+        "amount_max": 5,
+        "currency": "PKR",
+        "raw_text": "General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees."
+      },
+      {
+        "amount_min": 5,
+        "amount_max": 5,
+        "currency": "PKR",
+        "raw_text": "5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC)."
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 50,
+        "currency": "PKR",
+        "raw_text": "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 3,000 | 3,375"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,000"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 20000,
+        "currency": "PKR",
+        "raw_text": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship)"
+      },
+      {
+        "amount_min": 1000,
+        "amount_max": 15000,
+        "currency": "PKR",
+        "raw_text": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship)"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 184750,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 184,750 | Semester Fee Amount (Without Admission Fee + Caution Money): 159,750 | Credit Hour 1st Semester: 12 + 5"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 158000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 158,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 133,000 | Credit Hour 1st Semester: 13 + 4"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 123875,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 123,875 | Semester Fee Amount (Without Admission Fee + Caution Money): 98,875 | Credit Hour 1st Semester: 13 + 4"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 144510,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 144,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 119,510 | Credit Hour 1st Semester: 13 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 163320,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 163320,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 163320,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 163320,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 154510,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 154,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 129,510 | Credit Hour 1st Semester: 13 + 3"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 168050,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 168,050 | Semester Fee Amount (Without Admission Fee + Caution Money): 143,050 | Credit Hour 1st Semester: 15 + 3"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 122650,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 122650,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 133000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 133000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 133000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 167000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 167,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 137,000 | Credit Hour 1st Semester: 12 + 0"
+      },
+      {
+        "amount_min": 0,
+        "amount_max": 136000,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 136,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 106,000 | Credit Hour 1st Semester: 9 + 0"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 134250,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 134,250 | Semester Fee Amount (Without Admission Fee + Caution Money): 109,250 | Credit Hours (1st Semester Updated): 17 + 1"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 124133,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 124,133 | Semester Fee Amount (Without Admission Fee + Caution Money): 99,133 | Credit Hours (1st Semester Updated): 13 + 2"
+      },
+      {
+        "amount_min": 1,
+        "amount_max": 138240,
+        "currency": "PKR",
+        "raw_text": "1st Semester Fee Amount: 138,240 | Semester Fee Amount (Without Admission Fee + Caution Money): 113,240 | Credit Hours (1st Semester Updated): 16 + 2"
+      }
+    ]
+  },
+  "hostel_info": [
+    "DHA Suffa University operates a dedicated Girls Hostel located in Sector 3, DHA City Karachi (DCK), connected to the DSU DCK campus.",
+    "The DHA Suffa University Main Campus in DHA Phase 7 Extension does not have its own on-campus hostel.",
+    "Several private girls' hostels operate nearby: Sayaban Girls Hostels (21-C 15th Commercial Street, DHA Phase 2 Extension) offers furnished AC/Non-AC rooms with meals and internet starting around Rs.",
+    "H Girls Hostel (Street 4, Sector B, Akhtar Colony) offers attached bathrooms and independent kitchens.",
+    "AL Safa Girls Hostel (Plot 58, Street No."
+  ],
+  "source_pages": [
+    "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf",
+    "https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf",
+    "https://www.dsu.edu.pk/fee-structure/",
+    "https://www.dsu.edu.pk/admission-merit-criteria/",
+    "https://www.dsu.edu.pk/dck-hostel-facilities/",
+    "manual://dsu-dck-hostel",
+    "manual://dsu-phase7-hostel"
+  ],
+  "hostel_available": true
+}

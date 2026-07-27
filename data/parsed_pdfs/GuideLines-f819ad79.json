@@ -1,0 +1,34 @@
+{
+  "source_url": "https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf",
+  "saved_path": "/Users/mahekduseja/Desktop/UniMate/data/raw_pdfs/GuideLines-f819ad79.pdf",
+  "sha256": "f819ad7970718c68bd03035eea62b08a7bfe64ce45ebabcfea4ce21db6b5c2a9",
+  "parsed": {
+    "text": "Guideline for\nUNDERGRADUATE ADMISSIONS\nPre-Admission Entry Test\n1. Register yourself in Admission Web Portal at NED University Website\n“www.neduet.edu.pk/admission” by entering your Name (as per Matriculation or\nequivalent certificate), Father’s name (as per Matriculation or equivalent certificate),\ne-Mail address (please ensure you have entered your active email address) and Date\nof Birth (as per Matriculation or equivalent certificate).\n2. You will receive User ID and Password through email on the email provided in step 1.\n3. Please log-in to Admission Web Portal using your user ID and Password provided\nthrough email.\n4. Select the following:\ni. Board from where you passed HSC or equivalent examination.\nii. Your HSC Examination group i.e. Pre-Engineering or Pre-Medical, etc.\niii. Your Domicile.\niv. Select category(ies) for which you are eligible to apply.\nv. Click on save and move to NEXT step.\n5. Go to the subsequent pages of Online Admission Web Portal and complete all\nrequired information.\n6. Please make sure to upload an acceptable photograph of candidate as mentioned in\n“Guideline for the Online Application-Photograph”.\n7. On the last page, Transaction Slip will be generated, mentioning Transaction ID along\nwith your information and the fees to be submitted in the designated commercial\nbanks using this transaction slip. Same transaction ID can be used for multiple\ntransactions.\n8. G o to the designated banks’ branch as mentioned on the Transaction Slip.\n9. Submit the fees as mentioned on the Transaction Slip.\n10. Admit card will be available at the admission portal after confirmation of the fee\nsubmission by the bank (within 3 to 5 working days). Delay in issuance of admit card\nmay be due to invalid/inappropriate photograph or non-confirmation of fee payment\n\nthrough online by the bank. In that case please write your query on Admission\nHelpdesk.\n11. Don’t forget to bring the print out of your Pre-Admission Entry Test Admit Card at\nthe day of Entry Test (mentioned in the schedule on admission website).\nAfter Qualifying the Pre-Entry Admission Test\n12. Merit lists of different categories will be displayed on NED Website\n(www.neduet.edu.pk/admission) as per Admission Schedule.\n13. If you are called in the Merit List, follow the schedule and perform the following\nactivities.\nIf your name appears in the Merit Lists\n14. Print the filled Application Form from the Admission Web Portal.\n15. Sign the Application Form. Also get your form duly signed by your Parents / Guardian\nand Oath Commissioner.\n16. Signed Admission form, along with all documents mentioned in Document Checklist,\nare to be submitted at the time of interview as mentioned in the Admission Schedule\non Admission Website.\n17. Candidate will be called for Pre-Admission Interview as per Admission Schedule.\nNote\nFor any further queries, please read the Frequently Asked Questions (FAQs) available on\nNED UET website.\nFor further queries please visit Helpdesk on your Admission Portal.\nFor admission in category for those having disability (excluding the disability of deadness,\ndumbness and blindness) and passed HSC (Pre-Engineering/Computer Science) part I and\nII (as the case may be), from any Board of Intermediate of Education situated in province\nof Sindh and having certificate of disability from Department of Empowerment of Persons\nwith Disabilities (DEPD), Government of Sindh. Further the candidate is required to\nappear before the Medical Board at the University.\nFor admission in the category reserved for Diploma of Associate Engineer (DAE), the\napplicant must pass the qualifying examination from institution recognized by Sindh\nBoard of Technical Education (SBTE), with minimum 60%, during last three years.",
+    "tables": [
+      {
+        "page": 1,
+        "header": [
+          "On the last page, Transaction Slip will be generated, mentioning Transaction ID along"
+        ],
+        "rows": [
+          [
+            "On the last page, Transaction Slip will be generated, mentioning Transaction ID along"
+          ],
+          [
+            "with your information and the fees to be submitted in the designated commercial"
+          ],
+          [
+            "banks using this transaction slip. Same transaction ID can be used for multiple"
+          ],
+          [
+            "transactions."
+          ]
+        ]
+      }
+    ],
+    "metadata": {
+      "parser": "pdfplumber+fitz",
+      "pages_extracted": 1
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "university": "FAST University",
+  "location": "Sector 17-D, Karachi",
+  "latitude": 24.856928,
+  "longitude": 67.264802,
+  "tuition_fee_amount": null,
+  "tuition_fee_period": null,
+  "province": "Sindh",
+  "is_public": false,
+  "hec_recognized": true,
+  "official_website": "https://www.nu.edu.pk",
+  "eligibility_criteria": [
+    "BS (Engineering Programs) Engineering Degree Bachelor of Science (Civil Engineering) Bachelor of Science (Electrical Engineering) Bachelor of Science (Computer Engineering) Admission Test Applicant must select only one out of the three admission test options FAST-NUCES SAT NTS NAT-IE (NTS test from specific universities will not be acceptable) Eligibility 1 SSC (Matric) or an equivalent examination 60% minimum marks 2 HSSC (FSc) or an equivalent examination 60% minimum marks 3 Courses studied at HSSC or equivalent level Pre-Engg (Chemistry, Mathematics, Physics) OR ICS (Computer Science, Mathematics, Physics) Selection Criteria 1 Weightage of Admission Test marks 33% 2 Weightage of HSSC/equivalent 50% 3 Weightage of SSC/equivalent 17% Weightage of HSSC marks shall be calculated based on (which ever is applicable) at the time of compilation of merit list Marks obtained in HSSC part I and II OR Marks obtained in HSSC part I if HSSC part II not available OR Marks/Percentage given in IBCC equivalence certificate of A-level OR Marks/Percentage given in IBCC equivalence certificate of O-level Merit cut-off marks to be determined by the University NOTE: All documents/transcripts will be checked at the time of admission.Any incorrect/false information submitted by the applicant or any attempt to hide information will lead to disqualification of the candidate for admission.",
+    "Weightage of HSSC marks shall be calculated based on (whichever is applicable) at the time of compilation of merit list Marks obtained in HSSC part I and II OR Marks obtained in HSSC part I if result of HSSC part II not available OR Marks/Percentage given in IBCC equivalence certificate of A-level OR Marks/Percentage given in IBCC equivalence certificate of O-level Merit cut-off marks to be determined by the University Note: All documents/transcripts will be checked at the time of admission.Any incorrect/false information submitted by the applicant or any attempt to hide information will lead to disqualification of the candidate for admission.",
+    "BBA / BS (Accounting and Finance / Business Analytics / Financial Technology) Business Administration Degree Bachelor of Business Administration Bachelor of Science (Accounting and Finance) Bachelor of Science (Business Analytics) Bachelor of Science (Financial Technology) Admission Test Applicant must select only one out of the three admission test options FAST-NUCES SAT NTS NAT-IE, NAT-ICS, NAT-ICOM, NAT-IGS (NTS test from specific universities will not be acceptable) Eligibility 1 SSC (Matric) or an equivalent examination 60% minimum marks 2 HSSC (FSc) or an equivalent examination 50% minimum marks 3 Courses studied at HSSC or equivalent level N.A Selection Criteria 1 Weightage of Admission Test marks 50% 2 Weightage of HSSC/equivalent 40% 3 Weightage of SSC/equivalent 10% Weightage of HSSC marks shall be calculated based on (whichever is applicable) at the time of compilation of merit list Marks obtained in HSSC part I and II OR Marks obtained in HSSC part I if result of HSSC part II not available OR Marks/Percentage given in IBCC equivalence certificate of A-level OR Marks/Percentage given in IBCC equivalence certificate of O-level Merit cut-off marks to be determined by the University NOTE: All documents/transcripts will be checked at the time of admission.Any incorrect/false information submitted by the applicant or any attempt to hide information will lead to disqualification of the candidate for admission.",
+    "MBA / MS (Business Analytics) / MS (Global Virtual Management) Business Administration Degree Master of Business Administration Master of Science (Business Analytics) Master of Science (Global Virtual Management) Admission Test Applicant must select only one out of the two admission test options HAT-2* OR NU Admission Test Eligibility Degree earned from a recognized University after 16 years of education Minimum 60% marks or CGPA of at least 2.00 on a scale of 4.00 Selection Criteria 1 Weightage of Admission Test marks 50% 2 Weightage of past academic record (Bachelor) 50% * For details, please visit http://etc.hec.gov.pk Note1: Merit cut-off marks to be determined by the University Note2: All documents/transcripts will be checked at the time of admission.",
+    "MS (Software Project Management) Computing Degree Master of Science (Software Project Management) Admission Test Applicant must select only one out of the two admission test options HAT-1* OR NU Admission Test Eligibility Degree earned in relevant subject of Science from a recognized University after 16 years of education AND 2 years of experience related to Software Development Lifecycle (SDLC) activities gained as a software engineer (or similar role e.g., quality assurance engineer, etc.) in a professional software development firm.",
+    "Minimum 60% marks or CGPA of at least 2.00 on a scale of 4.00 Selection Criteria 1 Weightage of Admission Test marks 50% 2 Weightage of past academic record (Bachelor) 50% * For details, please visit http://etc.hec.gov.pk Note1: Merit cut-off marks to be determined by the University Note2: All documents/transcripts will be checked at the time of admission.",
+    "MS (Artificial Intelligence / Computer Science / Cyber Security / Software Engineering / Data Science) Computing Degree Master of Science (Artificial Intelligence) Master of Science (Cyber Security) Master of Science (Computer Science) Master of Science (Data Science) Master of Science (Software Engineering) Admission Test Applicant must select only one out of the two admission test options HAT-1* OR NU Admission Test Eligibility Degree earned in relevant subject of Computing domain including BE (Computer Engineering) / (Software Engineering) from a recognized University after 16 years of education Minimum 60% marks or CGPA of at least 2.00 on a scale of 4.00 Selection Criteria 1 Weightage of Admission Test marks 50% 2 Weightage of past academic record (Bachelor) 50% * For details, please visit http://etc.hec.gov.pk Note1: Merit cut-off marks to be determined by the University Note2: All documents/transcripts will be checked at the time of admission.",
+    "MS (Applied Artificial Intelligence in Health Sciences) Degree Master of Science (Applied Artificial Intelligence in Health Sciences) Admission Test Applicant must select only one out of the two admission test options HAT-1* OR NU Admission Test Eligibility Degree earned in relevant discipline 1 from a recognized University after minimum 16 years of education."
+  ],
+  "test_pattern": [
+    "Test Pattern Home Admissions Test Pattern Note: There will be Negative Marking and use of calculators is not allowed in the Admission Test."
+  ],
+  "min_eligibility_percentage": 50.0,
+  "entry_test_name": "NAT, HAT, NTS, SAT, FAST-NUCES, NU Admission Test",
+  "scholarships": [
+    "12,000 Student Activities Fund To support co-curricular and extra-curricular activities a Student Activities Fund has been formed."
+  ],
+  "offered_courses": [
+    "Bachelor of Science (Civil Engineering)",
+    "Bachelor of Science (Electrical Engineering)",
+    "Bachelor of Science (Computer Engineering)",
+    "Bachelor of Science (Artificial Intelligence)",
+    "Bachelor of Science (Computer Science)",
+    "Bachelor of Science (Cyber Security)",
+    "Bachelor of Science (Data Science)",
+    "Bachelor of Science (Software Engineering)",
+    "Bachelor of Business Administration",
+    "Bachelor of Science (Accounting and Finance)",
+    "Bachelor of Science (Business Analytics)",
+    "Bachelor of Science (Financial Technology)",
+    "Master of Business Administration",
+    "Master of Science (Business Analytics)",
+    "Master of Science (Global Virtual Management)",
+    "Master of Science (Software Project Management)",
+    "Master of Science (Artificial Intelligence)",
+    "Master of Science (Cyber Security)",
+    "Master of Science (Computer Science)",
+    "Master of Science (Data Science)"
+  ],
+  "fee_structure": {
+    "fees": [
+      {
+        "label": "Admission Application Submission",
+        "value": "Undergraduate Programs: May 20 (Wed) - Jun 30 (Tue) | Graduate & Post Graduate Programs: May 20 (Wed) - Jun 30 (Tue)"
+      },
+      {
+        "label": "Merit List announcement of selected / test qualified candidates",
+        "value": "Undergraduate Programs: Jul 22 (Wed) | Graduate & Post Graduate Programs: Aug 5 (Wed)"
+      },
+      {
+        "label": "Admission Formalities",
+        "value": "Undergraduate Programs: Jul 27 (Mon) - Aug 13 (Thu) | Graduate & Post Graduate Programs: Aug 7 (Fri) - Aug 13 (Thu)"
+      },
+      {
+        "label": "Commencement of classes",
+        "value": "Undergraduate Programs: Aug 17 (Mon) | Graduate & Post Graduate Programs: Aug 17 (Mon)"
+      },
+      {
+        "label": "Essay Writing",
+        "value": "BBA & BS (AF/BA/FinTech): 15% | BS (CS/Engg.): - | MBA: 30% | MS (Applied Ling.): 25% | MS (Computing): 10% | Other MS Programs: 10%"
+      },
+      {
+        "label": "Analytical Skills & IQ",
+        "value": "BBA & BS (AF/BA/FinTech): 25% | BS (CS/Engg.): 20% | MBA: 20% | MS (Applied Ling.): 15% | MS (Computing): 30% | Other MS Programs: 20%"
+      },
+      {
+        "label": "Specialization Area",
+        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: - | MS (Applied Ling.): 45% | MS (Computing): 30% | Other MS Programs: 40%"
+      },
+      {
+        "label": "Quantitative Methods",
+        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): 30% | Other MS Programs: 15%"
+      },
+      {
+        "label": "Business related Knowledge",
+        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): - | Other MS Programs: -"
+      },
+      {
+        "label": "Temporary Campus Transfer Fee",
+        "value": "Rs. 2,000"
+      },
+      {
+        "label": "Degree Correction Fee",
+        "value": "Rs. 2,000"
+      },
+      {
+        "label": "Semester Freeze Fee (within two weeks of start of classes)",
+        "value": "Rs. 2,000"
+      },
+      {
+        "label": "Late Registration Fee/Freeze Fee/Course Withdrawal (After second week of start of classes)",
+        "value": "5,000"
+      },
+      {
+        "label": "Retake Sessional Exam Fee (Per Course)",
+        "value": "Rs. 2,000"
+      },
+      {
+        "label": "Retake Final Exam Fee (Per Course/Lab)",
+        "value": "Rs. 2,000"
+      },
+      {
+        "label": "Paper Rechecking Fee (Per Course/Lab)",
+        "value": "Rs. 500"
+      },
+      {
+        "label": "Issuance of Certificate/Letter Fee",
+        "value": "Rs. 300"
+      },
+      {
+        "label": "Applicant Admission Fee",
+        "value": "Rs. 3,000"
+      },
+      {
+        "label": "Upto 10th day of commencement of classes",
+        "value": "Percentage of Fee: 100% Fee Refund"
+      },
+      {
+        "label": "Upto 15th day of commencement of classes",
+        "value": "Percentage of Fee: 80% Fee Refund"
+      },
+      {
+        "label": "Upto 20th day of commencement of classes",
+        "value": "Percentage of Fee: 60% Fee Refund"
+      },
+      {
+        "label": "Upto 30th day of commencement of classes",
+        "value": "Percentage of Fee: 50% Fee Refund"
+      },
+      {
+        "label": "31st day onwards of commencement of classes",
+        "value": "Percentage of Fee: No Refund"
+      }
+    ],
+    "numeric_summary": [
+      {
+        "amount_min": 20,
+        "amount_max": 30,
+        "currency": "PKR",
+        "raw_text": "Undergraduate Programs: May 20 (Wed) - Jun 30 (Tue) | Graduate & Post Graduate Programs: May 20 (Wed) - Jun 30 (Tue)"
+      },
+      {
+        "amount_min": 5,
+        "amount_max": 22,
+        "currency": "PKR",
+        "raw_text": "Undergraduate Programs: Jul 22 (Wed) | Graduate & Post Graduate Programs: Aug 5 (Wed)"
+      },
+      {
+        "amount_min": 7,
+        "amount_max": 27,
+        "currency": "PKR",
+        "raw_text": "Undergraduate Programs: Jul 27 (Mon) - Aug 13 (Thu) | Graduate & Post Graduate Programs: Aug 7 (Fri) - Aug 13 (Thu)"
+      },
+      {
+        "amount_min": 17,
+        "amount_max": 17,
+        "currency": "PKR",
+        "raw_text": "Undergraduate Programs: Aug 17 (Mon) | Graduate & Post Graduate Programs: Aug 17 (Mon)"
+      },
+      {
+        "amount_min": 10,
+        "amount_max": 30,
+        "currency": "PKR",
+        "raw_text": "BBA & BS (AF/BA/FinTech): 15% | BS (CS/Engg.): - | MBA: 30% | MS (Applied Ling.): 25% | MS (Computing): 10% | Other MS Programs: 10%"
+      },
+      {
+        "amount_min": 15,
+        "amount_max": 30,
+        "currency": "PKR",
+        "raw_text": "BBA & BS (AF/BA/FinTech): 25% | BS (CS/Engg.): 20% | MBA: 20% | MS (Applied Ling.): 15% | MS (Computing): 30% | Other MS Programs: 20%"
+      },
+      {
+        "amount_min": 30,
+        "amount_max": 45,
+        "currency": "PKR",
+        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: - | MS (Applied Ling.): 45% | MS (Computing): 30% | Other MS Programs: 40%"
+      },
+      {
+        "amount_min": 15,
+        "amount_max": 30,
+        "currency": "PKR",
+        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): 30% | Other MS Programs: 15%"
+      },
+      {
+        "amount_min": 20,
+        "amount_max": 20,
+        "currency": "PKR",
+        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): - | Other MS Programs: -"
+      },
+      {
+        "amount_min": 2000,
+        "amount_max": 2000,
+        "currency": "PKR",
+        "raw_text": ". 2,000"
+      },
+      {
+        "amount_min": 2000,
+        "amount_max": 2000,
+        "currency": "PKR",
+        "raw_text": ". 2,000"
+      },
+      {
+        "amount_min": 2000,
+        "amount_max": 2000,
+        "currency": "PKR",
+        "raw_text": ". 2,000"
+      },
+      {
+        "amount_min": 5000,
+        "amount_max": 5000,
+        "currency": "PKR",
+        "raw_text": "5,000"
+      },
+      {
+        "amount_min": 2000,
+        "amount_max": 2000,
+        "currency": "PKR",
+        "raw_text": ". 2,000"
+      },
+      {
+        "amount_min": 2000,
+        "amount_max": 2000,
+        "currency": "PKR",
+        "raw_text": ". 2,000"
+      },
+      {
+        "amount_min": 500,
+        "amount_max": 500,
+        "currency": "PKR",
+        "raw_text": ". 500"
+      },
+      {
+        "amount_min": 300,
+        "amount_max": 300,
+        "currency": "PKR",
+        "raw_text": ". 300"
+      },
+      {
+        "amount_min": 3000,
+        "amount_max": 3000,
+        "currency": "PKR",
+        "raw_text": ". 3,000"
+      },
+      {
+        "amount_min": 100,
+        "amount_max": 100,
+        "currency": "PKR",
+        "raw_text": "Percentage of Fee: 100% Fee Refund"
+      },
+      {
+        "amount_min": 80,
+        "amount_max": 80,
+        "currency": "PKR",
+        "raw_text": "Percentage of Fee: 80% Fee Refund"
+      },
+      {
+        "amount_min": 60,
+        "amount_max": 60,
+        "currency": "PKR",
+        "raw_text": "Percentage of Fee: 60% Fee Refund"
+      },
+      {
+        "amount_min": 50,
+        "amount_max": 50,
+        "currency": "PKR",
+        "raw_text": "Percentage of Fee: 50% Fee Refund"
+      }
+    ]
+  },
+  "hostel_info": [
+    "Boys Hostel FAST-CFD campus provides hostel facilities essentially to the outstation students.",
+    "The hostels are equipped with all the facilities necessary for comfortable living such as the Separate boy’s hostel available on campus.",
+    "Girls Hostel FAST-CFD campus provides hostel facilities essentially to the outstation students.",
+    "The hostels are equipped with all the facilities necessary for comfortable living.",
+    "Separate girls hostel available on campus."
+  ],
+  "source_pages": [
+    "https://www.nu.edu.pk/Admissions/EligibilityCriteria",
+    "https://www.nu.edu.pk/Admissions/Schedule",
+    "https://www.nu.edu.pk/Admissions/TestPattern",
+    "https://www.nu.edu.pk/Admissions/FeeStructure",
+    "https://cfd.nu.edu.pk/facilities/"
+  ],
+  "hostel_available": true
+}

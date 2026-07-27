@@ -1,0 +1,13 @@
+{
+  "source_url": "https://admissions.iba.edu.pk/pdf/test-syllabus-passing-criteria.pdf",
+  "saved_path": "/Users/mahekduseja/Desktop/UniMate/data/raw_pdfs/test-syllabus-passing-criteria-65b12df0.pdf",
+  "sha256": "65b12df0b93a7d74ffba2b334043e7cdacb1b64aafcd76668526164e72bd9c25",
+  "parsed": {
+    "text": "Syllabus & Passing Threshold / Marks for the Written Test\nThe aptitude test will consist of three parts (i) English Section (35%), (i) Mathematics\nSection (35%), and (iii) Specialized Section (30%). English section will contain\ncomprehension, grammar, composition, and vocabulary. Mathematics section will test\nthe knowledge of fundamental mathematics and will be in line with curriculum of\nSAT/GMAT, and Specialized section will contain the topics related to the subject\npositions. There will be no negative marking in the test. Aptitude Test will be held in\nKarachi only. Overall, 60% marks are required to pass the test and call for the group\ndiscussion. Candidates who under perform in the aptitude test and do not meet SHD\nprescribed criteria will not be called for Group Discussion. Similar guidelines will be\nfollowed for evaluating Group Discussion.",
+    "tables": [],
+    "metadata": {
+      "parser": "pdfplumber+fitz",
+      "pages_extracted": 1
+    }
+  }
+}

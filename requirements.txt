@@ -1,0 +1,14 @@
+requests
+beautifulsoup4
+lxml
+tqdm
+pdfplumber
+PyMuPDF
+pandas
+pydantic
+chromadb
+sentence-transformers
+langgraph
+python-dotenv
+google-genai
+streamlit

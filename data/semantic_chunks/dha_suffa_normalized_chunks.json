@@ -1,0 +1,155 @@
+[
+  {
+    "chunk_id": "dha_suffa_normalized_test_pattern_0",
+    "category": "test_pattern",
+    "text": "[University: DHA Suffa | Category: test_pattern] there are NO SEPARATE SECTIONS. The number of electrons passing through any cross-section per second is A) 3×1019 B) 3×1020 C) 7.68×1019 D) 7.68×1020 4. Description Percentage 1 DSU Test / Interview Weightage 50% 2 Intermediate/ A Levels / Equivalent 25% 3 Matric /O Levels / Equivalent 15% 4 Departmental Interview 10% 5 TOTAL 100% Faculty of EAS & CIT: S. Description Percentage 1 Matric /O Levels / Equivalent 10% 2 Intermediate/ A Levels / Equivalent 40% 3 DSU Test / Interview Weightage 50% 4 TOTAL 100%",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "test_pattern",
+      "category": "test_pattern",
+      "degree_levels": "",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 508,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_scholarships_0",
+    "category": "scholarships",
+    "text": "[University: DHA Suffa | Category: scholarships] The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU. Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession. 5.3 It is also ensured that the scholarships on Need-basis or Merit-basis shall cover a minimum of 10% of the student population in each Academic Year. General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees. 5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC). Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee.",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "scholarships",
+      "category": "scholarships",
+      "degree_levels": "",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1165,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_offered_courses_0",
+    "category": "offered_courses",
+    "text": "[University: DHA Suffa | Category: offered_courses] BS(Computer Engineering Technology) 123,875 98,875 13 + 4 BS (Software Engineering) 163,320 138,320 16 + 2 BS(Artificial Intelligence) 163,320 138,320 16 + 2 BS (Computer Engineering) 154,510 129,510 13 + 3 BS(Multimedia & Gamming) 168,050 143,050 15 + 3 BS(International Relation) 122,650 97,650 15 + 0 BS(Business Analytics and Programming) 133,000 108,000 15 + 0 BS (Accounting and Finance) 133,000 108,000 15 + 0 BS(Financial Technology) 133,000 108,000 15 + 0 BS(Computer Science) 124,133 99,133 13 + 2 BS(Artificial Intelligence) 138,240 113,240 16 + 2",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "offered_courses",
+      "category": "offered_courses",
+      "degree_levels": "Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 558,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_fee_structure_0",
+    "category": "fee_structure",
+    "text": "[University: DHA Suffa | Category: fee_structure] fee_snippet: The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU. fee_snippet: Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession. fee_snippet: General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees. fee_snippet: 5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC). fee_snippet: Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee. BS Computer Engineering Technology: 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 3,000 | 3,375",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1170,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_fee_structure_1",
+    "category": "fee_structure",
+    "text": "[University: DHA Suffa | Category: fee_structure] BS Computer Engineering Technology: 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 3,000 | 3,375 BS(Computer Science): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270 BS (Software Engineering): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270 BS(Artificial Intelligence): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270 BS (Computer Engineering): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270 BS(Multimedia & Gaming): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,270 BS(International Relation): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310 BS(Business Analytics and Programming): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 6,000 BS (Accounting and Finance): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000 BS(Financial Technology): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000 MPhil (Psychology/International Relations): 20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000 BS(Computer Science): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship) BS(Artificial Intelligence): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship)",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1158,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_fee_structure_2",
+    "category": "fee_structure",
+    "text": "[University: DHA Suffa | Category: fee_structure] BS(Artificial Intelligence): 15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 10,000 | 4,702 (Amount After Scholarship) BE(Mechanical): 1st Semester Fee Amount: 184,750 | Semester Fee Amount (Without Admission Fee + Caution Money): 159,750 | Credit Hour 1st Semester: 12 + 5 BE(Electrical): 1st Semester Fee Amount: 158,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 133,000 | Credit Hour 1st Semester: 13 + 4 BS(Computer Engineering Technology): 1st Semester Fee Amount: 123,875 | Semester Fee Amount (Without Admission Fee + Caution Money): 98,875 | Credit Hour 1st Semester: 13 + 4 BS(Computer Science): 1st Semester Fee Amount: 144,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 119,510 | Credit Hour 1st Semester: 13 + 2 BS (Software Engineering): 1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2 BS(Data Science): 1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1081,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_fee_structure_3",
+    "category": "fee_structure",
+    "text": "[University: DHA Suffa | Category: fee_structure] BS(Artificial Intelligence): 1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2 BS (Cyber Security): 1st Semester Fee Amount: 163,320 | Semester Fee Amount (Without Admission Fee + Caution Money): 138,320 | Credit Hour 1st Semester: 16 + 2 BS (Computer Engineering): 1st Semester Fee Amount: 154,510 | Semester Fee Amount (Without Admission Fee + Caution Money): 129,510 | Credit Hour 1st Semester: 13 + 3 BS(Multimedia & Gamming): 1st Semester Fee Amount: 168,050 | Semester Fee Amount (Without Admission Fee + Caution Money): 143,050 | Credit Hour 1st Semester: 15 + 3 BS(International Relation): 1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0 BS(Psychology): 1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0 BS(Business Analytics and Programming): 1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1157,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_fee_structure_4",
+    "category": "fee_structure",
+    "text": "[University: DHA Suffa | Category: fee_structure] BS (Accounting and Finance): 1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0 BS(Financial Technology): 1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0 MS / ME / MBA (1.5 Years): 1st Semester Fee Amount: 167,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 137,000 | Credit Hour 1st Semester: 12 + 0 MPhil (Psychology/International Relations): 1st Semester Fee Amount: 136,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 106,000 | Credit Hour 1st Semester: 9 + 0 B.Architecture: 1st Semester Fee Amount: 134,250 | Semester Fee Amount (Without Admission Fee + Caution Money): 109,250 | Credit Hours (1st Semester Updated): 17 + 1 BS(Computer Science): 1st Semester Fee Amount: 124,133 | Semester Fee Amount (Without Admission Fee + Caution Money): 99,133 | Credit Hours (1st Semester Updated): 13 + 2 BS(Artificial Intelligence): 1st Semester Fee Amount: 138,240 | Semester Fee Amount (Without Admission Fee + Caution Money): 113,240 | Credit Hours (1st Semester Updated): 16 + 2",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "Master,Bachelor",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 1196,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "dha_suffa_normalized_hostel_0",
+    "category": "hostel",
+    "text": "[University: DHA Suffa | Category: hostel] DHA Suffa University operates a dedicated Girls Hostel located in Sector 3, DHA City Karachi (DCK), connected to the DSU DCK campus. The DHA Suffa University Main Campus in DHA Phase 7 Extension does not have its own on-campus hostel. Several private girls' hostels operate nearby: Sayaban Girls Hostels (21-C 15th Commercial Street, DHA Phase 2 Extension) offers furnished AC/Non-AC rooms with meals and internet starting around Rs. H Girls Hostel (Street 4, Sector B, Akhtar Colony) offers attached bathrooms and independent kitchens. AL Safa Girls Hostel (Plot 58, Street No.",
+    "metadata": {
+      "university_id": "dha_suffa",
+      "university_name": "DHA Suffa",
+      "city": "DHA City Karachi (DCK) Campus, Karachi",
+      "province": "Sindh",
+      "department": "hostel",
+      "category": "hostel",
+      "degree_levels": "",
+      "source_pages": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf | https://www.dsu.edu.pk/wp-content/uploads/2024/08/SCHOLARSHIP-AND-FEE-CONESSIION.pdf | https://www.dsu.edu.pk/fee-structure/ | https://www.dsu.edu.pk/admission-merit-criteria/ | https://www.dsu.edu.pk/dck-hostel-facilities/ | manual://dsu-dck-hostel | manual://dsu-phase7-hostel",
+      "length_chars": 578,
+      "is_public": false
+    }
+  }
+]
