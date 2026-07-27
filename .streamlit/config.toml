@@ -1,0 +1,11 @@
+[server]
+# Streamlit's dev-mode file watcher inspects the module path of every
+# imported package to decide what to watch for hot-reload. That walk touches
+# transformers' optional vision submodules (vitpose, yolos, zoedepth - pulled
+# in transitively by sentence-transformers, used here only for text
+# embeddings), which lazily import torchvision - never installed since this
+# project does no vision work. Streamlit catches the resulting
+# ModuleNotFoundError itself, but it's noisy. Disabling the watcher avoids it
+# entirely; code changes require a manual rerun (press "r" in the browser, or
+# restart the server) instead of auto-reloading.
+fileWatcherType = "none"

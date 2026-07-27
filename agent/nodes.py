@@ -11,10 +11,17 @@ from .llm import generate_json, generate_text
 from .prompts import (
     PRESENTER_SYSTEM,
     PROFILE_BUILDER_SYSTEM,
+    QA_SYSTEM,
     RANKER_SYSTEM,
     REFINE_CLASSIFIER_SYSTEM,
 )
-from .retriever import get_structured_record, retrieve_universities
+from .retriever import (
+    detect_category_hint,
+    detect_university_id,
+    get_structured_record,
+    retrieve_for_question,
+    retrieve_universities,
+)
 from .state import REQUIRED_PROFILE_FIELDS, AgentState
 
 PRIORITY_NOTES = {
@@ -68,6 +75,38 @@ def _deterministic_eligibility_block(profile: dict[str, Any]) -> bool:
 
 def _missing_fields(profile: dict[str, Any]) -> list[str]:
     return [f for f in REQUIRED_PROFILE_FIELDS if not profile.get(f)]
+
+
+# Heuristic for "the student is asking something, not just handing over
+# profile info" - triggers a cheap local retrieval (embedding + Chroma query,
+# no LLM call, so it's free against the Gemini quota) so profile_builder_node
+# has real data to answer with directly, instead of either ignoring the
+# question to ask its own, or answering from unguided general knowledge.
+_QUESTION_INDICATOR_RE = re.compile(
+    r"\?|\bscholarship|\bhostel|\bfee|\btuition|\beligib|\badmission|\bentry test|\bdeadline|\bmerit|"
+    r"\brequirement|\bhow (easy|hard|do|much)|\bwhat (is|are)|\bdo(es)? (you|they|it)\b",
+    re.I,
+)
+
+
+def _looks_like_question(text: str) -> bool:
+    return bool(text) and bool(_QUESTION_INDICATOR_RE.search(text))
+
+
+def _structured_fee_snippet(university_id: Optional[str]) -> str:
+    """Some universities' real tuition figure was only ever confirmed as a
+    verified (amount, period) pair directly in the SQLite table (see
+    src/normalizer.py's UNIVERSITY_SEED_TUITION) - e.g. FAST's fee page table
+    never made it into a searchable chunk cleanly, so a fee_structure chunk
+    search alone comes up empty even though the real number is known. Pull
+    it from the structured record so a fee question can still be answered."""
+    if not university_id:
+        return ""
+    record = get_structured_record(university_id)
+    if not record or not record.get("tuition_fee_amount"):
+        return ""
+    period = (record.get("tuition_fee_period") or "").replace("_", " ")
+    return f"[{record.get('university_name')} | verified tuition] {record['tuition_fee_amount']:,} PKR {period}"
 
 
 def _sanitize_profile_updates(updates: Any) -> dict[str, Any]:
@@ -127,6 +166,25 @@ def _last_user_message(state: AgentState) -> str:
     return ""
 
 
+def _last_assistant_message(state: AgentState) -> str:
+    for msg in reversed(state["messages"]):
+        if isinstance(msg, dict):
+            if msg.get("role") == "assistant":
+                return msg.get("content", "")
+        else:
+            if getattr(msg, "type", "") == "ai":
+                return getattr(msg, "content", "")
+    return ""
+
+
+def _resolve_university_id(last_message: str, last_assistant_message: str) -> Optional[str]:
+    """"What is ITS fee structure" only makes sense in light of which
+    university was just being discussed - detect_university_id on the latest
+    message alone finds nothing for a pronoun, so fall back to whichever
+    university the assistant's own previous reply was about."""
+    return detect_university_id(last_message) or detect_university_id(last_assistant_message)
+
+
 def _merge_profile_updates(profile: dict[str, Any], updates: Any) -> dict[str, Any]:
     if not isinstance(updates, dict):
         return profile
@@ -143,11 +201,52 @@ def profile_builder_node(state: AgentState) -> dict[str, Any]:
     quota is tight enough (5 req/min) that halving calls-per-turn matters."""
     profile = dict(state.get("student_profile") or {})
     last_message = _last_user_message(state)
+    last_question = _last_assistant_message(state)
     missing_before = _missing_fields(profile)
 
+    # Cheap local retrieval (no LLM call) so a question asked mid-profiling
+    # ("what is the fee structure of FAST") can be answered directly with
+    # real data instead of being brushed aside for the next profiling
+    # question. university_id resolution falls back to whichever university
+    # the assistant's own previous reply was about, since a pronoun-only
+    # follow-up ("what is ITS fee structure") names nothing on its own.
+    retrieved_context = ""
+    if last_message and _looks_like_question(last_message):
+        university_id = _resolve_university_id(last_message, last_question)
+        category = detect_category_hint(last_message)
+        query = f"{last_message} {profile.get('field_of_study', '')}".strip()
+        hits = retrieve_for_question(query, university_id=university_id, category=category, top_k=4)
+        context_parts = []
+        if category == "fee_structure":
+            fee_snippet = _structured_fee_snippet(university_id)
+            if fee_snippet:
+                context_parts.append(fee_snippet)
+        context_parts.extend(
+            f"[{h['metadata'].get('university_name')} | {h['metadata'].get('category')}] {h['text']}"
+            for h in hits
+        )
+        retrieved_context = "\n\n".join(context_parts)
+
+    # A short, context-dependent reply ("yes I have", "its fee structure")
+    # only makes sense in light of the question you just asked - passing your
+    # own previous message alongside it is what lets the model resolve
+    # references like this instead of treating the message as if it arrived
+    # with no history at all.
+    if last_message and last_question:
+        user_prompt = (
+            f"Your previous message to the student was: {last_question}\n\n"
+            f"Student's latest reply: {last_message}"
+        )
+    elif last_message:
+        user_prompt = f"Student's latest message: {last_message}"
+    else:
+        user_prompt = "The conversation is just starting."
+
     result = generate_json(
-        PROFILE_BUILDER_SYSTEM.format(profile=json.dumps(profile), missing_fields=missing_before),
-        f"Student's latest message: {last_message}" if last_message else "The conversation is just starting.",
+        PROFILE_BUILDER_SYSTEM.format(
+            profile=json.dumps(profile), missing_fields=missing_before, retrieved_context=retrieved_context or "(none)"
+        ),
+        user_prompt,
     )
     updates = _sanitize_profile_updates(result.get("profile_updates", {}) if isinstance(result, dict) else {})
     reply = result.get("reply", "") if isinstance(result, dict) else ""
@@ -297,4 +396,53 @@ def refine_node(state: AgentState) -> dict[str, Any]:
         "student_profile": profile,
         "current_phase": "refining",
         "refine_action": action,
+    }
+
+
+def qa_node(state: AgentState) -> dict[str, Any]:
+    """Answers a specific follow-up question after recommendations have been
+    shown. Two distinct kinds of question land here: a NEW factual question
+    ("tell me about DHA Suffa's scholarships") that needs fresh retrieval, and
+    a question ABOUT the recommendations already given ("which one is more
+    ideal for me", "why did you rank X higher") that needs the existing
+    ranked list and profile, not a blind semantic search over the raw
+    question text (which has no lexical connection to any specific
+    university and so retrieves close to nothing useful)."""
+    question = _last_user_message(state)
+    profile = state.get("student_profile") or {}
+    recommendations = state.get("recommendations") or []
+
+    university_id = detect_university_id(question)
+    category = detect_category_hint(question)
+    hits = retrieve_for_question(question, university_id=university_id, category=category)
+
+    context_sections: list[str] = []
+    if recommendations:
+        context_sections.append(
+            "Recommendations already given to this student:\n" + json.dumps(recommendations, indent=2)
+        )
+    if profile:
+        context_sections.append(f"Student profile:\n{json.dumps(profile)}")
+    if category == "fee_structure":
+        fee_snippet = _structured_fee_snippet(university_id)
+        if fee_snippet:
+            context_sections.append(f"Verified data:\n{fee_snippet}")
+    if hits:
+        retrieved = "\n\n".join(
+            f"[{h['metadata'].get('university_name')} | {h['metadata'].get('category')}] {h['text']}"
+            for h in hits
+        )
+        context_sections.append(f"Additional retrieved information:\n{retrieved}")
+
+    if not context_sections:
+        content = (
+            "I don't have specific data on that in my current dataset - could you rephrase, or ask about "
+            "something else?"
+        )
+    else:
+        content = generate_text(QA_SYSTEM.format(context="\n\n".join(context_sections)), question)
+
+    return {
+        "messages": [{"role": "assistant", "content": content}],
+        "current_phase": "refining",
     }

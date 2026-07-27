@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from langgraph.graph import END, START, StateGraph
 
-from .nodes import presenter_node, profile_builder_node, ranker_node, refine_node, retriever_node
+from .nodes import presenter_node, profile_builder_node, qa_node, ranker_node, refine_node, retriever_node
 from .state import AgentState
 
 
@@ -26,7 +26,12 @@ def _route_after_profile_builder(state: AgentState) -> str:
 
 
 def _route_after_refine(state: AgentState) -> str:
-    return "retriever" if state.get("refine_action") == "refine" else END
+    action = state.get("refine_action")
+    if action == "refine":
+        return "retriever"
+    if action == "answer_question":
+        return "qa"
+    return END
 
 
 def build_graph():
@@ -37,6 +42,7 @@ def build_graph():
     graph.add_node("ranker", ranker_node)
     graph.add_node("presenter", presenter_node)
     graph.add_node("refine", refine_node)
+    graph.add_node("qa", qa_node)
 
     graph.add_conditional_edges(
         START, _route_entry, {"profile_builder": "profile_builder", "refine": "refine"}
@@ -48,7 +54,8 @@ def build_graph():
     graph.add_edge("ranker", "presenter")
     graph.add_edge("presenter", END)
     graph.add_conditional_edges(
-        "refine", _route_after_refine, {"retriever": "retriever", END: END}
+        "refine", _route_after_refine, {"retriever": "retriever", "qa": "qa", END: END}
     )
+    graph.add_edge("qa", END)
 
     return graph.compile()
