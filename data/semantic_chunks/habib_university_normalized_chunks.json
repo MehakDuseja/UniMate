@@ -104,7 +104,7 @@
   {
     "chunk_id": "habib_university_normalized_fee_structure_0",
     "category": "fee_structure",
-    "text": "[University: HABIB University | Category: fee_structure] Admission Application Fee (Non-refundable & Non-Transferable): 7,500 Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): 70,000 Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): 110,000 Security Deposit (Refundable): 30,000 Tuition Fee for DSSE and AHSS: 780,000 Laboratory Fee for DSSE: 215,000 Studio and Laboratory Fee for AHSS: 160,000 Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030): 32,000 Admission Application Fee (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 7,500 Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 70,000 Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 110,000 Security Deposit (Refundable): Amount in PKR (Onetime payment): 30,000 Tuition Fee for DSSE and AHSS: 780,000 Laboratory Fee for DSSE: 215,000 Studio and Laboratory Fee for AHSS: 160,000 Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030): 32,000",
+    "text": "[University: HABIB University | Category: fee_structure] Type of Fee: Amount in PKR (Onetime payment) | Admission Application Fee (Non-refundable & Non-Transferable) | 7,500 | Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 70,000 | Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 110,000 | Security Deposit (Refundable) | 30,000 | Semester Related Fee | Type of Fee | Amount in PKR (Per Semester payment) | Tuition Fee for DSSE and AHSS | 780,000 | Laboratory Fee for DSSE | 215,000 | Studio and Laboratory Fee for AHSS | 160,000 | Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030) | 32,000 Type of Fee: Amount in PKR (Onetime payment) Admission Application Fee (Non-refundable & Non-Transferable): 7,500 Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): 70,000 Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): 110,000 Security Deposit (Refundable): 30,000 Type of Fee: Amount in PKR (Per Semester payment) Tuition Fee for DSSE and AHSS: 780,000 Laboratory Fee for DSSE: 215,000 Studio and Laboratory Fee for AHSS: 160,000",
     "metadata": {
       "university_id": "habib_university",
       "university_name": "HABIB University",
@@ -121,7 +121,7 @@
   {
     "chunk_id": "habib_university_normalized_fee_structure_1",
     "category": "fee_structure",
-    "text": "[University: HABIB University | Category: fee_structure] Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030): 32,000 fee_snippet: For International Examination Board Applicants, Habib University offers three types of scholarships HABIB YOHSIN SCHOLARSHIP These are 100% Scholarships available, on tuition & laboratory and/or studio fees, for exceptionally well-rounded and highly meritorious students. fee_snippet: HABIB EXCELLENCE SCHOLARSHIP These Scholarships cover 60% to 80% of tuition & laboratory and/or studio fees of the recipients. fee_snippet: HABIB MERIT SCHOLARSHIP These Scholarships cover up to approximately 50% of tuition & laboratory and/or studio fees of the recipients. fee_snippet: Our Financial Aid Program supports the students enrolled at Habib University to meet tuition and other fee requirements of the University. fee_snippet: Habib University’s Deferred Fee Plan and Grants Does Habib University offer grants? fee_snippet: Supporting this commitment, the University does not tolerate discrimination in any form and provides mechanisms for redress for students who feel they are being discriminated against.",
+    "text": "[University: HABIB University | Category: fee_structure] Tuition Fee for DSSE and AHSS: 780,000 Laboratory Fee for DSSE: 215,000 Studio and Laboratory Fee for AHSS: 160,000 Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030): 32,000 Admission Application Fee (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 7,500 Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 70,000 Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable): Amount in PKR (Onetime payment): 110,000 Security Deposit (Refundable): Amount in PKR (Onetime payment): 30,000 Type of Fee: Amount in PKR (Per Semester payment) Tuition Fee for DSSE and AHSS: 780,000 Laboratory Fee for DSSE: 215,000 Studio and Laboratory Fee for AHSS: 160,000 Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030): 32,000 fee_snippet: All financial policies for the summer semester, including tuition, fees (if applicable) and financial aid are announced by the Office of Student Finance.",
     "metadata": {
       "university_id": "habib_university",
       "university_name": "HABIB University",
@@ -131,14 +131,14 @@
       "category": "fee_structure",
       "degree_levels": "",
       "source_pages": "https://habib.edu.pk/admissions/student-finance/ | https://habib.edu.pk/admissions/admissions-faqs/ | https://habib.edu.pk/academics/sse/computer-science/ | https://habib.edu.pk/wp-content/uploads/2025/07/HU-Course-Catalog-2024-25.pdf | https://habib.edu.pk/welcome-class/information-about-accommodation/",
-      "length_chars": 1126,
+      "length_chars": 1066,
       "is_public": false
     }
   },
   {
     "chunk_id": "habib_university_normalized_fee_structure_2",
     "category": "fee_structure",
-    "text": "[University: HABIB University | Category: fee_structure] fee_snippet: An example of such a collaboration is the Early Alert system through which faculty informs advisors about identified students they feel could benefit from enhanced support. fee_snippet: Students allowed to take course overload may be charged an additional fee. fee_snippet: A course repeat fee may be charged for any repeated course, regardless of the reason for a repeat. fee_snippet: All financial policies for the summer semester, including tuition, fees (if applicable) and financial aid are announced by the Office of Student Finance.",
+    "text": "[University: HABIB University | Category: fee_structure] fee_snippet: Audit courses do not fulfill degree requirements, but the credit value of audited courses may be included in the semester load for determining fees and the maximum number of credits carried each semester.",
     "metadata": {
       "university_id": "habib_university",
       "university_name": "HABIB University",
@@ -148,7 +148,41 @@
       "category": "fee_structure",
       "degree_levels": "",
       "source_pages": "https://habib.edu.pk/admissions/student-finance/ | https://habib.edu.pk/admissions/admissions-faqs/ | https://habib.edu.pk/academics/sse/computer-science/ | https://habib.edu.pk/wp-content/uploads/2025/07/HU-Course-Catalog-2024-25.pdf | https://habib.edu.pk/welcome-class/information-about-accommodation/",
-      "length_chars": 552,
+      "length_chars": 217,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "habib_university_normalized_fee_structure_3",
+    "category": "fee_structure",
+    "text": "[University: HABIB University | Category: fee_structure] fee_snippet: Credit Hours University Requirements Habib Liberal Core 10* 351 Engineering Sciences & Computing Mathematics (5 Electives) MATH 101 Calculus I 01 3+0 MATH 102 Calculus II 01 3+0 MATH 202 Engineering Mathematics 01 3+0 MATH 205 Linear Algebra 01 3+0 EE 354 Introduction to Probability & Statistics 01 3+01 Computing (3 Electives) CS 101 Algorithmic Problem Solving 01 3+11 CS 102 Data Structures and Algorithms 01 3+1 CS 224 Object Oriented Programming and Design Methodologies 01 3+1 Program Requirements Circuits & Electronics (6 Courses) EE 100 Introduction to Electrical & Computer Engineering 01 0+2 EE 112 Electric Circuits I 01 2+0 EE 211 Basic Electronics 01 3+1 EE 213 Electric Circuits II 01 3+0 EE 213L Electric Circuits II Lab 01 0+1 PHY 304 Physics of Semiconductor Devices 01 3+0 Digital Systems (3 Courses) EE 172 Digital Logic Design 01 3+1 EE 371 Computer Architecture 01 3+0 EE 376 Microcontrollers & Interfacing 01 0+1 Systems Theory (3 Courses) EE 252 Signals & Systems 01 3+1 EE 322 Analog & Digital Communication 01 3+1 EE 361 Feedback Control Systems 01 3+1 Power Systems (3 Courses) EE 241 Electromagnetic Theory 01 3+0 EE 331 Electrical Machines 01 3+1 EE 335 Power Generation, Transmission & Distri.",
+    "metadata": {
+      "university_id": "habib_university",
+      "university_name": "HABIB University",
+      "city": "Block 18 University Ave, Gulistan-e-Johar, Karachi, 75290",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "",
+      "source_pages": "https://habib.edu.pk/admissions/student-finance/ | https://habib.edu.pk/admissions/admissions-faqs/ | https://habib.edu.pk/academics/sse/computer-science/ | https://habib.edu.pk/wp-content/uploads/2025/07/HU-Course-Catalog-2024-25.pdf | https://habib.edu.pk/welcome-class/information-about-accommodation/",
+      "length_chars": 1237,
+      "is_public": false
+    }
+  },
+  {
+    "chunk_id": "habib_university_normalized_fee_structure_4",
+    "category": "fee_structure",
+    "text": "[University: HABIB University | Category: fee_structure] fee_snippet: EE 361 - Principles of Feedback Control Credit Hours: 3-1 Prerequisites: EE 252 - Signals and Systems Fulfills: EE Core Topics include: Models of dynamic systems, linear time-invariant (LTI) and transfer function models; impulse, step, transient and steady-state response; root locus technique, Bodé plots, 93 2024-2025 COURSE CATALOG Nyquist criterion; gain and phase margins, Nichols charts, lead, lag compensation; state-space techniques; simulation and controller design using MATLAB and Simulink.",
+    "metadata": {
+      "university_id": "habib_university",
+      "university_name": "HABIB University",
+      "city": "Block 18 University Ave, Gulistan-e-Johar, Karachi, 75290",
+      "province": "Sindh",
+      "department": "fee_structure",
+      "category": "fee_structure",
+      "degree_levels": "",
+      "source_pages": "https://habib.edu.pk/admissions/student-finance/ | https://habib.edu.pk/admissions/admissions-faqs/ | https://habib.edu.pk/academics/sse/computer-science/ | https://habib.edu.pk/wp-content/uploads/2025/07/HU-Course-Catalog-2024-25.pdf | https://habib.edu.pk/welcome-class/information-about-accommodation/",
+      "length_chars": 514,
       "is_public": false
     }
   },

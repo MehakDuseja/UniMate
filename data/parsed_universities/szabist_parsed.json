@@ -59,7 +59,8 @@
       "test_pattern": [],
       "scholarships": [],
       "offered_courses": [
-        "MS By Research/Defense (Per 3 Cr.Hrs.) 10000"
+        "PhD Dissertation (Per 3 Cr.Hrs.)",
+        "MS By Research/Defense (Per 3 Cr.Hrs.)"
       ],
       "fee_structure": {
         "fees": [
@@ -112,6 +113,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10,400 | 0% | Rs. 10,400 | US $ 510 | 0% | US $ 510"
           },
@@ -122,6 +127,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -140,6 +149,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | Rs. 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -150,6 +163,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -164,6 +181,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,500 | 0% | Rs. 9,500 | US $ 510 | 0% | US $ 510"
           },
@@ -174,6 +195,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -188,6 +213,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 8500 | 20% | Rs. 6800 | US $ 540 | 20% | US $ 432"
           },
@@ -198,6 +227,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -212,6 +245,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -222,6 +259,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -236,12 +277,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 28500 | 0% | Rs. 28,500 | US $ 615 | 5% | US $ 584"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 1,14,000 | 0% | Rs. 1,14,000 | US $ 2,460 | 5% | US $ 2,337 | 4 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -256,6 +309,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 585 | 10% | US $ 527"
           },
@@ -266,6 +323,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -280,6 +341,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10300 | 40% | Rs. 6180/p> | US $ 630 | 40% | US $ 378"
           },
@@ -292,6 +357,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -302,6 +371,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credir Hour",
@@ -316,6 +389,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -326,6 +403,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -340,6 +421,14 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 30,000 | 0% | Rs. 30000 | US $ 645 | 0% | US $ 645"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 90,000 | 0% | Rs. 90,000 | US $ 1,935 | 0% | US $ 1,935 | 3 Courses (Per Semester)"
           },
@@ -348,12 +437,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 24,300 | 0% | 24,300 | US $ 555 | 0% | US $ 555"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 72,900 | 0% | Rs. 72,900 | US $ 1,665 | 0% | US $ 1,665 | 3 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per credit Hour",
@@ -366,6 +467,10 @@
           {
             "label": "For Pakistani Students",
             "value": "Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -402,6 +507,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2000 | –"
+          },
+          {
+            "label": "Total",
+            "value": "269,600/- | –"
           },
           {
             "label": "FEE Payable to University of London",
@@ -466,6 +575,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2,000/- | –"
+          },
+          {
+            "label": "Total",
+            "value": "Rs. 312,000/- | –"
           },
           {
             "label": "IInitial registration fee",
@@ -492,6 +605,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | Rs. 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -502,6 +619,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -516,6 +637,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,500 | 0% | Rs. 9,500 | US $ 510 | 0% | US $ 510"
           },
@@ -526,6 +651,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -540,6 +669,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 8500 | 20% | Rs. 6800 | US $ 540 | 20% | US $ 432"
           },
@@ -550,6 +683,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -564,6 +701,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -574,6 +715,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -588,12 +733,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 28500 | 0% | Rs. 28,500 | US $ 615 | 5% | US $ 584"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 1,14,000 | 0% | Rs. 1,14,000 | US $ 2,460 | 5% | US $ 2,337 | 4 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -608,6 +765,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 585 | 10% | US $ 527"
           },
@@ -618,6 +779,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -632,6 +797,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10300 | 40% | Rs. 6180/p> | US $ 630 | 40% | US $ 378"
           },
@@ -644,6 +813,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -654,6 +827,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credir Hour",
@@ -668,6 +845,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -678,6 +859,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -692,6 +877,14 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 30,000 | 0% | Rs. 30000 | US $ 645 | 0% | US $ 645"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 90,000 | 0% | Rs. 90,000 | US $ 1,935 | 0% | US $ 1,935 | 3 Courses (Per Semester)"
           },
@@ -700,12 +893,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 24,300 | 0% | 24,300 | US $ 555 | 0% | US $ 555"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 72,900 | 0% | Rs. 72,900 | US $ 1,665 | 0% | US $ 1,665 | 3 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per credit Hour",
@@ -718,6 +923,10 @@
           {
             "label": "For Pakistani Students",
             "value": "Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -754,6 +963,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2000 | –"
+          },
+          {
+            "label": "Total",
+            "value": "269,600/- | –"
           },
           {
             "label": "FEE Payable to University of London",
@@ -818,6 +1031,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2,000/- | –"
+          },
+          {
+            "label": "Total",
+            "value": "Rs. 312,000/- | –"
           },
           {
             "label": "IInitial registration fee",
@@ -862,6 +1079,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Pak Rupee Rs: Rs. 2000 | Refundable/Non-Refundable: –"
+          },
+          {
+            "label": "Total",
+            "value": "Pak Rupee Rs: 269,600/- | Refundable/Non-Refundable: –"
           },
           {
             "label": "Application handling fee (Once payable (First year))",
@@ -914,6 +1135,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Pak Rupee Rs: Rs. 2,000/- | Refundable/Non-Refundable: –"
+          },
+          {
+            "label": "Total",
+            "value": "Pak Rupee Rs: Rs. 312,000/- | Refundable/Non-Refundable: –"
           },
           {
             "label": "Module fee (£216 per module)",
@@ -1011,7 +1236,8 @@
       "Bachelor’s degree in any discipline (awarded by an institution acceptable to the University of London).",
       "Bachelor of Education (B.ED) 1.5 Years For admission in the B.Ed.",
       "Master of Science in Computer Science For admission to MSCS program, candidates must possess 16 years of relevant education with minimum 50% marks/2.0 CGPA from a university recognized by HEC.",
-      "MS By Research/Defense (Per 3 Cr.Hrs.) 10000",
+      "PhD Dissertation (Per 3 Cr.Hrs.)",
+      "MS By Research/Defense (Per 3 Cr.Hrs.)",
       "BS (Media Sciences) The"
     ],
     "fee_structure": [
@@ -1072,6 +1298,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10,400 | 0% | Rs. 10,400 | US $ 510 | 0% | US $ 510"
           },
@@ -1082,6 +1312,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1100,6 +1334,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | Rs. 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -1110,6 +1348,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1124,6 +1366,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,500 | 0% | Rs. 9,500 | US $ 510 | 0% | US $ 510"
           },
@@ -1134,6 +1380,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1148,6 +1398,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 8500 | 20% | Rs. 6800 | US $ 540 | 20% | US $ 432"
           },
@@ -1158,6 +1412,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1172,6 +1430,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -1182,6 +1444,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1196,12 +1462,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 28500 | 0% | Rs. 28,500 | US $ 615 | 5% | US $ 584"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 1,14,000 | 0% | Rs. 1,14,000 | US $ 2,460 | 5% | US $ 2,337 | 4 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1216,6 +1494,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 585 | 10% | US $ 527"
           },
@@ -1226,6 +1508,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1240,6 +1526,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10300 | 40% | Rs. 6180/p> | US $ 630 | 40% | US $ 378"
           },
@@ -1252,6 +1542,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -1262,6 +1556,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credir Hour",
@@ -1276,6 +1574,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -1286,6 +1588,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1300,6 +1606,14 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 30,000 | 0% | Rs. 30000 | US $ 645 | 0% | US $ 645"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 90,000 | 0% | Rs. 90,000 | US $ 1,935 | 0% | US $ 1,935 | 3 Courses (Per Semester)"
           },
@@ -1308,12 +1622,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 24,300 | 0% | 24,300 | US $ 555 | 0% | US $ 555"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 72,900 | 0% | Rs. 72,900 | US $ 1,665 | 0% | US $ 1,665 | 3 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per credit Hour",
@@ -1326,6 +1652,10 @@
           {
             "label": "For Pakistani Students",
             "value": "Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1362,6 +1692,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2000 | –"
+          },
+          {
+            "label": "Total",
+            "value": "269,600/- | –"
           },
           {
             "label": "FEE Payable to University of London",
@@ -1426,6 +1760,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2,000/- | –"
+          },
+          {
+            "label": "Total",
+            "value": "Rs. 312,000/- | –"
           },
           {
             "label": "IInitial registration fee",
@@ -1452,6 +1790,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | Rs. 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -1462,6 +1804,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1476,6 +1822,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,500 | 0% | Rs. 9,500 | US $ 510 | 0% | US $ 510"
           },
@@ -1486,6 +1836,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1500,6 +1854,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 8500 | 20% | Rs. 6800 | US $ 540 | 20% | US $ 432"
           },
@@ -1510,6 +1868,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1524,6 +1886,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 9,000 | 5% | 8,550 | US $ 510 | 5% | US $ 485"
           },
@@ -1534,6 +1900,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1548,12 +1918,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 28500 | 0% | Rs. 28,500 | US $ 615 | 5% | US $ 584"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 1,14,000 | 0% | Rs. 1,14,000 | US $ 2,460 | 5% | US $ 2,337 | 4 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1568,6 +1950,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 585 | 10% | US $ 527"
           },
@@ -1578,6 +1964,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1592,6 +1982,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 10300 | 40% | Rs. 6180/p> | US $ 630 | 40% | US $ 378"
           },
@@ -1604,6 +1998,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -1614,6 +2012,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credir Hour",
@@ -1628,6 +2030,10 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
             "label": "Per Credit Hour",
             "value": "Rs. 11,000 | 0% | Rs. 11,000 | US $ 645 | 0% | US $ 645"
           },
@@ -1638,6 +2044,10 @@
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1652,6 +2062,14 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 30,000 | 0% | Rs. 30000 | US $ 645 | 0% | US $ 645"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 90,000 | 0% | Rs. 90,000 | US $ 1,935 | 0% | US $ 1,935 | 3 Courses (Per Semester)"
           },
@@ -1660,12 +2078,24 @@
             "value": "For Foreign Students | Remarks"
           },
           {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+          },
+          {
+            "label": "Per Course",
+            "value": "Rs. 24,300 | 0% | 24,300 | US $ 555 | 0% | US $ 555"
+          },
+          {
             "label": "Per Semester",
             "value": "Rs. 72,900 | 0% | Rs. 72,900 | US $ 1,665 | 0% | US $ 1,665 | 3 Courses (Per Semester)"
           },
           {
             "label": "For Pakistani Students",
             "value": "For Foreign Students | Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per credit Hour",
@@ -1678,6 +2108,10 @@
           {
             "label": "For Pakistani Students",
             "value": "Remarks"
+          },
+          {
+            "label": "Gross Fee",
+            "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
           },
           {
             "label": "Per Credit Hour",
@@ -1714,6 +2148,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2000 | –"
+          },
+          {
+            "label": "Total",
+            "value": "269,600/- | –"
           },
           {
             "label": "FEE Payable to University of London",
@@ -1778,6 +2216,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Rs. 2,000/- | –"
+          },
+          {
+            "label": "Total",
+            "value": "Rs. 312,000/- | –"
           },
           {
             "label": "IInitial registration fee",
@@ -1822,6 +2264,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Pak Rupee Rs: Rs. 2000 | Refundable/Non-Refundable: –"
+          },
+          {
+            "label": "Total",
+            "value": "Pak Rupee Rs: 269,600/- | Refundable/Non-Refundable: –"
           },
           {
             "label": "Application handling fee (Once payable (First year))",
@@ -1874,6 +2320,10 @@
           {
             "label": "Examination Fee (payable yearly)",
             "value": "Pak Rupee Rs: Rs. 2,000/- | Refundable/Non-Refundable: –"
+          },
+          {
+            "label": "Total",
+            "value": "Pak Rupee Rs: Rs. 312,000/- | Refundable/Non-Refundable: –"
           },
           {
             "label": "Module fee (£216 per module)",

@@ -155,7 +155,7 @@
   {
     "chunk_id": "ned_university_normalized_fee_structure_0",
     "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] fee_snippet: BS Economics & Finance University will charge an additional fee BS Physics, BS English and for this NC course. fee_snippet: The University will charge an additional fee for this NC course. fee_snippet: Tuition / Semester Fee Q1. fee_snippet: Following are the fees: • Self-Finance Fee Rs. fee_snippet: 890,000/- + 3% Tax* • Self-Finance (Sponsored Seats) Fee Rs. Civil Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering Civil Engineering along with Specialization in Construction 2.5 Years M.Engg. Programme Structural Engineering (+) Geo-technical Engineering * Transportation Engineering * Coastal and Water Resources Engineering *** Construction Engineering Law 2.5 Years MEM Programme Construction Management (+) Ph.D. In various Research areas Urban & Infrastructure Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering along with Specialization in Urban 2.5 Years MEM Programme Transportation Infrastructure Management (+) Ph.D. In various Research areas",
+    "text": "[University: NED University | Category: fee_structure] fee_snippet: Tuition / Semester Fee Q1.",
     "metadata": {
       "university_id": "ned_university",
       "university_name": "NED University",
@@ -163,111 +163,9 @@
       "province": "Sindh",
       "department": "fee_structure",
       "category": "fee_structure",
-      "degree_levels": "PhD,Bachelor",
+      "degree_levels": "",
       "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 1055,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_1",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Petroleum Engineering: Programmes Offered: 4 Years Bachelor of Engineering Programme Petroleum Engineering 2.5 Years M.Engg. Programme Petroleum Engineering Architecture & Planning: Programmes Offered: 5 years Bachelor of Architecture Programme Architecture 2.5 Years Master Programme Architecture Urban & Regional Planning Ph.D. In various Research areas Architecture Urban & Regional Planning 4 years Bachelor of Development Studies Development Studies Environmental Engineering: Programmes Offered: 2.5 Years M.Engg. Programme Environmental Engineering (+) 2.5 Years MEM Programme Environmental Management (+) Ph.D. In various Research areas Earthquake Engineering: Programmes Offered: 2.5 Years M.Engg. Programme Structural Earthquake Engineering (+) Ph.D. In various Research areas Mechanical Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Mechanical Engineering 2.5 Years M.Engg. Programme Design Energy Systems (+) Renewable Energy Mechatronics 2.5 Years MEM Programme Energy and Plant Management (+) Ph.D. In various Research areas",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "PhD,Master,Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 1067,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_2",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Textile Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Textile Engineering 4 years Bachelor of Science Programme Textile Sciences 2.5 Years M.Engg. Programme Textile Engineering (+) 2.5 Years MEM Programme Textile Management (+) 2.5 Years MS Programme Textile Management (+) Ph.D. In various Research areas Industrial & Manufacturing Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Industrial & Manufacturing Engineering 2.5 Years M.Engg. Programme Manufacturing Engineering 2.5 Years MEM Programme Industrial Management (+) Quality Management Supply Chain Management Ph.D. In various Research areas Automotive & Marine Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Automotive Engineering 2.5 Years M.Engg. Programme Automotive Design Automotive Manufacturing Electrical Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Electrical Engineering 2.5 Years M.Engg. Programme Control Systems Electrical Power Systems Smart Grid 2.5 Years MEM Programme Energy Management Ph.D. In various Research areas",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "PhD,Master,Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 1106,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_3",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Computer & Information Systems Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Computer & Information Systems Engineering 2.5 Years M.Engg. Programme Computer Architecture & Systems Design Computer Network and System Security 2.5 Years MS Programme Data Engineering & Information Management Artificial Intelligence Ph.D. In various Research areas Electronic Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Electronic Engineering 2.5 Years M.Engg. Programme Integrated Circuit Design (+) Industrial Electronics Ph.D. In various Research areas Telecommunications Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Telecommunications Engineering 2.5 Years M.Engg. Programme Telecommunications Engineering o RF Engineering o Telecommunications Network 1.5 Years M.S. Programme (weekend) Telecommunications Systems Ph.D. In various Research areas Chemical Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Chemical Engineering 2.5 Years M.Engg. Programme Chemical Engineering 2.5 Years MEM Programme Chemical and Process Management (+) Ph.D. In various Research areas",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "PhD,Master,Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 1165,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_4",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Materials Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Materials Engineering 2.5 Years M.Engg. Programme Materials Engineering Ph.D. In various Research areas Metallurgical Engineering: Programmes Offered: 4 years Bachelor of Engineering Degree Metallurgical Engineering 2.5 Years M.Engg. Programme Metallurgical Engineering Polymer & Petrochemical Engineering: Programmes Offered: 4 years Bachelor of Engineering Degree Polymer & Petrochemical Engineering 2.5 Years M.Engg. Programme Polymer Engineering Ph.D Polymer Engineering Biomedical Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Biomedical Engineering 2.5 Years M.Engg. Programme Biomedical Engineering (+) 1.5 Years MS Programme Digital Health Sciences ** Ph.D. In various Research areas Food Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Food Engineering",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "PhD,Master,Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 902,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_5",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Food Engineering: Programmes Offered: 4 years Bachelor of Engineering Programme Food Engineering Computer Science & Software Engineering: Programmes Offered: 4 years Bachelor Programme Software Engineering Computer Science & Information Technology Artificial Intelligence Data Science Cyber Security Gaming and Animation 2.5 Years M.Engg. Programme Software Engineering 2.5 Years MS Programme Computer Science & Information Technology (+) Information Security (+) Data Science (+) Geospatial Data Science (+) Ph.D. In various Research areas Mathematics: Programmes Offered: 4 years Bachelor of Science Programme Computational Finance (BSCF) 2.5 Years MS Programme Applied Mathematics (+) Ph.D. In various Research areas English Linguistics & Allied Studies: Programmes Offered: 4 years Bachelor of Science Programme English Linguistics (BSEG) 2 Years MS Programme Applied Linguistics Ph.D. In various Research areas Economics and Management Sciences: Programmes Offered: 4 years Bachelor of Science Programmes Economics & Finance Management Sciences 2.5 Years MS Programme Economics & Finance (+)",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "PhD,Master,Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 1096,
-      "is_public": true
-    }
-  },
-  {
-    "chunk_id": "ned_university_normalized_fee_structure_6",
-    "category": "fee_structure",
-    "text": "[University: NED University | Category: fee_structure] Sciences and Humanities (TIEST): Programmes Offered: 4 years Bachelor of Science Programme English (BS) Panjwani-Hisar Water Institute (PHWI): Programmes Offered: Urban Water Management *** Climate Change Management ***",
-    "metadata": {
-      "university_id": "ned_university",
-      "university_name": "NED University",
-      "city": "Service Rd, NED University Of Engineering & Technology, Karachi",
-      "province": "Sindh",
-      "department": "fee_structure",
-      "category": "fee_structure",
-      "degree_levels": "Bachelor",
-      "source_pages": "https://www.neduet.edu.pk/admission | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Distribution_of_Seats.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2023/GuideLines.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/FAQ.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2025/sample_test_paper.pdf | https://www.neduet.edu.pk/sites/default/files/Admissions-2026/Brochure_International_Students.pdf | https://www.neduet.edu.pk/search/node?keys=scholarship | https://www.neduet.edu.pk/sites/default/files/users/student_affairs/List%20of%20Scholarship.pdf | https://www.neduet.edu.pk/academic_programmes | https://www.neduet.edu.pk/hostel-facilities-students",
-      "length_chars": 219,
+      "length_chars": 39,
       "is_public": true
     }
   },

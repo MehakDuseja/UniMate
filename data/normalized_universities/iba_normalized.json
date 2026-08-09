@@ -41,64 +41,26 @@
     "The candidates should demonstrate the ability to discern main ideas and concepts presented in texts, and identify and assess evidence that supports those ideas."
   ],
   "offered_courses": [
-    "BS-Accounting & Finance 31,500",
-    "BS-Computer Sciences 31,500",
-    "BS-Economics & Mathematics 31,500",
-    "BS-Mathematics 31,500",
-    "BS-Social Sciences & Liberal Arts 31,500",
-    "BS - Economics & Data Science 31,500",
-    "MS Computer Science 34,850 7,000",
-    "MS-Management 34,850",
-    "MS-Development Studies 24,800",
-    "MS- Journalism 24,800",
-    "MS-Mathematics & Economics 34,850",
-    "MS-Data Science 34,850",
-    "MS-Artificial Intelligence 34,850",
-    "MS Islamic Banking & Finance 34,850",
-    "MS General Psychology 24,800"
+    "BS-Accounting & Finance",
+    "BS-Computer Sciences",
+    "BS-Economics",
+    "BS-Economics & Mathematics",
+    "BS-Mathematics",
+    "BS-Social Sciences & Liberal Arts",
+    "BS - Economics & Data Science",
+    "MS Computer Science",
+    "MS-Management",
+    "MS-Development Studies",
+    "MS- Journalism",
+    "MS-Mathematics & Economics",
+    "MS-Data Science",
+    "MS-Artificial Intelligence",
+    "MS Islamic Banking & Finance",
+    "MS Marketing",
+    "MS General Psychology"
   ],
   "fee_structure": {
     "fees": [
-      {
-        "label": "BS-Accounting & Finance",
-        "value": "31,500"
-      },
-      {
-        "label": "BS-Computer Sciences",
-        "value": "31,500"
-      },
-      {
-        "label": "BS-Economics & Mathematics",
-        "value": "31,500"
-      },
-      {
-        "label": "BS-Social Sciences & Liberal Arts",
-        "value": "31,500"
-      },
-      {
-        "label": "BS - Economics & Data Science",
-        "value": "31,500"
-      },
-      {
-        "label": "MS-Development Studies",
-        "value": "24,800"
-      },
-      {
-        "label": "MS-Mathematics & Economics",
-        "value": "34,850"
-      },
-      {
-        "label": "MS-Artificial Intelligence",
-        "value": "34,850"
-      },
-      {
-        "label": "MS Islamic Banking & Finance",
-        "value": "34,850"
-      },
-      {
-        "label": "MS General Psychology",
-        "value": "24,800"
-      },
       {
         "label": "Single Occupancy - Without AC",
         "value": "133,600"
@@ -125,66 +87,6 @@
       }
     ],
     "numeric_summary": [
-      {
-        "amount_min": 31500,
-        "amount_max": 31500,
-        "currency": "PKR",
-        "raw_text": "31,500"
-      },
-      {
-        "amount_min": 31500,
-        "amount_max": 31500,
-        "currency": "PKR",
-        "raw_text": "31,500"
-      },
-      {
-        "amount_min": 31500,
-        "amount_max": 31500,
-        "currency": "PKR",
-        "raw_text": "31,500"
-      },
-      {
-        "amount_min": 31500,
-        "amount_max": 31500,
-        "currency": "PKR",
-        "raw_text": "31,500"
-      },
-      {
-        "amount_min": 31500,
-        "amount_max": 31500,
-        "currency": "PKR",
-        "raw_text": "31,500"
-      },
-      {
-        "amount_min": 24800,
-        "amount_max": 24800,
-        "currency": "PKR",
-        "raw_text": "24,800"
-      },
-      {
-        "amount_min": 34850,
-        "amount_max": 34850,
-        "currency": "PKR",
-        "raw_text": "34,850"
-      },
-      {
-        "amount_min": 34850,
-        "amount_max": 34850,
-        "currency": "PKR",
-        "raw_text": "34,850"
-      },
-      {
-        "amount_min": 34850,
-        "amount_max": 34850,
-        "currency": "PKR",
-        "raw_text": "34,850"
-      },
-      {
-        "amount_min": 24800,
-        "amount_max": 24800,
-        "currency": "PKR",
-        "raw_text": "24,800"
-      },
       {
         "amount_min": 133600,
         "amount_max": 133600,

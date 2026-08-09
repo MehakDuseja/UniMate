@@ -1,14 +1,26 @@
 """LangGraph state graph wiring.
 
-Each user turn is one graph.invoke() call carrying the *full* prior state
-(no checkpointer yet - that's added when this is wired into an API). Because
-of that, the entry point has to be phase-aware: a message that arrives after
+Each user turn is one graph.invoke() call carrying the full state for a given
+thread_id. The entry point is phase-aware: a message that arrives after
 recommendations were already presented should re-enter at refine_node, not
 restart profile_builder_node from scratch.
+
+A SqliteSaver checkpointer makes conversations durable across process
+restarts (see build_graph() below) - callers still pass the full state as
+they always have (this project's callers, agent/cli.py and streamlit_app.py,
+own state explicitly rather than relying on LangGraph to reload it), but the
+checkpointer additionally persists it under a thread_id, so a new process can
+recover a conversation via `graph.get_state(config)` instead of only ever
+starting from initial_state().
 """
 from __future__ import annotations
 
+import sqlite3
+
+from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import END, START, StateGraph
+
+from src.config import AGENT_CHECKPOINT_DB
 
 from .nodes import presenter_node, profile_builder_node, qa_node, ranker_node, refine_node, retriever_node
 from .state import AgentState
@@ -58,4 +70,12 @@ def build_graph():
     )
     graph.add_edge("qa", END)
 
-    return graph.compile()
+    # check_same_thread=False: this connection is opened once (build_graph()
+    # is typically called once and cached - see @st.cache_resource in
+    # streamlit_app.py) and then reused across every subsequent turn/thread,
+    # which a server framework may dispatch from different worker threads.
+    AGENT_CHECKPOINT_DB.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(AGENT_CHECKPOINT_DB), check_same_thread=False)
+    checkpointer = SqliteSaver(conn)
+
+    return graph.compile(checkpointer=checkpointer)

@@ -26,102 +26,26 @@
       "test_pattern": [],
       "scholarships": [],
       "offered_courses": [
-        "BS-Accounting & Finance 31,500",
-        "BS-Computer Sciences 31,500",
-        "BS-Economics 31,500",
-        "BS-Economics & Mathematics 31,500",
-        "BS-Mathematics 31,500",
-        "BS-Social Sciences & Liberal Arts 31,500",
-        "BS - Economics & Data Science 31,500",
-        "MS Computer Science 34,850 7,000",
-        "MS-Management 34,850",
-        "MS-Development Studies 24,800",
-        "MS- Journalism 24,800",
-        "MS-Mathematics & Economics 34,850",
-        "MS-Data Science 34,850",
-        "MS-Artificial Intelligence 34,850",
-        "MS Islamic Banking & Finance 34,850",
-        "MS Marketing 34,850",
-        "MS General Psychology 24,800"
+        "BS-Accounting & Finance",
+        "BS-Computer Sciences",
+        "BS-Economics",
+        "BS-Economics & Mathematics",
+        "BS-Mathematics",
+        "BS-Social Sciences & Liberal Arts",
+        "BS - Economics & Data Science",
+        "MS Computer Science",
+        "MS-Management",
+        "MS-Development Studies",
+        "MS- Journalism",
+        "MS-Mathematics & Economics",
+        "MS-Data Science",
+        "MS-Artificial Intelligence",
+        "MS Islamic Banking & Finance",
+        "MS Marketing",
+        "MS General Psychology"
       ],
       "fee_structure": {
         "fees": [
-          {
-            "label": "BS-Accounting & Finance",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Computer Sciences",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Economics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Economics & Mathematics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Mathematics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Social Sciences & Liberal Arts",
-            "value": "31,500"
-          },
-          {
-            "label": "BS - Economics & Data Science",
-            "value": "31,500"
-          },
-          {
-            "label": "MBA-Morning",
-            "value": "39,400 | 7,000"
-          },
-          {
-            "label": "Executive MBA",
-            "value": "EMBA Program Fee 4,000,000 | Note: A Executive MBA program has been introduced in Fall 2025. Under the fee structure, students are required to pay 30% of the tuition fee within two weeks of receiving the admission offer, 30% within the first six months of enrollment, and the remaining 40% at the beginning of the second year."
-          },
-          {
-            "label": "MS Computer Science",
-            "value": "34,850 | 7,000"
-          },
-          {
-            "label": "MS-Management",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Development Studies",
-            "value": "24,800"
-          },
-          {
-            "label": "MS- Journalism",
-            "value": "24,800"
-          },
-          {
-            "label": "MS-Mathematics & Economics",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Data Science",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Artificial Intelligence",
-            "value": "34,850"
-          },
-          {
-            "label": "MS Islamic Banking & Finance",
-            "value": "34,850"
-          },
-          {
-            "label": "MS Marketing",
-            "value": "34,850"
-          },
-          {
-            "label": "MS General Psychology",
-            "value": "24,800"
-          },
           {
             "label": "Single Occupancy - Without AC",
             "value": "133,600"
@@ -323,23 +247,23 @@
       "The candidates should demonstrate the ability to discern main ideas and concepts presented in texts, and identify and assess evidence that supports those ideas."
     ],
     "offered_courses": [
-      "BS-Accounting & Finance 31,500",
-      "BS-Computer Sciences 31,500",
-      "BS-Economics 31,500",
-      "BS-Economics & Mathematics 31,500",
-      "BS-Mathematics 31,500",
-      "BS-Social Sciences & Liberal Arts 31,500",
-      "BS - Economics & Data Science 31,500",
-      "MS Computer Science 34,850 7,000",
-      "MS-Management 34,850",
-      "MS-Development Studies 24,800",
-      "MS- Journalism 24,800",
-      "MS-Mathematics & Economics 34,850",
-      "MS-Data Science 34,850",
-      "MS-Artificial Intelligence 34,850",
-      "MS Islamic Banking & Finance 34,850",
-      "MS Marketing 34,850",
-      "MS General Psychology 24,800"
+      "BS-Accounting & Finance",
+      "BS-Computer Sciences",
+      "BS-Economics",
+      "BS-Economics & Mathematics",
+      "BS-Mathematics",
+      "BS-Social Sciences & Liberal Arts",
+      "BS - Economics & Data Science",
+      "MS Computer Science",
+      "MS-Management",
+      "MS-Development Studies",
+      "MS- Journalism",
+      "MS-Mathematics & Economics",
+      "MS-Data Science",
+      "MS-Artificial Intelligence",
+      "MS Islamic Banking & Finance",
+      "MS Marketing",
+      "MS General Psychology"
     ],
     "fee_structure": [
       {
@@ -347,82 +271,6 @@
       },
       {
         "fees": [
-          {
-            "label": "BS-Accounting & Finance",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Computer Sciences",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Economics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Economics & Mathematics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Mathematics",
-            "value": "31,500"
-          },
-          {
-            "label": "BS-Social Sciences & Liberal Arts",
-            "value": "31,500"
-          },
-          {
-            "label": "BS - Economics & Data Science",
-            "value": "31,500"
-          },
-          {
-            "label": "MBA-Morning",
-            "value": "39,400 | 7,000"
-          },
-          {
-            "label": "Executive MBA",
-            "value": "EMBA Program Fee 4,000,000 | Note: A Executive MBA program has been introduced in Fall 2025. Under the fee structure, students are required to pay 30% of the tuition fee within two weeks of receiving the admission offer, 30% within the first six months of enrollment, and the remaining 40% at the beginning of the second year."
-          },
-          {
-            "label": "MS Computer Science",
-            "value": "34,850 | 7,000"
-          },
-          {
-            "label": "MS-Management",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Development Studies",
-            "value": "24,800"
-          },
-          {
-            "label": "MS- Journalism",
-            "value": "24,800"
-          },
-          {
-            "label": "MS-Mathematics & Economics",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Data Science",
-            "value": "34,850"
-          },
-          {
-            "label": "MS-Artificial Intelligence",
-            "value": "34,850"
-          },
-          {
-            "label": "MS Islamic Banking & Finance",
-            "value": "34,850"
-          },
-          {
-            "label": "MS Marketing",
-            "value": "34,850"
-          },
-          {
-            "label": "MS General Psychology",
-            "value": "24,800"
-          },
           {
             "label": "Single Occupancy - Without AC",
             "value": "133,600"

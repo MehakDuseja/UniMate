@@ -20,6 +20,14 @@
       "fee_structure": {
         "fees": [
           {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Onetime payment) | Admission Application Fee (Non-refundable & Non-Transferable) | 7,500 | Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 70,000 | Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 110,000 | Security Deposit (Refundable) | 30,000 | Semester Related Fee | Type of Fee | Amount in PKR (Per Semester payment) | Tuition Fee for DSSE and AHSS | 780,000 | Laboratory Fee for DSSE | 215,000 | Studio and Laboratory Fee for AHSS | 160,000 | Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030) | 32,000"
+          },
+          {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Onetime payment)"
+          },
+          {
             "label": "Admission Application Fee (Non-refundable & Non-Transferable)",
             "value": "7,500"
           },
@@ -34,6 +42,10 @@
           {
             "label": "Security Deposit (Refundable)",
             "value": "30,000"
+          },
+          {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Per Semester payment)"
           },
           {
             "label": "Tuition Fee for DSSE and AHSS",
@@ -66,6 +78,10 @@
           {
             "label": "Security Deposit (Refundable)",
             "value": "Amount in PKR (Onetime payment): 30,000"
+          },
+          {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Per Semester payment)"
           },
           {
             "label": "Tuition Fee for DSSE and AHSS",
@@ -120,28 +136,7 @@
       ],
       "offered_courses": [],
       "fee_structure": {
-        "fees": [
-          {
-            "label": "fee_snippet",
-            "value": "For International Examination Board Applicants, Habib University offers three types of scholarships HABIB YOHSIN SCHOLARSHIP These are 100% Scholarships available, on tuition & laboratory and/or studio fees, for exceptionally well-rounded and highly meritorious students."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "HABIB EXCELLENCE SCHOLARSHIP These Scholarships cover 60% to 80% of tuition & laboratory and/or studio fees of the recipients."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "HABIB MERIT SCHOLARSHIP These Scholarships cover up to approximately 50% of tuition & laboratory and/or studio fees of the recipients."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Our Financial Aid Program supports the students enrolled at Habib University to meet tuition and other fee requirements of the University."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Habib University’s Deferred Fee Plan and Grants Does Habib University offer grants?"
-          }
-        ]
+        "fees": []
       },
       "hostel_info": [],
       "raw_text": "Habib Response - Covid-19 Apply for Admissions Convocation 2026 Portals Student Portal Faculty Portal Alumni Portal Staff Portal Careers Faculty positions Dean’s Fellowship Program Staff Job Positions Offices at HU ACE Management Trainee ACE EDGE Career Fellowship Embark Internship Program Open Apply HUIT EPay Contact Us About Vision and Mission Liberal Arts Model Office of the President University Leaders Invitation for Public Comment Academics Overview Office of Academic Affairs Academic Governance Office A-Z Faculty Careers Dean’s Fellowship Program Global Fellows Program Visiting Scholar Program Research at Habib Graduate School Curation Program Quality Enhancement Cell Academic Centers Ideal CPE (Center for Pedagogical Excellence) Arzu Center CSAM IDRAC School of Arts, Humanities & Social Sciences BSc (Honors) Social Development & Policy BA (Honors) Communication & Design BA (Honors) Comparative Humanities AHSS Faculty and Fellows Academic Dossier (Graduating Requirements) Lady Fatima Endowed Chair The Habib University Liberal Core Habib Liberal Core Course Descriptions Horizon at Habib Dhanani School of Science and Engineering BS in Electrical Engineering BS in Computer Engineering BS in Computer Science DSSE Faculty and Fellows Integrated Sciences and Mathematics (iSciM) WiCSE Academic Dossier (Graduating Requirements) Minors Minors Offered by School of Arts, Humanities and Social Sciences Minors offered by Dhanani School of Science and Engineering Library & Academic Support About Our Services Ask a Librarian Frequently Asked Questions Research Tools & Collections Learning Spaces & Computers Rights & Responsibilities Office of Academic Systems and Registrar Habib University – Academic Year Calendar Academic Catalog PDF Admissions Overview International Examination Board National Examination Board Tuition, Scholarships and Financial Aid Transfer Students International Students Frequently Asked Questions Students Student Affairs Student Portal PeopleSoft (PSCS)"
@@ -185,23 +180,19 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "Supporting this commitment, the University does not tolerate discrimination in any form and provides mechanisms for redress for students who feel they are being discriminated against."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "An example of such a collaboration is the Early Alert system through which faculty informs advisors about identified students they feel could benefit from enhanced support."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Students allowed to take course overload may be charged an additional fee."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "A course repeat fee may be charged for any repeated course, regardless of the reason for a repeat."
-          },
-          {
-            "label": "fee_snippet",
             "value": "All financial policies for the summer semester, including tuition, fees (if applicable) and financial aid are announced by the Office of Student Finance."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "Audit courses do not fulfill degree requirements, but the credit value of audited courses may be included in the semester load for determining fees and the maximum number of credits carried each semester."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "Credit Hours University Requirements Habib Liberal Core 10* 351 Engineering Sciences & Computing Mathematics (5 Electives) MATH 101 Calculus I 01 3+0 MATH 102 Calculus II 01 3+0 MATH 202 Engineering Mathematics 01 3+0 MATH 205 Linear Algebra 01 3+0 EE 354 Introduction to Probability & Statistics 01 3+01 Computing (3 Electives) CS 101 Algorithmic Problem Solving 01 3+11 CS 102 Data Structures and Algorithms 01 3+1 CS 224 Object Oriented Programming and Design Methodologies 01 3+1 Program Requirements Circuits & Electronics (6 Courses) EE 100 Introduction to Electrical & Computer Engineering 01 0+2 EE 112 Electric Circuits I 01 2+0 EE 211 Basic Electronics 01 3+1 EE 213 Electric Circuits II 01 3+0 EE 213L Electric Circuits II Lab 01 0+1 PHY 304 Physics of Semiconductor Devices 01 3+0 Digital Systems (3 Courses) EE 172 Digital Logic Design 01 3+1 EE 371 Computer Architecture 01 3+0 EE 376 Microcontrollers & Interfacing 01 0+1 Systems Theory (3 Courses) EE 252 Signals & Systems 01 3+1 EE 322 Analog & Digital Communication 01 3+1 EE 361 Feedback Control Systems 01 3+1 Power Systems (3 Courses) EE 241 Electromagnetic Theory 01 3+0 EE 331 Electrical Machines 01 3+1 EE 335 Power Generation, Transmission & Distri."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "EE 361 - Principles of Feedback Control Credit Hours: 3-1 Prerequisites: EE 252 - Signals and Systems Fulfills: EE Core Topics include: Models of dynamic systems, linear time-invariant (LTI) and transfer function models; impulse, step, transient and steady-state response; root locus technique, Bodé plots, 93 2024-2025 COURSE CATALOG Nyquist criterion; gain and phase margins, Nichols charts, lead, lag compensation; state-space techniques; simulation and controller design using MATLAB and Simulink."
           }
         ]
       },
@@ -288,6 +279,14 @@
       {
         "fees": [
           {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Onetime payment) | Admission Application Fee (Non-refundable & Non-Transferable) | 7,500 | Round 1-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 70,000 | Round 2-Enrolment Fee for Admissions (Non-refundable & Non-Transferable) | 110,000 | Security Deposit (Refundable) | 30,000 | Semester Related Fee | Type of Fee | Amount in PKR (Per Semester payment) | Tuition Fee for DSSE and AHSS | 780,000 | Laboratory Fee for DSSE | 215,000 | Studio and Laboratory Fee for AHSS | 160,000 | Semester Registration Fee for DSSE and AHSS (Applicable from Second semester for the class of 2030) | 32,000"
+          },
+          {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Onetime payment)"
+          },
+          {
             "label": "Admission Application Fee (Non-refundable & Non-Transferable)",
             "value": "7,500"
           },
@@ -302,6 +301,10 @@
           {
             "label": "Security Deposit (Refundable)",
             "value": "30,000"
+          },
+          {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Per Semester payment)"
           },
           {
             "label": "Tuition Fee for DSSE and AHSS",
@@ -336,6 +339,10 @@
             "value": "Amount in PKR (Onetime payment): 30,000"
           },
           {
+            "label": "Type of Fee",
+            "value": "Amount in PKR (Per Semester payment)"
+          },
+          {
             "label": "Tuition Fee for DSSE and AHSS",
             "value": "780,000"
           },
@@ -354,28 +361,7 @@
         ]
       },
       {
-        "fees": [
-          {
-            "label": "fee_snippet",
-            "value": "For International Examination Board Applicants, Habib University offers three types of scholarships HABIB YOHSIN SCHOLARSHIP These are 100% Scholarships available, on tuition & laboratory and/or studio fees, for exceptionally well-rounded and highly meritorious students."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "HABIB EXCELLENCE SCHOLARSHIP These Scholarships cover 60% to 80% of tuition & laboratory and/or studio fees of the recipients."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "HABIB MERIT SCHOLARSHIP These Scholarships cover up to approximately 50% of tuition & laboratory and/or studio fees of the recipients."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Our Financial Aid Program supports the students enrolled at Habib University to meet tuition and other fee requirements of the University."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Habib University’s Deferred Fee Plan and Grants Does Habib University offer grants?"
-          }
-        ]
+        "fees": []
       },
       {
         "fees": []
@@ -384,23 +370,19 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "Supporting this commitment, the University does not tolerate discrimination in any form and provides mechanisms for redress for students who feel they are being discriminated against."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "An example of such a collaboration is the Early Alert system through which faculty informs advisors about identified students they feel could benefit from enhanced support."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Students allowed to take course overload may be charged an additional fee."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "A course repeat fee may be charged for any repeated course, regardless of the reason for a repeat."
-          },
-          {
-            "label": "fee_snippet",
             "value": "All financial policies for the summer semester, including tuition, fees (if applicable) and financial aid are announced by the Office of Student Finance."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "Audit courses do not fulfill degree requirements, but the credit value of audited courses may be included in the semester load for determining fees and the maximum number of credits carried each semester."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "Credit Hours University Requirements Habib Liberal Core 10* 351 Engineering Sciences & Computing Mathematics (5 Electives) MATH 101 Calculus I 01 3+0 MATH 102 Calculus II 01 3+0 MATH 202 Engineering Mathematics 01 3+0 MATH 205 Linear Algebra 01 3+0 EE 354 Introduction to Probability & Statistics 01 3+01 Computing (3 Electives) CS 101 Algorithmic Problem Solving 01 3+11 CS 102 Data Structures and Algorithms 01 3+1 CS 224 Object Oriented Programming and Design Methodologies 01 3+1 Program Requirements Circuits & Electronics (6 Courses) EE 100 Introduction to Electrical & Computer Engineering 01 0+2 EE 112 Electric Circuits I 01 2+0 EE 211 Basic Electronics 01 3+1 EE 213 Electric Circuits II 01 3+0 EE 213L Electric Circuits II Lab 01 0+1 PHY 304 Physics of Semiconductor Devices 01 3+0 Digital Systems (3 Courses) EE 172 Digital Logic Design 01 3+1 EE 371 Computer Architecture 01 3+0 EE 376 Microcontrollers & Interfacing 01 0+1 Systems Theory (3 Courses) EE 252 Signals & Systems 01 3+1 EE 322 Analog & Digital Communication 01 3+1 EE 361 Feedback Control Systems 01 3+1 Power Systems (3 Courses) EE 241 Electromagnetic Theory 01 3+0 EE 331 Electrical Machines 01 3+1 EE 335 Power Generation, Transmission & Distri."
+          },
+          {
+            "label": "fee_snippet",
+            "value": "EE 361 - Principles of Feedback Control Credit Hours: 3-1 Prerequisites: EE 252 - Signals and Systems Fulfills: EE Core Topics include: Models of dynamic systems, linear time-invariant (LTI) and transfer function models; impulse, step, transient and steady-state response; root locus technique, Bodé plots, 93 2024-2025 COURSE CATALOG Nyquist criterion; gain and phase margins, Nichols charts, lead, lag compensation; state-space techniques; simulation and controller design using MATLAB and Simulink."
           }
         ]
       },

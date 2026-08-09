@@ -84,23 +84,7 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "BS Economics & Finance University will charge an additional fee BS Physics, BS English and for this NC course."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "The University will charge an additional fee for this NC course."
-          },
-          {
-            "label": "fee_snippet",
             "value": "Tuition / Semester Fee Q1."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Following are the fees: • Self-Finance Fee Rs."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "890,000/- + 3% Tax* • Self-Finance (Sponsored Seats) Fee Rs."
           }
         ]
       },
@@ -207,112 +191,7 @@
         "MEM Programme Textile Management (+)"
       ],
       "fee_structure": {
-        "fees": [
-          {
-            "label": "Civil Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering Civil Engineering along with Specialization in Construction 2.5 Years M.Engg. Programme Structural Engineering (+) Geo-technical Engineering * Transportation Engineering * Coastal and Water Resources Engineering *** Construction Engineering Law 2.5 Years MEM Programme Construction Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Urban & Infrastructure Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering along with Specialization in Urban 2.5 Years MEM Programme Transportation Infrastructure Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Petroleum Engineering",
-            "value": "Programmes Offered: 4 Years Bachelor of Engineering Programme Petroleum Engineering 2.5 Years M.Engg. Programme Petroleum Engineering"
-          },
-          {
-            "label": "Architecture & Planning",
-            "value": "Programmes Offered: 5 years Bachelor of Architecture Programme Architecture 2.5 Years Master Programme Architecture Urban & Regional Planning Ph.D. In various Research areas Architecture Urban & Regional Planning 4 years Bachelor of Development Studies Development Studies"
-          },
-          {
-            "label": "Environmental Engineering",
-            "value": "Programmes Offered: 2.5 Years M.Engg. Programme Environmental Engineering (+) 2.5 Years MEM Programme Environmental Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Earthquake Engineering",
-            "value": "Programmes Offered: 2.5 Years M.Engg. Programme Structural Earthquake Engineering (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Mechanical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Mechanical Engineering 2.5 Years M.Engg. Programme Design Energy Systems (+) Renewable Energy Mechatronics 2.5 Years MEM Programme Energy and Plant Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Textile Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Textile Engineering 4 years Bachelor of Science Programme Textile Sciences 2.5 Years M.Engg. Programme Textile Engineering (+) 2.5 Years MEM Programme Textile Management (+) 2.5 Years MS Programme Textile Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Industrial & Manufacturing Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Industrial & Manufacturing Engineering 2.5 Years M.Engg. Programme Manufacturing Engineering 2.5 Years MEM Programme Industrial Management (+) Quality Management Supply Chain Management Ph.D. In various Research areas"
-          },
-          {
-            "label": "Automotive & Marine Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Automotive Engineering 2.5 Years M.Engg. Programme Automotive Design Automotive Manufacturing"
-          },
-          {
-            "label": "Electrical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Electrical Engineering 2.5 Years M.Engg. Programme Control Systems Electrical Power Systems Smart Grid 2.5 Years MEM Programme Energy Management Ph.D. In various Research areas"
-          },
-          {
-            "label": "Computer & Information Systems Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Computer & Information Systems Engineering 2.5 Years M.Engg. Programme Computer Architecture & Systems Design Computer Network and System Security 2.5 Years MS Programme Data Engineering & Information Management Artificial Intelligence Ph.D. In various Research areas"
-          },
-          {
-            "label": "Electronic Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Electronic Engineering 2.5 Years M.Engg. Programme Integrated Circuit Design (+) Industrial Electronics Ph.D. In various Research areas"
-          },
-          {
-            "label": "Telecommunications Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Telecommunications Engineering 2.5 Years M.Engg. Programme Telecommunications Engineering o RF Engineering o Telecommunications Network 1.5 Years M.S. Programme (weekend) Telecommunications Systems Ph.D. In various Research areas"
-          },
-          {
-            "label": "Chemical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Chemical Engineering 2.5 Years M.Engg. Programme Chemical Engineering 2.5 Years MEM Programme Chemical and Process Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Materials Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Materials Engineering 2.5 Years M.Engg. Programme Materials Engineering Ph.D. In various Research areas"
-          },
-          {
-            "label": "Metallurgical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Degree Metallurgical Engineering 2.5 Years M.Engg. Programme Metallurgical Engineering"
-          },
-          {
-            "label": "Polymer & Petrochemical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Degree Polymer & Petrochemical Engineering 2.5 Years M.Engg. Programme Polymer Engineering Ph.D Polymer Engineering"
-          },
-          {
-            "label": "Biomedical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Biomedical Engineering 2.5 Years M.Engg. Programme Biomedical Engineering (+) 1.5 Years MS Programme Digital Health Sciences ** Ph.D. In various Research areas"
-          },
-          {
-            "label": "Food Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Food Engineering"
-          },
-          {
-            "label": "Computer Science & Software Engineering",
-            "value": "Programmes Offered: 4 years Bachelor Programme Software Engineering Computer Science & Information Technology Artificial Intelligence Data Science Cyber Security Gaming and Animation 2.5 Years M.Engg. Programme Software Engineering 2.5 Years MS Programme Computer Science & Information Technology (+) Information Security (+) Data Science (+) Geospatial Data Science (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Mathematics",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme Computational Finance (BSCF) 2.5 Years MS Programme Applied Mathematics (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "English Linguistics & Allied Studies",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme English Linguistics (BSEG) 2 Years MS Programme Applied Linguistics Ph.D. In various Research areas"
-          },
-          {
-            "label": "Economics and Management Sciences",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programmes Economics & Finance Management Sciences 2.5 Years MS Programme Economics & Finance (+)"
-          },
-          {
-            "label": "Sciences and Humanities (TIEST)",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme English (BS)"
-          },
-          {
-            "label": "Panjwani-Hisar Water Institute (PHWI)",
-            "value": "Programmes Offered: Urban Water Management *** Climate Change Management ***"
-          }
-        ]
+        "fees": []
       },
       "hostel_info": [],
       "raw_text": "Name of the Department Programmes Offered Civil Engineering 4 years Bachelor of Engineering Programme Civil Engineering Civil Engineering along with Specialization in Construction 2.5 Years M.Engg. Programme Structural Engineering (+) Geo-technical Engineering * Transportation Engineering * Coastal and Water Resources Engineering *** Construction Engineering Law 2.5 Years MEM Programme Construction Management (+) Ph.D. In various Research areas Urban & Infrastructure Engineering 4 years Bachelor of Engineering Programme Civil Engineering along with Specialization in Urban 2.5 Years MEM Programme Transportation Infrastructure Management (+) Ph.D. In various Research areas Petroleum Engineering 4 Years Bachelor of Engineering Programme Petroleum Engineering 2.5 Years M.Engg. Programme Petroleum Engineering Architecture & Planning 5 years Bachelor of Architecture Programme Architecture 2.5 Years Master Programme Architecture Urban & Regional Planning Ph.D. In various Research areas Architecture Urban & Regional Planning 4 years Bachelor of Development Studies Development Studies Environmental Engineering 2.5 Years M.Engg. Programme Environmental Engineering (+) 2.5 Years MEM Programme Environmental Management (+) Ph.D. In various Research areas Earthquake Engineering 2.5 Years M.Engg. Programme Structural Earthquake Engineering (+) Ph.D. In various Research areas Mechanical Engineering 4 years Bachelor of Engineering Programme Mechanical Engineering 2.5 Years M.Engg. Programme Design Energy Systems (+) Renewable Energy Mechatronics 2.5 Years MEM Programme Energy and Plant Management (+) Ph.D. In various Research areas Textile Engineering 4 years Bachelor of Engineering Programme Textile Engineering 4 years Bachelor of Science Programme Textile Sciences 2.5 Years M.Engg. Programme Textile Engineering (+) 2.5 Years MEM Programme Textile Management (+) 2.5 Years MS Programme Textile Management (+) Ph.D. In various Research areas Industrial & Manufacturing Engineering 4 ye"
@@ -423,23 +302,7 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "BS Economics & Finance University will charge an additional fee BS Physics, BS English and for this NC course."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "The University will charge an additional fee for this NC course."
-          },
-          {
-            "label": "fee_snippet",
             "value": "Tuition / Semester Fee Q1."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "Following are the fees: • Self-Finance Fee Rs."
-          },
-          {
-            "label": "fee_snippet",
-            "value": "890,000/- + 3% Tax* • Self-Finance (Sponsored Seats) Fee Rs."
           }
         ]
       },
@@ -456,112 +319,7 @@
         "fees": []
       },
       {
-        "fees": [
-          {
-            "label": "Civil Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering Civil Engineering along with Specialization in Construction 2.5 Years M.Engg. Programme Structural Engineering (+) Geo-technical Engineering * Transportation Engineering * Coastal and Water Resources Engineering *** Construction Engineering Law 2.5 Years MEM Programme Construction Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Urban & Infrastructure Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Civil Engineering along with Specialization in Urban 2.5 Years MEM Programme Transportation Infrastructure Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Petroleum Engineering",
-            "value": "Programmes Offered: 4 Years Bachelor of Engineering Programme Petroleum Engineering 2.5 Years M.Engg. Programme Petroleum Engineering"
-          },
-          {
-            "label": "Architecture & Planning",
-            "value": "Programmes Offered: 5 years Bachelor of Architecture Programme Architecture 2.5 Years Master Programme Architecture Urban & Regional Planning Ph.D. In various Research areas Architecture Urban & Regional Planning 4 years Bachelor of Development Studies Development Studies"
-          },
-          {
-            "label": "Environmental Engineering",
-            "value": "Programmes Offered: 2.5 Years M.Engg. Programme Environmental Engineering (+) 2.5 Years MEM Programme Environmental Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Earthquake Engineering",
-            "value": "Programmes Offered: 2.5 Years M.Engg. Programme Structural Earthquake Engineering (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Mechanical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Mechanical Engineering 2.5 Years M.Engg. Programme Design Energy Systems (+) Renewable Energy Mechatronics 2.5 Years MEM Programme Energy and Plant Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Textile Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Textile Engineering 4 years Bachelor of Science Programme Textile Sciences 2.5 Years M.Engg. Programme Textile Engineering (+) 2.5 Years MEM Programme Textile Management (+) 2.5 Years MS Programme Textile Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Industrial & Manufacturing Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Industrial & Manufacturing Engineering 2.5 Years M.Engg. Programme Manufacturing Engineering 2.5 Years MEM Programme Industrial Management (+) Quality Management Supply Chain Management Ph.D. In various Research areas"
-          },
-          {
-            "label": "Automotive & Marine Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Automotive Engineering 2.5 Years M.Engg. Programme Automotive Design Automotive Manufacturing"
-          },
-          {
-            "label": "Electrical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Electrical Engineering 2.5 Years M.Engg. Programme Control Systems Electrical Power Systems Smart Grid 2.5 Years MEM Programme Energy Management Ph.D. In various Research areas"
-          },
-          {
-            "label": "Computer & Information Systems Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Computer & Information Systems Engineering 2.5 Years M.Engg. Programme Computer Architecture & Systems Design Computer Network and System Security 2.5 Years MS Programme Data Engineering & Information Management Artificial Intelligence Ph.D. In various Research areas"
-          },
-          {
-            "label": "Electronic Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Electronic Engineering 2.5 Years M.Engg. Programme Integrated Circuit Design (+) Industrial Electronics Ph.D. In various Research areas"
-          },
-          {
-            "label": "Telecommunications Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Telecommunications Engineering 2.5 Years M.Engg. Programme Telecommunications Engineering o RF Engineering o Telecommunications Network 1.5 Years M.S. Programme (weekend) Telecommunications Systems Ph.D. In various Research areas"
-          },
-          {
-            "label": "Chemical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Chemical Engineering 2.5 Years M.Engg. Programme Chemical Engineering 2.5 Years MEM Programme Chemical and Process Management (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Materials Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Materials Engineering 2.5 Years M.Engg. Programme Materials Engineering Ph.D. In various Research areas"
-          },
-          {
-            "label": "Metallurgical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Degree Metallurgical Engineering 2.5 Years M.Engg. Programme Metallurgical Engineering"
-          },
-          {
-            "label": "Polymer & Petrochemical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Degree Polymer & Petrochemical Engineering 2.5 Years M.Engg. Programme Polymer Engineering Ph.D Polymer Engineering"
-          },
-          {
-            "label": "Biomedical Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Biomedical Engineering 2.5 Years M.Engg. Programme Biomedical Engineering (+) 1.5 Years MS Programme Digital Health Sciences ** Ph.D. In various Research areas"
-          },
-          {
-            "label": "Food Engineering",
-            "value": "Programmes Offered: 4 years Bachelor of Engineering Programme Food Engineering"
-          },
-          {
-            "label": "Computer Science & Software Engineering",
-            "value": "Programmes Offered: 4 years Bachelor Programme Software Engineering Computer Science & Information Technology Artificial Intelligence Data Science Cyber Security Gaming and Animation 2.5 Years M.Engg. Programme Software Engineering 2.5 Years MS Programme Computer Science & Information Technology (+) Information Security (+) Data Science (+) Geospatial Data Science (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "Mathematics",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme Computational Finance (BSCF) 2.5 Years MS Programme Applied Mathematics (+) Ph.D. In various Research areas"
-          },
-          {
-            "label": "English Linguistics & Allied Studies",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme English Linguistics (BSEG) 2 Years MS Programme Applied Linguistics Ph.D. In various Research areas"
-          },
-          {
-            "label": "Economics and Management Sciences",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programmes Economics & Finance Management Sciences 2.5 Years MS Programme Economics & Finance (+)"
-          },
-          {
-            "label": "Sciences and Humanities (TIEST)",
-            "value": "Programmes Offered: 4 years Bachelor of Science Programme English (BS)"
-          },
-          {
-            "label": "Panjwani-Hisar Water Institute (PHWI)",
-            "value": "Programmes Offered: Urban Water Management *** Climate Change Management ***"
-          }
-        ]
+        "fees": []
       },
       {
         "fees": []

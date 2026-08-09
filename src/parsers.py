@@ -11,6 +11,7 @@ Functions:
 """
 from __future__ import annotations
 
+import io
 import logging
 import re
 from typing import List, Dict, Any
@@ -28,6 +29,18 @@ except Exception:  # pragma: no cover
 logger = logging.getLogger(__name__)
 
 
+def _as_pdfplumber_source(path: str | bytes):
+    """pdfplumber.open() accepts a file path or an actual file-like object,
+    but NOT a raw bytes object - passed straight through, it fails inside
+    pdfplumber with "'bytes' object has no attribute 'seek'" (unlike fitz,
+    which explicitly supports bytes via stream=path, filetype="pdf"). Wrap
+    bytes/bytearray in BytesIO so callers can keep passing scrape_pdf's raw
+    resp.content straight through."""
+    if isinstance(path, (bytes, bytearray)):
+        return io.BytesIO(path)
+    return path
+
+
 def extract_text_pdf_pdfplumber(path: str | bytes) -> str:
     """Extract plain text from a PDF using pdfplumber.
 
@@ -37,8 +50,7 @@ def extract_text_pdf_pdfplumber(path: str | bytes) -> str:
         raise RuntimeError("pdfplumber is not installed")
 
     text_parts: List[str] = []
-    # pdfplumber accepts a path or a file-like object
-    with pdfplumber.open(path) as pdf:
+    with pdfplumber.open(_as_pdfplumber_source(path)) as pdf:
         for page in pdf.pages:
             page_text = page.extract_text() or ""
             text_parts.append(page_text)
@@ -72,7 +84,7 @@ def extract_tables_pdfplumber(path: str | bytes) -> List[Dict[str, Any]]:
         raise RuntimeError("pdfplumber is not installed")
 
     tables: List[Dict[str, Any]] = []
-    with pdfplumber.open(path) as pdf:
+    with pdfplumber.open(_as_pdfplumber_source(path)) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
             try:
                 page_tables = page.extract_tables()
@@ -212,7 +224,7 @@ def classify_page_types(url: str | None, title: str | None) -> set[str]:
 
 def contains_program_indicator(text: str) -> bool:
     lower = text.lower()
-    return bool(re.search(r"\b(?:bs|b\.s\.|bsc|ms|m\.s\.|phd|ph\.d|bachelor|master|engineering|computer science|software engineering|data science|cyber security|business administration|accounting and finance|economics|mathematics|information technology)\b", lower))
+    return bool(re.search(r"\b(?:bs|b\.s\.|bsc|ms|m\.s\.|phd|ph\.d|bachelor|master|doctor|pharm\.?d|dpt|engineering|computer science|software engineering|data science|cyber security|business administration|accounting and finance|economics|mathematics|information technology)\b", lower))
 
 
 def extract_snippets(text: str, keywords: list[str], max_snippets: int = 5) -> list[str]:
@@ -271,7 +283,14 @@ def contains_cost_info(text: str) -> bool:
 NON_COURSE_MARKERS = [
     "weightage", "selection criteria", "courses studied at", "admission test",
     "merit list", "negative marking", "past academic record", "cut-off",
-    "eligibility ", "ibcc", "hssc", "selection weightage",
+    # No trailing space on "eligibility" - a program name never legitimately
+    # contains that word, but a sentence describing one might phrase it any
+    # number of ways ("Eligibility:", "eligibility criteria", "not eligible
+    # for"), and a hardcoded "eligibility " (space-terminated) missed cases
+    # like "...Eligibility: Candidate must have..." where a colon follows
+    # instead of a space, letting that whole sentence through as a fake
+    # "course name".
+    "eligibility", "ibcc", "hssc", "selection weightage",
 ]
 
 GENERIC_CATEGORY_LABELS = {"engineering", "business administration", "computing", "computer science", "science"}
@@ -349,13 +368,19 @@ def extract_offered_courses(content: str, tables: list[dict]) -> list[str]:
 
     for table in tables:
         for row in table.get("rows", []):
-            joined = " ".join(cell.strip() for cell in row if isinstance(cell, str) and cell.strip())
-            if not joined:
-                continue
-            if contains_program_indicator(joined):
-                for block in _split_program_blocks(joined):
-                    add_course(block)
-                continue
+            # Try each cell on its own FIRST - a program name sitting in its
+            # own column (e.g. a fee table's "Programs" column, separate from
+            # "Admission Fee"/"Security Deposit"/... columns) is the cleanest
+            # possible candidate, and the row-joined fallback below would
+            # otherwise swallow it: joining a whole fee-table row pulls in
+            # every price figure too, and enough comma-formatted PKR amounts
+            # (25,000 | 15,000 | 9,000 | ...) push the joined string over
+            # looks_like_program_name's comma-count guard, silently
+            # discarding a program name that was perfectly extractable on
+            # its own. Only fall back to the row-joined text (needed for a
+            # name that's split across cells with no single cell matching
+            # alone) when no cell in this row matched by itself.
+            matched_cell = False
             for cell in row:
                 if not isinstance(cell, str):
                     continue
@@ -363,6 +388,13 @@ def extract_offered_courses(content: str, tables: list[dict]) -> list[str]:
                 if contains_program_indicator(cell):
                     for block in _split_program_blocks(cell):
                         add_course(block)
+                    matched_cell = True
+            if matched_cell:
+                continue
+            joined = " ".join(cell.strip() for cell in row if isinstance(cell, str) and cell.strip())
+            if joined and contains_program_indicator(joined):
+                for block in _split_program_blocks(joined):
+                    add_course(block)
     if len(courses) >= 10:
         return courses[:20]
 
@@ -388,6 +420,11 @@ _FEE_LABEL_STOPWORDS = {
 # label other rows' values.
 _AMOUNT_LIKE_RE = re.compile(r"^(rs\.?|pkr|us\s*\$|\$|£)?\s*[\d,]+(\.\d+)?%?/?-?$", re.I)
 
+# A real currency mention has "Rs"/"PKR" adjacent to a number - unlike a bare
+# "rs" substring check, this doesn't false-positive on ordinary words like
+# "scholarships" or "years" that merely happen to contain that letter pair.
+_FEE_CURRENCY_RE = re.compile(r"\bpkr\b|\brupees\b|\bsemester\b|\bcredit\b|\brs\.?\s*[\d,]", re.I)
+
 
 def _looks_like_real_header(headers: list[str]) -> bool:
     if not headers:
@@ -396,12 +433,33 @@ def _looks_like_real_header(headers: list[str]) -> bool:
     return amount_like <= len(headers) * 0.3
 
 
+def _is_noise_fee_label(text: str) -> bool:
+    """is_noise_text()'s alpha-count floor (>=10 letters, or 40% of length)
+    is tuned for filtering short prose/navigation fragments and incorrectly
+    rejects legitimate short fee-table labels like "BBA / BS", "MS", or
+    "PhD" - a table cell is a structurally different context from running
+    text, so labels get the noise-pattern and garbled-encoding checks only,
+    not the length-based prose heuristics."""
+    lower = text.lower()
+    if any(pattern in lower for pattern in NOISE_PATTERNS):
+        return True
+    if text.count("�") > len(text) * 0.02:
+        return True
+    return False
+
+
 def extract_fee_structure(content: str, tables: list[dict]) -> dict[str, list[dict[str, str]]]:
     fee_entries: list[dict[str, str]] = []
     for table in tables:
         raw_headers = [h.strip() for h in table.get("headers", []) if isinstance(h, str) and h.strip()]
         headers_lower = [h.lower() for h in raw_headers]
-        if not (any("fee" in h for h in headers_lower) or any("amount" in h for h in headers_lower) or any("program" in h for h in headers_lower)):
+        # "program" alone is too loose a trigger - admission-schedule and
+        # test-weightage tables also use headers like "Undergraduate
+        # Programs | Graduate Programs" with no fee data at all. Every real
+        # fee table observed so far already has "fee" or "amount" in at
+        # least one header cell (e.g. "Admission Fee"), so dropping the
+        # standalone "program" trigger doesn't lose real fee tables.
+        if not (any("fee" in h for h in headers_lower) or any("amount" in h for h in headers_lower)):
             continue
         header_is_real = _looks_like_real_header(raw_headers)
         for row in table.get("rows", []):
@@ -410,7 +468,7 @@ def extract_fee_structure(content: str, tables: list[dict]) -> dict[str, list[di
             if len(non_empty) < 2:
                 continue
             label = non_empty[0]
-            if not is_noise_text(label) and label.lower() not in _FEE_LABEL_STOPWORDS:
+            if not _is_noise_fee_label(label) and label.lower() not in _FEE_LABEL_STOPWORDS:
                 # When the row lines up 1:1 with a genuine header row, pair
                 # each value with its column header ("Tuition Fee (Per Crd
                 # Hr.): 6,270") instead of a blind " | "-joined blob, so the
@@ -426,7 +484,14 @@ def extract_fee_structure(content: str, tables: list[dict]) -> dict[str, list[di
     if not fee_entries:
         for snippet in split_text_snippets(content):
             lower = snippet.lower()
-            if "fee" in lower and any(currency in lower for currency in ["pkr", "rs", "rupees", "semester", "credit"]):
+            # Bare "rs" as a substring check matches inside ordinary words
+            # like "schola-RS-hips" or "yea-RS" - that previously let
+            # scholarship-policy prose ("The Scholarships and Fee Concession
+            # Policy...") through as if it were a real fee figure. Require
+            # "Rs" to actually be followed by a number, as in a real currency
+            # mention ("Rs. 500", "Rs 30,000").
+            has_currency = bool(_FEE_CURRENCY_RE.search(lower))
+            if "fee" in lower and has_currency:
                 fee_entries.append({"label": "fee_snippet", "value": snippet})
                 if len(fee_entries) >= 5:
                     break

@@ -188,6 +188,20 @@ def build_chroma_collection(
         print(f"Producing embeddings for {len(docs)} chunks using Gemini model '{EMBEDDING_MODEL}'...")
         vectors = get_gemini_embeddings(docs, model=EMBEDDING_MODEL, api_key=EMBEDDING_API_KEY, batch_size=embed_batch)
 
+    if len(vectors) != len(ids):
+        # get_gemini_embeddings returns whatever succeeded so far if a batch
+        # failed partway through the run - upserting the full ids/docs/
+        # metadatas against a shorter vectors list would either error out or
+        # silently misalign, assigning the wrong embedding to the wrong
+        # chunk id. Keep only the successfully-embedded prefix and say so.
+        print(
+            f"Warning: got {len(vectors)} embeddings for {len(ids)} chunks (some batches likely failed) - "
+            f"only persisting the {len(vectors)} that succeeded."
+        )
+        ids = ids[: len(vectors)]
+        docs = docs[: len(vectors)]
+        metadatas = metadatas[: len(vectors)]
+
     if chromadb is None:
         # fallback: save embeddings to file for manual import
         out_path = CHUNKS_DIR / "_chunks_with_embeddings.json"

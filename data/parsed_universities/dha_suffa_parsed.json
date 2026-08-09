@@ -1,7 +1,7 @@
 {
   "university": "DHA Suffa",
-  "scraped_at": "2026-07-27",
-  "location": "DHA City Karachi (DCK) Campus, Karachi",
+  "scraped_at": "2026-07-28",
+  "location": "Phase 7 Ext, Karachi, 75500",
   "pages": [
     {
       "url": "https://www.dsu.edu.pk/wp-content/uploads/2024/08/sample_tes_paper_2024-UPDATE.pdf",
@@ -37,23 +37,23 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU."
+            "value": "5.7.10 Once awarded, Fee Concession will continue in subsequent semesters subject to achieving 2.0 SGPA in every semester."
           },
           {
             "label": "fee_snippet",
-            "value": "Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession."
+            "value": "Fee Concession will be withdrawn if the student secures less than 2.0 SGPA in any semester; and will only be restored in subsequent semesters, if the student succeeds in achieving 2.0 or higher SGPA."
           },
           {
             "label": "fee_snippet",
-            "value": "General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees."
+            "value": "The Merit Scholarship amount awarded to an eligible student will be 90% of semester tuition fee if his/her SGPA is 4.0 and 0% if his/her SGPA is 3.0 (or lower)."
           },
           {
             "label": "fee_snippet",
-            "value": "5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC)."
+            "value": "For SGPA values between 3.0 and 4.0, the Merit Scholarship amount will be linearly pro-rated between 0% and 90% of student's semester tuition fee."
           },
           {
             "label": "fee_snippet",
-            "value": "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
+            "value": "5.28 A student who has applied for need based scholarship or is eligible for merit scholarship must deposit full semester fee in time."
           }
         ]
       },
@@ -67,17 +67,21 @@
       "test_pattern": [],
       "scholarships": [],
       "offered_courses": [
-        "BS(Computer Engineering Technology) 123,875 98,875 13 + 4",
-        "BS (Software Engineering) 163,320 138,320 16 + 2",
-        "BS(Artificial Intelligence) 163,320 138,320 16 + 2",
-        "BS (Computer Engineering) 154,510 129,510 13 + 3",
-        "BS(Multimedia & Gamming) 168,050 143,050 15 + 3",
-        "BS(International Relation) 122,650 97,650 15 + 0",
-        "BS(Business Analytics and Programming) 133,000 108,000 15 + 0",
-        "BS (Accounting and Finance) 133,000 108,000 15 + 0",
-        "BS(Financial Technology) 133,000 108,000 15 + 0",
-        "BS(Computer Science) 124,133 99,133 13 + 2",
-        "BS(Artificial Intelligence) 138,240 113,240 16 + 2"
+        "BS Computer Engineering Technology",
+        "BS(Computer Science)",
+        "BS (Software Engineering)",
+        "BS(Data Science)",
+        "BS(Artificial Intelligence)",
+        "BS (Cyber Security)",
+        "BS (Computer Engineering)",
+        "BS(Multimedia & Gaming)",
+        "BS(International Relation)",
+        "BS(Psychology)",
+        "BS(Business Analytics and Programming)",
+        "BS (Accounting and Finance)",
+        "BS(Financial Technology)",
+        "BS(Computer Engineering Technology)",
+        "BS(Multimedia & Gamming)"
       ],
       "fee_structure": {
         "fees": [
@@ -126,8 +130,16 @@
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
           },
           {
+            "label": "BS(English)",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+          },
+          {
             "label": "BS(Psychology)",
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+          },
+          {
+            "label": "BBA",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
           },
           {
             "label": "BS(Business Analytics and Programming)",
@@ -142,8 +154,24 @@
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
           },
           {
+            "label": "MBA 2 Years",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
+            "label": "MBA/MS/ME",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
             "label": "MPhil (Psychology/International Relations)",
             "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
+            "label": "PhD",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 12,000"
+          },
+          {
+            "label": "BE(Civil)",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 13,750 | 4,500 (Amount After Scholarship)"
           },
           {
             "label": "B.Architecture",
@@ -202,8 +230,16 @@
             "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
           },
           {
+            "label": "BS(English)",
+            "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
             "label": "BS(Psychology)",
             "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
+            "label": "BBA",
+            "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
           },
           {
             "label": "BS(Business Analytics and Programming)",
@@ -218,12 +254,24 @@
             "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
           },
           {
+            "label": "MBA (2 Years)",
+            "value": "1st Semester Fee Amount: 198,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 168,000 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
             "label": "MS / ME / MBA (1.5 Years)",
             "value": "1st Semester Fee Amount: 167,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 137,000 | Credit Hour 1st Semester: 12 + 0"
           },
           {
             "label": "MPhil (Psychology/International Relations)",
             "value": "1st Semester Fee Amount: 136,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 106,000 | Credit Hour 1st Semester: 9 + 0"
+          },
+          {
+            "label": "PhD",
+            "value": "1st Semester Fee Amount: 154,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 124,000 | Credit Hour 1st Semester: 9 + 0"
+          },
+          {
+            "label": "BE(Civil)",
+            "value": "1st Semester Fee Amount: 148,500 | Semester Fee Amount (Without Admission Fee + Caution Money): 123,500 | Credit Hours (1st Semester Updated): 11 + 4"
           },
           {
             "label": "B.Architecture",
@@ -257,34 +305,6 @@
       },
       "hostel_info": [],
       "raw_text": "ADMISSION MERIT CRITERIA DSU Admission Merit will be determined based on applicants’ past academic record and performance in DSU’s Admission Test for Undergraduate programs as per following criteria: Note: On campus physical interview will be held for those who appeared in online test Faculty of MS & HSS: S. NO. Description Percentage 1 DSU Test / Interview Weightage 50% 2 Intermediate/ A Levels / Equivalent 25% 3 Matric /O Levels / Equivalent 15% 4 Departmental Interview 10% 5 TOTAL 100% Faculty of EAS & CIT: S. NO. Description Percentage 1 Matric /O Levels / Equivalent 10% 2 Intermediate/ A Levels / Equivalent 40% 3 DSU Test / Interview Weightage 50% 4 TOTAL 100%"
-    },
-    {
-      "url": "https://www.dsu.edu.pk/dck-hostel-facilities/",
-      "page_title": "DCK Hostel Facilities - DHA Suffa University",
-      "eligibility_criteria": [],
-      "test_pattern": [],
-      "scholarships": [],
-      "offered_courses": [],
-      "fee_structure": {
-        "fees": []
-      },
-      "hostel_info": [],
-      "raw_text": "Skip to content Learn To Discover Facebook Instagram Linkedin Youtube X-twitter DHA Suffa University Menu DCK Hostel Facilities Programs Offered at DCK Campus Bachelor of Engineering (Civil) Bachelor of Science (Computer Science) Apply Now DSU Hostel Facilities Campus Facilities Videos Queries related to DHA City Campus Admissions Queries Computer Science Ms Ahtiqa Tabassum ✉️ Ahtiqa.tabassum@dsu.edu.pk Mr Umaair 📞 Mr Umair: 0321-3450648 Civil Engineering 📞 Engr Dhanik: 0307-0322629 📞 Engr Saeed Ahmed: 0311-3651462 Hostel Contacts Faizan 📞 0344-0202209 ✉️ faizan@dsu.edu.pk Muhammad Zaman Admin Supervisor 📞 0344-2412896 ✉️ m.zaman@dsu.edu.pk Phone #: 021-35244851-2 Address: Ph-VII، DG-78, Off Khayaban-e-Tufail، Ext, Phase 7 Ext Karachi, Karachi City, Sindh 75500 Address: Main Road, Central Business District Cbd Dha City, Karachi, Sindh Facebook Instagram Linkedin Youtube X-twitter About Us About DSU Vision and Mission Objectives Core Values Equal Opportunity Policy Privacy Policy Quality Policy About Us About DSU Vision and Mission Objectives Core Values Equal Opportunity Policy Privacy Policy Quality Policy FACILITIES & SERVICES Library Mechanical Engineering Labs Electrical Engineering Labs Computer Science Labs IT Infrastructure Facilities ast DSU CONNECT DSU Apply DCK Hostel & Facilities Resources Careers Downloads DACCE Tenders Alumni Video Gallery FAQ's Contact Us HEC Policies Newsletter LOCATIONS DSU MAIN CAMPUS DHA CITY KARACHI (DCK) CAMPUS FACILITIES & SERVICES Library Mechanical Engineering Lab Electrical Engineering Lab Computer Science Lab IT Infrastructure Facilities at DSU CONNECT DSU Apply DCK Hostel & Facilities Resources Careers Downloads DACCE Tenders Alumni Video Gallery FAQ's Contact Us Policies Newsletter Locations DSU MAIN CAMPUS DHA CITY KARACHI (DCK) CAMPUS Apply for Admission × Scroll to Top"
-    },
-    {
-      "url": "manual://dsu-dck-hostel",
-      "page_title": "DHA Suffa University DCK Girls Hostel",
-      "eligibility_criteria": [],
-      "test_pattern": [],
-      "scholarships": [],
-      "offered_courses": [],
-      "fee_structure": {
-        "fees": []
-      },
-      "hostel_info": [
-        "DHA Suffa University operates a dedicated Girls Hostel located in Sector 3, DHA City Karachi (DCK), connected to the DSU DCK campus."
-      ],
-      "raw_text": "DHA Suffa University operates a dedicated Girls Hostel located in Sector 3, DHA City Karachi (DCK), connected to the DSU DCK campus. It offers secure, furnished residential facilities for female students with 24/7 active security monitoring, modern living spaces, basic utilities, and a supportive study environment. For inquiries, contact DHA Suffa University at 111-178-332 or 0324-2444595."
     },
     {
       "url": "manual://dsu-phase7-hostel",
@@ -322,17 +342,21 @@
       "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
     ],
     "offered_courses": [
-      "BS(Computer Engineering Technology) 123,875 98,875 13 + 4",
-      "BS (Software Engineering) 163,320 138,320 16 + 2",
-      "BS(Artificial Intelligence) 163,320 138,320 16 + 2",
-      "BS (Computer Engineering) 154,510 129,510 13 + 3",
-      "BS(Multimedia & Gamming) 168,050 143,050 15 + 3",
-      "BS(International Relation) 122,650 97,650 15 + 0",
-      "BS(Business Analytics and Programming) 133,000 108,000 15 + 0",
-      "BS (Accounting and Finance) 133,000 108,000 15 + 0",
-      "BS(Financial Technology) 133,000 108,000 15 + 0",
-      "BS(Computer Science) 124,133 99,133 13 + 2",
-      "BS(Artificial Intelligence) 138,240 113,240 16 + 2"
+      "BS Computer Engineering Technology",
+      "BS(Computer Science)",
+      "BS (Software Engineering)",
+      "BS(Data Science)",
+      "BS(Artificial Intelligence)",
+      "BS (Cyber Security)",
+      "BS (Computer Engineering)",
+      "BS(Multimedia & Gaming)",
+      "BS(International Relation)",
+      "BS(Psychology)",
+      "BS(Business Analytics and Programming)",
+      "BS (Accounting and Finance)",
+      "BS(Financial Technology)",
+      "BS(Computer Engineering Technology)",
+      "BS(Multimedia & Gamming)"
     ],
     "fee_structure": [
       {
@@ -342,23 +366,23 @@
         "fees": [
           {
             "label": "fee_snippet",
-            "value": "The Scholarships and Fee Concession Policy is meant to provide complete transparency for the mechanism used to award these financial benefits to the deserving students in line with the goals and objectives of DSU."
+            "value": "5.7.10 Once awarded, Fee Concession will continue in subsequent semesters subject to achieving 2.0 SGPA in every semester."
           },
           {
             "label": "fee_snippet",
-            "value": "Budgetary Allocation for Scholarships: 5.2 In order to provide adequate funds in the annual budget for scholarships, 10% of the total tuition fee revenue at DSU is allocated for Scholarships and Fee Concession."
+            "value": "Fee Concession will be withdrawn if the student secures less than 2.0 SGPA in any semester; and will only be restored in subsequent semesters, if the student succeeds in achieving 2.0 or higher SGPA."
           },
           {
             "label": "fee_snippet",
-            "value": "General Rules for Scholarships and Fee Concession: 5.4 Scholarships and Fee Concession are applicable only to tuition fees."
+            "value": "The Merit Scholarship amount awarded to an eligible student will be 90% of semester tuition fee if his/her SGPA is 4.0 and 0% if his/her SGPA is 3.0 (or lower)."
           },
           {
             "label": "fee_snippet",
-            "value": "5.5 All applications/cases for Fee Concession and Scholarships shall be reviewed by the Scholarships Award Committee (SAC)."
+            "value": "For SGPA values between 3.0 and 4.0, the Merit Scholarship amount will be linearly pro-rated between 0% and 90% of student's semester tuition fee."
           },
           {
             "label": "fee_snippet",
-            "value": "Fee Concession: 5.6 Fee Concession will be available to all regular faculty members, officers and employees of DHA and DSU, for themselves, their spouses and their dependent children, as follows, subject to the condition that they compete with others at the time of admission and come in the merit list: 5.6.1 50% concession in tuition fee."
+            "value": "5.28 A student who has applied for need based scholarship or is eligible for merit scholarship must deposit full semester fee in time."
           }
         ]
       },
@@ -409,8 +433,16 @@
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
           },
           {
+            "label": "BS(English)",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+          },
+          {
             "label": "BS(Psychology)",
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 5,310"
+          },
+          {
+            "label": "BBA",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
           },
           {
             "label": "BS(Business Analytics and Programming)",
@@ -425,8 +457,24 @@
             "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 6,000"
           },
           {
+            "label": "MBA 2 Years",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
+            "label": "MBA/MS/ME",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
             "label": "MPhil (Psychology/International Relations)",
             "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 10,000"
+          },
+          {
+            "label": "PhD",
+            "value": "20,000 | 10,000 | 6,000 | 7,000 | 1,000 | 0 | 12,000"
+          },
+          {
+            "label": "BE(Civil)",
+            "value": "15,000 | 10,000 | 6,000 | 7,000 | 1,000 | 13,750 | 4,500 (Amount After Scholarship)"
           },
           {
             "label": "B.Architecture",
@@ -485,8 +533,16 @@
             "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
           },
           {
+            "label": "BS(English)",
+            "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
             "label": "BS(Psychology)",
             "value": "1st Semester Fee Amount: 122,650 | Semester Fee Amount (Without Admission Fee + Caution Money): 97,650 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
+            "label": "BBA",
+            "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
           },
           {
             "label": "BS(Business Analytics and Programming)",
@@ -501,12 +557,24 @@
             "value": "1st Semester Fee Amount: 133,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 108,000 | Credit Hour 1st Semester: 15 + 0"
           },
           {
+            "label": "MBA (2 Years)",
+            "value": "1st Semester Fee Amount: 198,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 168,000 | Credit Hour 1st Semester: 15 + 0"
+          },
+          {
             "label": "MS / ME / MBA (1.5 Years)",
             "value": "1st Semester Fee Amount: 167,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 137,000 | Credit Hour 1st Semester: 12 + 0"
           },
           {
             "label": "MPhil (Psychology/International Relations)",
             "value": "1st Semester Fee Amount: 136,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 106,000 | Credit Hour 1st Semester: 9 + 0"
+          },
+          {
+            "label": "PhD",
+            "value": "1st Semester Fee Amount: 154,000 | Semester Fee Amount (Without Admission Fee + Caution Money): 124,000 | Credit Hour 1st Semester: 9 + 0"
+          },
+          {
+            "label": "BE(Civil)",
+            "value": "1st Semester Fee Amount: 148,500 | Semester Fee Amount (Without Admission Fee + Caution Money): 123,500 | Credit Hours (1st Semester Updated): 11 + 4"
           },
           {
             "label": "B.Architecture",
@@ -527,16 +595,9 @@
       },
       {
         "fees": []
-      },
-      {
-        "fees": []
-      },
-      {
-        "fees": []
       }
     ],
     "hostel_info": [
-      "DHA Suffa University operates a dedicated Girls Hostel located in Sector 3, DHA City Karachi (DCK), connected to the DSU DCK campus.",
       "The DHA Suffa University Main Campus in DHA Phase 7 Extension does not have its own on-campus hostel.",
       "Several private girls' hostels operate nearby: Sayaban Girls Hostels (21-C 15th Commercial Street, DHA Phase 2 Extension) offers furnished AC/Non-AC rooms with meals and internet starting around Rs.",
       "H Girls Hostel (Street 4, Sector B, Akhtar Colony) offers attached bathrooms and independent kitchens.",

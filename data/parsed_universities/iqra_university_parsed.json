@@ -1,0 +1,433 @@
+{
+  "university": "Iqra University",
+  "scraped_at": "2026-08-03",
+  "location": "Iqra University Main Campus, Defence View, Karachi",
+  "pages": [
+    {
+      "url": "https://iqra.edu.pk/admission-hub/",
+      "page_title": "Admission Hub – Iqra University",
+      "eligibility_criteria": [
+        "Applicants with Physics, Mathematics & Computer Science combination are also eligible.",
+        "Only courses with grade C+ (67%) or higher are eligible.",
+        "Step No 2 Completing Admission Form The form has multiple sections: Admission Info: Current qualification, program, admission type, campus (ensure eligibility).",
+        "Financial support ranges from 10%–100%, based on eligibility, merit, need, and course load.",
+        "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+        "Admission test is designed to gauge the suitability of the potential candidates in relevant courses / programs offered by the University.",
+        "Marks Obtained {%} * Scholarship Offered Intermediate / “A” Level Result Scholarship Offered Admission Test Result of Iqra University 1 50% – 60% 05% 05% 2 > 60% – 70% 10% 05% 3 > 70% – 75% 15% 10% 4 >75% – 80% 20% 15% 5 > 80% – 85% 25% 20% 6 > 85% 30% 25% * Past Academic Performance at the time of admission & Iqra University Admission Test Results marks.",
+        "From 2 nd Semester onwards, student is eligible to avail other academic and non-academic scholarships, if he / she qualifies for the same as per performance criteria set by the respective policy document of the University."
+      ],
+      "test_pattern": [
+        "Admissions strictly based on Entry Test conducted by designated HEIs/entities (minimum passing marks 33%).",
+        "Merit weightage: 33% Entry Test + 67% (with at least 50% from FSc/A-Levels/DAE, remaining from Matric/interview etc., as per HEI policy).",
+        "Step No 2 Completing Admission Form The form has multiple sections: Admission Info: Current qualification, program, admission type, campus (ensure eligibility).",
+        "Step No 6 Interview Scheduled on test day or informed separately.",
+        "Step No 7 Semester fee voucher After clearing test & interview, semester fee voucher will be issued (JS Bank or online).",
+        "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+        "Admission test is designed to gauge the suitability of the potential candidates in relevant courses / programs offered by the University.",
+        "Marks Obtained {%} * Scholarship Offered Intermediate / “A” Level Result Scholarship Offered Admission Test Result of Iqra University 1 50% – 60% 05% 05% 2 > 60% – 70% 10% 05% 3 > 70% – 75% 15% 10% 4 >75% – 80% 20% 15% 5 > 80% – 85% 25% 20% 6 > 85% 30% 25% * Past Academic Performance at the time of admission & Iqra University Admission Test Results marks."
+      ],
+      "scholarships": [
+        "Apply Now – Start Your Journey Home Admission Hub Your Academic Journey Need to Know Navigate through our comprehensive admission information using the tabs below Criteria of Admission Online Admission Procedure Scholarships International Students Student Exchange Program Policy Fee Refund Policy General Policy Criteria of Admission Business Administration Four-Year Bachelor’s Programs (BBA-H / BS Islamic Banking & Finance / BS Accounting & Finance / BS Economics & Finance): Minimum 45% marks in HSSC or equivalent (recognized board).",
+        "Financial support ranges from 10%–100%, based on eligibility, merit, need, and course load.",
+        "Merit Based Scholarship Iqra University acknowledges the past academic performance of students under different disciplines, and provide them full chance to improve and earn a better scholarship in the University at the time of admission in any of the campuses of Iqra University.",
+        "These scholarships are purely merit based with following parameters: 1.",
+        "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+        "Previous Academics Performance {FA / FSC / “A’ Level or equivalent}: Even if the student has relatively lower performance in the previous academics, the option created by the University gives him / her a chance to earn a scholarship subject to the fact that student has secured at least 45% marks with no subject with less than 40% marks in his / her previous academic qualification."
+      ],
+      "offered_courses": [
+        "Master’s Program (MBA): Minimum 2nd Division / 2.5 CGPA (16 years of education from recognized institution).",
+        "MBA is equivalent to 18 years qualification PhD in Business Administration – Admission Requirements MS/MPhil in the relevant field.",
+        "MS in Computer Science: 16 years of education (BS/BE in a relevant field).",
+        "Master’s Programs (Media Sciences – Advertising, Animation, Film & TV Production): Minimum 2nd Division / 2.5 CGPA (16 years of education from recognized institution)."
+      ],
+      "fee_structure": {
+        "fees": [
+          {
+            "label": "1",
+            "value": "Description: Previous Degree Performance | Marks Obtained {CGPA/Equivalent %}: > 3.80 /> | Scholarship Offered {Tuition Fee Only}: 50%"
+          },
+          {
+            "label": "2",
+            "value": ">3.60 – 3.80/ | 40%"
+          },
+          {
+            "label": "3",
+            "value": "3.50 – 3.60% | 20%"
+          },
+          {
+            "label": "1",
+            "value": "Description: Semester Examination Results | Marks Obtained GPA: = 4 | Scholarship Offered {Tuition Fee Only}: 60%"
+          },
+          {
+            "label": "2",
+            "value": "= > 3.75 < 4 | 40%"
+          },
+          {
+            "label": "3",
+            "value": "= > 3.5 < 3.75% | 20%"
+          },
+          {
+            "label": "1",
+            "value": "Remarks: Winner of Gold / Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 100%"
+          },
+          {
+            "label": "2",
+            "value": "Remarks: Participated at International Event and Winner of Gold / Silver / Bronze Medal at National Level | Scholarship Offered {Tuition Fee Only} Up to: 90%"
+          },
+          {
+            "label": "3",
+            "value": "Remarks: Winner of Gold/ Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 80%"
+          },
+          {
+            "label": "4",
+            "value": "Remarks: >75% – 80%Winner of Gold/ Silver/ Bronze medal at Zonal* / Regional Level Events | Scholarship Offered {Tuition Fee Only} Up to: 50%"
+          },
+          {
+            "label": "5",
+            "value": "Remarks: > 80% – 85% | Scholarship Offered {Tuition Fee Only} Up to: 25%"
+          },
+          {
+            "label": "1",
+            "value": "Condition: If Parents fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 50%"
+          },
+          {
+            "label": "2",
+            "value": "Condition: If Parents fall under the category equivalent to M1, M2 & M3 of Iqra University | Tuition Fee Support {Up to}: 30%"
+          },
+          {
+            "label": "3",
+            "value": "Condition: If Parents are deceased and guardian fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 60%"
+          },
+          {
+            "label": "4",
+            "value": "Condition: If Parents are deceased and guardian fall under the category equivalent to M1, M2, M3 of Iqra University | Tuition Fee Support {Up to}: 40%"
+          },
+          {
+            "label": "5",
+            "value": "Condition: Self-employed and fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 50%"
+          },
+          {
+            "label": "6",
+            "value": "Condition: Self-employed and fall under the category equivalent to M1, M2, M3 of Iqra University | Tuition Fee Support {Up to}: 30%"
+          },
+          {
+            "label": "1",
+            "value": "Remarks: Winner of Gold / Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 100%"
+          },
+          {
+            "label": "2",
+            "value": "Remarks: Participated at International Event and Winner of Gold / Silver / Bronze Medal at National Level | Scholarship Offered {Tuition Fee Only} Up to: 90%"
+          },
+          {
+            "label": "3",
+            "value": "Remarks: Winner of Gold/ Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 80%"
+          },
+          {
+            "label": "4",
+            "value": "Remarks: >75% – 80%Winner of Gold/ Silver/ Bronze medal at Zonal* / Regional Level Events | Scholarship Offered {Tuition Fee Only} Up to: 50%"
+          },
+          {
+            "label": "5",
+            "value": "Remarks: > 80% – 85% | Scholarship Offered {Tuition Fee Only} Up to: 25%"
+          },
+          {
+            "label": "Up to 10th day of commencement of classes",
+            "value": "Percentage of Fee: 100% fee refund."
+          },
+          {
+            "label": "Up to 15th day of commencement of classes",
+            "value": "Percentage of Fee: 80% fee refund."
+          },
+          {
+            "label": "Up to 20th day of commencement of classes",
+            "value": "Percentage of Fee: 60% fee refund"
+          },
+          {
+            "label": "Up to 30th day of commencement of classes",
+            "value": "Percentage of Fee: 50% fee refund"
+          },
+          {
+            "label": "31st day onwards of commencement of classes",
+            "value": "Percentage of Fee: No refund"
+          }
+        ]
+      },
+      "hostel_info": [
+        "Residence Info: Present & permanent address.",
+        "Fee and Cost of Living The responsibility of accommodation arrangement abroad, during the course of stay, will be on student.",
+        "However, the IO may assist the selected students in finding suitable accommodation.",
+        "In addition to the expenses pertaining to accommodation, students will also be responsible for traveling and visa/pass expenses, medical/health insurance or any additional service charges they wish to avail.",
+        "for arranging hostel accommodation Share details of students including arrival schedule security clearance status with Chief Security Officer.",
+        "In collaboration with the Administration Department, arrange meet-and-greet and commute to Hostel."
+      ],
+      "raw_text": "Skip to content Admission Open Fall 2026 Start Your Journey at Iqra University Everything you need to know about admissions in one place. Apply Now – Start Your Journey Home Admission Hub Your Academic Journey Need to Know Navigate through our comprehensive admission information using the tabs below Criteria of Admission Online Admission Procedure Scholarships International Students Student Exchange Program Policy Fee Refund Policy General Policy Criteria of Admission Business Administration Four-Year Bachelor’s Programs (BBA-H / BS Islamic Banking & Finance / BS Accounting & Finance / BS Economics & Finance): Minimum 45% marks in HSSC or equivalent (recognized board). For “A” Levels/foreign qualifications: Equivalence certificate from IBCC. Two-Year / Two-and-a-Half-Year Bachelor’s Programs (BBA / BS Islamic Banking & Finance / BS Accounting & Finance / BS Economics & Finance): 15 years of schooling with a business qualification (B.Com 3 years, BBA 3 years). Or 14 years of schooling with a non-business qualification (B.Com 2 years, BA, B-Tech, B.Sc. or equivalent). Credit hours as per HEC policy. Master’s Program (MBA): Minimum 2nd Division / 2.5 CGPA (16 years of education from recognized institution). Duration & Credit Hours as per HEC policy: 16 years Business Education → 36 credit hours (1.5 years). 16 years Non-Business Education → 72 credit hours. MBA is equivalent to 18 years qualification PhD in Business Administration – Admission Requirements MS/MPhil in the relevant field. Or MBA (minimum 90 credit hours with a 2-year bachelor’s program). Or MBA (minimum 36 credit hours with a 4-year bachelor’s program). Minimum CGPA 3.0/4.0. NTS GAT (Subject) with at least 60% marks or GRE Subject Test (ETS) with at least 60 percentile score. Credit hours for the degree as per HEC policy. Engineering Sciences & Technology Four-Year BS Programs (Computer Science / Software Engineering / Artificial Intelligence / Telecommunication): At least 50% marks in HSSC (Pre-Engineer"
+    },
+    {
+      "url": "https://iqra.edu.pk/life-at-iu/",
+      "page_title": "Life at IU – Iqra University",
+      "eligibility_criteria": [],
+      "test_pattern": [],
+      "scholarships": [
+        "Successful placement requires a lot of thought with careful planning, coordination, and strong industry-academia partnership combined with active and continued support of our satisfied corporate friends, faculty and alumni."
+      ],
+      "offered_courses": [],
+      "fee_structure": {
+        "fees": []
+      },
+      "hostel_info": [
+        "Hostel Facility Iqra University provides Hostel Facility to students.",
+        "For reservations, please get in touch with Hostel Administrator at: 111-264-264 Ext: 9308 Email: administration@iqra.edu.pk IU Library INFORMATION RESOURCE CENTER (IRC) Iqra University provides Hostel Facility to students.",
+        "For reservations, please get in touch with Hostel Administrator at: Transport Service IU’s student body includes residents of all areas."
+      ],
+      "raw_text": "Life at IU Multiple campuses with productive atmosphere and state of the art facilities Home IU Information Hub Sport Complex A healthy and peaceful environment plays a crucial role in students’ mental, physical and social development. IU has a spacious sports complex for sporting and recreational activities. The complex has the latest equipment and offers the following facilities: Sauna Bath Health Club Steam Bath Badminton Court Jacuzzi Volleyball Court Health Club Table Tennis Court Swimming Pool Football Court Computer Resource Center Computer Resource Centre (CRC) is equipped with the latest branded computers, maintaining a 1:1 student-computer ratio. Access to these computers is given to students through individual accounts. A high-speed internet connection is also available to all students. Student Societies Iqra University places particular emphasis on arranging research programmes, seminars, workshops and symposiums. The students run several vibrant societies under the following names: Climate Change Society Debates and Literary Society Dramatics Society Entrepreneurship Society Events Society Gaming & Robotics Society IUCSR Society Photography Society Sports Society Social Media Society Medical Facility Iqra University, across all its campuses, has a medical facility with access to qualified doctors and paramedical staff. The facility is open to both students and staff members. Hostel Facility Iqra University provides Hostel Facility to students. The rooms are all air-conditioned, with telephone & internet connectivity available. For reservations, please get in touch with Hostel Administrator at: 111-264-264 Ext: 9308 Email: administration@iqra.edu.pk IU Library INFORMATION RESOURCE CENTER (IRC) Iqra University provides Hostel Facility to students. The rooms are all air-conditioned, with telephone & internet connectivity available. For reservations, please get in touch with Hostel Administrator at: Transport Service IU’s student body includes residents of "
+    },
+    {
+      "url": "manual://iqra-fee-summary",
+      "page_title": "Iqra University Fee Summary",
+      "eligibility_criteria": [],
+      "test_pattern": [],
+      "scholarships": [],
+      "offered_courses": [],
+      "fee_structure": {
+        "fees": [
+          {
+            "label": "fee_snippet",
+            "value": "There is a one-time admission fee of approximately PKR 15,000 to PKR 25,000, plus registration and miscellaneous charges of approximately PKR 6,800 to PKR 9,000 per semester for library, LMS, and extracurricular services."
+          }
+        ]
+      },
+      "hostel_info": [],
+      "raw_text": "Iqra University fees in Karachi vary by program. Per-credit-hour tuition for standard undergraduate programs (Business, Computing, Social Sciences) ranges from approximately PKR 5,124 to PKR 7,100; specialized degrees like Law can charge higher per-credit rates, up to approximately PKR 18,750 before institutional discounts. Total semester costs generally fall between PKR 85,000 and PKR 150,000 or more depending on course load. There is a one-time admission fee of approximately PKR 15,000 to PKR 25,000, plus registration and miscellaneous charges of approximately PKR 6,800 to PKR 9,000 per semester for library, LMS, and extracurricular services. The university notes that tuition fees may increase by up to 10% each year."
+    },
+    {
+      "url": "manual://iqra-programs",
+      "page_title": "Iqra University Offered Programs",
+      "eligibility_criteria": [],
+      "test_pattern": [],
+      "scholarships": [],
+      "offered_courses": [
+        "Bachelor of Business Administration (BBA / BBA Honors)",
+        "BS Accounting & Finance",
+        "BS Economics & Finance",
+        "BS Islamic Banking & Finance",
+        "BS Computer Science",
+        "BS Software Engineering",
+        "BS Artificial Intelligence",
+        "BS Telecommunication",
+        "BS English (4-Year Program)",
+        "BS Fashion Design",
+        "BS Textile Design",
+        "BS Media Studies",
+        "BS Human Nutrition & Dietetics",
+        "Bachelor of Education (B.Ed)",
+        "Doctor of Pharmacy (Pharm.D.)",
+        "Doctor of Physical Therapy (DPT)",
+        "MBA (Master of Business Administration)",
+        "MS Computer Science",
+        "PhD in Computer Science",
+        "PhD in Business Administration"
+      ],
+      "fee_structure": {
+        "fees": []
+      },
+      "hostel_info": [],
+      "raw_text": ""
+    }
+  ],
+  "aggregated": {
+    "eligibility_criteria": [
+      "Applicants with Physics, Mathematics & Computer Science combination are also eligible.",
+      "Only courses with grade C+ (67%) or higher are eligible.",
+      "Step No 2 Completing Admission Form The form has multiple sections: Admission Info: Current qualification, program, admission type, campus (ensure eligibility).",
+      "Financial support ranges from 10%–100%, based on eligibility, merit, need, and course load.",
+      "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+      "Admission test is designed to gauge the suitability of the potential candidates in relevant courses / programs offered by the University.",
+      "Marks Obtained {%} * Scholarship Offered Intermediate / “A” Level Result Scholarship Offered Admission Test Result of Iqra University 1 50% – 60% 05% 05% 2 > 60% – 70% 10% 05% 3 > 70% – 75% 15% 10% 4 >75% – 80% 20% 15% 5 > 80% – 85% 25% 20% 6 > 85% 30% 25% * Past Academic Performance at the time of admission & Iqra University Admission Test Results marks.",
+      "From 2 nd Semester onwards, student is eligible to avail other academic and non-academic scholarships, if he / she qualifies for the same as per performance criteria set by the respective policy document of the University."
+    ],
+    "test_pattern": [
+      "Admissions strictly based on Entry Test conducted by designated HEIs/entities (minimum passing marks 33%).",
+      "Merit weightage: 33% Entry Test + 67% (with at least 50% from FSc/A-Levels/DAE, remaining from Matric/interview etc., as per HEI policy).",
+      "Step No 2 Completing Admission Form The form has multiple sections: Admission Info: Current qualification, program, admission type, campus (ensure eligibility).",
+      "Step No 6 Interview Scheduled on test day or informed separately.",
+      "Step No 7 Semester fee voucher After clearing test & interview, semester fee voucher will be issued (JS Bank or online).",
+      "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+      "Admission test is designed to gauge the suitability of the potential candidates in relevant courses / programs offered by the University.",
+      "Marks Obtained {%} * Scholarship Offered Intermediate / “A” Level Result Scholarship Offered Admission Test Result of Iqra University 1 50% – 60% 05% 05% 2 > 60% – 70% 10% 05% 3 > 70% – 75% 15% 10% 4 >75% – 80% 20% 15% 5 > 80% – 85% 25% 20% 6 > 85% 30% 25% * Past Academic Performance at the time of admission & Iqra University Admission Test Results marks."
+    ],
+    "scholarships": [
+      "Apply Now – Start Your Journey Home Admission Hub Your Academic Journey Need to Know Navigate through our comprehensive admission information using the tabs below Criteria of Admission Online Admission Procedure Scholarships International Students Student Exchange Program Policy Fee Refund Policy General Policy Criteria of Admission Business Administration Four-Year Bachelor’s Programs (BBA-H / BS Islamic Banking & Finance / BS Accounting & Finance / BS Economics & Finance): Minimum 45% marks in HSSC or equivalent (recognized board).",
+      "Financial support ranges from 10%–100%, based on eligibility, merit, need, and course load.",
+      "Merit Based Scholarship Iqra University acknowledges the past academic performance of students under different disciplines, and provide them full chance to improve and earn a better scholarship in the University at the time of admission in any of the campuses of Iqra University.",
+      "These scholarships are purely merit based with following parameters: 1.",
+      "Scholarship at Admission Stage based on Prior Academics & Admission Test Performance Iqra University acknowledges the past academic performance (Eligibility Education) of students, while conducting its own admission tests at its various campuses.",
+      "Previous Academics Performance {FA / FSC / “A’ Level or equivalent}: Even if the student has relatively lower performance in the previous academics, the option created by the University gives him / her a chance to earn a scholarship subject to the fact that student has secured at least 45% marks with no subject with less than 40% marks in his / her previous academic qualification.",
+      "Successful placement requires a lot of thought with careful planning, coordination, and strong industry-academia partnership combined with active and continued support of our satisfied corporate friends, faculty and alumni."
+    ],
+    "offered_courses": [
+      "Master’s Program (MBA): Minimum 2nd Division / 2.5 CGPA (16 years of education from recognized institution).",
+      "MBA is equivalent to 18 years qualification PhD in Business Administration – Admission Requirements MS/MPhil in the relevant field.",
+      "MS in Computer Science: 16 years of education (BS/BE in a relevant field).",
+      "Master’s Programs (Media Sciences – Advertising, Animation, Film & TV Production): Minimum 2nd Division / 2.5 CGPA (16 years of education from recognized institution).",
+      "Bachelor of Business Administration (BBA / BBA Honors)",
+      "BS Accounting & Finance",
+      "BS Economics & Finance",
+      "BS Islamic Banking & Finance",
+      "BS Computer Science",
+      "BS Software Engineering",
+      "BS Artificial Intelligence",
+      "BS Telecommunication",
+      "BS English (4-Year Program)",
+      "BS Fashion Design",
+      "BS Textile Design",
+      "BS Media Studies",
+      "BS Human Nutrition & Dietetics",
+      "Bachelor of Education (B.Ed)",
+      "Doctor of Pharmacy (Pharm.D.)",
+      "Doctor of Physical Therapy (DPT)",
+      "MBA (Master of Business Administration)",
+      "MS Computer Science",
+      "PhD in Computer Science",
+      "PhD in Business Administration"
+    ],
+    "fee_structure": [
+      {
+        "fees": [
+          {
+            "label": "1",
+            "value": "Description: Previous Degree Performance | Marks Obtained {CGPA/Equivalent %}: > 3.80 /> | Scholarship Offered {Tuition Fee Only}: 50%"
+          },
+          {
+            "label": "2",
+            "value": ">3.60 – 3.80/ | 40%"
+          },
+          {
+            "label": "3",
+            "value": "3.50 – 3.60% | 20%"
+          },
+          {
+            "label": "1",
+            "value": "Description: Semester Examination Results | Marks Obtained GPA: = 4 | Scholarship Offered {Tuition Fee Only}: 60%"
+          },
+          {
+            "label": "2",
+            "value": "= > 3.75 < 4 | 40%"
+          },
+          {
+            "label": "3",
+            "value": "= > 3.5 < 3.75% | 20%"
+          },
+          {
+            "label": "1",
+            "value": "Remarks: Winner of Gold / Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 100%"
+          },
+          {
+            "label": "2",
+            "value": "Remarks: Participated at International Event and Winner of Gold / Silver / Bronze Medal at National Level | Scholarship Offered {Tuition Fee Only} Up to: 90%"
+          },
+          {
+            "label": "3",
+            "value": "Remarks: Winner of Gold/ Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 80%"
+          },
+          {
+            "label": "4",
+            "value": "Remarks: >75% – 80%Winner of Gold/ Silver/ Bronze medal at Zonal* / Regional Level Events | Scholarship Offered {Tuition Fee Only} Up to: 50%"
+          },
+          {
+            "label": "5",
+            "value": "Remarks: > 80% – 85% | Scholarship Offered {Tuition Fee Only} Up to: 25%"
+          },
+          {
+            "label": "1",
+            "value": "Condition: If Parents fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 50%"
+          },
+          {
+            "label": "2",
+            "value": "Condition: If Parents fall under the category equivalent to M1, M2 & M3 of Iqra University | Tuition Fee Support {Up to}: 30%"
+          },
+          {
+            "label": "3",
+            "value": "Condition: If Parents are deceased and guardian fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 60%"
+          },
+          {
+            "label": "4",
+            "value": "Condition: If Parents are deceased and guardian fall under the category equivalent to M1, M2, M3 of Iqra University | Tuition Fee Support {Up to}: 40%"
+          },
+          {
+            "label": "5",
+            "value": "Condition: Self-employed and fall under the category equivalent to G1, G2 of Iqra University | Tuition Fee Support {Up to}: 50%"
+          },
+          {
+            "label": "6",
+            "value": "Condition: Self-employed and fall under the category equivalent to M1, M2, M3 of Iqra University | Tuition Fee Support {Up to}: 30%"
+          },
+          {
+            "label": "1",
+            "value": "Remarks: Winner of Gold / Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 100%"
+          },
+          {
+            "label": "2",
+            "value": "Remarks: Participated at International Event and Winner of Gold / Silver / Bronze Medal at National Level | Scholarship Offered {Tuition Fee Only} Up to: 90%"
+          },
+          {
+            "label": "3",
+            "value": "Remarks: Winner of Gold/ Silver/ Bronze medal at International Event | Scholarship Offered {Tuition Fee Only} Up to: 80%"
+          },
+          {
+            "label": "4",
+            "value": "Remarks: >75% – 80%Winner of Gold/ Silver/ Bronze medal at Zonal* / Regional Level Events | Scholarship Offered {Tuition Fee Only} Up to: 50%"
+          },
+          {
+            "label": "5",
+            "value": "Remarks: > 80% – 85% | Scholarship Offered {Tuition Fee Only} Up to: 25%"
+          },
+          {
+            "label": "Up to 10th day of commencement of classes",
+            "value": "Percentage of Fee: 100% fee refund."
+          },
+          {
+            "label": "Up to 15th day of commencement of classes",
+            "value": "Percentage of Fee: 80% fee refund."
+          },
+          {
+            "label": "Up to 20th day of commencement of classes",
+            "value": "Percentage of Fee: 60% fee refund"
+          },
+          {
+            "label": "Up to 30th day of commencement of classes",
+            "value": "Percentage of Fee: 50% fee refund"
+          },
+          {
+            "label": "31st day onwards of commencement of classes",
+            "value": "Percentage of Fee: No refund"
+          }
+        ]
+      },
+      {
+        "fees": []
+      },
+      {
+        "fees": [
+          {
+            "label": "fee_snippet",
+            "value": "There is a one-time admission fee of approximately PKR 15,000 to PKR 25,000, plus registration and miscellaneous charges of approximately PKR 6,800 to PKR 9,000 per semester for library, LMS, and extracurricular services."
+          }
+        ]
+      },
+      {
+        "fees": []
+      }
+    ],
+    "hostel_info": [
+      "Residence Info: Present & permanent address.",
+      "Fee and Cost of Living The responsibility of accommodation arrangement abroad, during the course of stay, will be on student.",
+      "However, the IO may assist the selected students in finding suitable accommodation.",
+      "In addition to the expenses pertaining to accommodation, students will also be responsible for traveling and visa/pass expenses, medical/health insurance or any additional service charges they wish to avail.",
+      "for arranging hostel accommodation Share details of students including arrival schedule security clearance status with Chief Security Officer.",
+      "In collaboration with the Administration Department, arrange meet-and-greet and commute to Hostel.",
+      "Hostel Facility Iqra University provides Hostel Facility to students.",
+      "For reservations, please get in touch with Hostel Administrator at: 111-264-264 Ext: 9308 Email: administration@iqra.edu.pk IU Library INFORMATION RESOURCE CENTER (IRC) Iqra University provides Hostel Facility to students.",
+      "For reservations, please get in touch with Hostel Administrator at: Transport Service IU’s student body includes residents of all areas."
+    ]
+  }
+}

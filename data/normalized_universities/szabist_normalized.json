@@ -3,8 +3,8 @@
   "location": "R2CH+5XP, 99 3rd Ave, Block 5 Clifton, Karachi, 75600",
   "latitude": 24.82024998032359,
   "longitude": 67.03029595348134,
-  "tuition_fee_amount": null,
-  "tuition_fee_period": null,
+  "tuition_fee_amount": 195500,
+  "tuition_fee_period": "per_semester",
   "province": "Sindh",
   "is_public": false,
   "hec_recognized": true,
@@ -28,7 +28,7 @@
     "The scoring of SAT 1 will be considered as follows: SAT Score Test Marks (out of 50) 1500-1600 50 1400-1499 45 1300-1399 40 1200-1299 35 1100-1199 30 *Candidates securing 100% marks in SZABIST’s admission test will be equivalent to 50.",
     "The test is divided into four sections: English (30 marks), General Math (20 marks), IQ/Analytical (20 marks), and Basic Computer Knowledge (30 marks)."
   ],
-  "min_eligibility_percentage": 50.0,
+  "min_eligibility_percentage": 60.0,
   "entry_test_name": "SAT",
   "scholarships": [
     "Academics EDC ZAB FM 106.6 Facilities Achievements Archives Corporate Video SZABIST University In Electronic Media SZABIST University In Print Media 25 Years Celebration Social Media Policy Summer Boot Camp 2026 SSC The Reporter The Five Pillars SSC Constitution Careers GEII About Events Minutes of the Meeting Islamabad | Larkana | Hyderabad | Dubai | Gharo Admission Portal Online Degree Verification ZABDESK Scholarships Empowering Dreams, Enriching Lives At SZABIST University, financial constraints never stand between you and your aspirations.",
@@ -38,7 +38,8 @@
     "Bachelor’s degree in any discipline (awarded by an institution acceptable to the University of London).",
     "Bachelor of Education (B.ED) 1.5 Years For admission in the B.Ed.",
     "Master of Science in Computer Science For admission to MSCS program, candidates must possess 16 years of relevant education with minimum 50% marks/2.0 CGPA from a university recognized by HEC.",
-    "MS By Research/Defense (Per 3 Cr.Hrs.) 10000",
+    "PhD Dissertation (Per 3 Cr.Hrs.)",
+    "MS By Research/Defense (Per 3 Cr.Hrs.)",
     "BS (Media Sciences) The"
   ],
   "fee_structure": {
@@ -88,8 +89,16 @@
         "value": "For Foreign Students | Remarks"
       },
       {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
@@ -100,84 +109,168 @@
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "FEE Payable to SZABIST",
@@ -292,84 +385,168 @@
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
-        "label": "For Pakistani Students",
-        "value": "For Foreign Students | Remarks"
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
       },
       {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
         "label": "For Pakistani Students",
         "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
+      },
+      {
+        "label": "For Pakistani Students",
+        "value": "For Foreign Students | Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "For Pakistani Students",
         "value": "Remarks"
+      },
+      {
+        "label": "Gross Fee",
+        "value": "Subsidy | Net Fee | Gross Fee | Subsidy | Net Fee"
       },
       {
         "label": "FEE Payable to SZABIST",
@@ -504,6 +681,10 @@
         "value": "Pak Rupee Rs: Rs. 2000 | Refundable/Non-Refundable: –"
       },
       {
+        "label": "Total",
+        "value": "Pak Rupee Rs: 269,600/- | Refundable/Non-Refundable: –"
+      },
+      {
         "label": "Application handling fee (Once payable (First year))",
         "value": "Pound Sterling (£): £65 | Payment Month: September"
       },
@@ -554,6 +735,10 @@
       {
         "label": "Examination Fee (payable yearly)",
         "value": "Pak Rupee Rs: Rs. 2,000/- | Refundable/Non-Refundable: –"
+      },
+      {
+        "label": "Total",
+        "value": "Pak Rupee Rs: Rs. 312,000/- | Refundable/Non-Refundable: –"
       },
       {
         "label": "Module fee (£216 per module)",
@@ -952,6 +1137,12 @@
         "raw_text": "Pak Rupee : . 2000 | Refundable/Non-Refundable: –"
       },
       {
+        "amount_min": 269600,
+        "amount_max": 269600,
+        "currency": "PKR",
+        "raw_text": "Pak Rupee : 269,600/- | Refundable/Non-Refundable: –"
+      },
+      {
         "amount_min": 65,
         "amount_max": 65,
         "currency": "PKR",
@@ -1028,6 +1219,12 @@
         "amount_max": 2000,
         "currency": "PKR",
         "raw_text": "Pak Rupee : . 2,000/- | Refundable/Non-Refundable: –"
+      },
+      {
+        "amount_min": 312000,
+        "amount_max": 312000,
+        "currency": "PKR",
+        "raw_text": "Pak Rupee : . 312,000/- | Refundable/Non-Refundable: –"
       },
       {
         "amount_min": 864,

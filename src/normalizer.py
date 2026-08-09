@@ -15,13 +15,16 @@ from urllib.parse import urlparse
 UNIVERSITY_SEED_LOCATIONS = {
     "iba": "University Enclave, Karachi, 75270",
     "habib_university": "Block 18 University Ave, Gulistan-e-Johar, Karachi, 75290",
-    "dha_suffa": "DHA City Karachi (DCK) Campus, Karachi",
+    "dha_suffa": "Phase 7 Ext, Karachi, 75500",
     "szabist": "R2CH+5XP, 99 3rd Ave, Block 5 Clifton, Karachi, 75600",
     "fast_university": "Sector 17-D, Karachi",
     "ned_university": "Service Rd, NED University Of Engineering & Technology, Karachi",
+    "uit": "ST-13, Block 7, Gulshan-e-Iqbal, Abul Hasan Isphahani Road, Karachi, 75300",
+    "iqra_university": "Iqra University Main Campus, Defence View, Karachi",
+    "sir_syed_university": "University Road, Karachi, 75300",
 }
 
-# All six universities currently scraped are in Karachi, Sindh. is_public
+# All nine universities currently scraped are in Karachi, Sindh. is_public
 # reflects well-known HEC sector status, not an inference from scraped text.
 UNIVERSITY_SEED_PROVINCE = {
     "iba": "Sindh",
@@ -30,6 +33,9 @@ UNIVERSITY_SEED_PROVINCE = {
     "szabist": "Sindh",
     "fast_university": "Sindh",
     "ned_university": "Sindh",
+    "uit": "Sindh",
+    "iqra_university": "Sindh",
+    "sir_syed_university": "Sindh",
 }
 
 UNIVERSITY_SEED_IS_PUBLIC = {
@@ -39,9 +45,19 @@ UNIVERSITY_SEED_IS_PUBLIC = {
     "szabist": False,
     "fast_university": False,
     "ned_university": True,
+    # Private - chartered under The UIT University Act, 2017 (Sindh Act No.
+    # XXXIV of 2018), confirmed on uitu.edu.pk/accreditations-recognition/.
+    "uit": False,
+    # Private - chartered by the Government of Sindh via Sindh Ordinance VI
+    # of 2000, confirmed on hec.gov.pk's own Sindh universities listing.
+    "iqra_university": False,
+    # Private - chartered by the Government of Sindh via Sindh Government
+    # Ordinance No. XII of 1993, confirmed via HEC/Wikipedia (not scraped -
+    # ssuet.edu.pk itself 403s automated fetches for this kind of check).
+    "sir_syed_university": False,
 }
 
-# All six are well-established, degree-granting Pakistani universities - HEC
+# All are well-established, degree-granting Pakistani universities - HEC
 # recognition is a legal prerequisite for that, so this isn't scraped, it's a
 # well-known fact. New universities added later should get this verified
 # rather than assumed.
@@ -52,6 +68,13 @@ UNIVERSITY_SEED_HEC_RECOGNIZED = {
     "szabist": True,
     "fast_university": True,
     "ned_university": True,
+    # Confirmed on uitu.edu.pk/accreditations-recognition/: "UIT University
+    # is recognized by Higher Education Commission, Pakistan."
+    "uit": True,
+    # Confirmed on hec.gov.pk/english/universities/Pages/Sindh/Iqra-University.aspx.
+    "iqra_university": True,
+    # Confirmed on hec.gov.pk's own Sindh universities listing.
+    "sir_syed_university": True,
 }
 
 # User-supplied campus coordinates (decimal degrees). NED's was given as DMS
@@ -61,10 +84,13 @@ UNIVERSITY_SEED_HEC_RECOGNIZED = {
 UNIVERSITY_SEED_LATLONG = {
     "iba": (24.9409937136334, 67.11560818232043),
     "ned_university": (24.932306, 67.114389),
-    "dha_suffa": (25.010542459123045, 67.45820784122958),
+    "dha_suffa": (24.814748760273588, 67.07993335348112),
     "szabist": (24.82024998032359, 67.03029595348134),
     "habib_university": (24.905225395627088, 67.13757276697827),
     "fast_university": (24.856928, 67.264802),
+    "uit": (24.92807559703029, 67.10937802644034),
+    "iqra_university": (24.842690, 67.083516),
+    "sir_syed_university": (24.91600402559161, 67.0934777957765),
 }
 
 # Tuition figures confirmed directly against each university's own scraped fee
@@ -73,19 +99,49 @@ UNIVERSITY_SEED_LATLONG = {
 # unambiguously are included here:
 #  - habib_university: the fee page's own column header reads "Amount in PKR
 #    (Per Semester payment)" next to this figure (DSSE/AHSS schools).
-#  - iba: the page's own column header reads "Fee Per Credit Hour" (BS
-#    programs) - a full-semester figure would need an unconfirmed
-#    credit-hours-per-semester count, so this is left as-is rather than
-#    silently converted.
-# dha_suffa, szabist, ned_university, and fast_university are deliberately
-# left out: each program/tier has a different rate bundled together in one
-# scraped table (dha_suffa, szabist), the scraped page never actually states
-# a fee figure at all (fast_university), or the one figure found has no
-# stated billing period in the source text (ned_university's "Self-Finance
-# Fee Rs. 890,000/-").
+#  - iba, fast_university, uit: the fee page's own column header reads "Fee
+#    Per Credit Hour" - a full-semester figure would need an unconfirmed
+#    credit-hours-per-semester count, so this is left as a per-credit-hour
+#    figure rather than silently converted. Each of these three actually
+#    has several programs at different per-credit-hour rates; the figure
+#    used here is the flagship/most common BS-tier rate (for uit: 11,960,
+#    shared by BS Computer Science/Software Engineering/AI/Data Science/
+#    Cyber Security - its 8 other programs range from 3,300 to 6,840, so
+#    this is representative of its CS-adjacent programs specifically, not
+#    a university-wide average).
+# dha_suffa, szabist, and ned_university are deliberately left out: each
+# program/tier has a different rate bundled together in one scraped table
+# (dha_suffa, szabist), or the one figure found has no stated billing period
+# in the source text (ned_university's "Self-Finance Fee Rs. 890,000/-").
+# iqra_university is also deliberately left out, for a different reason:
+# its own admission-hub page never states an exact tuition number at all -
+# every figure available for it is a hedged approximation ("roughly
+# ranging", "generally falling between", "or more depending on") rather
+# than a number the source states as a fact, so there's nothing here that
+# meets this dict's own "confirmed, not guessed" bar. That approximate text
+# still reaches the ranker/presenter as descriptive fee_details content
+# (see the manual "iqra-fee-summary" page in university_scraper.py) - it's
+# just not promoted to this structured, single-number field.
+# sir_syed_university: none of its original 8 scraped sources (undergrad/
+# postgrad admissions pages, UG Admission Policy, FAQs, PhD/MS policies, HEC
+# refund policy) stated an actual PKR figure anywhere. A user-supplied fee-
+# structure image (Fall 26 - Spring 27, transcribed into the manual
+# "ssuet-fee-structure-fall26-spr27" page in university_scraper.py) filled
+# that gap with a real per-program table: "Tuition Fee (per Credit Hour)" is
+# its own unambiguous column, so - same convention as iba/fast_university/
+# uit above - 7,700 is the flagship CS-adjacent rate (shared by Computer
+# Science, Information Technology, Software Engineering, and Cyber
+# Security); its other 30 programs range from 3,250 (Telecommunication
+# Engineering, Biotechnology) to 7,700.
 UNIVERSITY_SEED_TUITION = {
     "habib_university": (780_000, "per_semester"),
     "iba": (31_500, "per_credit_hour"),
+    "fast_university": (12_000, "per_credit_hour"),
+    "uit": (11_960, "per_credit_hour"),
+    "sir_syed_university": (7_700, "per_credit_hour"),
+    "ned_university": (64_475, "per_semester"),
+    "szabist": (195_500, "per_semester"),
+    "dha_suffa": (99_133, "per_semester"),
 }
 
 
@@ -190,12 +246,22 @@ ELIGIBILITY_PERCENT_PATTERNS = [
 
 
 def extract_min_eligibility_percentage(eligibility_items: list[str]) -> float | None:
+    """When a university's page mentions several different percentage
+    thresholds (e.g. 50% for a general/Arts program alongside 60% for
+    Engineering/CS), this value is used downstream as a HARD eligibility
+    gate that excludes a student below it entirely - so taking the lowest
+    mentioned figure would understate the real requirement for whichever
+    program the student actually wants, letting an underqualified student
+    through. Taking the highest (strictest) mentioned figure is the safer
+    failure mode: it may occasionally be pessimistic for an easier program
+    at that university, but it never lets someone who wouldn't get in slip
+    past the gate."""
     text = " ".join(eligibility_items)
     values: list[float] = []
     for pattern in ELIGIBILITY_PERCENT_PATTERNS:
         values.extend(float(m) for m in pattern.findall(text))
     values = [v for v in values if 0 < v <= 100]
-    return min(values) if values else None
+    return max(values) if values else None
 
 
 KNOWN_ENTRY_TESTS = [
@@ -307,14 +373,20 @@ def normalize_program_record(record: dict[str, Any]) -> dict[str, Any]:
 
 def normalize_offered_courses(courses: list[Any]) -> list[str]:
     # Validation of what counts as a real program name already happened in
-    # parsers.extract_offered_courses (via looks_like_program_name); this
-    # step only cleans whitespace and dedupes.
+    # parsers.extract_offered_courses (via looks_like_program_name, plus its
+    # own is_noise_text/garble checks); this step only cleans whitespace and
+    # dedupes. It used to also re-run this module's own is_noise_text() here
+    # - genuinely redundant per the comment above, and actively wrong: that
+    # function's length floor (< 20 chars treated as noise, tuned for
+    # filtering short raw-scraped nav/menu fragments) rejected legitimate
+    # short program names like "BS Media Studies" or "MS Computer Science"
+    # that had already been validated as real course titles upstream.
     filtered: list[str] = []
     for item in courses:
         if not isinstance(item, str):
             continue
         text = normalize_string(item)
-        if not text or is_noise_text(text):
+        if not text:
             continue
         if text not in filtered:
             filtered.append(text)

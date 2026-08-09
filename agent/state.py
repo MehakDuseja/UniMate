@@ -8,6 +8,8 @@ from langgraph.graph.message import add_messages
 
 
 class StudentProfile(TypedDict, total=False):
+    name: Optional[str]
+    email: Optional[str]
     student_city: Optional[str]
     student_area: Optional[str]  # neighborhood/locality, e.g. "Gulshan-e-Iqbal" - used for distance
     preferred_province: Optional[str]
@@ -45,6 +47,19 @@ class AgentState(TypedDict):
     recommendations: Optional[list[dict[str, Any]]]
     current_phase: str  # "profiling" | "matching" | "presenting" | "refining"
     refine_action: Optional[str]  # "refine" | "end"
+    # UI dropdown lock: "all" (or None) searches every university; a specific
+    # university_id restricts retrieval to that school only — enforced in
+    # agent/retriever.py, not just via prompt instructions.
+    selected_university: Optional[str]
+    # Sticky across turns: the student may ask to see recommendations before
+    # every required field is known (e.g. "recommend me" while budget is
+    # still missing). wants_recommendations itself is re-derived fresh from
+    # only the latest message each turn (see PROFILE_BUILDER_SYSTEM), so
+    # without this the request gets silently dropped the moment one turn
+    # passes without every required field present - the student then has to
+    # explicitly ask again after supplying the last missing field, which
+    # just looks like the bot forgot / is stalling.
+    recommendations_requested: bool
 
 
 def initial_state() -> AgentState:
@@ -56,4 +71,6 @@ def initial_state() -> AgentState:
         "recommendations": None,
         "current_phase": "profiling",
         "refine_action": None,
+        "recommendations_requested": False,
+        "selected_university": "all",
     }

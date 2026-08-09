@@ -27,36 +27,56 @@ def sanitize_int(value: Any) -> int | None:
         return None
 
 
+# Single source of truth for the table's columns, used both to create a
+# fresh table and to migrate an existing one (see create_schema below) - the
+# two must never drift apart, or CREATE TABLE IF NOT EXISTS would keep
+# leaving an older, pre-existing database silently missing new columns.
+_UNIVERSITY_DATA_COLUMNS: list[tuple[str, str]] = [
+    ("university_id", "TEXT PRIMARY KEY"),
+    ("university_name", "TEXT"),
+    ("department", "TEXT"),
+    ("city", "TEXT"),
+    ("min_eligibility_percentage", "REAL"),
+    ("entry_test_name", "TEXT"),
+    ("tuition_fee_amount", "INTEGER"),
+    ("tuition_fee_period", "TEXT"),
+    ("has_scholarships", "INTEGER"),
+    ("scholarship_details", "TEXT"),
+    ("test_pattern_summary", "TEXT"),
+    ("offered_courses", "TEXT"),
+    ("fee_details", "TEXT"),
+    ("source_pages", "TEXT"),
+    ("raw_text", "TEXT"),
+    ("hec_recognized", "INTEGER"),
+    ("official_website", "TEXT"),
+    ("province", "TEXT"),
+    ("is_public", "INTEGER"),
+    ("hostel_available", "INTEGER"),
+    ("hostel_details", "TEXT"),
+    ("latitude", "REAL"),
+    ("longitude", "REAL"),
+]
+
+
 def create_schema(conn: sqlite3.Connection) -> None:
-    conn.execute(
-        """
-        CREATE TABLE IF NOT EXISTS university_data (
-            university_id TEXT PRIMARY KEY,
-            university_name TEXT,
-            department TEXT,
-            city TEXT,
-            min_eligibility_percentage REAL,
-            entry_test_name TEXT,
-            tuition_fee_amount INTEGER,
-            tuition_fee_period TEXT,
-            has_scholarships INTEGER,
-            scholarship_details TEXT,
-            test_pattern_summary TEXT,
-            offered_courses TEXT,
-            fee_details TEXT,
-            source_pages TEXT,
-            raw_text TEXT,
-            hec_recognized INTEGER,
-            official_website TEXT,
-            province TEXT,
-            is_public INTEGER,
-            hostel_available INTEGER,
-            hostel_details TEXT,
-            latitude REAL,
-            longitude REAL
-        )
-        """
-    )
+    columns_sql = ",\n            ".join(f"{name} {ctype}" for name, ctype in _UNIVERSITY_DATA_COLUMNS)
+    conn.execute(f"CREATE TABLE IF NOT EXISTS university_data (\n            {columns_sql}\n        )")
+
+    # CREATE TABLE IF NOT EXISTS only applies to a brand-new database - an
+    # existing university_ingest.db created before a schema change (e.g. the
+    # tuition_fee_* or latitude/longitude columns, added later than the
+    # original table) would otherwise keep its old shape forever, silently
+    # dropping every INSERT that references a column it doesn't have. Add
+    # whatever the current schema expects but an existing table is missing.
+    existing_columns = {row[1] for row in conn.execute("PRAGMA table_info(university_data)")}
+    for name, ctype in _UNIVERSITY_DATA_COLUMNS:
+        if name not in existing_columns:
+            # PRIMARY KEY can only be declared at CREATE TABLE time, not
+            # added via ALTER TABLE - harmless to strip here since
+            # university_id is never actually missing except on first
+            # creation, which already went through the CREATE TABLE above.
+            conn.execute(f"ALTER TABLE university_data ADD COLUMN {name} {ctype.replace(' PRIMARY KEY', '')}")
+
     conn.execute("CREATE INDEX IF NOT EXISTS idx_city ON university_data(city)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_min_eligibility ON university_data(min_eligibility_percentage)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_tuition_fee_amount ON university_data(tuition_fee_amount)")

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Profile Builder - UniMate AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#d2bbff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#131b2e",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-container-high": "#e2e7ff",
+                      "on-tertiary-container": "#d1daff",
+                      "on-tertiary-fixed": "#00174b",
+                      "tertiary": "#003fac",
+                      "primary-fixed": "#e2dfff",
+                      "surface-bright": "#faf8ff",
+                      "tertiary-fixed": "#dbe1ff",
+                      "on-primary-fixed": "#0f0069",
+                      "surface-dim": "#d2d9f4",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#c3c0ff",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "inverse-surface": "#283044",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#4d44e3",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#5a00c6",
+                      "on-primary-container": "#dad7ff",
+                      "surface-container": "#eaedff",
+                      "surface-container-highest": "#dae2fd",
+                      "on-secondary-container": "#fffbff",
+                      "tertiary-container": "#0555dd",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#25005a",
+                      "primary": "#3525cd",
+                      "outline-variant": "#c7c4d8",
+                      "on-surface-variant": "#464555",
+                      "outline": "#777587",
+                      "surface-container-low": "#f2f3ff",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "secondary-fixed": "#eaddff",
+                      "secondary-container": "#8a4cfc",
+                      "surface": "#faf8ff",
+                      "secondary": "#712ae2",
+                      "primary-container": "#4f46e5",
+                      "background": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "on-background": "#131b2e",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#dae2fd",
+                      "on-tertiary-fixed-variant": "#003ea8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-sm": "12px",
+                      "unit": "8px",
+                      "margin-mobile": "20px",
+                      "container-max": "1280px",
+                      "margin-desktop": "48px",
+                      "stack-md": "24px",
+                      "stack-lg": "48px"
+              },
+              "fontFamily": {
+                      "body-main": [
+                              "Inter"
+                      ],
+                      "body-intro": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "mono-ui": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-main": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-intro": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono-ui": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom styles for Webkit scrollbar to maintain clean aesthetic */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .input-ghost {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid theme('colors.outline-variant');
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.3s ease;
+        }
+        .input-ghost:focus {
+            box-shadow: none;
+            border-color: theme('colors.primary');
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-bottom: -1px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: theme('colors.surface-container-high');
+            border-radius: 2px;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased selection:bg-primary-container selection:text-on-primary-container h-[884px] overflow-hidden flex flex-col md:flex-row relative">
+<!-- TopAppBar (Mobile Only, Desktop Hidden) -->
+<header class="md:hidden bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl flex justify-between items-center px-gutter h-16 w-full fixed top-0 z-50 bg-surface/10 border-b border-white/20 dark:border-white/10 backdrop-blur-2xl shadow-sm">
+<button aria-label="Menu" class="text-on-surface-variant hover:bg-primary/10 transition-colors p-2 rounded-full flex items-center justify-center group">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-on-tertiary-container group-active:scale-95 duration-200" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-semibold tracking-tight text-primary dark:text-primary-fixed">
+            UniMate AI
+        </div>
+<button aria-label="Profile" class="hover:bg-primary/10 transition-colors rounded-full flex items-center justify-center overflow-hidden w-8 h-8 group">
+<img alt="AI Assistant Avatar" class="w-full h-full object-cover group-active:scale-95 duration-200" data-alt="A small, circular avatar portrait of a modern AI assistant, characterized by smooth, glowing synthetic features and soft blue-purple hues against a pristine white background. High-tech, friendly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs61vIRVG3FDWvjZM6IwwTkOlLufUsQhEvNEBSNtkTmeCaPh-4b7iuR7HjCD1Bj-WOPYY7mP7AqUwFaH6rsrlTnR8r8GOmVKCQhkNAzvfwM58CVrn47-tuv3uKVCUCQCihGnmt9_f-aWMDc8hqnCCJCeMAn2SJaAhWRo7Hzt8rzzH4c4bUkODBkeBRduc80j9sRWSS5FYg0cVxY3kNBUzfiqm0ClOEckdIOsoARqCXYCyyKdvE_7zC"/>
+</button>
+</header>
+<!-- SideNav (Desktop Only, Mobile Hidden) -->
+<nav class="hidden md:flex flex-col p-stack-md h-full space-y-4 bg-surface/90 dark:bg-surface-container-high/90 backdrop-blur-2xl fixed left-0 top-0 h-full w-[280px] z-[60] border-r border-white/20 dark:border-white/5 shadow-2xl transition-transform duration-500 ease-out">
+<!-- Header Profile -->
+<div class="flex items-center gap-4 mb-stack-lg p-2">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-sm border border-white/50">
+<img alt="Student User Avatar" class="w-full h-full object-cover" data-alt="A small, circular avatar portrait of a young student, bright lighting, soft professional look, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzerYDmlusOOYYoJToKiqYnZcA5oDUlSeSolCbFCFSOJ_tBihSbcgO5d55WlVprv2yktGmjPnqNUUkND9jAVUojPynyq1CkEe471tmi7ptwLKiGJe2HyAlj8lLD9Kg-LQ8Pq4KCX5PLMw3bZTsUTU2uCOKSd3zDdLanZJjlGiuvwBSUL_MtjLLdPhasYfZoe5MtO1j_-MtH-CPPwqp9Abnmxq5W6dSHN3NRtg50zzgd-yCpN55-g1f"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-semibold tracking-tight leading-tight">Alex Chen</span>
+<span class="font-body-main text-body-main text-on-surface-variant text-sm">Admissions Prep 2024</span>
+<span class="font-label-caps text-label-caps text-secondary font-bold mt-1">Premium Member</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col space-y-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/50 hover:translate-x-1 duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add_box</span>
+<span class="font-body-main text-body-main">New Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/50 hover:translate-x-1 duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+<span class="font-body-main text-body-main">Search</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/50 hover:translate-x-1 duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+<span class="font-body-main text-body-main">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/50 hover:translate-x-1 duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-body-main text-body-main">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 dark:bg-primary-container/30 text-primary dark:text-primary-fixed font-semibold hover:translate-x-1 duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-body-main text-body-main">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 h-full overflow-y-auto hide-scrollbar pt-16 md:pt-0 pb-24 md:pb-0 md:ml-[280px] relative w-full flex flex-col items-center">
+<!-- Abstract Background Shader -->
+<div class="fixed inset-0 w-full h-full -z-10 opacity-[0.03] pointer-events-none">
+<!-- Using a CSS pattern for light subtle background texture instead of shader to keep it performant and clean for a form page -->
+<div class="absolute inset-0" style="background-image: radial-gradient(theme('colors.primary') 1px, transparent 1px); background-size: 24px 24px;"></div>
+</div>
+<div class="w-full max-w-3xl px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col gap-stack-lg relative pb-32">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-stack-sm pt-4 md:pt-8">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight mb-2">Student Profile Builder</h1>
+<p class="font-body-main text-body-main text-on-surface-variant max-w-lg">Complete your profile to get personalized university recommendations and admission insights.</p>
+</div>
+<!-- Circular Progress -->
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-3 rounded-full border border-white shadow-sm mt-4 md:mt-0 w-fit">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Circle -->
+<circle class="stroke-surface-container-high" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<!-- Progress Circle -->
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="35" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-label-caps text-label-caps text-primary">
+                            65%
+                        </div>
+</div>
+<div class="flex flex-col pr-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Profile Status</span>
+<span class="font-body-main text-body-main text-sm font-semibold text-primary">In Progress</span>
+</div>
+</div>
+</div>
+<!-- Form Sections Container -->
+<div class="flex flex-col gap-stack-md">
+<!-- Personal Info Section -->
+<section class="glass-panel p-stack-md rounded-[20px] shadow-sm flex flex-col gap-stack-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors duration-300"></div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">badge</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-lg text-on-surface">Personal Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-stack-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Full Name</label>
+<input class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0" placeholder="e.g. John Doe" type="text" value="Alex Chen"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Email Address</label>
+<input class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0" placeholder="e.g. john@example.com" type="email" value="alex.chen@example.com"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Phone Number</label>
+<input class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0" placeholder="+92 ..." type="tel" value="+92 300 1234567"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Age</label>
+<input class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0" placeholder="18" type="number" value="18"/>
+</div>
+</div>
+</section>
+<!-- Academic Details Section -->
+<section class="glass-panel p-stack-md rounded-[20px] shadow-sm flex flex-col gap-stack-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary/20 group-hover:bg-secondary transition-colors duration-300"></div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">school</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-lg text-on-surface">Academic Details</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-x-gutter gap-y-stack-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Qualification</label>
+<select class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0 appearance-none bg-transparent">
+<option>A-Levels</option>
+<option>FSc Pre-Engineering</option>
+<option>FSc Pre-Medical</option>
+<option>ICS</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">Board / System</label>
+<select class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0 appearance-none bg-transparent">
+<option>Cambridge Assessment (CAIE)</option>
+<option>Federal Board (FBISE)</option>
+<option>Sindh Board</option>
+<option>Punjab Board</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline ml-1">CGPA / Percentage / Grades</label>
+<input class="input-ghost w-full font-body-main text-body-main text-on-surface focus:outline-none focus:ring-0" placeholder="e.g. 85% or 3 A*" type="text" value="3 A*"/>
+</div>
+</div>
+</section>
+<!-- Preferences Section -->
+<section class="glass-panel p-stack-md rounded-[20px] shadow-sm flex flex-col gap-stack-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-tertiary/20 group-hover:bg-tertiary transition-colors duration-300"></div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 0;">tune</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-lg text-on-surface">Preferences</h2>
+</div>
+<!-- Chips: University -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-outline ml-1">Target Universities</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-primary bg-primary/10 text-primary transition-colors">NUST</button>
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-primary bg-primary/10 text-primary transition-colors">FAST</button>
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-outline-variant bg-surface-container-low text-on-surface-variant hover:border-primary hover:text-primary transition-colors">LUMS</button>
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-outline-variant bg-surface-container-low text-on-surface-variant hover:border-primary hover:text-primary transition-colors">IBA</button>
+<button class="px-3 py-2 rounded-full font-body-main text-sm border border-dashed border-outline text-outline hover:text-primary hover:border-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">add</span> Add
+                            </button>
+</div>
+</div>
+<!-- Chips: Programs -->
+<div class="flex flex-col gap-2 mt-4">
+<label class="font-label-caps text-label-caps text-outline ml-1">Program Interests</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-secondary bg-secondary/10 text-secondary transition-colors">Computer Science</button>
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-secondary bg-secondary/10 text-secondary transition-colors">AI</button>
+<button class="px-4 py-2 rounded-full font-body-main text-sm border border-outline-variant bg-surface-container-low text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors">Software Engineering</button>
+<button class="px-3 py-2 rounded-full font-body-main text-sm border border-dashed border-outline text-outline hover:text-secondary hover:border-secondary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">add</span> Add
+                            </button>
+</div>
+</div>
+<!-- Budget Slider -->
+<div class="flex flex-col gap-3 mt-6">
+<div class="flex justify-between items-end">
+<label class="font-label-caps text-label-caps text-outline ml-1">Annual Budget Range</label>
+<span class="font-mono-ui text-mono-ui text-primary font-semibold">PKR 100K - 1.5M</span>
+</div>
+<input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-0" max="2000000" min="100000" type="range" value="1500000"/>
+<div class="flex justify-between text-xs text-outline font-mono-ui">
+<span>100K</span>
+<span>2M+</span>
+</div>
+</div>
+<!-- Toggles -->
+<div class="flex flex-col gap-4 mt-6">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-main text-body-main text-on-surface">Financial Aid / Scholarships</span>
+<span class="font-body-main text-sm text-on-surface-variant">Looking for need-based or merit scholarships</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-primary" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer" for="toggle1"></label>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-main text-body-main text-on-surface">Hostel Accommodation</span>
+<span class="font-body-main text-sm text-on-surface-variant">Require on-campus housing</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-surface-container-high" id="toggle2" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-high cursor-pointer" for="toggle2"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendation Section (Bento style) -->
+<section class="flex flex-col gap-stack-sm mt-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-lg text-on-surface">Best Matches</h2>
+</div>
+<span class="font-label-caps text-label-caps text-outline">Based on Profile</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x w-full">
+<!-- Card 1 -->
+<div class="snap-start flex-shrink-0 w-[260px] glass-panel rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden group shadow-sm border-t-2 border-t-primary">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center p-1 border border-surface-container-high">
+<img alt="NUST Logo" class="w-full h-full object-contain" data-alt="The logo of National University of Sciences and Technology (NUST), minimal, high resolution, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk_Yyw5f1aa9nTv2jSNX4pSzUroxUrV4UvMbfkLQHVyn1d8zIhJKC4c7SO55xFFW6i-xKXuJTg32f_hOnIEkSDbWecrjkfpC0bPurKjAV0N1WczTA5-OdZWU8RHrPrAURRDvPwQeWFWGKevcreTVfmz9gaX_TdG-LdAuNuuO4HjZ5_ZB0GOhKXapze_GKQuoJ9Y4GXgE0jcl7GOR4OPKI9OyMZs-sDvIBuL_wCjV3Ut_uPlSEJoal4"/>
+</div>
+<div class="bg-primary/10 text-primary font-label-caps text-label-caps px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                    92% Match
+                                </div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-main text-body-main font-semibold text-on-surface line-clamp-1">NUST - Islamabad</span>
+<span class="font-body-main text-sm text-on-surface-variant">BS Computer Science</span>
+</div>
+<button class="mt-auto w-full py-2 bg-surface-container hover:bg-primary hover:text-on-primary text-primary transition-colors rounded-lg font-body-main text-sm font-semibold flex items-center justify-center gap-1">
+                                View Details <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="snap-start flex-shrink-0 w-[260px] glass-panel rounded-2xl p-4 flex flex-col gap-3 relative overflow-hidden group shadow-sm border-t-2 border-t-secondary">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center p-1 border border-surface-container-high">
+<img alt="FAST Logo" class="w-full h-full object-contain" data-alt="The logo of FAST NUCES university, minimal, high resolution, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBicO_oJX0OCfJa2wX0DcWnkC5O1MgrlDeWD4p_qBZDweVg1RdXRvFXYerOexnVYkOqeV5ismFQAnZ98_h5fVuUPSLDme3EIrcx9uLft6NkWAHTaq_XutvV622YLhSVRoS3ZYDUu4W9JblsfLbvYMrC8v_9YlYV6POqcyhafo_sFOCMl4LFuw-U8PCdwp4Vshpc1HjI6npxAyIlCyb04SgXCStRl2sy4X8LoP3XsJ-Sh9ZjYzjAxMms"/>
+</div>
+<div class="bg-secondary/10 text-secondary font-label-caps text-label-caps px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                    88% Match
+                                </div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-main text-body-main font-semibold text-on-surface line-clamp-1">FAST NUCES - Lahore</span>
+<span class="font-body-main text-sm text-on-surface-variant">BS Artificial Intelligence</span>
+</div>
+<button class="mt-auto w-full py-2 bg-surface-container hover:bg-secondary hover:text-on-secondary text-secondary transition-colors rounded-lg font-body-main text-sm font-semibold flex items-center justify-center gap-1">
+                                View Details <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only, Desktop Hidden) -->
+<!-- Applying Shared Component Instructions -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-surface/80 dark:bg-surface-container-lowest/80 backdrop-blur-2xl z-50 rounded-t-lg bg-surface/10 border-t border-white/20 dark:border-white/10 backdrop-blur-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center text-on-surface-variant dark:text-on-tertiary-container opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Chat</span>
+</a>
+<!-- Active Tab based on 'Profile Builder' context -->
+<a class="flex flex-col items-center text-primary dark:text-primary-fixed font-bold scale-110 transition-transform active:scale-90 duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant dark:text-on-tertiary-container opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">widgets</span>
+<span class="font-label-caps text-label-caps">Tools</span>
+</a>
+</nav>
+<!-- Sticky Save Button (Floating above nav on mobile, absolute on desktop) -->
+<div class="fixed bottom-24 md:bottom-8 left-0 w-full md:w-[calc(100%-280px)] md:ml-[280px] px-margin-mobile md:px-margin-desktop flex justify-center pointer-events-none z-40">
+<div class="w-full max-w-3xl pointer-events-auto">
+<button class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-container hover:to-secondary-container text-on-primary py-4 rounded-xl shadow-[0_10px_30px_rgba(79,70,229,0.3)] font-body-main text-lg font-semibold tracking-wide transition-all transform hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 group border border-white/20">
+                Save Profile
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="font-variation-settings: 'FILL' 0;">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Toggle Checkbox Logic (Vanilla JS for styling interaction) -->
+<script>
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if(this.checked) {
+                    this.classList.add('border-primary');
+                    this.classList.remove('border-surface-container-high');
+                    label.classList.add('bg-primary');
+                    label.classList.remove('bg-surface-container-high');
+                } else {
+                    this.classList.remove('border-primary');
+                    this.classList.add('border-surface-container-high');
+                    label.classList.remove('bg-primary');
+                    label.classList.add('bg-surface-container-high');
+                }
+            });
+        });
+    </script>
+</body></html>

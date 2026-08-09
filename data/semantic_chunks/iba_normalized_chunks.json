@@ -70,7 +70,7 @@
   {
     "chunk_id": "iba_normalized_offered_courses_0",
     "category": "offered_courses",
-    "text": "[University: IBA | Category: offered_courses] BS-Accounting & Finance 31,500 BS-Computer Sciences 31,500 BS-Economics & Mathematics 31,500 BS-Mathematics 31,500 BS-Social Sciences & Liberal Arts 31,500 BS - Economics & Data Science 31,500 MS Computer Science 34,850 7,000 MS-Management 34,850 MS-Development Studies 24,800 MS- Journalism 24,800 MS-Mathematics & Economics 34,850 MS-Data Science 34,850 MS-Artificial Intelligence 34,850 MS Islamic Banking & Finance 34,850 MS General Psychology 24,800",
+    "text": "[University: IBA | Category: offered_courses] BS-Accounting & Finance BS-Computer Sciences BS-Economics BS-Economics & Mathematics BS-Mathematics BS-Social Sciences & Liberal Arts BS - Economics & Data Science MS Computer Science MS-Management MS-Development Studies MS- Journalism MS-Mathematics & Economics MS-Data Science MS-Artificial Intelligence MS Islamic Banking & Finance MS Marketing MS General Psychology",
     "metadata": {
       "university_id": "iba",
       "university_name": "IBA",
@@ -80,14 +80,14 @@
       "category": "offered_courses",
       "degree_levels": "Master,Bachelor",
       "source_pages": "https://cs.iba.edu.pk/bscs/eligibility-criteria.php | https://www.iba.edu.pk/fee-structure.php | https://cs.iba.edu.pk/bscs/courseoutline.php | https://www.iba.edu.pk/News/past_entry_test/Past_Entry_Test_BS.html | https://admissions.iba.edu.pk/pdf/test-syllabus-passing-criteria.pdf | https://www.iba.edu.pk/scholarships.php | https://www.iba.edu.pk/financialassistance/punjab-educational-endowment-fund2025-26.php | https://www.iba.edu.pk/financialassistance/needbased.php | https://iba.edu.pk/News/past_entry_test/BS_ecomth_EntryTestSyllabus.htm | https://www.iba.edu.pk/student-residences.php",
-      "length_chars": 454,
+      "length_chars": 369,
       "is_public": true
     }
   },
   {
     "chunk_id": "iba_normalized_fee_structure_0",
     "category": "fee_structure",
-    "text": "[University: IBA | Category: fee_structure] BS-Accounting & Finance: 31,500 BS-Computer Sciences: 31,500 BS-Economics & Mathematics: 31,500 BS-Social Sciences & Liberal Arts: 31,500 BS - Economics & Data Science: 31,500 MS-Development Studies: 24,800 MS-Mathematics & Economics: 34,850 MS-Artificial Intelligence: 34,850 MS Islamic Banking & Finance: 34,850 MS General Psychology: 24,800 Single Occupancy - Without AC: 133,600 Double Occupancy - Without AC: 128,600 Three or more Occupancy - Without AC: 126,400 AC Room - Single Occupancy: 147,000 AC Room - Double Occupancy: 142,000 AC room – More than 3 occupancies: 138,000",
+    "text": "[University: IBA | Category: fee_structure] Single Occupancy - Without AC: 133,600 Double Occupancy - Without AC: 128,600 Three or more Occupancy - Without AC: 126,400 AC Room - Single Occupancy: 147,000 AC Room - Double Occupancy: 142,000 AC room – More than 3 occupancies: 138,000",
     "metadata": {
       "university_id": "iba",
       "university_name": "IBA",
@@ -95,9 +95,9 @@
       "province": "Sindh",
       "department": "fee_structure",
       "category": "fee_structure",
-      "degree_levels": "Master,Bachelor",
+      "degree_levels": "",
       "source_pages": "https://cs.iba.edu.pk/bscs/eligibility-criteria.php | https://www.iba.edu.pk/fee-structure.php | https://cs.iba.edu.pk/bscs/courseoutline.php | https://www.iba.edu.pk/News/past_entry_test/Past_Entry_Test_BS.html | https://admissions.iba.edu.pk/pdf/test-syllabus-passing-criteria.pdf | https://www.iba.edu.pk/scholarships.php | https://www.iba.edu.pk/financialassistance/punjab-educational-endowment-fund2025-26.php | https://www.iba.edu.pk/financialassistance/needbased.php | https://iba.edu.pk/News/past_entry_test/BS_ecomth_EntryTestSyllabus.htm | https://www.iba.edu.pk/student-residences.php",
-      "length_chars": 582,
+      "length_chars": 238,
       "is_public": true
     }
   },

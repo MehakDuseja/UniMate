@@ -3,8 +3,8 @@
   "location": "Sector 17-D, Karachi",
   "latitude": 24.856928,
   "longitude": 67.264802,
-  "tuition_fee_amount": null,
-  "tuition_fee_period": null,
+  "tuition_fee_amount": 12000,
+  "tuition_fee_period": "per_credit_hour",
   "province": "Sindh",
   "is_public": false,
   "hec_recognized": true,
@@ -22,10 +22,16 @@
   "test_pattern": [
     "Test Pattern Home Admissions Test Pattern Note: There will be Negative Marking and use of calculators is not allowed in the Admission Test."
   ],
-  "min_eligibility_percentage": 50.0,
+  "min_eligibility_percentage": 60.0,
   "entry_test_name": "NAT, HAT, NTS, SAT, FAST-NUCES, NU Admission Test",
   "scholarships": [
-    "12,000 Student Activities Fund To support co-curricular and extra-curricular activities a Student Activities Fund has been formed."
+    "12,000 Student Activities Fund To support co-curricular and extra-curricular activities a Student Activities Fund has been formed.",
+    "Merit Scholarships for Bachelor Students Merit scholarship is awarded to the Top Three position holders of each Examination Board in the year of admission.",
+    "Merit Scholarship is also offered to Top Three position holders in the merit list of NU admission merit list of each campuses.",
+    "This scholarship is for four years of un-interrupted studies with standard courses (core and elective), labs and final year projects of the degree offered by the department in a semester to a batch with a specified number of total credit hours and is equal to the full tuition fee.",
+    "A student registering for less or more credit hours than the total specified number of credit hours shall not be eligible for Merit Scholarship.",
+    "Continuation of merit scholarship is subject to maintaining semester GPA of 3.0 or higher.",
+    "Scholarship covers full tuition fee for the entire duration of the program, renewable every year."
   ],
   "offered_courses": [
     "Bachelor of Science (Civil Engineering)",
@@ -51,42 +57,6 @@
   ],
   "fee_structure": {
     "fees": [
-      {
-        "label": "Admission Application Submission",
-        "value": "Undergraduate Programs: May 20 (Wed) - Jun 30 (Tue) | Graduate & Post Graduate Programs: May 20 (Wed) - Jun 30 (Tue)"
-      },
-      {
-        "label": "Merit List announcement of selected / test qualified candidates",
-        "value": "Undergraduate Programs: Jul 22 (Wed) | Graduate & Post Graduate Programs: Aug 5 (Wed)"
-      },
-      {
-        "label": "Admission Formalities",
-        "value": "Undergraduate Programs: Jul 27 (Mon) - Aug 13 (Thu) | Graduate & Post Graduate Programs: Aug 7 (Fri) - Aug 13 (Thu)"
-      },
-      {
-        "label": "Commencement of classes",
-        "value": "Undergraduate Programs: Aug 17 (Mon) | Graduate & Post Graduate Programs: Aug 17 (Mon)"
-      },
-      {
-        "label": "Essay Writing",
-        "value": "BBA & BS (AF/BA/FinTech): 15% | BS (CS/Engg.): - | MBA: 30% | MS (Applied Ling.): 25% | MS (Computing): 10% | Other MS Programs: 10%"
-      },
-      {
-        "label": "Analytical Skills & IQ",
-        "value": "BBA & BS (AF/BA/FinTech): 25% | BS (CS/Engg.): 20% | MBA: 20% | MS (Applied Ling.): 15% | MS (Computing): 30% | Other MS Programs: 20%"
-      },
-      {
-        "label": "Specialization Area",
-        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: - | MS (Applied Ling.): 45% | MS (Computing): 30% | Other MS Programs: 40%"
-      },
-      {
-        "label": "Quantitative Methods",
-        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): 30% | Other MS Programs: 15%"
-      },
-      {
-        "label": "Business related Knowledge",
-        "value": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): - | Other MS Programs: -"
-      },
       {
         "label": "Temporary Campus Transfer Fee",
         "value": "Rs. 2,000"
@@ -142,63 +112,13 @@
       {
         "label": "31st day onwards of commencement of classes",
         "value": "Percentage of Fee: No Refund"
+      },
+      {
+        "label": "fee_snippet",
+        "value": "This scholarship is for four years of un-interrupted studies with standard courses (core and elective), labs and final year projects of the degree offered by the department in a semester to a batch with a specified number of total credit hours and is equal to the full tuition fee."
       }
     ],
     "numeric_summary": [
-      {
-        "amount_min": 20,
-        "amount_max": 30,
-        "currency": "PKR",
-        "raw_text": "Undergraduate Programs: May 20 (Wed) - Jun 30 (Tue) | Graduate & Post Graduate Programs: May 20 (Wed) - Jun 30 (Tue)"
-      },
-      {
-        "amount_min": 5,
-        "amount_max": 22,
-        "currency": "PKR",
-        "raw_text": "Undergraduate Programs: Jul 22 (Wed) | Graduate & Post Graduate Programs: Aug 5 (Wed)"
-      },
-      {
-        "amount_min": 7,
-        "amount_max": 27,
-        "currency": "PKR",
-        "raw_text": "Undergraduate Programs: Jul 27 (Mon) - Aug 13 (Thu) | Graduate & Post Graduate Programs: Aug 7 (Fri) - Aug 13 (Thu)"
-      },
-      {
-        "amount_min": 17,
-        "amount_max": 17,
-        "currency": "PKR",
-        "raw_text": "Undergraduate Programs: Aug 17 (Mon) | Graduate & Post Graduate Programs: Aug 17 (Mon)"
-      },
-      {
-        "amount_min": 10,
-        "amount_max": 30,
-        "currency": "PKR",
-        "raw_text": "BBA & BS (AF/BA/FinTech): 15% | BS (CS/Engg.): - | MBA: 30% | MS (Applied Ling.): 25% | MS (Computing): 10% | Other MS Programs: 10%"
-      },
-      {
-        "amount_min": 15,
-        "amount_max": 30,
-        "currency": "PKR",
-        "raw_text": "BBA & BS (AF/BA/FinTech): 25% | BS (CS/Engg.): 20% | MBA: 20% | MS (Applied Ling.): 15% | MS (Computing): 30% | Other MS Programs: 20%"
-      },
-      {
-        "amount_min": 30,
-        "amount_max": 45,
-        "currency": "PKR",
-        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: - | MS (Applied Ling.): 45% | MS (Computing): 30% | Other MS Programs: 40%"
-      },
-      {
-        "amount_min": 15,
-        "amount_max": 30,
-        "currency": "PKR",
-        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): 30% | Other MS Programs: 15%"
-      },
-      {
-        "amount_min": 20,
-        "amount_max": 20,
-        "currency": "PKR",
-        "raw_text": "BBA & BS (AF/BA/FinTech): - | BS (CS/Engg.): - | MBA: 20% | MS (Applied Ling.): - | MS (Computing): - | Other MS Programs: -"
-      },
       {
         "amount_min": 2000,
         "amount_max": 2000,
@@ -291,7 +211,8 @@
     "https://www.nu.edu.pk/Admissions/Schedule",
     "https://www.nu.edu.pk/Admissions/TestPattern",
     "https://www.nu.edu.pk/Admissions/FeeStructure",
-    "https://cfd.nu.edu.pk/facilities/"
+    "https://cfd.nu.edu.pk/facilities/",
+    "https://nu.edu.pk/Admissions/Scholarship"
   ],
   "hostel_available": true
 }
