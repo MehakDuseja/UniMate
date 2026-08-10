@@ -10,18 +10,17 @@ from db.connection import get_connection
 
 PROFILE_FIELD_WEIGHTS: dict[str, int] = {
     "name": 5,
-    "field_of_study": 15,
-    "academic_percentage": 15,
-    "degree_level": 10,
-    "budget_pkr_per_semester": 10,
-    "preferred_province": 10,
+    "email": 5,
+    "phone": 5,
+    "age": 5,
     "current_education_level": 10,
-    "student_city": 5,
-    "student_area": 5,
+    "board": 10,
+    "academic_percentage": 15,
+    "target_universities": 10,
+    "field_of_study": 15,
+    "budget_pkr_per_semester": 10,
     "scholarship_required": 5,
     "hostel_required": 5,
-    "career_goals": 5,
-    "priority_focus": 5,
 }
 
 

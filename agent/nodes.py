@@ -337,23 +337,26 @@ def _run_live(system_prompt: str, user_prompt: str, stream_fields: list[str]) ->
 def _last_user_message(state: AgentState) -> str:
     for msg in reversed(state["messages"]):
         if isinstance(msg, dict):
-            if msg.get("role") in ("human", "user"):
-                return msg.get("content", "")
+            role = msg.get("role", "")
+            content = msg.get("content", "")
         else:
             role = getattr(msg, "type", "")
-            if role in ("human", "user"):
-                return getattr(msg, "content", "")
+            content = getattr(msg, "content", "")
+        if role in ("human", "user"):
+            return content
     return ""
 
 
 def _last_assistant_message(state: AgentState) -> str:
     for msg in reversed(state["messages"]):
         if isinstance(msg, dict):
-            if msg.get("role") == "assistant":
-                return msg.get("content", "")
+            role = msg.get("role", "")
+            content = msg.get("content", "")
         else:
-            if getattr(msg, "type", "") == "ai":
-                return getattr(msg, "content", "")
+            role = getattr(msg, "type", "")
+            content = getattr(msg, "content", "")
+        if role in ("assistant", "ai"):
+            return content
     return ""
 
 

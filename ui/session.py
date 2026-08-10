@@ -27,12 +27,23 @@ def init_session_state(get_graph: Callable[[], Any]) -> None:
         st.session_state.thread_id = url_thread_id or str(uuid.uuid4())
         st.query_params["tid"] = st.session_state.thread_id
 
+    if "active_chat_id" not in st.session_state:
+        st.session_state.active_chat_id = st.session_state.thread_id
+
+    if not conversation_service.get_conversation(st.session_state.thread_id):
+        conversation_service.upsert_conversation(
+            thread_id=st.session_state.thread_id,
+            student_id=st.session_state.student_id,
+            title="New Chat",
+            university_filter=st.session_state.get("selected_university", "all"),
+        )
+
     if "state" not in st.session_state:
         config = {"configurable": {"thread_id": st.session_state.thread_id}}
         checkpoint = graph.get_state(config)
-        st.session_state.state = (
-            checkpoint.values if checkpoint and checkpoint.values else initial_state()
-        )
+        state = checkpoint.values if checkpoint and checkpoint.values else initial_state()
+        state["messages"] = conversation_service.get_chat_messages(st.session_state.thread_id)
+        st.session_state.state = state
 
     defaults = {
         "error": None,
@@ -48,6 +59,7 @@ def init_session_state(get_graph: Callable[[], Any]) -> None:
         "saved_profile_meta": None,
         "notification_prefs": {},
         "_profile_draft": None,
+        "active_chat_id": st.session_state.thread_id,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -99,17 +111,28 @@ def delete_saved_profile() -> None:
 
 
 def start_new_chat(get_graph: Callable[[], Any]) -> None:
+    """Activate a fresh, empty conversation without changing existing chats."""
     selected = st.session_state.get("selected_university", "all")
-    st.session_state.state = initial_state()
-    st.session_state.state["selected_university"] = selected
-
-    saved = st.session_state.saved_profile_meta
-    if saved and saved.get("is_saved"):
-        st.session_state.state["student_profile"] = dict(saved["profile"])
-
-    new_thread_id = str(uuid.uuid4())
+    new_thread_id = conversation_service.create_chat(
+        st.session_state.student_id,
+        "New Chat",
+        university_filter=selected,
+    )
     st.session_state.thread_id = new_thread_id
+    st.session_state.active_chat_id = new_thread_id
     st.query_params["tid"] = new_thread_id
+
+    fresh = initial_state()
+    fresh["selected_university"] = selected
+    saved = st.session_state.get("saved_profile_meta")
+    if saved and saved.get("is_saved"):
+        fresh["student_profile"] = dict(saved["profile"])
+    fresh["messages"] = []
+    st.session_state.state = fresh
+
+    st.session_state.composer_prompt = ""
+    st.session_state.pending_composer_text = ""
+    st.session_state.transcribed_recording = None
     st.session_state.error = None
     st.session_state.audio_cache = {}
     st.session_state.pending_voice = ""
@@ -117,30 +140,31 @@ def start_new_chat(get_graph: Callable[[], Any]) -> None:
     conversation_service.upsert_conversation(
         thread_id=new_thread_id,
         student_id=st.session_state.student_id,
+        title="New Chat",
         university_filter=selected,
     )
 
 
 def switch_conversation(thread_id: str, get_graph: Callable[[], Any]) -> None:
     st.session_state.thread_id = thread_id
+    st.session_state.active_chat_id = thread_id
     st.query_params["tid"] = thread_id
-    config = {"configurable": {"thread_id": thread_id}}
-    graph = get_graph()
-    checkpoint = graph.get_state(config)
-    st.session_state.state = (
-        checkpoint.values if checkpoint and checkpoint.values else initial_state()
-    )
+
+    base_state = initial_state()
+    base_state["messages"] = conversation_service.get_chat_messages(thread_id)
     conv = conversation_service.get_conversation(thread_id)
     if conv:
         st.session_state.selected_university = conv.get("university_filter") or "all"
-        st.session_state.state["selected_university"] = st.session_state.selected_university
+        base_state["selected_university"] = st.session_state.selected_university
+    st.session_state.state = base_state
     st.session_state.error = None
     st.session_state.audio_cache = {}
     st.session_state.pending_voice = ""
 
 
 def record_user_message(message: str) -> None:
-    conversation_service.touch_conversation(
-        st.session_state.thread_id,
-        first_user_message=message,
-    )
+    chat_id = st.session_state.get("active_chat_id") or st.session_state.get("thread_id")
+    if not chat_id:
+        return
+    conversation_service.append_message(chat_id, "user", message)
+    conversation_service.touch_conversation(chat_id, first_user_message=message)

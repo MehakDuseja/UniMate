@@ -10,6 +10,8 @@ from langgraph.graph.message import add_messages
 class StudentProfile(TypedDict, total=False):
     name: Optional[str]
     email: Optional[str]
+    phone: Optional[str]
+    age: Optional[int]
     student_city: Optional[str]
     student_area: Optional[str]  # neighborhood/locality, e.g. "Gulshan-e-Iqbal" - used for distance
     preferred_province: Optional[str]
@@ -17,14 +19,16 @@ class StudentProfile(TypedDict, total=False):
     budget_pkr_per_semester: Optional[int]
     degree_level: Optional[str]  # "Bachelor" | "Master" | "PhD"
     field_of_study: Optional[str]
-    academic_percentage: Optional[float]
     current_education_level: Optional[str]
+    board: Optional[str]
+    academic_percentage: Optional[float]
     entry_test_scores: Optional[dict[str, float]]
     hostel_required: Optional[bool]
     transportation_preference: Optional[str]
     scholarship_required: Optional[bool]
     career_goals: Optional[str]
     priority_focus: Optional[str]  # "fees" | "distance" | "both" - which matters more when trading off
+    target_universities: Optional[list[str]]
 
 
 # Minimum information needed before we can meaningfully retrieve/rank

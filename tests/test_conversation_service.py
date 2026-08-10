@@ -38,3 +38,23 @@ def test_conversation_crud():
     conversation_service.rename_conversation(thread_id, "NED deadlines")
     conversation_service.delete_conversation(thread_id)
     assert conversation_service.list_conversations(student_id) == []
+
+
+def test_chat_history_persistence_and_restore():
+    student_id = profile_service.ensure_student(str(uuid.uuid4()))
+    chat_id = conversation_service.create_chat(student_id, "NED admission requirements")
+
+    conversation_service.append_message(chat_id, "user", "What are the admission requirements for NED?", "2026-08-10T10:00:00")
+    conversation_service.append_message(chat_id, "assistant", "NED requires...", "2026-08-10T10:00:01")
+
+    restored = conversation_service.get_chat_messages(chat_id)
+    assert [item["role"] for item in restored] == ["user", "assistant"]
+    assert restored[0]["content"] == "What are the admission requirements for NED?"
+
+    rows = conversation_service.list_conversations(student_id)
+    assert rows[0]["id"] == chat_id
+    assert rows[0]["title"] == "NED admission requirements"
+
+    deleted = conversation_service.delete_chat(chat_id)
+    assert deleted is True
+    assert conversation_service.get_chat_messages(chat_id) == []

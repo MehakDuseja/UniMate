@@ -1,8 +1,9 @@
-"""Conversation metadata — thread list, titles, university scope."""
+"""Conversation metadata and persisted chat history."""
 
 from __future__ import annotations
 
 import re
+import uuid
 from typing import Any, Optional
 
 from db.connection import get_connection
@@ -15,6 +16,19 @@ def _title_from_message(message: str, max_len: int = 48) -> str:
     if len(text) <= max_len:
         return text
     return text[: max_len - 1].rstrip() + "…"
+
+
+def create_chat(student_id: str, title: str = "New Chat", *, university_filter: str = "all") -> str:
+    chat_id = str(uuid.uuid4())
+    with get_connection() as conn:
+        conn.execute(
+            """
+            INSERT INTO conversations (id, student_id, title, university_filter, created_at, updated_at)
+            VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))
+            """,
+            (chat_id, student_id, title or "New Chat", university_filter),
+        )
+    return chat_id
 
 
 def upsert_conversation(
@@ -50,6 +64,36 @@ def upsert_conversation(
             )
 
 
+def append_message(chat_id: str, role: str, content: str, timestamp: Optional[str] = None) -> dict[str, Any]:
+    content = (content or "").strip()
+    if not chat_id or not content:
+        return {}
+    with get_connection() as conn:
+        row = conn.execute("SELECT title FROM conversations WHERE id = ?", (chat_id,)).fetchone()
+        if row is None:
+            return {}
+        now = timestamp or __import__("datetime").datetime.utcnow().isoformat(timespec="seconds") + "Z"
+        title = row["title"]
+        if title == "New Chat" and role == "user":
+            title = _title_from_message(content)
+            conn.execute(
+                "UPDATE conversations SET title = ?, updated_at = datetime('now') WHERE id = ?",
+                (title, chat_id),
+            )
+        conn.execute(
+            """
+            INSERT INTO messages (chat_id, role, content, timestamp)
+            VALUES (?, ?, ?, ?)
+            """,
+            (chat_id, role, content, now),
+        )
+        conn.execute(
+            "UPDATE conversations SET updated_at = datetime('now') WHERE id = ?",
+            (chat_id,),
+        )
+        return {"chat_id": chat_id, "role": role, "content": content, "timestamp": now}
+
+
 def touch_conversation(thread_id: str, *, first_user_message: Optional[str] = None) -> None:
     with get_connection() as conn:
         row = conn.execute(
@@ -67,6 +111,42 @@ def touch_conversation(thread_id: str, *, first_user_message: Optional[str] = No
             """,
             (title, thread_id),
         )
+
+
+def append_message(chat_id: str, role: str, content: str, timestamp: Optional[str] = None) -> dict[str, Any]:
+    content = (content or "").strip()
+    if not chat_id or not content:
+        return {}
+
+    now = timestamp or __import__("datetime").datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    with get_connection() as conn:
+        existing = conn.execute(
+            "SELECT title FROM conversations WHERE id = ?",
+            (chat_id,),
+        ).fetchone()
+        if existing is None:
+            return {}
+
+        title = existing["title"]
+        if title == "New Chat" and role == "user":
+            title = _title_from_message(content)
+            conn.execute(
+                "UPDATE conversations SET title = ?, updated_at = datetime('now') WHERE id = ?",
+                (title, chat_id),
+            )
+
+        conn.execute(
+            """
+            INSERT INTO messages (chat_id, role, content, timestamp)
+            VALUES (?, ?, ?, ?)
+            """,
+            (chat_id, role, content, now),
+        )
+        conn.execute(
+            "UPDATE conversations SET updated_at = datetime('now') WHERE id = ?",
+            (chat_id,),
+        )
+    return {"chat_id": chat_id, "role": role, "content": content, "timestamp": now}
 
 
 def list_conversations(student_id: str, limit: int = 30) -> list[dict[str, Any]]:
@@ -93,6 +173,27 @@ def rename_conversation(thread_id: str, title: str) -> None:
             """,
             (title.strip() or "New Chat", thread_id),
         )
+
+
+def get_chat_messages(chat_id: str) -> list[dict[str, Any]]:
+    with get_connection() as conn:
+        rows = conn.execute(
+            """
+            SELECT role, content, timestamp
+            FROM messages
+            WHERE chat_id = ?
+            ORDER BY timestamp ASC, id ASC
+            """,
+            (chat_id,),
+        ).fetchall()
+    return [dict(row) for row in rows]
+
+
+def delete_chat(chat_id: str) -> bool:
+    with get_connection() as conn:
+        deleted = conn.execute("DELETE FROM messages WHERE chat_id = ?", (chat_id,)).rowcount
+        conn.execute("DELETE FROM conversations WHERE id = ?", (chat_id,))
+    return deleted >= 0
 
 
 def delete_conversation(thread_id: str) -> None:
