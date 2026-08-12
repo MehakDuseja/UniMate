@@ -4,4 +4,5 @@ data/chroma_db/
 data/*.db
 .DS_Store
 venv311/
+.venv/
 .env

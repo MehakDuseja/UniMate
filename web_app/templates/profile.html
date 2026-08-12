@@ -1,0 +1,398 @@
+{% extends 'base.html' %}
+{% block title %}UniMate — Profile{% endblock %}
+
+{% block content %}
+<div class="um-page um-profile-page">
+  <div class="um-profile-atmosphere" aria-hidden="true"></div>
+
+  <header class="um-profile-hero">
+    <div class="um-profile-hero-copy">
+      <p class="um-eyebrow">Step 1 · Profile</p>
+      <h1>Your student profile</h1>
+      <p class="um-profile-lede">Tell UniMate where you are and what you need — recommendations get sharper with every field.</p>
+    </div>
+    <div class="um-profile-ring-wrap" aria-live="polite">
+      <svg class="um-profile-ring" viewBox="0 0 120 120" width="120" height="120">
+        <circle class="um-profile-ring-track" cx="60" cy="60" r="52" />
+        <circle class="um-profile-ring-fill" id="live_ring" cx="60" cy="60" r="52"
+          style="stroke-dasharray: 326.73; stroke-dashoffset: {{ 326.73 - (326.73 * (saved_meta.completeness_pct if saved_meta else 0) / 100) }};" />
+      </svg>
+      <div class="um-profile-ring-label">
+        <strong id="live_pct">{{ saved_meta.completeness_pct if saved_meta else 0 }}%</strong>
+        <span>complete</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="um-profile-layout">
+    <aside class="um-profile-side">
+      <div class="um-profile-rail">
+        <p class="um-profile-rail-label">Progress</p>
+        <div class="um-progress">
+          <div class="um-progress-bar" id="live_bar" style="width: {{ saved_meta.completeness_pct if saved_meta else 0 }}%;"></div>
+        </div>
+        <p class="um-progress-hint" id="live_hint">Start with the starred essentials.</p>
+
+        <nav class="um-checklist" id="profile_checklist" aria-label="Profile sections">
+          <a class="um-check-item" href="#sec-about" data-keys="name,email">
+            <span class="um-check-mark" aria-hidden="true"></span>
+            Contact
+          </a>
+          <a class="um-check-item" href="#sec-goals" data-keys="field_of_study,degree_level">
+            <span class="um-check-mark" aria-hidden="true"></span>
+            Study goals
+          </a>
+          <a class="um-check-item" href="#sec-grades" data-keys="academic_percentage,current_education_level">
+            <span class="um-check-mark" aria-hidden="true"></span>
+            Grades & stage
+          </a>
+          <a class="um-check-item" href="#sec-constraints" data-keys="budget_pkr_per_semester,preferred_province">
+            <span class="um-check-mark" aria-hidden="true"></span>
+            Budget & place
+          </a>
+        </nav>
+
+        <div class="um-profile-rail-foot">
+          <a href="/explore">Explore schools →</a>
+          {% if profile_ready %}
+          <a href="/">Chat with agent →</a>
+          {% else %}
+          <span class="is-locked-text">Chat locked until required fields are saved</span>
+          {% endif %}
+        </div>
+      </div>
+    </aside>
+
+    <form class="um-profile-form" id="profile_form" novalidate>
+      {% if next_step == 'chat' and not profile_ready %}
+      <div class="um-alert um-alert-warn" role="status">
+        Chat is locked until you save the starred required fields
+        {% if profile_missing_labels %} ({{ profile_missing_labels|join(', ') }}){% endif %}.
+      </div>
+      {% elif profile_ready %}
+      <div class="um-alert" role="status">
+        Required profile is complete — Chat is unlocked.
+      </div>
+      {% endif %}
+      <div id="profile_error" class="um-form-error" hidden></div>
+
+      <section class="um-profile-sec" id="sec-about">
+        <header class="um-profile-sec-head">
+          <span class="um-profile-sec-num">01</span>
+          <div>
+            <h2>About you</h2>
+            <p>Optional — helps personalize shortlists and follow-ups.</p>
+          </div>
+        </header>
+        <div class="um-form-grid">
+          <div class="um-field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Your name" value="{{ profile.get('name', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" value="{{ profile.get('email', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" autocomplete="tel" placeholder="+92 300 XXXXXXX" value="{{ profile.get('phone', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="student_city">Current city</label>
+            <input id="student_city" name="student_city" placeholder="e.g. Karachi" value="{{ profile.get('student_city', '') }}" />
+          </div>
+        </div>
+      </section>
+
+      <section class="um-profile-sec" id="sec-goals">
+        <header class="um-profile-sec-head">
+          <span class="um-profile-sec-num">02</span>
+          <div>
+            <h2>Study goals</h2>
+            <p>What you want to study — the agent’s starting point.</p>
+          </div>
+        </header>
+        <div class="um-form-grid">
+          <div class="um-field">
+            <label for="field_of_study">Field of study <span class="req">*</span></label>
+            <input id="field_of_study" name="field_of_study" placeholder="e.g. Computer Science" value="{{ profile.get('field_of_study', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="degree_level">Degree level <span class="req">*</span></label>
+            <select id="degree_level" name="degree_level">
+              {% set deg = profile.get('degree_level', '') %}
+              <option value="" disabled {% if not deg %}selected{% endif %}>Choose degree level</option>
+              <option value="Bachelor" {% if deg == 'Bachelor' %}selected{% endif %}>Bachelor</option>
+              <option value="Master" {% if deg == 'Master' %}selected{% endif %}>Master</option>
+              <option value="PhD" {% if deg == 'PhD' %}selected{% endif %}>PhD</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="um-profile-sec" id="sec-grades">
+        <header class="um-profile-sec-head">
+          <span class="um-profile-sec-num">03</span>
+          <div>
+            <h2>Grades & stage</h2>
+            <p>Used to check eligibility against real entry rules.</p>
+          </div>
+        </header>
+        <div class="um-form-grid">
+          <div class="um-field">
+            <label for="academic_percentage">Academic percentage <span class="req">*</span></label>
+            <input id="academic_percentage" name="academic_percentage" type="number" step="0.1" min="0" max="100" placeholder="e.g. 85.5" value="{{ profile.get('academic_percentage', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="current_education_level">Current education <span class="req">*</span></label>
+            <input id="current_education_level" name="current_education_level" placeholder="e.g. Intermediate / A-Levels completed" value="{{ profile.get('current_education_level', '') }}" />
+          </div>
+        </div>
+      </section>
+
+      <section class="um-profile-sec" id="sec-constraints">
+        <header class="um-profile-sec-head">
+          <span class="um-profile-sec-num">04</span>
+          <div>
+            <h2>Budget & place</h2>
+            <p>Hard filters the agent respects when ranking schools.</p>
+          </div>
+        </header>
+        <div class="um-form-grid">
+          <div class="um-field">
+            <label for="preferred_province">Preferred province <span class="req">*</span></label>
+            <select id="preferred_province" name="preferred_province">
+              {% set prov = profile.get('preferred_province', '') %}
+              <option value="" disabled {% if not prov %}selected{% endif %}>Choose province</option>
+              {% for p in ['Sindh', 'Punjab', 'Khyber Pakhtunkhwa', 'Balochistan', 'Islamabad'] %}
+              <option value="{{ p }}" {% if prov == p %}selected{% endif %}>{{ p }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="um-field">
+            <label for="budget_pkr_per_semester">Budget (PKR / semester) <span class="req">*</span></label>
+            <input id="budget_pkr_per_semester" name="budget_pkr_per_semester" type="number" min="0" placeholder="e.g. 150000" value="{{ profile.get('budget_pkr_per_semester', '') }}" />
+          </div>
+          <div class="um-field">
+            <label for="student_area">Neighborhood</label>
+            <input id="student_area" name="student_area" placeholder="e.g. Gulshan-e-Iqbal" value="{{ profile.get('student_area', '') }}" />
+          </div>
+        </div>
+
+        {% set hostel = profile.get('hostel_required') %}
+        {% set sch = profile.get('scholarship_required') %}
+        {% set pri = profile.get('priority_focus', '') %}
+
+        <div class="um-chip-block">
+          <p class="um-chip-label">Need hostel?</p>
+          <div class="um-chip-row" role="radiogroup" aria-label="Hostel">
+            <label class="um-chip"><input type="radio" name="hostel_required" value="" {% if hostel is none %}checked{% endif %} /><span>No preference</span></label>
+            <label class="um-chip"><input type="radio" name="hostel_required" value="true" {% if hostel is sameas true %}checked{% endif %} /><span>Yes</span></label>
+            <label class="um-chip"><input type="radio" name="hostel_required" value="false" {% if hostel is sameas false %}checked{% endif %} /><span>No</span></label>
+          </div>
+        </div>
+
+        <div class="um-chip-block">
+          <p class="um-chip-label">Need scholarships?</p>
+          <div class="um-chip-row" role="radiogroup" aria-label="Scholarships">
+            <label class="um-chip"><input type="radio" name="scholarship_required" value="" {% if sch is none %}checked{% endif %} /><span>No preference</span></label>
+            <label class="um-chip"><input type="radio" name="scholarship_required" value="true" {% if sch is sameas true %}checked{% endif %} /><span>Yes</span></label>
+            <label class="um-chip"><input type="radio" name="scholarship_required" value="false" {% if sch is sameas false %}checked{% endif %} /><span>No</span></label>
+          </div>
+        </div>
+
+        <div class="um-chip-block">
+          <p class="um-chip-label">When trading off, prioritize</p>
+          <div class="um-chip-row" role="radiogroup" aria-label="Priority">
+            <label class="um-chip"><input type="radio" name="priority_focus" value="" {% if not pri %}checked{% endif %} /><span>Not sure</span></label>
+            <label class="um-chip"><input type="radio" name="priority_focus" value="fees" {% if pri == 'fees' %}checked{% endif %} /><span>Fees</span></label>
+            <label class="um-chip"><input type="radio" name="priority_focus" value="distance" {% if pri == 'distance' %}checked{% endif %} /><span>Location</span></label>
+            <label class="um-chip"><input type="radio" name="priority_focus" value="both" {% if pri == 'both' %}checked{% endif %} /><span>Both</span></label>
+          </div>
+        </div>
+      </section>
+
+      <div class="um-profile-actions">
+        <button class="um-btn um-btn-primary um-profile-save" type="submit" id="save_profile">
+          {% if next_step == 'chat' %}Save & unlock Chat{% else %}Save & continue{% endif %}
+        </button>
+        <a class="um-profile-skip" href="/explore">Skip to Explore</a>
+      </div>
+
+      {% if saved_meta and saved_meta.is_saved %}
+      <div class="um-alert" role="status">
+        Last saved — {{ saved_meta.completeness_pct }}% complete.
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  const form = document.getElementById("profile_form");
+  const errBox = document.getElementById("profile_error");
+  const livePct = document.getElementById("live_pct");
+  const liveBar = document.getElementById("live_bar");
+  const liveHint = document.getElementById("live_hint");
+  const liveRing = document.getElementById("live_ring");
+  const RING = 2 * Math.PI * 52;
+
+  const WEIGHTS = {
+    name: 5,
+    email: 5,
+    phone: 5,
+    current_education_level: 10,
+    academic_percentage: 15,
+    field_of_study: 15,
+    budget_pkr_per_semester: 10,
+    scholarship_required: 5,
+    hostel_required: 5,
+    degree_level: 10,
+    preferred_province: 10,
+    student_city: 5,
+    student_area: 5,
+    priority_focus: 5,
+  };
+  const TOTAL = Object.values(WEIGHTS).reduce((a, b) => a + b, 0);
+
+  const REQUIRED = [
+    ["field_of_study", "Field of study"],
+    ["degree_level", "Degree level"],
+    ["academic_percentage", "Academic percentage"],
+    ["current_education_level", "Current education"],
+    ["preferred_province", "Preferred province"],
+    ["budget_pkr_per_semester", "Budget"],
+  ];
+
+  function readProfile() {
+    const data = {};
+    new FormData(form).forEach((v, k) => {
+      if (typeof v === "string") data[k] = v.trim();
+    });
+    // Radios with empty value still appear — treat "" as unset for weights
+    ["hostel_required", "scholarship_required", "priority_focus"].forEach((k) => {
+      if (data[k] === "") delete data[k];
+    });
+    Object.keys(data).forEach((k) => {
+      if (data[k] === "") delete data[k];
+    });
+    return data;
+  }
+
+  function completeness(data) {
+    let earned = 0;
+    Object.keys(WEIGHTS).forEach((k) => {
+      const v = data[k];
+      if (v !== undefined && v !== null && String(v).trim() !== "") earned += WEIGHTS[k];
+    });
+    return Math.round((100 * earned) / TOTAL);
+  }
+
+  function refreshUI() {
+    const data = readProfile();
+    const pct = completeness(data);
+    livePct.textContent = pct + "%";
+    liveBar.style.width = pct + "%";
+    if (liveRing) {
+      liveRing.style.strokeDashoffset = String(RING - (RING * pct) / 100);
+    }
+    liveHint.textContent =
+      pct >= 70
+        ? "Looking sharp — save to unlock better matches."
+        : "Fill the starred fields to raise completeness.";
+
+    document.querySelectorAll("#profile_checklist .um-check-item").forEach((item) => {
+      const keys = (item.dataset.keys || "").split(",");
+      const ok = keys.every((k) => (data[k] || "").toString().trim());
+      item.classList.toggle("is-done", ok);
+    });
+
+    form.querySelectorAll(".um-field").forEach((field) => {
+      const control = field.querySelector("input, select");
+      if (!control || !control.name) return;
+      field.classList.toggle("is-filled", !!(data[control.name] || "").toString().trim());
+    });
+  }
+
+  function showError(msg, focusId) {
+    errBox.hidden = !msg;
+    errBox.textContent = msg || "";
+    if (focusId) {
+      const el = document.getElementById(focusId);
+      if (el) {
+        el.focus({ preventScroll: false });
+        el.closest(".um-field")?.classList.add("is-invalid");
+        el.closest(".um-profile-sec")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+
+  form.addEventListener("input", () => {
+    form.querySelectorAll(".um-field.is-invalid").forEach((f) => f.classList.remove("is-invalid"));
+    showError("");
+    refreshUI();
+  });
+  form.addEventListener("change", () => {
+    form.querySelectorAll(".um-field.is-invalid").forEach((f) => f.classList.remove("is-invalid"));
+    showError("");
+    refreshUI();
+  });
+  refreshUI();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = readProfile();
+
+    for (const [key, label] of REQUIRED) {
+      if (!(data[key] || "").toString().trim()) {
+        showError("Please fill in: " + label, key);
+        umToast("Missing: " + label, true);
+        return;
+      }
+    }
+
+    if (data.academic_percentage != null) data.academic_percentage = Number(data.academic_percentage);
+    if (data.budget_pkr_per_semester != null) data.budget_pkr_per_semester = Number(data.budget_pkr_per_semester);
+    if (data.hostel_required === "true") data.hostel_required = true;
+    else if (data.hostel_required === "false") data.hostel_required = false;
+    else delete data.hostel_required;
+    if (data.scholarship_required === "true") data.scholarship_required = true;
+    else if (data.scholarship_required === "false") data.scholarship_required = false;
+    else delete data.scholarship_required;
+
+    const btn = document.getElementById("save_profile");
+    btn.disabled = true;
+    try {
+      const resp = await fetch("/api/profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ profile: data }),
+      });
+      const json = await resp.json();
+      if (!resp.ok || json.error) throw new Error(json.error || "Save failed");
+      const ready = !!json.profile_ready;
+      umToast(
+        ready
+          ? "Profile saved — Chat unlocked"
+          : "Profile saved — still need: " + ((json.missing_labels || []).join(", ") || "required fields"),
+        !ready
+      );
+      const nextStep = {{ (next_step or '')|tojson }};
+      setTimeout(() => {
+        if (ready && nextStep === "chat") location.href = "/";
+        else if (ready) location.href = "/explore";
+        else location.reload();
+      }, 450);
+    } catch (err) {
+      showError(err.message || "Could not save profile");
+      umToast(err.message || "Could not save profile", true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+{% endblock %}

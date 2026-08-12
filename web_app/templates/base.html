@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}UniMate{% endblock %}</title>
+    <link href="/static/css/custom.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="um-app">
+      <header class="um-topbar">
+        <a class="um-brand" href="/profile">
+          <span class="um-brand-mark">U</span>
+          UniMate
+        </a>
+        <nav class="um-nav" aria-label="Primary">
+          <a class="um-nav-link {% if request.path == '/profile' %}is-active{% endif %}" href="/profile">
+            <span>1 · Profile</span>
+          </a>
+          <a class="um-nav-link {% if request.path == '/explore' %}is-active{% endif %}" href="/explore">
+            <span>2 · Explore</span>
+          </a>
+          {% if profile_ready %}
+          <a class="um-nav-link {% if request.path == '/' %}is-active{% endif %}" href="/">
+            <span>3 · Chat</span>
+          </a>
+          {% else %}
+          <a
+            class="um-nav-link is-locked"
+            href="/profile?next=chat"
+            title="Complete required profile fields to unlock Chat"
+          >
+            <span>3 · Chat</span>
+            <span class="um-lock-badge">Locked</span>
+          </a>
+          {% endif %}
+          <a class="um-nav-link {% if request.path == '/analytics' %}is-active{% endif %}" href="/analytics">
+            <span>Analytics</span>
+          </a>
+          <button type="button" class="um-help-btn" id="help_btn" aria-label="Help">?</button>
+          <label class="um-theme-toggle" title="Toggle theme">
+            <input type="checkbox" id="darkSwitch" />
+            <span id="themeLabel">Dark</span>
+          </label>
+        </nav>
+      </header>
+
+      <div class="um-flow-bar" aria-label="Suggested flow">
+        <a class="um-flow-step {% if request.path == '/profile' %}is-current{% endif %}" href="/profile">Profile</a>
+        <span class="um-flow-sep">→</span>
+        <a class="um-flow-step {% if request.path == '/explore' %}is-current{% endif %}" href="/explore">Explore</a>
+        <span class="um-flow-sep">→</span>
+        {% if profile_ready %}
+        <a class="um-flow-step {% if request.path == '/' %}is-current{% endif %}" href="/">Chat with agent</a>
+        {% else %}
+        <a class="um-flow-step is-locked" href="/profile?next=chat" title="Fill required profile fields first">Chat with agent · locked</a>
+        {% endif %}
+      </div>
+
+      {% block content %}{% endblock %}
+    </div>
+
+    <div id="um_toast" class="um-toast" hidden></div>
+
+    <div class="um-help-overlay" id="help_overlay" hidden>
+      <div class="um-help-modal" role="dialog" aria-modal="true" aria-labelledby="help_title">
+        <div class="um-help-top">
+          <h2 id="help_title">How UniMate works</h2>
+          <button type="button" class="um-btn um-btn-ghost um-btn-sm" id="help_close">Close</button>
+        </div>
+        <ol class="um-help-steps">
+          <li><strong>Profile</strong> — fill required fields (field, degree, grades, budget, province).</li>
+          <li><strong>Explore</strong> — browse universities and shortlist favorites.</li>
+          <li><strong>Chat</strong> — unlocks after required profile fields; agent uses your profile on every tool.</li>
+          <li><strong>Analytics</strong> — fees, eligibility, and coverage across the dataset.</li>
+        </ol>
+        <p class="um-help-note">Chat stays locked until the starred profile essentials are saved.</p>
+        <div class="um-help-actions">
+          <a class="um-btn um-btn-primary" href="/profile">Start with profile</a>
+          {% if profile_ready %}
+          <a class="um-btn um-btn-ghost" href="/">Open chat</a>
+          {% else %}
+          <a class="um-btn um-btn-ghost" href="/explore">Browse Explore</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const darkSwitch = document.getElementById("darkSwitch");
+        const themeLabel = document.getElementById("themeLabel");
+        const preferDark = localStorage.getItem("um_dark");
+        const initial =
+          preferDark === "1" ||
+          (preferDark === null && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        darkSwitch.checked = initial;
+
+        function applyDark(on) {
+          document.documentElement.classList.toggle("um-dark", on);
+          themeLabel.textContent = on ? "Light" : "Dark";
+        }
+        applyDark(darkSwitch.checked);
+        darkSwitch.addEventListener("change", () => {
+          localStorage.setItem("um_dark", darkSwitch.checked ? "1" : "0");
+          applyDark(darkSwitch.checked);
+        });
+
+        window.umToast = function (message, isError) {
+          const el = document.getElementById("um_toast");
+          el.textContent = message;
+          el.classList.toggle("is-error", !!isError);
+          el.hidden = false;
+          clearTimeout(window.__umToastTimer);
+          window.__umToastTimer = setTimeout(() => {
+            el.hidden = true;
+          }, 3200);
+        };
+
+        window.umEscape = function (text) {
+          return String(text ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        };
+
+        window.umRenderMarkdown = function (text) {
+          const raw = String(text ?? "");
+          if (!raw.trim()) return "";
+          if (typeof marked === "undefined") {
+            return umEscape(raw).replace(/\n/g, "<br>");
+          }
+          marked.setOptions({
+            gfm: true,
+            breaks: true,
+          });
+          let html = marked.parse(raw);
+          html = html.replace(
+            /<a /g,
+            '<a target="_blank" rel="noopener noreferrer" '
+          );
+          return html;
+        };
+
+        const overlay = document.getElementById("help_overlay");
+        document.getElementById("help_btn").addEventListener("click", () => {
+          overlay.hidden = false;
+        });
+        document.getElementById("help_close").addEventListener("click", () => {
+          overlay.hidden = true;
+        });
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) overlay.hidden = true;
+        });
+        if (!localStorage.getItem("um_help_seen")) {
+          overlay.hidden = false;
+          localStorage.setItem("um_help_seen", "1");
+        }
+      })();
+    </script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

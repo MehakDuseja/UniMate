@@ -25,7 +25,8 @@ setup(
         "sentence-transformers",
         "langgraph",
         "python-dotenv",
-        "streamlit",
+        "Flask",
+        "gunicorn",
     ],
     python_requires=">=3.11",
     entry_points={

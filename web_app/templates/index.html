@@ -1,0 +1,876 @@
+{% extends 'base.html' %}
+{% block title %}UniMate — Chat{% endblock %}
+
+{% block content %}
+<div class="um-chat-layout" id="chat_layout">
+  <aside class="um-sidebar" id="chat_sidebar" aria-label="Sidebar">
+    <div class="um-sidebar-top">
+      <button class="um-btn um-btn-ghost um-btn-block" id="new_chat_btn" type="button">
+        + New chat
+      </button>
+      <button
+        type="button"
+        class="um-sidebar-toggle"
+        id="sidebar_collapse_btn"
+        aria-label="Collapse sidebar"
+        title="Collapse sidebar"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="um-agent-panel">
+      <div class="um-sidebar-label">Agent status</div>
+      <div class="um-agent-phase" id="agent_phase">Idle</div>
+      <p class="um-agent-meta" id="agent_meta">Ready when you are — I’ll profile, search, and rank schools for you.</p>
+      <div class="um-agent-steps" id="agent_steps" aria-live="polite"></div>
+    </div>
+
+    <div class="um-progress-wrap">
+      <div class="um-progress-meta">
+        <span>Profile</span>
+        <strong id="profile_pct">{{ completeness_pct }}%</strong>
+      </div>
+      <div class="um-progress" aria-hidden="true">
+        <div class="um-progress-bar" id="profile_bar" style="width: {{ completeness_pct }}%;"></div>
+      </div>
+      <a href="/profile" class="um-btn um-btn-soft" style="margin-top: 0.65rem;">
+        {% if completeness_pct >= 85 %}Edit profile{% else %}Complete profile{% endif %}
+      </a>
+    </div>
+
+    <div class="um-sidebar-section grow">
+      <div class="um-sidebar-label">Conversations</div>
+      <div id="conversations" class="um-conv-list">
+        <p class="um-empty-hint">No conversations yet.</p>
+      </div>
+    </div>
+  </aside>
+
+  <button
+    type="button"
+    class="um-sidebar-expand"
+    id="sidebar_expand_btn"
+    aria-label="Open sidebar"
+    title="Open sidebar"
+    hidden
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <section class="um-main">
+    <div class="um-chat-scroll" id="chat_area">
+      <div class="um-chat-inner">
+        <div id="welcome_msg" class="um-welcome">
+          <h1>Your admissions agent</h1>
+          <p>
+            UniMate doesn’t just chat — it builds a profile, retrieves real university data,
+            ranks options, and shows its working as it goes.
+          </p>
+          <div class="um-mission-label">Run an agent mission</div>
+          <div class="um-suggest-grid">
+            <button type="button" class="um-suggest" data-q="I want a Bachelor's in Computer Science in Sindh, Intermediate completed with about 78%, budget around 150000 PKR per semester. Please recommend the best fits and explain why.">
+              <strong>Full CS match</strong>
+              Profile → retrieve → rank for CS in Sindh
+            </button>
+            <button type="button" class="um-suggest" data-q="Compare FAST University and NED University for software / CS admissions, fees, and difficulty. Which should I prefer if I care more about affordability?">
+              <strong>Compare FAST vs NED</strong>
+              Agent compares two schools on fees & fit
+            </button>
+            <button type="button" class="um-suggest" data-q="Find budget-friendly universities in Karachi with scholarships for a Bachelor's student. I need hostel too if possible.">
+              <strong>Budget + scholarships</strong>
+              Autopilot search with constraints
+            </button>
+            <button type="button" class="um-suggest" data-q="I'm still figuring things out — ask me the most important questions one at a time, then recommend when I say I'm ready.">
+              <strong>Guided profiling</strong>
+              Let the agent interview you step by step
+            </button>
+          </div>
+        </div>
+
+        <div id="messages"></div>
+      </div>
+    </div>
+
+    <div class="um-tools-bar" id="agent_tools">
+      <span class="um-tools-label">Agent tools</span>
+      <button type="button" class="um-tool" data-action="recommend">Recommend fits</button>
+      <button type="button" class="um-tool" data-action="compare">Compare schools</button>
+      <button type="button" class="um-tool" data-action="fees">Fee deep-dive</button>
+      <button type="button" class="um-tool" data-action="scholarships">Find scholarships</button>
+      <button type="button" class="um-tool" data-action="eligibility">Check eligibility</button>
+      <button type="button" class="um-tool" data-action="hostel">Hostel options</button>
+      <button type="button" class="um-tool" data-action="shortlist">Review shortlist</button>
+      <button type="button" class="um-tool" data-action="save_shortlist">Save recs → shortlist</button>
+      <button type="button" class="um-tool" data-action="export_pdf">Export PDF</button>
+      <button type="button" class="um-tool" data-action="copy_summary">Copy summary</button>
+      <a class="um-tool um-tool-link" href="/explore">Open Explore</a>
+      <a class="um-tool um-tool-link" href="/analytics">Open Analytics</a>
+      <a class="um-tool um-tool-link" href="/api/export/profile.pdf">Export profile PDF</a>
+      <button type="button" class="um-tool um-tool-link" id="fits_toggle_btn">Ranked fits</button>
+    </div>
+
+    <div class="um-composer-wrap">
+      <form class="um-composer" id="chat_form" autocomplete="off">
+        <textarea
+          id="chat_input"
+          rows="1"
+          placeholder="Assign a task or ask anything about universities…"
+          aria-label="Message"
+        ></textarea>
+        <button class="um-send" id="send_btn" type="submit" aria-label="Send" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+      <p class="um-composer-hint">Tip: give field, budget, city, and grades in one message to let the agent run end-to-end.</p>
+    </div>
+  </section>
+
+  <aside class="um-fits-panel" id="fits_panel" aria-label="Ranked fits">
+    <div class="um-fits-panel-head">
+      <div>
+        <p class="um-fits-kicker">Live panel</p>
+        <h2>Ranked fits</h2>
+      </div>
+      <div class="um-fits-head-actions">
+        <button type="button" class="um-rec-btn" data-rec-act="export_pdf">Export PDF</button>
+        <button type="button" class="um-rec-btn" data-rec-act="save_all">Save all</button>
+      </div>
+    </div>
+    <p class="um-fits-hint" id="fits_hint">Updates after each agent turn that ranks universities.</p>
+    <div id="recommendations" class="um-recs um-recs-panel">
+      <p class="um-empty-hint">No ranked fits yet — ask the agent to recommend or compare schools.</p>
+    </div>
+  </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  let activeThread = null;
+  let sending = false;
+  let lastRecommendations = [];
+  let agentContext = { profile: {}, shortlist: [], recommendations: [] };
+
+  const messagesEl = document.getElementById("messages");
+  const welcomeEl = document.getElementById("welcome_msg");
+  const chatArea = document.getElementById("chat_area");
+  const input = document.getElementById("chat_input");
+  const sendBtn = document.getElementById("send_btn");
+  const form = document.getElementById("chat_form");
+  const convEl = document.getElementById("conversations");
+  const recsEl = document.getElementById("recommendations");
+  const phaseEl = document.getElementById("agent_phase");
+  const metaEl = document.getElementById("agent_meta");
+  const stepsEl = document.getElementById("agent_steps");
+
+  const PHASE_LABELS = {
+    idle: "Idle",
+    profiling: "Profiling",
+    matching: "Matching",
+    presenting: "Presenting",
+    refining: "Refining",
+  };
+
+  function resizeInput() {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 160) + "px";
+    sendBtn.disabled = sending || !input.value.trim();
+  }
+
+  function scrollBottom() {
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function setAgentPhase(phase, meta) {
+    phaseEl.textContent = PHASE_LABELS[phase] || phase || "Working";
+    if (meta) metaEl.textContent = meta;
+  }
+
+  function clearAgentSteps() {
+    stepsEl.innerHTML = "";
+  }
+
+  function pushAgentStep(type, text) {
+    const row = document.createElement("div");
+    row.className = "um-trace-step um-trace-" + (type || "thought");
+    row.innerHTML =
+      '<span class="um-trace-kind">' + umEscape((type || "thought").slice(0, 1).toUpperCase()) + "</span>" +
+      "<span>" + umEscape(text) + "</span>";
+    stepsEl.appendChild(row);
+    stepsEl.scrollTop = stepsEl.scrollHeight;
+  }
+
+  function updateAgentFromPayload(agent) {
+    if (!agent) return;
+    const phase = agent.phase || "profiling";
+    setAgentPhase(phase);
+    const bits = [];
+    if (agent.field_of_study) bits.push(agent.field_of_study);
+    if (agent.degree_level) bits.push(agent.degree_level);
+    if (agent.budget_pkr_per_semester) bits.push("budget " + Number(agent.budget_pkr_per_semester).toLocaleString() + " PKR");
+    if (agent.missing_fields && agent.missing_fields.length) {
+      bits.push("still needs " + agent.missing_fields.slice(0, 2).join(", ").replace(/_/g, " "));
+    } else if (agent.profile_complete) {
+      bits.push("profile ready for recommendations");
+    }
+    metaEl.textContent = bits.length ? bits.join(" · ") : "Agent finished this turn.";
+  }
+
+  function renderMessage(role, content) {
+    const wrap = document.createElement("div");
+    wrap.className = "um-message um-message-" + (role === "user" ? "user" : "assistant");
+    const avatar = role === "user" ? "You" : "U";
+    const body =
+      role === "user"
+        ? umEscape(content)
+        : '<div class="um-md">' + umRenderMarkdown(content) + "</div>";
+    wrap.innerHTML =
+      '<div class="um-message-avatar">' + umEscape(avatar.slice(0, 1)) + "</div>" +
+      '<div class="um-message-body">' +
+        '<div class="um-message-role">' + (role === "user" ? "You" : "UniMate agent") + "</div>" +
+        '<div class="um-message-content">' + body + "</div>" +
+      "</div>";
+    return wrap;
+  }
+
+  function setWelcomeVisible(show) {
+    welcomeEl.hidden = !show;
+  }
+
+  function renderRecommendations(recs) {
+    if (recs && recs.length) lastRecommendations = recs;
+    const hint = document.getElementById("fits_hint");
+    if (!recs || !recs.length) {
+      recsEl.innerHTML =
+        '<p class="um-empty-hint">No ranked fits yet — ask the agent to recommend or compare schools.</p>';
+      if (hint) hint.textContent = "Updates after each agent turn that ranks universities.";
+      return;
+    }
+    if (hint) {
+      hint.textContent =
+        "Updated from this chat · " + recs.length + " universit" + (recs.length === 1 ? "y" : "ies");
+    }
+    const cards = recs
+      .slice(0, 8)
+      .map((r) => {
+        const name = umEscape(r.university_name || r.university_id || "University");
+        const uid = umEscape(r.university_id || "");
+        const score = r.total_score != null ? Math.round(Number(r.total_score)) : null;
+        const factors = (r.factors || [])
+          .slice(0, 3)
+          .map((f) => {
+            const label = umEscape(f.label || f.criterion || "");
+            const detail = umEscape(f.detail || "");
+            const ok = f.status === "pass";
+            return (
+              '<li class="' + (ok ? "is-pass" : "is-warn") + '">' +
+                "<strong>" + label + "</strong>" +
+                (detail ? " — " + detail : "") +
+              "</li>"
+            );
+          })
+          .join("");
+        return (
+          '<article class="um-rec-card" data-uid="' + uid + '">' +
+            '<div class="um-rec-card-top">' +
+              "<h4>" + name + "</h4>" +
+              (score != null ? '<span class="um-rec-score">' + score + "% match</span>" : "") +
+            "</div>" +
+            (factors ? '<ul class="um-rec-factors">' + factors + "</ul>" : "") +
+            '<div class="um-rec-actions">' +
+              '<button type="button" class="um-rec-btn" data-rec-act="shortlist" data-uid="' + uid + '">Shortlist</button>' +
+              '<button type="button" class="um-rec-btn" data-rec-act="ask" data-name="' + name + '">Ask why</button>' +
+            "</div>" +
+          "</article>"
+        );
+      })
+      .join("");
+    recsEl.innerHTML = cards;
+  }
+
+  async function loadConversations() {
+    const res = await fetch("/api/conversations");
+    const convs = await res.json();
+    convEl.innerHTML = "";
+    if (!convs || !convs.length) {
+      convEl.innerHTML = '<p class="um-empty-hint">No conversations yet.</p>';
+      return;
+    }
+    convs.forEach((c) => {
+      const row = document.createElement("div");
+      row.className = "um-conv-row" + (c.id === activeThread ? " is-active" : "");
+      row.dataset.id = c.id;
+
+      const openBtn = document.createElement("button");
+      openBtn.type = "button";
+      openBtn.className = "um-conv-item";
+      openBtn.title = c.title || "New Chat";
+      openBtn.innerHTML = "<span>" + umEscape(c.title || "New Chat") + "</span>";
+      openBtn.addEventListener("click", () => loadMessages(c.id));
+
+      const actions = document.createElement("div");
+      actions.className = "um-conv-actions";
+
+      const renameBtn = document.createElement("button");
+      renameBtn.type = "button";
+      renameBtn.className = "um-conv-icon";
+      renameBtn.title = "Rename";
+      renameBtn.setAttribute("aria-label", "Rename conversation");
+      renameBtn.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      renameBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        renameConversation(c.id, c.title || "New Chat");
+      });
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.type = "button";
+      deleteBtn.className = "um-conv-icon um-conv-icon-danger";
+      deleteBtn.title = "Delete";
+      deleteBtn.setAttribute("aria-label", "Delete conversation");
+      deleteBtn.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteConversation(c.id, c.title || "New Chat");
+      });
+
+      actions.appendChild(renameBtn);
+      actions.appendChild(deleteBtn);
+      row.appendChild(openBtn);
+      row.appendChild(actions);
+      convEl.appendChild(row);
+    });
+  }
+
+  async function renameConversation(id, currentTitle) {
+    const next = window.prompt("Rename conversation", currentTitle);
+    if (next == null) return;
+    const title = next.trim();
+    if (!title || title === currentTitle) return;
+    try {
+      const res = await fetch("/api/conversations/" + encodeURIComponent(id), {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error || "Rename failed");
+      umToast("Renamed");
+      await loadConversations();
+    } catch (err) {
+      umToast(err.message || "Rename failed", true);
+    }
+  }
+
+  async function deleteConversation(id, title) {
+    const ok = window.confirm('Delete "' + title + '"? This cannot be undone.');
+    if (!ok) return;
+    try {
+      const res = await fetch("/api/conversations/" + encodeURIComponent(id), {
+        method: "DELETE",
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error || "Delete failed");
+      if (activeThread === id) {
+        activeThread = null;
+        messagesEl.innerHTML = "";
+        renderRecommendations(null);
+        setWelcomeVisible(true);
+        clearAgentSteps();
+        setAgentPhase("idle", "Conversation deleted — start a new chat anytime.");
+      }
+      umToast("Conversation deleted");
+      await loadConversations();
+    } catch (err) {
+      umToast(err.message || "Delete failed", true);
+    }
+  }
+
+  async function loadMessages(threadId) {
+    activeThread = threadId;
+    setWelcomeVisible(false);
+    const res = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/messages");
+    const msgs = await res.json();
+    messagesEl.innerHTML = "";
+    (msgs || []).forEach((m) => {
+      messagesEl.appendChild(renderMessage(m.role === "user" ? "user" : "assistant", m.content || ""));
+    });
+    renderRecommendations(null);
+    setAgentPhase("idle", "Conversation loaded — send a message to continue the agent loop.");
+    clearAgentSteps();
+    scrollBottom();
+    await loadConversations();
+  }
+
+  async function ensureThread() {
+    if (activeThread) return activeThread;
+    const res = await fetch("/api/conversations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.id) throw new Error(data.error || "Could not start chat");
+    activeThread = data.id;
+    return activeThread;
+  }
+
+  async function sendMessage(text) {
+    const value = (text || "").trim();
+    if (!value || sending) return;
+    sending = true;
+    sendBtn.disabled = true;
+    setWelcomeVisible(false);
+    clearAgentSteps();
+    setAgentPhase("profiling", "Agent is running…");
+
+    messagesEl.appendChild(renderMessage("user", value));
+    const thinking = renderMessage("assistant", "");
+    const contentEl = thinking.querySelector(".um-message-content");
+    contentEl.innerHTML =
+      '<div class="um-live-trace" id="live_trace_box">' +
+        '<div class="um-typing"><span></span><span></span><span></span></div>' +
+      "</div>";
+    messagesEl.appendChild(thinking);
+    scrollBottom();
+    input.value = "";
+    resizeInput();
+
+    try {
+      const threadId = await ensureThread();
+      const resp = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/stream", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: value }),
+      });
+      if (!resp.ok || !resp.body) {
+        const errData = await resp.json().catch(() => ({}));
+        throw new Error(errData.error || "Stream failed");
+      }
+
+      const liveBox = thinking.querySelector(".um-message-content");
+      liveBox.innerHTML = "";
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let donePayload = null;
+
+      while (true) {
+        const { value: chunk, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(chunk, { stream: true });
+        const parts = buffer.split("\n\n");
+        buffer = parts.pop() || "";
+        for (const part of parts) {
+          const line = part.split("\n").find((l) => l.startsWith("data: "));
+          if (!line) continue;
+          let evt;
+          try {
+            evt = JSON.parse(line.slice(6));
+          } catch (_) {
+            continue;
+          }
+          if (evt.type === "done") {
+            donePayload = evt;
+            continue;
+          }
+          if (evt.type === "phase") {
+            setAgentPhase(evt.phase || evt.text);
+            continue;
+          }
+          if (evt.type === "token") {
+            // Streamed answer tokens — keep raw text live; final message renders Markdown.
+            let tokenEl = liveBox.querySelector(".um-stream-answer");
+            if (!tokenEl) {
+              tokenEl = document.createElement("div");
+              tokenEl.className = "um-stream-answer um-md";
+              liveBox.appendChild(tokenEl);
+              tokenEl.dataset.raw = "";
+            }
+            tokenEl.dataset.raw = (tokenEl.dataset.raw || "") + (evt.text || "");
+            tokenEl.innerHTML = umRenderMarkdown(tokenEl.dataset.raw);
+            scrollBottom();
+            continue;
+          }
+          if (evt.text) {
+            pushAgentStep(evt.type, evt.text);
+            const row = document.createElement("div");
+            row.className = "um-inline-trace um-trace-" + (evt.type || "thought");
+            row.textContent = evt.text;
+            liveBox.appendChild(row);
+            scrollBottom();
+          }
+        }
+      }
+
+      thinking.remove();
+      if (!donePayload) throw new Error("Agent stream ended early");
+      if (donePayload.error && !(donePayload.replies || []).length) {
+        throw new Error(donePayload.error_detail || donePayload.error || "Agent error");
+      }
+      if (donePayload.error_detail && (donePayload.reply || "").includes("hit an error")) {
+        umToast("Agent issue: " + String(donePayload.error_detail).slice(0, 140), true);
+      }
+      const replies = donePayload.replies && donePayload.replies.length
+        ? donePayload.replies
+        : [donePayload.reply || ""];
+      replies.filter(Boolean).forEach((r) => messagesEl.appendChild(renderMessage("assistant", r)));
+      if (donePayload.recommendations && donePayload.recommendations.length) {
+        lastRecommendations = donePayload.recommendations;
+        openFitsIfNarrow();
+      }
+      renderRecommendations(donePayload.recommendations || null);
+      updateAgentFromPayload(donePayload.agent || { phase: donePayload.phase });
+      await loadConversations();
+      await refreshAgentContext();
+      scrollBottom();
+    } catch (err) {
+      thinking.remove();
+      setAgentPhase("idle", "Something went wrong — try again.");
+      umToast(err.message || "Something went wrong", true);
+    } finally {
+      sending = false;
+      resizeInput();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendMessage(input.value);
+  });
+
+  input.addEventListener("input", resizeInput);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input.value);
+    }
+  });
+
+  document.querySelectorAll(".um-suggest").forEach((btn) => {
+    btn.addEventListener("click", () => sendMessage(btn.getAttribute("data-q")));
+  });
+
+  async function refreshAgentContext() {
+    try {
+      const res = await fetch("/api/agent/context");
+      agentContext = await res.json();
+      if (agentContext.recommendations && agentContext.recommendations.length) {
+        lastRecommendations = agentContext.recommendations;
+      }
+    } catch (_) {
+      /* ignore */
+    }
+    return agentContext;
+  }
+
+  function profileBits(profile) {
+    const p = profile || {};
+    const bits = [];
+    if (p.field_of_study) bits.push(p.field_of_study);
+    if (p.degree_level) bits.push(p.degree_level);
+    if (p.preferred_province) bits.push(p.preferred_province);
+    if (p.student_city) bits.push(p.student_city);
+    if (p.budget_pkr_per_semester) bits.push("budget " + Number(p.budget_pkr_per_semester).toLocaleString() + " PKR/sem");
+    if (p.academic_percentage != null && p.academic_percentage !== "") bits.push(p.academic_percentage + "% marks");
+    if (p.current_education_level) bits.push(p.current_education_level);
+    if (p.hostel_required === true) bits.push("needs hostel");
+    if (p.scholarship_required === true) bits.push("needs scholarships");
+    if (p.priority_focus) bits.push("priority: " + p.priority_focus);
+    return bits.join(", ");
+  }
+
+  function profilePreamble(profile) {
+    const bits = profileBits(profile);
+    return bits
+      ? "Always use my saved profile (" + bits + "). Do not ask me to restate these unless something is missing. "
+      : "";
+  }
+
+  function summaryFromRecs(recs) {
+    const list = recs && recs.length ? recs : lastRecommendations;
+    if (!list.length) return "";
+    return list
+      .slice(0, 5)
+      .map((r, i) => {
+        const score = r.total_score != null ? Math.round(Number(r.total_score)) + "% match" : "";
+        return (i + 1) + ". " + (r.university_name || r.university_id) + (score ? " — " + score : "");
+      })
+      .join("\n");
+  }
+
+  async function downloadBlob(url, options) {
+    const res = await fetch(url, options || {});
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || "Download failed");
+    }
+    const blob = await res.blob();
+    const disp = res.headers.get("Content-Disposition") || "";
+    const match = /filename="?([^"]+)"?/.exec(disp);
+    const name = match ? match[1] : "unimate-export.pdf";
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  }
+
+  async function exportRecommendationsPdf() {
+    const recs = lastRecommendations.length
+      ? lastRecommendations
+      : (agentContext.recommendations || []);
+    if (!recs.length) {
+      umToast("Run recommendations first, then export.", true);
+      return;
+    }
+    await downloadBlob("/api/export/recommendations.pdf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ recommendations: recs }),
+    });
+    umToast("PDF downloaded");
+  }
+
+  async function saveRecsToShortlist(ids) {
+    const university_ids = ids && ids.length
+      ? ids
+      : lastRecommendations.map((r) => r.university_id).filter(Boolean);
+    if (!university_ids.length) {
+      umToast("No recommendations to shortlist yet.", true);
+      return;
+    }
+    const res = await fetch("/api/shortlist/bulk", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ university_ids }),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || "Shortlist failed");
+    umToast("Shortlisted " + (json.added || 0) + " · total " + (json.shortlist_count || 0));
+    await refreshAgentContext();
+  }
+
+  async function runToolAction(action) {
+    await refreshAgentContext();
+    const profile = agentContext.profile || {};
+    const shortlist = agentContext.shortlist || [];
+    const bits = profileBits(profile);
+    const preamble = profilePreamble(profile);
+    const shortNames = shortlist.map((s) => s.name).filter(Boolean);
+
+    if (!bits && !["export_pdf", "copy_summary", "save_shortlist"].includes(action)) {
+      umToast("Complete your profile first — tools use your saved details.", true);
+      location.href = "/profile?next=chat";
+      return;
+    }
+
+    if (action === "export_pdf") {
+      try {
+        await exportRecommendationsPdf();
+      } catch (err) {
+        umToast(err.message || "Export failed", true);
+      }
+      return;
+    }
+
+    if (action === "copy_summary") {
+      const text = summaryFromRecs(lastRecommendations);
+      if (!text) {
+        umToast("No recommendations to copy yet.", true);
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(
+          "UniMate recommendations\nProfile: " + (bits || "(none)") + "\n\n" + text
+        );
+        umToast("Summary copied");
+      } catch (_) {
+        umToast("Could not copy — try Export PDF instead", true);
+      }
+      return;
+    }
+
+    if (action === "save_shortlist") {
+      try {
+        await saveRecsToShortlist();
+      } catch (err) {
+        umToast(err.message || "Shortlist failed", true);
+      }
+      return;
+    }
+
+    let prompt = "";
+    if (action === "recommend") {
+      prompt =
+        preamble +
+        "Recommend the best university fits for me now. Explain tradeoffs clearly and include sources.";
+    } else if (action === "compare") {
+      if (shortNames.length >= 2) {
+        prompt =
+          preamble +
+          "Compare these shortlisted universities for me: " +
+          shortNames.slice(0, 4).join(", ") +
+          ". Cover admissions difficulty, fees, scholarships, hostel, and who each is best for my profile.";
+      } else if (lastRecommendations.length >= 2) {
+        prompt =
+          preamble +
+          "Compare my top recommendations side by side: " +
+          lastRecommendations
+            .slice(0, 3)
+            .map((r) => r.university_name || r.university_id)
+            .join(", ") +
+          ". Focus on fees, eligibility, and fit for my profile.";
+      } else {
+        prompt =
+          preamble +
+          "Compare FAST University, NED University, and IBA for my field. Cover admissions difficulty, fees, and who each is best for my profile.";
+      }
+    } else if (action === "fees") {
+      prompt =
+        preamble +
+        "Give a clear fee comparison for universities that fit my profile. Flag which look affordable for my budget.";
+    } else if (action === "scholarships") {
+      prompt =
+        preamble +
+        "Which universities offer meaningful scholarships or fee concessions for my degree and field? Summarize requirements and competitiveness.";
+    } else if (action === "eligibility") {
+      prompt =
+        preamble +
+        "Check my eligibility against real entry rules for universities matching my profile. Be explicit about marks cutoffs.";
+    } else if (action === "hostel") {
+      prompt =
+        preamble +
+        "Which fitting universities have hostel options for my profile? Note fees/availability if known.";
+    } else if (action === "shortlist") {
+      if (!shortNames.length) {
+        umToast("Shortlist is empty — open Explore or save recommendations first.", true);
+        return;
+      }
+      prompt =
+        preamble +
+        "Review my shortlist: " +
+        shortNames.join(", ") +
+        ". Help me narrow to a final 2–3 for my profile, explain tradeoffs, and suggest next steps.";
+    } else {
+      return;
+    }
+
+    sendMessage(prompt);
+  }
+
+  document.getElementById("agent_tools").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action]");
+    if (!btn) return;
+    runToolAction(btn.dataset.action);
+  });
+
+  document.getElementById("fits_panel").addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-rec-act]");
+    if (!btn) return;
+    const act = btn.dataset.recAct;
+    try {
+      if (act === "export_pdf") {
+        await exportRecommendationsPdf();
+      } else if (act === "save_all") {
+        await saveRecsToShortlist();
+      } else if (act === "shortlist") {
+        const uid = btn.dataset.uid;
+        if (!uid) return;
+        await saveRecsToShortlist([uid]);
+      } else if (act === "ask") {
+        const name = btn.dataset.name || "the top university";
+        sendMessage("Why is " + name + " ranked for me? Break down the match factors.");
+      }
+    } catch (err) {
+      umToast(err.message || "Action failed", true);
+    }
+  });
+
+  document.getElementById("new_chat_btn").addEventListener("click", () => {
+    activeThread = null;
+    messagesEl.innerHTML = "";
+    renderRecommendations(null);
+    setWelcomeVisible(true);
+    clearAgentSteps();
+    setAgentPhase("idle", "Ready when you are — I’ll profile, search, and rank schools for you.");
+    input.value = "";
+    resizeInput();
+    loadConversations();
+  });
+
+  // Mobile/tablet: open fits drawer when rankings arrive
+  function openFitsIfNarrow() {
+    const layout = document.getElementById("chat_layout");
+    if (layout && window.matchMedia("(max-width: 1100px)").matches) {
+      layout.classList.add("is-fits-open");
+    }
+  }
+
+  resizeInput();
+  loadConversations();
+  refreshAgentContext().then(() => {
+    if (lastRecommendations.length) {
+      renderRecommendations(lastRecommendations);
+    }
+  });
+
+  (function setupSidebarCollapse() {
+    const layout = document.getElementById("chat_layout");
+    const collapseBtn = document.getElementById("sidebar_collapse_btn");
+    const expandBtn = document.getElementById("sidebar_expand_btn");
+    if (!layout || !collapseBtn || !expandBtn) return;
+
+    function applyCollapsed(on) {
+      layout.classList.toggle("is-sidebar-collapsed", on);
+      collapseBtn.setAttribute("aria-expanded", on ? "false" : "true");
+      expandBtn.hidden = !on;
+      localStorage.setItem("um_sidebar_collapsed", on ? "1" : "0");
+    }
+
+    const stored = localStorage.getItem("um_sidebar_collapsed");
+    const defaultCollapsed =
+      stored === "1" || (stored === null && window.matchMedia("(max-width: 900px)").matches);
+    applyCollapsed(defaultCollapsed);
+    collapseBtn.addEventListener("click", () => applyCollapsed(true));
+    expandBtn.addEventListener("click", () => applyCollapsed(false));
+
+    const fitsToggle = document.getElementById("fits_toggle_btn");
+    if (fitsToggle) {
+      fitsToggle.addEventListener("click", () => {
+        layout.classList.toggle("is-fits-open");
+      });
+    }
+
+    // Tap backdrop on mobile to collapse
+    layout.addEventListener("click", (e) => {
+      if (
+        window.matchMedia("(max-width: 900px)").matches &&
+        !layout.classList.contains("is-sidebar-collapsed") &&
+        e.target === layout
+      ) {
+        applyCollapsed(true);
+      }
+    });
+  })();
+
+  const prefill = {{ (prefill_q or '')|tojson }};
+  if (prefill) {
+    input.value = prefill;
+    resizeInput();
+    input.focus();
+  }
+})();
+</script>
+{% endblock %}

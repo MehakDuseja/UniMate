@@ -1,7 +1,7 @@
 # UniMate
 
 UniMate is a Pakistani university recommender: a scraping-to-vector-store data pipeline for nine Karachi
-universities, feeding a LangGraph + Gemini conversational agent served through a Streamlit chat UI.
+universities, feeding a LangGraph + Gemini conversational agent served through a Flask web UI.
 
 ## What it does
 
@@ -15,16 +15,16 @@ universities, feeding a LangGraph + Gemini conversational agent served through a
 - Embeds chunks locally (sentence-transformers) and stores them in a Chroma vector store
 - Runs a LangGraph agent (Gemini) that profiles a student through conversation, applies hard eligibility/
   hostel/region filters, ranks eligible universities, and answers follow-up questions - served via a
-  Streamlit chat UI
-- Optional voice chat: speak a message via a mic button, and play any assistant reply back as speech (Fish
-  Audio API - see Configuration)
+  Flask web UI. Chat unlocks only after required profile fields are saved.
 
 ## Repo structure
 
 - `requirements.txt` - pinned Python dependencies
 - `university_scraper.py` - scraping entrypoint
-- `streamlit_app.py` - chat frontend for the agent
-- `.streamlit/config.toml` - disables Streamlit's dev file watcher (see Notes)
+- `web_app/` - Flask web frontend
+  - `web_app/app.py` - Flask application with API routes
+  - `web_app/templates/` - Jinja2 HTML templates (base, index, profile, explore, analytics)
+  - `web_app/static/css/custom.css` - styling with dark mode support
 - `src/` - data pipeline modules
   - `src/config.py` - centralized configuration (paths, API key, model names)
   - `src/parsers.py` - PDF/HTML extraction helpers (tables, fees, eligibility, hostel info, etc.)
@@ -47,8 +47,6 @@ universities, feeding a LangGraph + Gemini conversational agent served through a
   - `agent/geo.py` - Karachi-neighborhood geocoding for distance-based ranking
   - `agent/graph.py` - graph wiring
   - `agent/cli.py` - terminal test harness (`python3 -m agent.cli`)
-  - `agent/voice.py` - Fish Audio wrapper for voice chat (text-to-speech and speech-to-text), used only by
-    `streamlit_app.py`
 
 ## Setup
 
@@ -85,10 +83,6 @@ export GEMINI_API_KEY="your_gemini_api_key"
 - `GEMINI_CHAT_MODEL` defaults to `gemini-3.1-flash-lite`.
 - `REQUEST_DELAY_SECONDS` defaults to `2` for polite scraping.
 - `LANGSMITH_API_KEY` is optional - just setting it turns on tracing (see Tracing below).
-- `FISH_API_KEY` is optional - only needed for voice chat (`agent/voice.py`). Get one at
-  [fish.audio](https://fish.audio) - it's a separate paid account/quota from Gemini, not part of the free
-  tier. Without it set, voice chat is unavailable (the mic button and "Play" buttons show an error) but the
-  rest of the app works normally.
 
 ## Tracing
 
@@ -129,11 +123,18 @@ thread_id resumes where you left off:
 python3 -m agent.cli [thread_id]   # thread_id defaults to "cli-default"
 ```
 
-Chat UI:
+Web UI (development):
 
 ```bash
-streamlit run streamlit_app.py
+python web_app/app.py
 ```
+
+Or run with Gunicorn in production:
+
+```bash
+gunicorn -w 4 -b 0.0.0.0:8502 web_app.app:app
+```
+
 
 ## Tests
 
@@ -154,10 +155,9 @@ been run first (`python3 -m src.ingest_and_vectorize`) and are skipped otherwise
 - The corpus currently covers Karachi only; the agent explicitly tells a student asking about another city or
   province that it isn't designed for that yet, rather than silently trying to match it.
 - Conversations are durable: `agent/graph.py` compiles with a `SqliteSaver` checkpointer
-  (`data/agent_checkpoints.db`), keyed by `thread_id`. Streamlit generates a random `thread_id` per browser
-  session and `agent/cli.py` accepts one as an argument - either way, a server restart can recover a
-  conversation via `graph.get_state(config)` instead of only ever starting fresh.
-- Streamlit's dev-mode file watcher is disabled (`.streamlit/config.toml`) because it otherwise spams
-  `ModuleNotFoundError: No module named 'torchvision'` while introspecting `transformers`' optional vision
-  submodules (pulled in transitively by `sentence-transformers`, unrelated to anything this project uses).
-  This means code changes need a manual rerun/restart to take effect instead of auto-reloading.
+  (`data/agent_checkpoints.db`), keyed by `thread_id`. The Flask app creates a conversation id per chat,
+  and `agent/cli.py` accepts one as an argument — a server restart can recover a conversation via
+  `graph.get_state(config)` instead of only ever starting fresh.
+- Chat is gated until required profile fields are saved (field, degree, grades, budget, province, current education).
+- Flask development server auto-reloads on code changes by default (`python web_app/app.py`). For production,
+  use Gunicorn with multiple workers for better concurrency and uptime.

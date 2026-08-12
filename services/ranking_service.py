@@ -268,6 +268,38 @@ def format_recommendations_message(recommendations: list[dict[str, Any]]) -> str
     return "\n".join(lines)
 
 
+def format_comparison_message(recommendations: list[dict[str, Any]]) -> str:
+    """Side-by-side style message for an explicitly named compare/shortlist set."""
+    if not recommendations:
+        return (
+            "I couldn't match those universities in my Karachi dataset. "
+            "I cover FAST, NED, Habib, IBA, SZABIST, DHA Suffa, UIT, Iqra, and Sir Syed."
+        )
+    names = [r.get("university_name") or r.get("university_id") for r in recommendations]
+    lines = [
+        "Here's how the universities you asked me to compare stack up for your profile:\n",
+        f"Comparing: {', '.join(n for n in names if n)}\n",
+    ]
+    for i, rec in enumerate(recommendations, start=1):
+        score = rec.get("total_score", rec.get("match_score", 0))
+        name = rec.get("university_name", rec.get("university_id", "Unknown"))
+        lines.append(f"**{i}. {name} — {score}% fit**")
+        for factor in rec.get("factors") or []:
+            icon = "✓" if factor.get("status") == "pass" else "⚠"
+            label = factor.get("label") or factor.get("criterion", "")
+            detail = factor.get("detail", "")
+            lines.append(f"  {icon} {label}: {detail}")
+        lines.append("")
+
+    leader = recommendations[0]
+    lines.append(
+        f"**Best overall fit in this set:** {leader.get('university_name')} "
+        f"({leader.get('total_score', leader.get('match_score'))}% match). "
+        "Ask me about fees, scholarships, hostel, or admissions difficulty for any of them."
+    )
+    return "\n".join(lines)
+
+
 def find_recommendation(
     recommendations: list[dict[str, Any]],
     question: str,

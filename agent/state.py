@@ -51,6 +51,9 @@ class AgentState(TypedDict):
     recommendations: Optional[list[dict[str, Any]]]
     current_phase: str  # "profiling" | "matching" | "presenting" | "refining"
     refine_action: Optional[str]  # "refine" | "end"
+    # When the student names a compare/shortlist set, retrieval+ranking is
+    # restricted to these university_ids for that turn.
+    focus_university_ids: Optional[list[str]]
     # UI dropdown lock: "all" (or None) searches every university; a specific
     # university_id restricts retrieval to that school only — enforced in
     # agent/retriever.py, not just via prompt instructions.
@@ -75,6 +78,7 @@ def initial_state() -> AgentState:
         "recommendations": None,
         "current_phase": "profiling",
         "refine_action": None,
+        "focus_university_ids": None,
         "recommendations_requested": False,
         "selected_university": "all",
     }

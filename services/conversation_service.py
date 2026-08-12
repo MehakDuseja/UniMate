@@ -64,36 +64,6 @@ def upsert_conversation(
             )
 
 
-def append_message(chat_id: str, role: str, content: str, timestamp: Optional[str] = None) -> dict[str, Any]:
-    content = (content or "").strip()
-    if not chat_id or not content:
-        return {}
-    with get_connection() as conn:
-        row = conn.execute("SELECT title FROM conversations WHERE id = ?", (chat_id,)).fetchone()
-        if row is None:
-            return {}
-        now = timestamp or __import__("datetime").datetime.utcnow().isoformat(timespec="seconds") + "Z"
-        title = row["title"]
-        if title == "New Chat" and role == "user":
-            title = _title_from_message(content)
-            conn.execute(
-                "UPDATE conversations SET title = ?, updated_at = datetime('now') WHERE id = ?",
-                (title, chat_id),
-            )
-        conn.execute(
-            """
-            INSERT INTO messages (chat_id, role, content, timestamp)
-            VALUES (?, ?, ?, ?)
-            """,
-            (chat_id, role, content, now),
-        )
-        conn.execute(
-            "UPDATE conversations SET updated_at = datetime('now') WHERE id = ?",
-            (chat_id,),
-        )
-        return {"chat_id": chat_id, "role": role, "content": content, "timestamp": now}
-
-
 def touch_conversation(thread_id: str, *, first_user_message: Optional[str] = None) -> None:
     with get_connection() as conn:
         row = conn.execute(

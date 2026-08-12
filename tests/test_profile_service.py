@@ -49,6 +49,23 @@ def test_delete_profile():
     assert profile_service.get_saved_profile(student_id) is None
 
 
+def test_required_fields_gate_chat():
+    incomplete = {"field_of_study": "CS", "name": "Alex"}
+    assert profile_service.required_fields_complete(incomplete) is False
+    assert "degree_level" in profile_service.missing_required_fields(incomplete)
+
+    complete = {
+        "field_of_study": "CS",
+        "degree_level": "Bachelor",
+        "budget_pkr_per_semester": 120000,
+        "preferred_province": "Sindh",
+        "academic_percentage": 85,
+        "current_education_level": "Intermediate",
+    }
+    assert profile_service.required_fields_complete(complete) is True
+    assert profile_service.missing_required_fields(complete) == []
+
+
 def test_completeness_calculation():
     empty = profile_service.calculate_completeness({})
     partial = profile_service.calculate_completeness(

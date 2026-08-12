@@ -18,6 +18,7 @@ from .prompts import (
 from .retriever import (
     append_source_citations,
     detect_category_hints,
+    extract_focus_university_ids,
     get_candidate_universities,
     get_structured_record,
     is_university_locked,
@@ -27,6 +28,7 @@ from .retriever import (
 from services.ranking_service import (
     explain_ranking,
     find_recommendation,
+    format_comparison_message,
     format_recommendations_message,
     is_ranking_explanation_question,
     rank_candidates,
@@ -450,6 +452,9 @@ def profile_builder_node(state: AgentState) -> dict[str, Any]:
     wants_recommendations = (bool(result.get("wants_recommendations")) if isinstance(result, dict) else False) or bool(
         state.get("recommendations_requested")
     )
+    # Deterministic: named compare/shortlist asks always mean "rank these now".
+    if extract_focus_university_ids(last_message):
+        wants_recommendations = True
     eligibility_blocked = bool(result.get("eligibility_blocked")) if isinstance(result, dict) else False
     region_notice_acknowledged = bool(result.get("region_notice_acknowledged")) if isinstance(result, dict) else False
 
@@ -522,6 +527,8 @@ def profile_builder_node(state: AgentState) -> dict[str, Any]:
 def retriever_node(state: AgentState) -> dict[str, Any]:
     writer = get_stream_writer()
     profile = state["student_profile"]
+    last_message = _last_user_message(state)
+    focus_ids = extract_focus_university_ids(last_message)
 
     # No LLM call happens in this node (get_candidate_universities is a
     # deterministic SQLite + vector lookup), so there's no real model
@@ -531,20 +538,30 @@ def retriever_node(state: AgentState) -> dict[str, Any]:
     field_bit = profile.get("field_of_study")
     degree_bit = profile.get("degree_level")
     budget_bit = f"~{profile['budget_pkr_per_semester']:,} PKR/semester" if profile.get("budget_pkr_per_semester") else None
-    thought = "You're looking for " + " ".join(filter(None, [degree_bit, field_bit or "a program"]))
-    if budget_bit:
-        thought += f" around a budget of {budget_bit}"
-    thought += " - let me pull matching options from what I cover."
+    if focus_ids:
+        from .retriever import get_university_display_name
+
+        names = [get_university_display_name(uid) for uid in focus_ids]
+        thought = f"You asked me to compare {_natural_join(names)} against your profile — I'll pull those specifically."
+    else:
+        thought = "You're looking for " + " ".join(filter(None, [degree_bit, field_bit or "a program"]))
+        if budget_bit:
+            thought += f" around a budget of {budget_bit}"
+        thought += " - let me pull matching options from what I cover."
     _trace(writer, "thought", thought)
 
     location_bit = profile.get("student_area") or profile.get("student_city") or profile.get("preferred_province")
     if location_bit and "karachi" not in location_bit.lower():
         location_bit = f"{location_bit}, Karachi"
-    _trace(writer, "action", f"Scanning through the universities I track in {location_bit or 'Karachi'}...")
+    if focus_ids:
+        _trace(writer, "action", f"Focusing retrieval on the {len(focus_ids)} universities you named…")
+    else:
+        _trace(writer, "action", f"Scanning through the universities I track in {location_bit or 'Karachi'}...")
 
     candidates = get_candidate_universities(
         profile,
         university_filter=state.get("selected_university"),
+        focus_university_ids=focus_ids or None,
     )
 
     names = [c["record"].get("university_name") or c["record"].get("university_id", "?") for c in candidates]
@@ -554,7 +571,11 @@ def retriever_node(state: AgentState) -> dict[str, Any]:
         obs = "Came up empty this time - nothing in what I cover matches that combination yet."
     _trace(writer, "observation", obs)
 
-    return {"retrieved_universities": candidates, "current_phase": "matching"}
+    return {
+        "retrieved_universities": candidates,
+        "focus_university_ids": focus_ids or None,
+        "current_phase": "matching",
+    }
 
 
 def _student_coords(profile: dict[str, Any]) -> tuple[float, float] | None:
@@ -592,7 +613,10 @@ def ranker_node(state: AgentState) -> dict[str, Any]:
         return {"recommendations": [], "current_phase": "presenting"}
 
     priority_focus = profile.get("priority_focus")
-    validated = rank_candidates(profile, candidates, priority_focus=priority_focus, limit=5)
+    focus_ids = state.get("focus_university_ids") or []
+    # When comparing a named set, rank all of them (not just top 5 of a larger pool).
+    limit = max(5, len(focus_ids)) if focus_ids else 5
+    validated = rank_candidates(profile, candidates, priority_focus=priority_focus, limit=limit)
 
     top = validated[:3]
     if not top:
@@ -632,7 +656,11 @@ def presenter_node(state: AgentState) -> dict[str, Any]:
             "current_phase": "presenting",
         }
 
-    content = format_recommendations_message(recommendations)
+    content = (
+        format_comparison_message(recommendations)
+        if state.get("focus_university_ids")
+        else format_recommendations_message(recommendations)
+    )
     return {
         "messages": [{"role": "assistant", "content": content}],
         "current_phase": "presenting",
@@ -650,6 +678,10 @@ def refine_node(state: AgentState) -> dict[str, Any]:
         action = result.get("action", "end")
         updates = result.get("updates", {})
         reply = result.get("reply", "")
+
+    # Named compare/shortlist sets must re-enter retrieval+ranking, not Q&A.
+    if extract_focus_university_ids(last_message):
+        action = "refine"
 
     profile = _merge_profile_updates(state.get("student_profile") or {}, _sanitize_profile_updates(updates))
 

@@ -24,10 +24,6 @@ EMBEDDING_API_KEY = os.getenv(GEMINI_API_KEY_ENV) or os.getenv(GOOGLE_API_KEY_EN
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/gemini-embedding-2")
 GEMINI_CHAT_MODEL = os.getenv("GEMINI_CHAT_MODEL", "gemini-3.1-flash-lite")
 
-# Separate provider/account from Gemini - used only by agent/voice.py for
-# the optional voice chat feature (text-to-speech and speech-to-text).
-FISH_API_KEY = os.getenv("FISH_API_KEY")
-
 # Optional: set LANGSMITH_API_KEY in .env to trace every graph run and every
 # individual Gemini call (agent/llm.py's generate_text/generate_json are
 # decorated with @traceable) at smith.langchain.com - useful for seeing

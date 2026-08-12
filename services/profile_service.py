@@ -12,16 +12,51 @@ PROFILE_FIELD_WEIGHTS: dict[str, int] = {
     "name": 5,
     "email": 5,
     "phone": 5,
-    "age": 5,
     "current_education_level": 10,
-    "board": 10,
     "academic_percentage": 15,
-    "target_universities": 10,
     "field_of_study": 15,
     "budget_pkr_per_semester": 10,
     "scholarship_required": 5,
     "hostel_required": 5,
+    "degree_level": 10,
+    "preferred_province": 10,
+    "student_city": 5,
+    "student_area": 5,
+    "priority_focus": 5,
 }
+
+# Must match agent.state.REQUIRED_PROFILE_FIELDS — gates Chat until filled.
+REQUIRED_FOR_CHAT: tuple[str, ...] = (
+    "field_of_study",
+    "degree_level",
+    "budget_pkr_per_semester",
+    "preferred_province",
+    "academic_percentage",
+    "current_education_level",
+)
+
+REQUIRED_FIELD_LABELS: dict[str, str] = {
+    "field_of_study": "Field of study",
+    "degree_level": "Degree level",
+    "budget_pkr_per_semester": "Budget",
+    "preferred_province": "Preferred province",
+    "academic_percentage": "Academic percentage",
+    "current_education_level": "Current education",
+}
+
+
+def missing_required_fields(profile: dict[str, Any] | None) -> list[str]:
+    profile = profile or {}
+    missing: list[str] = []
+    for field in REQUIRED_FOR_CHAT:
+        value = profile.get(field)
+        if value in (None, "", [], {}):
+            missing.append(field)
+    return missing
+
+
+def required_fields_complete(profile: dict[str, Any] | None) -> bool:
+    return not missing_required_fields(profile)
 
 
 def calculate_completeness(profile: dict[str, Any]) -> int:

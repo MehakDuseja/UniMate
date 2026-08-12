@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% block title %}UniMate — Explore{% endblock %}
+
+{% block content %}
+<div class="um-explore">
+  <header class="um-explore-hero">
+    <div>
+      <p class="um-eyebrow">Browse</p>
+      <h1>Explore universities</h1>
+      <p class="um-explore-sub">
+        Compare schools in your dataset, shortlist favorites, then ask UniMate about any of them.
+      </p>
+    </div>
+    <div class="um-explore-stats">
+      <div>
+        <strong id="stat_total">{{ universities|length }}</strong>
+        <span>schools</span>
+      </div>
+      <div>
+        <strong id="stat_saved">{{ shortlist_count }}</strong>
+        <span>shortlisted</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="um-explore-toolbar">
+    <div class="um-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input id="explore_search" type="search" placeholder="Search by name, city, or program…" autocomplete="off" />
+    </div>
+    <div class="um-filter-row" id="filters" role="group" aria-label="Filters">
+      <button type="button" class="um-chip is-active" data-filter="all">All</button>
+      <button type="button" class="um-chip" data-filter="saved">Shortlisted</button>
+      <button type="button" class="um-chip" data-filter="public">Public</button>
+      <button type="button" class="um-chip" data-filter="private">Private</button>
+      <button type="button" class="um-chip" data-filter="hostel">Hostel</button>
+      <button type="button" class="um-chip" data-filter="scholarships">Scholarships</button>
+    </div>
+  </div>
+
+  <div id="explore_grid" class="um-uni-grid">
+    {% for u in universities %}
+    <article
+      class="um-uni-card"
+      data-id="{{ u.id }}"
+      data-name="{{ u.name|lower }}"
+      data-city="{{ (u.city or '')|lower }}"
+      data-programs="{{ (u.programs or [])|join(' ')|lower }}"
+      data-saved="{{ '1' if u.saved else '0' }}"
+      data-public="{{ '1' if u.is_public else ('0' if u.is_public is sameas false else '') }}"
+      data-hostel="{{ '1' if u.hostel else ('0' if u.hostel is sameas false else '') }}"
+      data-scholarships="{{ '1' if u.has_scholarships else '0' }}"
+    >
+      <div class="um-uni-card-top">
+        <div>
+          <h2>{{ u.name }}</h2>
+          <p class="um-uni-meta">{{ u.city or 'Location TBD' }}{% if u.province %} · {{ u.province }}{% endif %}</p>
+        </div>
+        <button
+          type="button"
+          class="um-save-btn {% if u.saved %}is-saved{% endif %}"
+          data-save="{{ u.id }}"
+          aria-label="{% if u.saved %}Remove from shortlist{% else %}Add to shortlist{% endif %}"
+          title="Shortlist"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"
+              fill="{% if u.saved %}currentColor{% else %}none{% endif %}"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="um-uni-tags">
+        {% if u.is_public is sameas true %}
+        <span class="um-tag">Public</span>
+        {% elif u.is_public is sameas false %}
+        <span class="um-tag">Private</span>
+        {% endif %}
+        {% if u.hostel is sameas true %}
+        <span class="um-tag">Hostel</span>
+        {% elif u.hostel is sameas false %}
+        <span class="um-tag muted">No hostel</span>
+        {% endif %}
+        {% if u.has_scholarships %}
+        <span class="um-tag accent">Scholarships</span>
+        {% endif %}
+        {% if u.eligibility %}
+        <span class="um-tag">Min {{ u.eligibility }}%</span>
+        {% endif %}
+      </div>
+
+      <div class="um-uni-fee">
+        {% if u.fee_label %}
+        <span class="um-fee-value">{{ u.fee_label }}</span>
+        <span class="um-fee-label">tuition signal</span>
+        {% else %}
+        <span class="um-fee-value muted">Fee not confirmed</span>
+        <span class="um-fee-label">ask UniMate for details</span>
+        {% endif %}
+      </div>
+
+      {% if u.programs %}
+      <ul class="um-program-list">
+        {% for p in u.programs[:4] %}
+        <li>{{ p }}</li>
+        {% endfor %}
+        {% if u.program_count > 4 %}
+        <li class="more">+{{ u.program_count - 4 }} more</li>
+        {% endif %}
+      </ul>
+      {% endif %}
+
+      <div class="um-uni-actions">
+        <a class="um-btn um-btn-primary um-btn-sm" href="/?q={{ ('Tell me about ' ~ u.name ~ ' admissions, fees, and scholarships')|urlencode }}">
+          Ask UniMate
+        </a>
+        {% if u.website %}
+        <a class="um-btn um-btn-ghost um-btn-sm" href="{{ u.website }}" target="_blank" rel="noopener noreferrer">Website</a>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <p id="explore_empty" class="um-empty-hint" hidden>No universities match those filters.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  const search = document.getElementById("explore_search");
+  const grid = document.getElementById("explore_grid");
+  const empty = document.getElementById("explore_empty");
+  const statSaved = document.getElementById("stat_saved");
+  let filter = "all";
+
+  function applyFilters() {
+    const q = (search.value || "").trim().toLowerCase();
+    let visible = 0;
+    grid.querySelectorAll(".um-uni-card").forEach((card) => {
+      const hay = [card.dataset.name, card.dataset.city, card.dataset.programs].join(" ");
+      const matchesQuery = !q || hay.includes(q);
+      let matchesFilter = true;
+      if (filter === "saved") matchesFilter = card.dataset.saved === "1";
+      if (filter === "public") matchesFilter = card.dataset.public === "1";
+      if (filter === "private") matchesFilter = card.dataset.public === "0";
+      if (filter === "hostel") matchesFilter = card.dataset.hostel === "1";
+      if (filter === "scholarships") matchesFilter = card.dataset.scholarships === "1";
+      const show = matchesQuery && matchesFilter;
+      // Use a class — `.um-uni-card { display:flex }` overrides the HTML `hidden` attribute.
+      card.classList.toggle("is-hidden", !show);
+      if (show) visible += 1;
+    });
+    empty.classList.toggle("is-hidden", visible > 0);
+    empty.hidden = visible > 0;
+  }
+
+  document.getElementById("filters").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-filter]");
+    if (!btn) return;
+    filter = btn.dataset.filter;
+    document.querySelectorAll("#filters .um-chip").forEach((c) => c.classList.toggle("is-active", c === btn));
+    applyFilters();
+  });
+
+  search.addEventListener("input", applyFilters);
+
+  grid.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-save]");
+    if (!btn) return;
+    const id = btn.dataset.save;
+    const card = btn.closest(".um-uni-card");
+    const next = card.dataset.saved !== "1";
+    btn.disabled = true;
+    try {
+      const resp = await fetch("/api/shortlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ university_id: id, saved: next }),
+      });
+      const data = await resp.json();
+      if (!resp.ok || data.error) throw new Error(data.error || "Could not update shortlist");
+      card.dataset.saved = next ? "1" : "0";
+      btn.classList.toggle("is-saved", next);
+      const path = btn.querySelector("path");
+      if (path) path.setAttribute("fill", next ? "currentColor" : "none");
+      btn.setAttribute("aria-label", next ? "Remove from shortlist" : "Add to shortlist");
+      const savedCount = grid.querySelectorAll('.um-uni-card[data-saved="1"]').length;
+      statSaved.textContent = String(savedCount);
+      umToast(next ? "Added to shortlist" : "Removed from shortlist");
+      applyFilters();
+    } catch (err) {
+      umToast(err.message || "Shortlist update failed", true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+{% endblock %}

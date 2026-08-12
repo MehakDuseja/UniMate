@@ -7,7 +7,7 @@ restart profile_builder_node from scratch.
 
 A SqliteSaver checkpointer makes conversations durable across process
 restarts (see build_graph() below) - callers still pass the full state as
-they always have (this project's callers, agent/cli.py and streamlit_app.py,
+they always have (this project's callers, agent/cli.py and web_app/app.py,
 own state explicitly rather than relying on LangGraph to reload it), but the
 checkpointer additionally persists it under a thread_id, so a new process can
 recover a conversation via `graph.get_state(config)` instead of only ever
@@ -73,9 +73,9 @@ def build_graph():
     graph.add_edge("qa", END)
 
     # check_same_thread=False: this connection is opened once (build_graph()
-    # is typically called once and cached - see @st.cache_resource in
-    # streamlit_app.py) and then reused across every subsequent turn/thread,
-    # which a server framework may dispatch from different worker threads.
+    # is typically called once and cached in web_app/app.py) and then reused
+    # across every subsequent turn/thread, which a server framework may
+    # dispatch from different worker threads.
     AGENT_CHECKPOINT_DB.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(AGENT_CHECKPOINT_DB), check_same_thread=False)
     checkpointer = SqliteSaver(conn)

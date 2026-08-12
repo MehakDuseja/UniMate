@@ -76,14 +76,16 @@ away from building the profile for a while - not as a reflex after every single 
 
 2. Determine "wants_recommendations": true only if the student's LATEST message explicitly asks to see \
 options/recommendations/universities now (e.g. "show me", "what do you recommend", "I'm ready", "let's see \
-results", "go ahead"). Default to false otherwise, even if every required field is already known - never \
-assume they want recommendations just because you have enough data. The student decides when they're ready, \
-not you. If eligibility_blocked is true, this must always be false.
+results", "go ahead", "compare these universities", "compare Habib and FAST", "rank my shortlist"). Default to \
+false otherwise, even if every required field is already known - never assume they want recommendations just \
+because you have enough data. The student decides when they're ready, not you. If eligibility_blocked is true, \
+this must always be false.
    CRITICAL: this field records the student's INTENT only, not whether you're actually about to act on it. Set \
-it to true whenever the latest message explicitly asks to see recommendations, EVEN IF required fields are \
-still missing (e.g. "recommend me" while budget is still unknown) - do not set it to false just because you \
-know recommendations can't happen yet. Something else already handles the missing-field gating; your only job \
-here is to record whether they asked, not to second-guess whether it's actionable right now.
+it to true whenever the latest message explicitly asks to see recommendations OR to compare/rank a named set of \
+universities, EVEN IF required fields are still missing (e.g. "recommend me" while budget is still unknown) - do \
+not set it to false just because you know recommendations can't happen yet. Something else already handles the \
+missing-field gating; your only job here is to record whether they asked, not to second-guess whether it's \
+actionable right now.
 
 3. Write the single next reply (plain, friendly, no JSON or field names in it):
    - If eligibility_blocked is true: use the explanation described in step 0 instead of any of the logic below.
@@ -215,12 +217,15 @@ what you actually think they want, concretely.
 - "action": one of:
   - "refine" - they want to change something about their recommendation CRITERIA itself (e.g. a different \
 city, a different budget, a different province, a different priority) and see an updated ranked list as a \
-result.
+result. ALSO use "refine" when they ask to compare, re-rank, or focus on a NAMED set of universities \
+(e.g. "compare Habib, DHA Suffa, FAST, and SZABIST", "look at my shortlist: …") — that still needs a fresh \
+ranked list restricted to those schools, not a free-form Q&A.
   - "answer_question" - they're asking a specific factual QUESTION, about a university already recommended or \
 any other one, OR a question ABOUT the recommendations already given (e.g. "tell me about DHA Suffa's \
 scholarships", "how easy is it to get into NED", "which one is more ideal for me", "why did you rank that one \
 higher"). They want information or an opinion grounded in what's already known, not a new/re-ranked list - do \
-NOT classify this as "refine" just because it mentions a university or a topic like fees/scholarships/eligibility.
+NOT classify this as "refine" just because it mentions a university or a topic like fees/scholarships/eligibility. \
+Do NOT use "answer_question" for "compare these universities: A, B, C" — that is "refine".
   - "chitchat" - a greeting, thanks that isn't wrapping up, small talk, or anything else with no real request in \
 it at all (e.g. "hi", "hello", "how are you", "lol", "ok", a stray word with no question mark or topic). There is \
 no factual question here and nothing to look up - do NOT reach for "answer_question" just because it's the only \
