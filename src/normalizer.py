@@ -109,19 +109,6 @@ UNIVERSITY_SEED_LATLONG = {
 #    Cyber Security - its 8 other programs range from 3,300 to 6,840, so
 #    this is representative of its CS-adjacent programs specifically, not
 #    a university-wide average).
-# dha_suffa, szabist, and ned_university are deliberately left out: each
-# program/tier has a different rate bundled together in one scraped table
-# (dha_suffa, szabist), or the one figure found has no stated billing period
-# in the source text (ned_university's "Self-Finance Fee Rs. 890,000/-").
-# iqra_university is also deliberately left out, for a different reason:
-# its own admission-hub page never states an exact tuition number at all -
-# every figure available for it is a hedged approximation ("roughly
-# ranging", "generally falling between", "or more depending on") rather
-# than a number the source states as a fact, so there's nothing here that
-# meets this dict's own "confirmed, not guessed" bar. That approximate text
-# still reaches the ranker/presenter as descriptive fee_details content
-# (see the manual "iqra-fee-summary" page in university_scraper.py) - it's
-# just not promoted to this structured, single-number field.
 # sir_syed_university: none of its original 8 scraped sources (undergrad/
 # postgrad admissions pages, UG Admission Policy, FAQs, PhD/MS policies, HEC
 # refund policy) stated an actual PKR figure anywhere. A user-supplied fee-
@@ -133,6 +120,12 @@ UNIVERSITY_SEED_LATLONG = {
 # Science, Information Technology, Software Engineering, and Cyber
 # Security); its other 30 programs range from 3,250 (Telecommunication
 # Engineering, Biotechnology) to 7,700.
+# iqra_university: admission-hub never states an exact tuition number; the
+# curated manual://iqra-fee-summary gives an approximate per-credit range
+# for standard UG (Business, Computing, Social Sciences) of PKR 5,124–
+# 7,100 (Law can be higher). Use 7,100 as the Computing/CS-adjacent signal
+# so analytics and ranking have a structured figure; descriptive fee text
+# still carries the full range.
 UNIVERSITY_SEED_TUITION = {
     "habib_university": (780_000, "per_semester"),
     "iba": (31_500, "per_credit_hour"),
@@ -142,6 +135,7 @@ UNIVERSITY_SEED_TUITION = {
     "ned_university": (64_475, "per_semester"),
     "szabist": (195_500, "per_semester"),
     "dha_suffa": (99_133, "per_semester"),
+    "iqra_university": (7_100, "per_credit_hour"),
 }
 
 
