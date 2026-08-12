@@ -49,6 +49,22 @@
     </div>
   </aside>
 
+  <div class="um-dialog-overlay" id="conv_delete_overlay" hidden>
+    <div
+      class="um-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="conv_delete_title"
+    >
+      <h3 id="conv_delete_title">Delete conversation?</h3>
+      <p class="um-dialog-body" id="conv_delete_body">This cannot be undone.</p>
+      <div class="um-dialog-actions">
+        <button type="button" class="um-btn um-btn-ghost" id="conv_delete_cancel">Cancel</button>
+        <button type="button" class="um-btn um-btn-danger" id="conv_delete_confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <button
     type="button"
     class="um-sidebar-expand"
@@ -73,21 +89,21 @@
           </p>
           <div class="um-mission-label">Run an agent mission</div>
           <div class="um-suggest-grid">
-            <button type="button" class="um-suggest" data-q="I want a Bachelor's in Computer Science in Sindh, Intermediate completed with about 78%, budget around 150000 PKR per semester. Please recommend the best fits and explain why.">
-              <strong>Full CS match</strong>
-              Profile → retrieve → rank for CS in Sindh
+            <button type="button" class="um-suggest" data-q="Using my saved profile, recommend the best university fits and explain tradeoffs clearly.">
+              <strong>Best fits for me</strong>
+              Rank schools from my profile
             </button>
-            <button type="button" class="um-suggest" data-q="Compare FAST University and NED University for software / CS admissions, fees, and difficulty. Which should I prefer if I care more about affordability?">
-              <strong>Compare FAST vs NED</strong>
-              Agent compares two schools on fees & fit
+            <button type="button" class="um-suggest" data-q="Compare my top options on fees, eligibility, and overall fit. Tell me who each school is best for.">
+              <strong>Compare top options</strong>
+              Side-by-side fees & fit
             </button>
-            <button type="button" class="um-suggest" data-q="Find budget-friendly universities in Karachi with scholarships for a Bachelor's student. I need hostel too if possible.">
-              <strong>Budget + scholarships</strong>
-              Autopilot search with constraints
+            <button type="button" class="um-suggest" data-q="Check my eligibility and find scholarships I could realistically qualify for. Then suggest practical next steps.">
+              <strong>Eligibility + aid</strong>
+              Cutoffs, scholarships, next moves
             </button>
-            <button type="button" class="um-suggest" data-q="I'm still figuring things out — ask me the most important questions one at a time, then recommend when I say I'm ready.">
-              <strong>Guided profiling</strong>
-              Let the agent interview you step by step
+            <button type="button" class="um-suggest" data-q="Give me a practical application plan based on my profile: which schools to prioritize, documents, entry tests, and the next 3 actions this week.">
+              <strong>Application plan</strong>
+              Clear next steps for this week
             </button>
           </div>
         </div>
@@ -97,29 +113,41 @@
     </div>
 
     <div class="um-tools-bar" id="agent_tools">
-      <span class="um-tools-label">Agent tools</span>
-      <button type="button" class="um-tool" data-action="recommend">Recommend fits</button>
-      <button type="button" class="um-tool" data-action="compare">Compare schools</button>
-      <button type="button" class="um-tool" data-action="fees">Fee deep-dive</button>
-      <button type="button" class="um-tool" data-action="scholarships">Find scholarships</button>
-      <button type="button" class="um-tool" data-action="eligibility">Check eligibility</button>
-      <button type="button" class="um-tool" data-action="hostel">Hostel options</button>
-      <button type="button" class="um-tool" data-action="shortlist">Review shortlist</button>
-      <button type="button" class="um-tool" data-action="save_shortlist">Save recs → shortlist</button>
-      <button type="button" class="um-tool" data-action="export_pdf">Export PDF</button>
-      <button type="button" class="um-tool" data-action="copy_summary">Copy summary</button>
-      <a class="um-tool um-tool-link" href="/explore">Open Explore</a>
-      <a class="um-tool um-tool-link" href="/analytics">Open Analytics</a>
-      <a class="um-tool um-tool-link" href="/api/export/profile.pdf">Export profile PDF</a>
-      <button type="button" class="um-tool um-tool-link" id="fits_toggle_btn">Ranked fits</button>
+      <span class="um-tools-label">Quick actions</span>
+      <div class="um-tools-scroll">
+        <button type="button" class="um-tool" data-action="recommend">Recommend</button>
+        <button type="button" class="um-tool" data-action="compare">Compare</button>
+        <button type="button" class="um-tool" data-action="scholarships">Scholarships</button>
+        <button type="button" class="um-tool" data-action="eligibility">Am I eligible?</button>
+        <button type="button" class="um-tool" data-action="next_steps">Next steps</button>
+        <button type="button" class="um-tool" data-action="shortlist">My shortlist</button>
+        <button type="button" class="um-tool" data-action="export_pdf">Export PDF</button>
+        <button type="button" class="um-tool um-tool-mobile-only" id="fits_toggle_btn">Fits panel</button>
+      </div>
     </div>
 
     <div class="um-composer-wrap">
+      <div class="um-focus-chip" id="focus_chip" hidden>
+        <div class="um-focus-chip-top">
+          <span class="um-focus-chip-label">
+            <span class="um-focus-dot" aria-hidden="true"></span>
+            Chatting about <strong id="focus_chip_name">University</strong>
+          </span>
+          <button type="button" class="um-focus-clear" id="focus_clear_btn" title="Clear university focus">Clear</button>
+        </div>
+        <div class="um-focus-tools" id="focus_tools" role="group" aria-label="Tools for focused university">
+          <button type="button" class="um-focus-tool" data-focus-act="ask">Why this fit?</button>
+          <button type="button" class="um-focus-tool" data-focus-act="fees">Fees vs budget</button>
+          <button type="button" class="um-focus-tool" data-focus-act="scholarships">Scholarships</button>
+          <button type="button" class="um-focus-tool" data-focus-act="eligibility">Eligibility</button>
+          <button type="button" class="um-focus-tool" data-focus-act="next_steps">How to apply</button>
+        </div>
+      </div>
       <form class="um-composer" id="chat_form" autocomplete="off">
         <textarea
           id="chat_input"
           rows="1"
-          placeholder="Assign a task or ask anything about universities…"
+          placeholder="Ask about universities, fees, eligibility, or next steps…"
           aria-label="Message"
         ></textarea>
         <button class="um-send" id="send_btn" type="submit" aria-label="Send" disabled>
@@ -128,7 +156,7 @@
           </svg>
         </button>
       </form>
-      <p class="um-composer-hint">Tip: give field, budget, city, and grades in one message to let the agent run end-to-end.</p>
+      <p class="um-composer-hint" id="composer_hint">Tip: in Ranked fits, tap <strong>Chat</strong> to lock answers to one university.</p>
     </div>
   </section>
 
@@ -139,13 +167,13 @@
         <h2>Ranked fits</h2>
       </div>
       <div class="um-fits-head-actions">
+        <button type="button" class="um-rec-btn" data-rec-act="copy_summary" title="Copy ranked list">Copy</button>
         <button type="button" class="um-rec-btn" data-rec-act="export_pdf">Export PDF</button>
-        <button type="button" class="um-rec-btn" data-rec-act="save_all">Save all</button>
       </div>
     </div>
-    <p class="um-fits-hint" id="fits_hint">Updates after each agent turn that ranks universities.</p>
+    <p class="um-fits-hint" id="fits_hint">Ask for recommendations to fill this panel.</p>
     <div id="recommendations" class="um-recs um-recs-panel">
-      <p class="um-empty-hint">No ranked fits yet — ask the agent to recommend or compare schools.</p>
+      <p class="um-empty-hint">No ranked fits yet — try <strong>Recommend</strong> or a mission above.</p>
     </div>
   </aside>
 </div>
@@ -158,6 +186,7 @@
   let sending = false;
   let lastRecommendations = [];
   let agentContext = { profile: {}, shortlist: [], recommendations: [] };
+  let focusUniversity = null; // { id, name }
 
   const messagesEl = document.getElementById("messages");
   const welcomeEl = document.getElementById("welcome_msg");
@@ -246,18 +275,23 @@
   }
 
   function renderRecommendations(recs) {
-    if (recs && recs.length) lastRecommendations = recs;
+    if (recs && recs.length) {
+      lastRecommendations = recs;
+    } else if (recs === null) {
+      lastRecommendations = [];
+    }
     const hint = document.getElementById("fits_hint");
     if (!recs || !recs.length) {
       recsEl.innerHTML =
-        '<p class="um-empty-hint">No ranked fits yet — ask the agent to recommend or compare schools.</p>';
-      if (hint) hint.textContent = "Updates after each agent turn that ranks universities.";
+        '<p class="um-empty-hint">No ranked fits yet — try <strong>Recommend</strong> or a mission above.</p>';
+      if (hint) hint.textContent = "Ask for recommendations to fill this panel.";
       return;
     }
     if (hint) {
       hint.textContent =
         "Updated from this chat · " + recs.length + " universit" + (recs.length === 1 ? "y" : "ies");
     }
+    const focusId = focusUniversity && focusUniversity.id;
     const cards = recs
       .slice(0, 8)
       .map((r) => {
@@ -268,7 +302,9 @@
           .slice(0, 3)
           .map((f) => {
             const label = umEscape(f.label || f.criterion || "");
-            const detail = umEscape(f.detail || "");
+            let detail = String(f.detail || "");
+            if (detail.length > 72) detail = detail.slice(0, 69).trim() + "…";
+            detail = umEscape(detail);
             const ok = f.status === "pass";
             return (
               '<li class="' + (ok ? "is-pass" : "is-warn") + '">' +
@@ -278,16 +314,21 @@
             );
           })
           .join("");
+        const focused = focusId && focusId === (r.university_id || "");
         return (
-          '<article class="um-rec-card" data-uid="' + uid + '">' +
+          '<article class="um-rec-card' + (focused ? " is-focused" : "") + '" data-uid="' + uid + '">' +
             '<div class="um-rec-card-top">' +
               "<h4>" + name + "</h4>" +
               (score != null ? '<span class="um-rec-score">' + score + "% match</span>" : "") +
             "</div>" +
             (factors ? '<ul class="um-rec-factors">' + factors + "</ul>" : "") +
             '<div class="um-rec-actions">' +
+              '<button type="button" class="um-rec-btn um-rec-btn-primary" data-rec-act="chat" data-uid="' + uid + '" data-name="' + name + '">' +
+                (focused ? "Chatting" : "Chat") +
+              "</button>" +
+              '<button type="button" class="um-rec-btn" data-rec-act="ask" data-uid="' + uid + '" data-name="' + name + '">Why</button>' +
+              '<button type="button" class="um-rec-btn" data-rec-act="fees" data-uid="' + uid + '" data-name="' + name + '">Fees</button>' +
               '<button type="button" class="um-rec-btn" data-rec-act="shortlist" data-uid="' + uid + '">Shortlist</button>' +
-              '<button type="button" class="um-rec-btn" data-rec-act="ask" data-name="' + name + '">Ask why</button>' +
             "</div>" +
           "</article>"
         );
@@ -305,16 +346,23 @@
       return;
     }
     convs.forEach((c) => {
+      const fullTitle = c.title || "New Chat";
       const row = document.createElement("div");
       row.className = "um-conv-row" + (c.id === activeThread ? " is-active" : "");
       row.dataset.id = c.id;
+      row.dataset.title = fullTitle;
 
       const openBtn = document.createElement("button");
       openBtn.type = "button";
       openBtn.className = "um-conv-item";
-      openBtn.title = c.title || "New Chat";
-      openBtn.innerHTML = "<span>" + umEscape(c.title || "New Chat") + "</span>";
-      openBtn.addEventListener("click", () => loadMessages(c.id));
+      openBtn.setAttribute("aria-label", fullTitle);
+      openBtn.innerHTML =
+        '<span class="um-conv-title">' + umEscape(fullTitle) + "</span>" +
+        '<span class="um-conv-tooltip" role="tooltip">' + umEscape(fullTitle) + "</span>";
+      openBtn.addEventListener("click", () => {
+        if (row.classList.contains("is-renaming")) return;
+        loadMessages(c.id, c.university_filter);
+      });
 
       const actions = document.createElement("div");
       actions.className = "um-conv-actions";
@@ -328,7 +376,7 @@
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       renameBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        renameConversation(c.id, c.title || "New Chat");
+        beginRenameConversation(row, c.id, fullTitle);
       });
 
       const deleteBtn = document.createElement("button");
@@ -340,7 +388,7 @@
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       deleteBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        deleteConversation(c.id, c.title || "New Chat");
+        openDeleteConversationDialog(c.id, fullTitle);
       });
 
       actions.appendChild(renameBtn);
@@ -351,29 +399,111 @@
     });
   }
 
-  async function renameConversation(id, currentTitle) {
-    const next = window.prompt("Rename conversation", currentTitle);
-    if (next == null) return;
-    const title = next.trim();
-    if (!title || title === currentTitle) return;
-    try {
-      const res = await fetch("/api/conversations/" + encodeURIComponent(id), {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title }),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(json.error || "Rename failed");
-      umToast("Renamed");
-      await loadConversations();
-    } catch (err) {
-      umToast(err.message || "Rename failed", true);
+  function beginRenameConversation(row, id, currentTitle) {
+    if (!row || row.classList.contains("is-renaming")) return;
+    // Only one rename at a time
+    document.querySelectorAll(".um-conv-row.is-renaming").forEach((other) => {
+      if (other !== row) cancelRenameConversation(other);
+    });
+
+    row.classList.add("is-renaming");
+    const openBtn = row.querySelector(".um-conv-item");
+    const actions = row.querySelector(".um-conv-actions");
+    if (!openBtn) return;
+    if (actions) actions.hidden = true;
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.className = "um-conv-rename-input";
+    input.value = currentTitle;
+    input.maxLength = 120;
+    input.setAttribute("aria-label", "Rename conversation");
+    openBtn.replaceWith(input);
+    input.focus();
+    input.select();
+
+    let finished = false;
+    async function commit() {
+      if (finished) return;
+      finished = true;
+      const title = input.value.trim();
+      if (!title || title === currentTitle) {
+        await loadConversations();
+        return;
+      }
+      try {
+        const res = await fetch("/api/conversations/" + encodeURIComponent(id), {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title }),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(json.error || "Rename failed");
+        umToast("Renamed");
+        await loadConversations();
+      } catch (err) {
+        umToast(err.message || "Rename failed", true);
+        await loadConversations();
+      }
+    }
+
+    function cancel() {
+      if (finished) return;
+      finished = true;
+      loadConversations();
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        commit();
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        cancel();
+      }
+    });
+    input.addEventListener("blur", () => {
+      // Slight delay so clicking Cancel elsewhere still works; commit on blur.
+      setTimeout(() => {
+        if (!finished) commit();
+      }, 120);
+    });
+  }
+
+  function cancelRenameConversation(row) {
+    if (!row) return;
+    row.classList.remove("is-renaming");
+  }
+
+  let pendingDeleteId = null;
+
+  function openDeleteConversationDialog(id, title) {
+    pendingDeleteId = id;
+    const overlay = document.getElementById("conv_delete_overlay");
+    const body = document.getElementById("conv_delete_body");
+    if (body) {
+      body.textContent =
+        'Delete "' + title + '"? This cannot be undone.';
+    }
+    if (overlay) {
+      overlay.hidden = false;
+      document.getElementById("conv_delete_confirm")?.focus();
     }
   }
 
-  async function deleteConversation(id, title) {
-    const ok = window.confirm('Delete "' + title + '"? This cannot be undone.');
-    if (!ok) return;
+  function closeDeleteConversationDialog() {
+    pendingDeleteId = null;
+    const overlay = document.getElementById("conv_delete_overlay");
+    if (overlay) overlay.hidden = true;
+  }
+
+  async function confirmDeleteConversation() {
+    const id = pendingDeleteId;
+    if (!id) {
+      closeDeleteConversationDialog();
+      return;
+    }
+    closeDeleteConversationDialog();
     try {
       const res = await fetch("/api/conversations/" + encodeURIComponent(id), {
         method: "DELETE",
@@ -384,6 +514,7 @@
         activeThread = null;
         messagesEl.innerHTML = "";
         renderRecommendations(null);
+        setFocusUniversity(null);
         setWelcomeVisible(true);
         clearAgentSteps();
         setAgentPhase("idle", "Conversation deleted — start a new chat anytime.");
@@ -395,7 +526,19 @@
     }
   }
 
-  async function loadMessages(threadId) {
+  document.getElementById("conv_delete_cancel")?.addEventListener("click", closeDeleteConversationDialog);
+  document.getElementById("conv_delete_confirm")?.addEventListener("click", confirmDeleteConversation);
+  document.getElementById("conv_delete_overlay")?.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeDeleteConversationDialog();
+  });
+  document.addEventListener("keydown", (e) => {
+    const overlay = document.getElementById("conv_delete_overlay");
+    if (e.key === "Escape" && overlay && !overlay.hidden) {
+      closeDeleteConversationDialog();
+    }
+  });
+
+  async function loadMessages(threadId, universityFilter) {
     activeThread = threadId;
     setWelcomeVisible(false);
     const res = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/messages");
@@ -405,6 +548,13 @@
       messagesEl.appendChild(renderMessage(m.role === "user" ? "user" : "assistant", m.content || ""));
     });
     renderRecommendations(null);
+    const filter = (universityFilter || "").trim();
+    if (filter && filter !== "all") {
+      const pretty = filter.replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase());
+      setFocusUniversity(filter, pretty);
+    } else {
+      setFocusUniversity(null);
+    }
     setAgentPhase("idle", "Conversation loaded — send a message to continue the agent loop.");
     clearAgentSteps();
     scrollBottom();
@@ -424,14 +574,55 @@
     return activeThread;
   }
 
-  async function sendMessage(text) {
+  function setFocusUniversity(uid, name) {
+    if (!uid) {
+      focusUniversity = null;
+    } else {
+      focusUniversity = { id: uid, name: name || uid };
+    }
+    const chip = document.getElementById("focus_chip");
+    const chipName = document.getElementById("focus_chip_name");
+    const hint = document.getElementById("composer_hint");
+    if (!chip) return;
+    if (focusUniversity) {
+      chip.hidden = false;
+      if (chipName) chipName.textContent = focusUniversity.name;
+      if (hint) hint.textContent = "Answers stay on " + focusUniversity.name + " until you clear focus.";
+      input.placeholder = "Ask anything about " + focusUniversity.name + "…";
+    } else {
+      chip.hidden = true;
+      if (hint) {
+        hint.innerHTML =
+          "Tip: in Ranked fits, tap <strong>Chat</strong> to lock answers to one university.";
+      }
+      input.placeholder = "Ask about universities, fees, eligibility, or next steps…";
+    }
+    if (lastRecommendations.length) {
+      // Update focus styling in place — avoid full card re-render (stops layout growth).
+      recsEl.querySelectorAll(".um-rec-card").forEach((card) => {
+        const uid = card.getAttribute("data-uid") || "";
+        const on = !!(focusUniversity && focusUniversity.id === uid);
+        card.classList.toggle("is-focused", on);
+        const chatBtn = card.querySelector('[data-rec-act="chat"]');
+        if (chatBtn) chatBtn.textContent = on ? "Chatting" : "Chat";
+      });
+    }
+  }
+
+  document.getElementById("focus_clear_btn")?.addEventListener("click", () => {
+    setFocusUniversity(null);
+    umToast("University focus cleared");
+  });
+
+  async function sendMessage(text, opts) {
     const value = (text || "").trim();
     if (!value || sending) return;
+    const uniId = (opts && opts.university_id) || (focusUniversity && focusUniversity.id) || null;
     sending = true;
     sendBtn.disabled = true;
     setWelcomeVisible(false);
     clearAgentSteps();
-    setAgentPhase("profiling", "Agent is running…");
+    setAgentPhase("profiling", uniId ? ("Focused on one school…") : "Agent is running…");
 
     messagesEl.appendChild(renderMessage("user", value));
     const thinking = renderMessage("assistant", "");
@@ -447,14 +638,48 @@
 
     try {
       const threadId = await ensureThread();
-      const resp = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/stream", {
+      const body = { text: value };
+      if (uniId) body.university_id = uniId;
+      else body.university_id = "all";
+
+      let resp = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: value }),
+        body: JSON.stringify(body),
       });
+
+      // Vercel cold starts / timeouts sometimes return 503 before SSE starts.
+      // Fall back to the non-streaming endpoint so the user still gets an answer.
+      if (resp.status === 503 || resp.status === 504 || resp.status === 502) {
+        umToast("Server busy — retrying without live stream…");
+        resp = await fetch("/api/chat/" + encodeURIComponent(threadId) + "/message", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (!resp.ok) {
+          const errData = await resp.json().catch(() => ({}));
+          throw new Error(errData.error || ("Request failed (" + resp.status + ")"));
+        }
+        const payload = await resp.json();
+        thinking.remove();
+        (payload.replies || [payload.reply]).filter(Boolean).forEach((r) => {
+          messagesEl.appendChild(renderMessage("assistant", r));
+        });
+        if (payload.recommendations && payload.recommendations.length) {
+          renderRecommendations(payload.recommendations);
+          openFitsIfNarrow();
+        }
+        updateAgentFromPayload(payload.agent || { phase: payload.phase });
+        await loadConversations();
+        await refreshAgentContext();
+        scrollBottom();
+        return;
+      }
+
       if (!resp.ok || !resp.body) {
         const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.error || "Stream failed");
+        throw new Error(errData.error || ("Stream failed (" + resp.status + ")"));
       }
 
       const liveBox = thinking.querySelector(".um-message-content");
@@ -477,6 +702,10 @@
           try {
             evt = JSON.parse(line.slice(6));
           } catch (_) {
+            continue;
+          }
+          if (evt.type === "heartbeat") {
+            setAgentPhase(phaseEl.textContent || "Working", evt.text || "Still working…");
             continue;
           }
           if (evt.type === "done") {
@@ -589,11 +818,9 @@
     return bits.join(", ");
   }
 
-  function profilePreamble(profile) {
-    const bits = profileBits(profile);
-    return bits
-      ? "Always use my saved profile (" + bits + "). Do not ask me to restate these unless something is missing. "
-      : "";
+  function profilePreamble(_profile) {
+    // Profile is injected server-side into agent state — keep chat messages short.
+    return "";
   }
 
   function summaryFromRecs(recs) {
@@ -662,15 +889,26 @@
     await refreshAgentContext();
   }
 
-  async function runToolAction(action) {
+  async function runToolAction(action, opts) {
     await refreshAgentContext();
     const profile = agentContext.profile || {};
     const shortlist = agentContext.shortlist || [];
     const bits = profileBits(profile);
     const preamble = profilePreamble(profile);
     const shortNames = shortlist.map((s) => s.name).filter(Boolean);
+    const focusName =
+      (opts && opts.name) ||
+      (focusUniversity && focusUniversity.name) ||
+      null;
+    const focusId =
+      (opts && opts.university_id) ||
+      (focusUniversity && focusUniversity.id) ||
+      null;
+    const focusClause = focusName
+      ? "Answer about " + focusName + " only. Do not recommend other universities. "
+      : "";
 
-    if (!bits && !["export_pdf", "copy_summary", "save_shortlist"].includes(action)) {
+    if (!bits && !["export_pdf", "copy_summary"].includes(action)) {
       umToast("Complete your profile first — tools use your saved details.", true);
       location.href = "/profile?next=chat";
       return;
@@ -702,27 +940,28 @@
       return;
     }
 
-    if (action === "save_shortlist") {
-      try {
-        await saveRecsToShortlist();
-      } catch (err) {
-        umToast(err.message || "Shortlist failed", true);
-      }
-      return;
-    }
-
     let prompt = "";
     if (action === "recommend") {
       prompt =
         preamble +
-        "Recommend the best university fits for me now. Explain tradeoffs clearly and include sources.";
+        (focusName
+          ? "Evaluate how well " + focusName + " fits my profile. Score budget, eligibility, program match, and location. Be specific."
+          : "Recommend the best university fits for me now. Explain tradeoffs clearly and include sources.");
     } else if (action === "compare") {
-      if (shortNames.length >= 2) {
+      if (focusName) {
+        prompt =
+          preamble +
+          "Using my profile, explain the strengths and weaknesses of " +
+          focusName +
+          " versus my next-best alternatives. Keep the deep dive on " +
+          focusName +
+          ".";
+      } else if (shortNames.length >= 2) {
         prompt =
           preamble +
           "Compare these shortlisted universities for me: " +
           shortNames.slice(0, 4).join(", ") +
-          ". Cover admissions difficulty, fees, scholarships, hostel, and who each is best for my profile.";
+          ". Cover admissions difficulty, fees, scholarships, and who each is best for my profile.";
       } else if (lastRecommendations.length >= 2) {
         prompt =
           preamble +
@@ -740,22 +979,36 @@
     } else if (action === "fees") {
       prompt =
         preamble +
-        "Give a clear fee comparison for universities that fit my profile. Flag which look affordable for my budget.";
+        focusClause +
+        (focusName
+          ? "Break down fees and total cost at " + focusName + " against my budget. Say clearly if it fits."
+          : "Compare fees for universities that fit my profile. Flag which look affordable for my budget.");
     } else if (action === "scholarships") {
       prompt =
         preamble +
-        "Which universities offer meaningful scholarships or fee concessions for my degree and field? Summarize requirements and competitiveness.";
+        focusClause +
+        (focusName
+          ? "What scholarships or fee concessions does " + focusName + " offer that I could qualify for with my profile?"
+          : "Which universities offer meaningful scholarships or fee concessions for my degree and field? Summarize requirements.");
     } else if (action === "eligibility") {
       prompt =
         preamble +
-        "Check my eligibility against real entry rules for universities matching my profile. Be explicit about marks cutoffs.";
-    } else if (action === "hostel") {
+        focusClause +
+        (focusName
+          ? "Check my eligibility for " + focusName + " against real entry rules and any entry tests. Be explicit about cutoffs and whether I qualify."
+          : "Check my eligibility against real entry rules for universities matching my profile. Be explicit about marks cutoffs and entry tests.");
+    } else if (action === "next_steps") {
       prompt =
         preamble +
-        "Which fitting universities have hostel options for my profile? Note fees/availability if known.";
+        focusClause +
+        (focusName
+          ? "Give me a practical application plan for " +
+            focusName +
+            " based on my profile: documents needed, entry tests, known deadlines if available, and the next 3 actions I should take this week."
+          : "Based on my profile and top fits, give a practical next-steps plan: which schools to apply to first, documents, entry tests, and the next 3 actions this week.");
     } else if (action === "shortlist") {
       if (!shortNames.length) {
-        umToast("Shortlist is empty — open Explore or save recommendations first.", true);
+        umToast("Shortlist is empty — save a school from Ranked fits first.", true);
         return;
       }
       prompt =
@@ -763,11 +1016,18 @@
         "Review my shortlist: " +
         shortNames.join(", ") +
         ". Help me narrow to a final 2–3 for my profile, explain tradeoffs, and suggest next steps.";
+    } else if (action === "ask") {
+      prompt =
+        preamble +
+        focusClause +
+        "Why is " +
+        (focusName || "this university") +
+        " a fit for my profile? Break down the match factors using my saved details.";
     } else {
       return;
     }
 
-    sendMessage(prompt);
+    sendMessage(prompt, focusId ? { university_id: focusId } : undefined);
   }
 
   document.getElementById("agent_tools").addEventListener("click", (e) => {
@@ -776,22 +1036,37 @@
     runToolAction(btn.dataset.action);
   });
 
+  document.getElementById("focus_tools")?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-focus-act]");
+    if (!btn || !focusUniversity) return;
+    runToolAction(btn.dataset.focusAct, {
+      university_id: focusUniversity.id,
+      name: focusUniversity.name,
+    });
+  });
+
   document.getElementById("fits_panel").addEventListener("click", async (e) => {
     const btn = e.target.closest("[data-rec-act]");
     if (!btn) return;
     const act = btn.dataset.recAct;
+    const uid = btn.dataset.uid || "";
+    const name = btn.dataset.name || "";
     try {
       if (act === "export_pdf") {
         await exportRecommendationsPdf();
-      } else if (act === "save_all") {
-        await saveRecsToShortlist();
+      } else if (act === "copy_summary") {
+        await runToolAction("copy_summary");
       } else if (act === "shortlist") {
-        const uid = btn.dataset.uid;
         if (!uid) return;
         await saveRecsToShortlist([uid]);
-      } else if (act === "ask") {
-        const name = btn.dataset.name || "the top university";
-        sendMessage("Why is " + name + " ranked for me? Break down the match factors.");
+      } else if (act === "chat") {
+        if (!uid) return;
+        setFocusUniversity(uid, name);
+        umToast("Chat locked to " + (name || uid));
+        input.focus();
+      } else if (["fees", "ask"].includes(act)) {
+        if (uid) setFocusUniversity(uid, name);
+        await runToolAction(act, { university_id: uid, name: name });
       }
     } catch (err) {
       umToast(err.message || "Action failed", true);
@@ -802,6 +1077,7 @@
     activeThread = null;
     messagesEl.innerHTML = "";
     renderRecommendations(null);
+    setFocusUniversity(null);
     setWelcomeVisible(true);
     clearAgentSteps();
     setAgentPhase("idle", "Ready when you are — I’ll profile, search, and rank schools for you.");
@@ -866,10 +1142,14 @@
   })();
 
   const prefill = {{ (prefill_q or '')|tojson }};
+  const autoSend = {{ (auto_send or false)|tojson }};
   if (prefill) {
     input.value = prefill;
     resizeInput();
     input.focus();
+    if (autoSend) {
+      setTimeout(() => sendMessage(prefill), 250);
+    }
   }
 })();
 </script>

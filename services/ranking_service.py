@@ -6,7 +6,7 @@ import re
 from typing import Any, Optional
 
 from agent.geo import geocode_area, haversine_km
-from agent.retriever import UNIVERSITY_ALIASES, get_university_display_name
+from agent.retriever import UNIVERSITY_ALIASES, extract_focus_university_ids, get_university_display_name
 
 _FACTOR_LABELS = {
     "program_match": "Program available",
@@ -324,10 +324,57 @@ def find_recommendation(
 def is_ranking_explanation_question(question: str) -> bool:
     lower = question.lower()
     patterns = [
-        r"\bwhy\b.*\b(rank|ranked|recommend|match|score|#1|first|top)\b",
+        r"\bwhy\b.*\b(rank|ranked|recommend|match|score|#1|first|top|fit)\b",
         r"\bwhy\b.*\b(higher|better|ideal|best)\b",
-        r"\bexplain\b.*\b(rank|ranking|recommend|match|score)\b",
+        r"\bexplain\b.*\b(rank|ranking|recommend|match|score|fit)\b",
+        r"\bbreak\s*down\b.*\b(match|rank|factor|fit)\b",
+        r"\bmatch factors?\b",
         r"\bhow\b.*\b(rank|ranked|score|match)\b",
-        r"\bwhat makes\b.*\b(good|best|top|ideal)\b",
+        r"\bwhat makes\b.*\b(good|best|top|ideal|fit)\b",
     ]
     return any(re.search(p, lower) for p in patterns)
+
+
+_EXPLICIT_RERANK_RE = re.compile(
+    r"\b("
+    r"re-?rank|new (ranked )?list|updated? (list|ranking|recommendations)|"
+    r"show (me )?(new )?(options|fits|recommendations|universities)|"
+    r"recommend (the )?(best |top )?((university |school )?fits|universities|schools|options)|"
+    r"change (my )?(budget|priority|field|province|city|criteria)"
+    r")\b",
+    re.IGNORECASE,
+)
+
+_FOLLOWUP_QA_RE = re.compile(
+    r"\b("
+    r"why|how (do|to|can|should|does|is|are)|"
+    r"explain|break\s*down|tell me|"
+    r"what (are|is|does|do|about)|"
+    r"fees?|tuition|budget|costs?|afford|"
+    r"scholarships?|eligib\w*|hostel|admissions?|deadlines?|documents?|"
+    r"entry tests?|aptitude tests?|apply|application|"
+    r"next steps|application plan|how to apply|"
+    r"fit for|match factors?|limit the answer|answer about"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def is_explicit_rerank_request(message: str) -> bool:
+    """True when the student clearly wants a fresh ranked list / criteria change."""
+    return bool(_EXPLICIT_RERANK_RE.search(message or ""))
+
+
+def is_university_followup_question(message: str) -> bool:
+    """True for factual/advisory follow-ups that must use Q&A, not re-ranking.
+
+    Naming a single university (or saying "limit to X only") is NOT enough to
+    re-run recommendations — that was causing "Why is FAST a fit?" / "application
+    plan for FAST" to reprint the ranked list.
+    """
+    text = message or ""
+    if extract_focus_university_ids(text):
+        return False
+    if is_explicit_rerank_request(text) and not _FOLLOWUP_QA_RE.search(text):
+        return False
+    return bool(_FOLLOWUP_QA_RE.search(text)) or is_ranking_explanation_question(text)

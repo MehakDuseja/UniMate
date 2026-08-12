@@ -1,16 +1,15 @@
+# Web / agent runtime (also used by Vercel)
 requests==2.34.2
 beautifulsoup4==4.15.0
-lxml==6.1.1
-tqdm==4.69.0
-pdfplumber==0.11.10
-PyMuPDF==1.28.0
 pandas==3.0.5
 pydantic==2.13.4
-chromadb==1.5.9
-sentence-transformers==5.6.1
 langgraph==1.2.9
 langgraph-checkpoint-sqlite==3.1.0
 python-dotenv==1.2.2
 google-genai==2.14.0
-Flask==2.3.4
-gunicorn==21.2.0
+openai>=1.40.0
+Flask
+gunicorn
+
+# Optional local ingest / scraping (not required on Vercel)
+# Install via: pip install -r requirements-ml.txt

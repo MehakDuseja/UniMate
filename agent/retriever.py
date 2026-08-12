@@ -171,6 +171,11 @@ def _get_collection():
 
 def _safe_get_collection():
     try:
+        from src.config import IS_SERVERLESS
+
+        # Serverless deploys skip Chroma (bundle size + /tmp cold builds).
+        if IS_SERVERLESS:
+            return None
         return _get_collection()
     except Exception:
         return None

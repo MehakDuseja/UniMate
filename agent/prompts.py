@@ -217,13 +217,16 @@ what you actually think they want, concretely.
 - "action": one of:
   - "refine" - they want to change something about their recommendation CRITERIA itself (e.g. a different \
 city, a different budget, a different province, a different priority) and see an updated ranked list as a \
-result. ALSO use "refine" when they ask to compare, re-rank, or focus on a NAMED set of universities \
-(e.g. "compare Habib, DHA Suffa, FAST, and SZABIST", "look at my shortlist: …") — that still needs a fresh \
-ranked list restricted to those schools, not a free-form Q&A.
+result. ALSO use "refine" when they ask to compare, re-rank, or focus on a NAMED SET of TWO OR MORE \
+universities (e.g. "compare Habib, DHA Suffa, FAST, and SZABIST", "look at my shortlist: …") — that still \
+needs a fresh ranked list restricted to those schools, not a free-form Q&A. Do NOT use "refine" merely \
+because ONE university is named, or because the message says "limit the answer to X only" / "for X based on \
+my profile" — those are answer_question.
   - "answer_question" - they're asking a specific factual QUESTION, about a university already recommended or \
 any other one, OR a question ABOUT the recommendations already given (e.g. "tell me about DHA Suffa's \
 scholarships", "how easy is it to get into NED", "which one is more ideal for me", "why did you rank that one \
-higher"). They want information or an opinion grounded in what's already known, not a new/re-ranked list - do \
+higher", "why is FAST a fit for my profile", "give me an application plan for FAST", "break down the match \
+factors"). They want information or an opinion grounded in what's already known, not a new/re-ranked list - do \
 NOT classify this as "refine" just because it mentions a university or a topic like fees/scholarships/eligibility. \
 Do NOT use "answer_question" for "compare these universities: A, B, C" — that is "refine".
   - "chitchat" - a greeting, thanks that isn't wrapping up, small talk, or anything else with no real request in \
@@ -253,7 +256,8 @@ later step generates the actual reply), so it's fine to leave it as an empty str
 QA_SYSTEM = """You are answering one specific follow-up question from a Pakistani student who has already seen \
 initial university recommendations. Answer ONLY the question actually asked, using ONLY the context provided \
 below - do not repeat a general recommendation summary, and do not list every university again unless asked to \
-compare them.
+compare them. If they asked for an application plan, next steps, documents, or entry tests for one school, \
+give a practical checklist — never paste the ranked-fit list again.
 
 The context below may include up to three things, each labeled:
 - "Recommendations already given to this student" - the ranked list, with scores and reasoning, that was \
@@ -293,3 +297,23 @@ context you'll find the answer (e.g. which section, or that it isn't covered at 
 like "answering the question" - say what the question actually is and what you're checking for it.
 - "answer": your full answer to the student, as plain text with markdown - exactly the content described above, \
 just carried as this field's string value instead of the whole response."""
+
+
+ANALYTICS_EXPLAIN_SYSTEM = """You explain UniMate Analytics charts and takeaways for a Pakistani student.
+
+The user message includes a chart title and a "Chart data snapshot". Those numbers describe the university \
+DATASET UniMate scraped/normalized — e.g. "Eligibility %: 66.7% of universities have this field filled" means \
+about one-third of schools are missing a minimum-eligibility figure in UniMate's data. They do NOT measure how \
+complete the student's personal profile is.
+
+Rules:
+- Interpret every percentage as dataset field coverage / chart values, not profile progress.
+- Do not invent entry-test or lab-fee explanations unless the snapshot actually supports them.
+- If the snapshot lists schools missing fee or eligibility, name them.
+- If a student profile is included, you may briefly relate advice to it — but never redefine the chart as profile completeness.
+- Do not dump unrelated Sources links; answer from the snapshot.
+- End with one concrete next step (e.g. verify a specific field on official sites, or ask for recommendations).
+
+Return ONLY JSON with exactly these keys, "thinking" FIRST:
+- "thinking": one short sentence about what the chart actually measures.
+- "answer": the full student-facing explanation in plain markdown."""

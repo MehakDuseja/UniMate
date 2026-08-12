@@ -12,7 +12,14 @@ from typing import Any, Iterable, List, Optional
 import time
 import random
 
-from .config import CHROMA_DIR, SEMANTIC_CHUNKS_DIR as CHUNKS_DIR, EMBEDDING_API_KEY, EMBEDDING_MODEL
+from .config import (
+    CHROMA_DIR,
+    SEMANTIC_CHUNKS_DIR as CHUNKS_DIR,
+    EMBEDDING_API_KEY,
+    EMBEDDING_MODEL,
+    EMBEDDING_PROVIDER,
+    OPENAI_API_KEY,
+)
 
 try:  # Optional runtime deps
     import chromadb
@@ -80,6 +87,30 @@ def _batch(iterable: Iterable, n: int):
         yield batch
 
 
+def get_openai_embeddings(
+    texts: list[str],
+    model: str = EMBEDDING_MODEL,
+    api_key: Optional[str] = None,
+    batch_size: int = 64,
+) -> list[list[float]]:
+    """Return embeddings using the OpenAI embeddings API."""
+    key = (api_key or OPENAI_API_KEY or EMBEDDING_API_KEY or "").strip()
+    if not key:
+        raise RuntimeError("No OpenAI API key found. Set OPENAI_API_KEY in the environment.")
+    try:
+        from openai import OpenAI
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError("openai is not installed. Install openai to produce embeddings.") from exc
+
+    client = OpenAI(api_key=key)
+    vectors: list[list[float]] = []
+    for batch_texts in _batch(texts, batch_size):
+        resp = client.embeddings.create(model=model, input=batch_texts)
+        ordered = sorted(resp.data, key=lambda row: row.index)
+        vectors.extend([list(row.embedding) for row in ordered])
+    return vectors
+
+
 def get_gemini_embeddings(
     texts: list[str],
     model: str = EMBEDDING_MODEL,
@@ -131,9 +162,8 @@ def get_gemini_embeddings(
                     if vec is None:
                         raise RuntimeError("Unable to extract embedding vector from Gemini response object")
                     vectors.append(vec)
-                # success, break retry loop
                 break
-            except Exception as e:  # retry on transient errors
+            except Exception as e:
                 last_exc = e
                 attempt += 1
                 if attempt > max_retries:
@@ -144,13 +174,22 @@ def get_gemini_embeddings(
                 time.sleep(sleep_for)
 
         if last_exc is not None and attempt > max_retries:
-            # If we couldn't produce embeddings for this batch, stop and return
-            # what we have so far so the caller can persist partially produced
-            # embeddings to the fallback JSON.
             print("Partial embeddings produced; some batches failed.")
             return vectors
 
     return vectors
+
+
+def get_embeddings(
+    texts: list[str],
+    model: str = EMBEDDING_MODEL,
+    api_key: Optional[str] = EMBEDDING_API_KEY,
+    batch_size: int = 32,
+) -> list[list[float]]:
+    """Route to Gemini or OpenAI embeddings based on configured provider."""
+    if EMBEDDING_PROVIDER == "openai":
+        return get_openai_embeddings(texts, model=model, api_key=api_key, batch_size=max(batch_size, 64))
+    return get_gemini_embeddings(texts, model=model, api_key=api_key, batch_size=batch_size)
 
 
 def get_local_embeddings(texts: list[str], model_name: str = LOCAL_EMBEDDING_MODEL) -> list[list[float]]:
@@ -185,8 +224,9 @@ def build_chroma_collection(
         print(f"Producing embeddings for {len(docs)} chunks using local model '{LOCAL_EMBEDDING_MODEL}'...")
         vectors = get_local_embeddings(docs)
     else:
-        print(f"Producing embeddings for {len(docs)} chunks using Gemini model '{EMBEDDING_MODEL}'...")
-        vectors = get_gemini_embeddings(docs, model=EMBEDDING_MODEL, api_key=EMBEDDING_API_KEY, batch_size=embed_batch)
+        label = "OpenAI" if EMBEDDING_PROVIDER == "openai" else "Gemini"
+        print(f"Producing embeddings for {len(docs)} chunks using {label} model '{EMBEDDING_MODEL}'...")
+        vectors = get_embeddings(docs, model=EMBEDDING_MODEL, api_key=EMBEDDING_API_KEY, batch_size=embed_batch)
 
     if len(vectors) != len(ids):
         # get_gemini_embeddings returns whatever succeeded so far if a batch

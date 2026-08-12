@@ -49,78 +49,138 @@
       <li>{{ tip }}</li>
       {% endfor %}
     </ul>
-    <a class="um-btn um-btn-primary um-btn-sm" href="/?q={{ 'Based on the current university dataset, what are the best fits for a CS student in Karachi with a mid-range budget?'|urlencode }}">
+    <button type="button" class="um-btn um-btn-primary um-btn-sm" id="ask_insights_btn">
       Ask UniMate to act on this
-    </a>
+    </button>
   </section>
   {% endif %}
 
   <div class="um-chart-grid">
-    <section class="um-chart-card">
-      <h2>Sector mix</h2>
-      <p>Public vs private universities</p>
+    <section class="um-chart-card" data-chart="sector">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Sector mix</h2>
+          <p>Public vs private universities</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="sector">Ask agent</button>
+      </div>
       <div class="um-chart-wrap sm"><canvas id="chart_sector"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Hostel availability</h2>
-      <p>Normalized hostel signals</p>
+    <section class="um-chart-card" data-chart="hostel">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Hostel availability</h2>
+          <p>Normalized hostel signals</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="hostel">Ask agent</button>
+      </div>
       <div class="um-chart-wrap sm"><canvas id="chart_hostel"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Scholarships</h2>
-      <p>Schools with scholarship info present</p>
+    <section class="um-chart-card" data-chart="scholarships">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Scholarships</h2>
+          <p>Schools with scholarship info present</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="scholarships">Ask agent</button>
+      </div>
       <div class="um-chart-wrap sm"><canvas id="chart_scholarships"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Fee period mix</h2>
-      <p>How tuition is quoted in the dataset</p>
+    <section class="um-chart-card" data-chart="fee_periods">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Fee period mix</h2>
+          <p>How tuition is quoted in the dataset</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="fee_periods">Ask agent</button>
+      </div>
       <div class="um-chart-wrap sm"><canvas id="chart_fee_periods"></canvas></div>
     </section>
 
-    <section class="um-chart-card wide">
-      <h2>Tuition signals by school</h2>
-      <p>Listed amounts — hover for billing period (semester vs credit hour)</p>
+    <section class="um-chart-card wide" data-chart="fees">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Tuition signals by school</h2>
+          <p>Listed amounts — hover for billing period (semester vs credit hour)</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="fees">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_fees"></canvas></div>
     </section>
 
-    <section class="um-chart-card">
-      <h2>Affordability buckets</h2>
-      <p>Semester-style fees grouped; credit-hour kept separate</p>
+    <section class="um-chart-card" data-chart="fee_buckets">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Affordability buckets</h2>
+          <p>Semester-style fees grouped; credit-hour kept separate</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="fee_buckets">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_fee_buckets"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Data completeness</h2>
-      <p>% of schools with each field filled</p>
+    <section class="um-chart-card" data-chart="completeness">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Data completeness</h2>
+          <p>% of schools with each field filled</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="completeness">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_completeness"></canvas></div>
     </section>
 
-    <section class="um-chart-card">
-      <h2>Minimum eligibility %</h2>
-      <p>Where a minimum percentage was extracted</p>
+    <section class="um-chart-card" data-chart="eligibility">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Minimum eligibility %</h2>
+          <p>Where a minimum percentage was extracted</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="eligibility">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_eligibility"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Programs indexed</h2>
-      <p>Offered-course entries per university</p>
+    <section class="um-chart-card" data-chart="programs">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Programs indexed</h2>
+          <p>Offered-course entries per university</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="programs">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_programs"></canvas></div>
     </section>
 
-    <section class="um-chart-card">
-      <h2>Program themes</h2>
-      <p>How many schools mention common study areas</p>
+    <section class="um-chart-card" data-chart="program_themes">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Program themes</h2>
+          <p>How many schools mention common study areas</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="program_themes">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_themes"></canvas></div>
     </section>
-    <section class="um-chart-card">
-      <h2>Fee vs eligibility</h2>
-      <p>All schools with both signals — credit-hour fees shown as ~15-credit semester estimate</p>
+    <section class="um-chart-card" data-chart="fee_vs_eligibility">
+      <div class="um-chart-card-top">
+        <div>
+          <h2>Fee vs eligibility</h2>
+          <p>All schools with both signals — credit-hour fees shown as ~15-credit semester estimate</p>
+        </div>
+        <button type="button" class="um-chart-ask" data-ask="fee_vs_eligibility">Ask agent</button>
+      </div>
       <div class="um-chart-wrap"><canvas id="chart_scatter"></canvas></div>
     </section>
   </div>
 
   {% if charts.schools_matrix and charts.schools_matrix.rows %}
   <section class="um-panel um-matrix-panel">
-    <h2>All universities at a glance</h2>
-    <p class="um-panel-desc">Every school in the dataset — fees, eligibility, hostel, and program coverage.</p>
+    <div class="um-chart-card-top" style="margin-bottom: 0.65rem;">
+      <div>
+        <h2>All universities at a glance</h2>
+        <p class="um-panel-desc" style="margin: 0;">Every school in the dataset — fees, eligibility, hostel, and program coverage.</p>
+      </div>
+      <button type="button" class="um-chart-ask" data-ask="schools_matrix">Ask agent</button>
+    </div>
     <div class="um-table-wrap">
       <table class="um-table">
         <thead>
@@ -161,6 +221,9 @@
 <script>
 (function () {
   const charts = {{ charts|tojson }};
+  const insights = {{ (insights or [])|tojson }};
+  const profile = {{ (profile or {})|tojson }};
+  const profileReady = {{ (profile_ready or false)|tojson }};
   const isDark = document.documentElement.classList.contains("um-dark");
   const text = isDark ? "#b4b4b4" : "#5c5c66";
   const grid = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)";
@@ -278,6 +341,194 @@
         y: { title: { display: true, text: "Fee (PKR)" }, beginAtZero: true, grid: { color: grid } },
       },
     },
+  });
+
+  function profileBits() {
+    const p = profile || {};
+    const bits = [];
+    if (p.field_of_study) bits.push(p.field_of_study);
+    if (p.degree_level) bits.push(p.degree_level);
+    if (p.preferred_province) bits.push(p.preferred_province);
+    if (p.budget_pkr_per_semester) bits.push("budget " + Number(p.budget_pkr_per_semester).toLocaleString() + " PKR/sem");
+    if (p.academic_percentage != null && p.academic_percentage !== "") bits.push(p.academic_percentage + "% marks");
+    if (p.current_education_level) bits.push(p.current_education_level);
+    if (p.hostel_required === true) bits.push("needs hostel");
+    if (p.scholarship_required === true) bits.push("needs scholarships");
+    return bits.join(", ");
+  }
+
+  function pairsSummary(data, limit) {
+    if (!data || !data.labels) return "(no data)";
+    const lim = limit || 12;
+    return data.labels
+      .slice(0, lim)
+      .map((label, i) => {
+        const v = data.values[i];
+        const num = typeof v === "number" ? v : Number(v);
+        const shown = Number.isFinite(num) && String(label).includes("%") === false && num <= 100 && num >= 0 && data._as_pct
+          ? num + "%"
+          : (Number.isFinite(num) ? (Number.isInteger(num) ? String(num) : String(num)) : String(v));
+        // Completeness chart values are already percentages 0-100
+        if (data._pct_values) return label + ": " + num + "% of schools";
+        return label + ": " + shown;
+      })
+      .join("; ");
+  }
+
+  function completenessSummary(data) {
+    if (!data || !data.labels) return "(no data)";
+    const parts = data.labels.map((label, i) => label + ": " + data.values[i] + "% of universities have this field filled");
+    const rows = (charts.schools_matrix && charts.schools_matrix.rows) || [];
+    const missingFee = rows.filter((r) => !r.fee_label || r.fee_label === "—").map((r) => r.name);
+    const missingElig = rows.filter((r) => r.eligibility == null || r.eligibility === "").map((r) => r.name);
+    let extra = "";
+    if (missingElig.length) extra += " Schools missing eligibility in dataset: " + missingElig.join(", ") + ".";
+    if (missingFee.length) extra += " Schools missing fee in dataset: " + missingFee.join(", ") + ".";
+    return parts.join("; ") + "." + extra;
+  }
+
+  function scatterSummary(data) {
+    const pts = (data && data.points) || [];
+    if (!pts.length) return "(no points)";
+    return pts
+      .slice(0, 12)
+      .map((p) => p.label + " (" + p.x + "% eligibility, " + Number(p.y).toLocaleString() + " PKR)")
+      .join("; ");
+  }
+
+  function matrixSummary(data) {
+    const rows = (data && data.rows) || [];
+    return rows
+      .slice(0, 9)
+      .map((r) => r.name + " — fee " + (r.fee_label || "n/a") + ", min " + (r.eligibility != null ? r.eligibility + "%" : "n/a"))
+      .join("; ");
+  }
+
+  const CHART_META = {
+    sector: {
+      title: "Sector mix (public vs private)",
+      explain: "Explain what this university-sector mix means for choosing schools in Karachi, and which options fit my profile.",
+      data: () => pairsSummary(charts.sector),
+    },
+    hostel: {
+      title: "Hostel availability",
+      explain: "Explain hostel coverage across universities in this dataset and recommend schools that match my hostel preference if I have one.",
+      data: () => pairsSummary(charts.hostel),
+    },
+    scholarships: {
+      title: "Scholarships coverage",
+      explain: "Explain scholarship coverage across universities and which are worth checking for aid given my profile.",
+      data: () => pairsSummary(charts.scholarships),
+    },
+    fee_periods: {
+      title: "Fee period mix",
+      explain: "Explain how fee periods (semester vs credit-hour vs yearly) should be compared fairly for my budget.",
+      data: () => pairsSummary(charts.fee_periods),
+    },
+    fees: {
+      title: "Tuition signals by school",
+      explain: "Walk me through the tuition chart: which schools look affordable for my budget, and which look expensive. Note billing periods.",
+      data: () => pairsSummary(charts.fees, 9),
+    },
+    fee_buckets: {
+      title: "Affordability buckets",
+      explain: "Explain the affordability buckets and where I likely fall based on my budget.",
+      data: () => pairsSummary(charts.fee_buckets),
+    },
+    completeness: {
+      title: "University dataset field completeness",
+      explain:
+        "CRITICAL: these percentages are about UniMate's university DATASET coverage (how many schools have each field filled), NOT my personal profile completeness. " +
+        "Explain what each gap means (especially Eligibility ~67% and Fee ~89%), which universities are missing those fields if listed, " +
+        "what I must verify on official sites before applying, and do not talk about my profile progress or entry-test scores as if they were this chart.",
+      data: () => completenessSummary(charts.completeness),
+    },
+    eligibility: {
+      title: "Minimum eligibility % by university",
+      explain: "Explain eligibility cut-offs vs my marks, and which schools I am likely eligible for.",
+      data: () => pairsSummary(charts.eligibility, 9),
+    },
+    programs: {
+      title: "Programs indexed",
+      explain: "Explain program coverage and which schools look strongest for my field of study.",
+      data: () => pairsSummary(charts.programs, 9),
+    },
+    program_themes: {
+      title: "Program themes",
+      explain: "Explain program themes and how they relate to my field of study.",
+      data: () => pairsSummary(charts.program_themes),
+    },
+    fee_vs_eligibility: {
+      title: "Fee vs eligibility scatter",
+      explain: "Explain the fee-vs-eligibility tradeoff chart and pick 2–3 schools that balance both for my profile.",
+      data: () => scatterSummary(charts.fee_vs_eligibility),
+    },
+    schools_matrix: {
+      title: "All universities matrix",
+      explain: "Using this university matrix, recommend a shortlist of 3 schools for my profile and explain tradeoffs.",
+      data: () => matrixSummary(charts.schools_matrix),
+    },
+  };
+
+  function buildChartPrompt(key) {
+    const meta = CHART_META[key];
+    if (!meta) return "";
+    const bits = profileBits();
+    const profileLine = bits
+      ? "My saved student profile (separate from the chart): " + bits + ".\n"
+      : "";
+    return (
+      "I'm looking at a UniMate Analytics chart about the university DATASET (not my profile): **" + meta.title + "**.\n" +
+      "Chart data snapshot: " + meta.data() + "\n" +
+      profileLine +
+      "Task: " + meta.explain + "\n" +
+      "Be concrete, use the snapshot numbers correctly, and end with one clear next step. " +
+      "Do not claim the chart measures my profile completeness."
+    );
+  }
+
+  function buildInsightsPrompt() {
+    const bits = profileBits();
+    const tipBlock = (insights || []).map((t, i) => (i + 1) + ". " + t).join("\n");
+    return (
+      "I'm looking at UniMate Analytics agent takeaways about the university dataset:\n" +
+      tipBlock + "\n\n" +
+      (bits ? "My saved student profile: " + bits + ".\n" : "") +
+      "Act on these takeaways for me: recommend best-fit schools, what to shortlist, " +
+      "what to verify on official sites, and the smartest next question I should ask you."
+    );
+  }
+
+  async function refreshProfileThen(buildPrompt) {
+    try {
+      const res = await fetch("/api/agent/context");
+      const ctx = await res.json();
+      if (ctx && ctx.profile) {
+        Object.keys(ctx.profile).forEach((k) => { profile[k] = ctx.profile[k]; });
+      }
+    } catch (_) { /* keep page profile */ }
+    return buildPrompt();
+  }
+
+  function goAskAgent(prompt) {
+    if (!prompt) return;
+    if (!profileReady) {
+      umToast("Save required profile fields first — then I’ll open Chat with this question.", true);
+    }
+    location.href = "/?auto=1&q=" + encodeURIComponent(prompt);
+  }
+
+  document.getElementById("ask_insights_btn")?.addEventListener("click", async () => {
+    const prompt = await refreshProfileThen(buildInsightsPrompt);
+    goAskAgent(prompt);
+  });
+
+  document.querySelectorAll("[data-ask]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const key = btn.getAttribute("data-ask");
+      const prompt = await refreshProfileThen(() => buildChartPrompt(key));
+      goAskAgent(prompt);
+    });
   });
 
   document.getElementById("darkSwitch")?.addEventListener("change", () => location.reload());

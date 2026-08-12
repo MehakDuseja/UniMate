@@ -115,7 +115,14 @@
         <div class="um-form-grid">
           <div class="um-field">
             <label for="field_of_study">Field of study <span class="req">*</span></label>
-            <input id="field_of_study" name="field_of_study" placeholder="e.g. Computer Science" value="{{ profile.get('field_of_study', '') }}" />
+            {% set field = profile.get('field_of_study', '') %}
+            <select id="field_of_study" name="field_of_study">
+              <option value="" disabled {% if not field %}selected{% endif %}>Choose a field from our university data</option>
+              {% for f in field_options %}
+              <option value="{{ f }}" {% if field == f %}selected{% endif %}>{{ f }}</option>
+              {% endfor %}
+            </select>
+            <p class="hint">Options come from programs offered across UniMate’s Karachi universities.</p>
           </div>
           <div class="um-field">
             <label for="degree_level">Degree level <span class="req">*</span></label>
@@ -145,7 +152,14 @@
           </div>
           <div class="um-field">
             <label for="current_education_level">Current education <span class="req">*</span></label>
-            <input id="current_education_level" name="current_education_level" placeholder="e.g. Intermediate / A-Levels completed" value="{{ profile.get('current_education_level', '') }}" />
+            {% set edu = profile.get('current_education_level', '') %}
+            <select id="current_education_level" name="current_education_level">
+              <option value="" disabled {% if not edu %}selected{% endif %}>Choose your current stage</option>
+              {% for e in education_options %}
+              <option value="{{ e }}" {% if edu == e %}selected{% endif %}>{{ e }}</option>
+              {% endfor %}
+            </select>
+            <p class="hint">Based on qualification pathways mentioned in our university eligibility data.</p>
           </div>
         </div>
       </section>

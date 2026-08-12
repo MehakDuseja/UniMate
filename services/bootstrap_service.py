@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 
-from src.config import CHROMA_DIR, INGEST_DB, SEMANTIC_CHUNKS_DIR
+from src.config import CHROMA_DIR, INGEST_DB, IS_SERVERLESS, SEMANTIC_CHUNKS_DIR
 from src.chunker import build_chunks
 from src.ingest import ingest_to_sqlite
 from src.vector_store import build_chroma_collection
@@ -43,8 +44,34 @@ def _sqlite_ready() -> bool:
         return False
 
 
-def ensure_retrieval_stores(*, force: bool = False) -> dict[str, bool]:
-    """Idempotent bootstrap used by the web app on startup."""
+def ensure_retrieval_stores(*, force: bool = False) -> dict[str, bool | str]:
+    """Idempotent bootstrap used by the web app on startup.
+
+    On Vercel/serverless we never build Chroma or sentence-transformers during
+    a request — that OOM/timeouts into intermittent 503s. Ranking still works
+    via structured JSON fallbacks in agent/retriever.py.
+    """
+    # Explicit skip, or automatic on serverless platforms.
+    skip_heavy = force is False and (
+        IS_SERVERLESS or os.getenv("UNIMATE_SKIP_HEAVY_BOOTSTRAP", "").strip() in ("1", "true", "yes")
+    )
+    if skip_heavy:
+        sqlite_ok = _sqlite_ready()
+        # Optional lightweight SQLite ingest from committed normalized JSON.
+        if not sqlite_ok:
+            try:
+                logger.info("Serverless: building SQLite ingest from normalized JSON…")
+                ingest_to_sqlite()
+                sqlite_ok = _sqlite_ready()
+            except Exception as exc:
+                logger.warning("Serverless SQLite ingest skipped/failed: %s", exc)
+                sqlite_ok = False
+        return {
+            "sqlite": sqlite_ok,
+            "chroma": False,
+            "mode": "serverless-lightweight",
+        }
+
     sqlite_ok = _sqlite_ready()
     chroma_ok = _chroma_ready()
     if force or not sqlite_ok:
@@ -60,4 +87,4 @@ def ensure_retrieval_stores(*, force: bool = False) -> dict[str, bool]:
         if chunks:
             build_chroma_collection(COLLECTION_NAME, chunks, backend="local")
         chroma_ok = _chroma_ready()
-    return {"sqlite": sqlite_ok, "chroma": chroma_ok}
+    return {"sqlite": sqlite_ok, "chroma": chroma_ok, "mode": "full"}

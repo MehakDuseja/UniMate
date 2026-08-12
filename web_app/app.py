@@ -8,10 +8,13 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask, Response, jsonify, redirect, render_template, request, session, send_file
 import json
+import queue
+import threading
 from io import BytesIO
 
 from agent.graph import build_graph
 from agent.state import initial_state
+from src.config import CHAT_MODEL, IS_SERVERLESS, LLM_PROVIDER
 from services import (
     analytics_service,
     bootstrap_service,
@@ -44,9 +47,27 @@ def ensure_data_ready() -> None:
 @app.before_request
 def _before_request_bootstrap():
     # Avoid blocking static assets on first hit.
-    if request.path.startswith("/static"):
+    if request.path.startswith("/static") or request.path in ("/api/health", "/health"):
         return
-    ensure_data_ready()
+    try:
+        ensure_data_ready()
+    except Exception as exc:
+        # Never turn a bootstrap hiccup into a hard 503 for the whole site.
+        app.logger.exception("Bootstrap warning: %s", exc)
+
+
+@app.route("/health")
+@app.route("/api/health")
+def api_health():
+    """Fast liveness probe for Vercel / load balancers."""
+    return jsonify(
+        {
+            "ok": True,
+            "provider": LLM_PROVIDER or None,
+            "model": CHAT_MODEL if LLM_PROVIDER else None,
+            "serverless": IS_SERVERLESS,
+        }
+    )
 
 
 def get_graph():
@@ -150,12 +171,25 @@ def _new_assistant_replies(before_count: int, state) -> list[str]:
 def index():
     bundle = _saved_profile_bundle()
     if not bundle["profile_ready"]:
+        q = (request.args.get("q") or "").strip()
+        if q:
+            session["pending_chat_q"] = q
+            session["pending_chat_auto"] = "1" if request.args.get("auto") == "1" else "0"
         return redirect("/profile?next=chat")
     prefill = (request.args.get("q") or "").strip()
+    auto = request.args.get("auto") == "1"
+    if not prefill and session.get("pending_chat_q"):
+        prefill = session.pop("pending_chat_q", "") or ""
+        auto = auto or session.pop("pending_chat_auto", "0") == "1"
+    elif session.get("pending_chat_q"):
+        # Prefer explicit URL query; drop stale pending.
+        session.pop("pending_chat_q", None)
+        session.pop("pending_chat_auto", None)
     return render_template(
         "index.html",
         completeness_pct=bundle["completeness_pct"],
         prefill_q=prefill,
+        auto_send=auto,
         profile_ready=True,
     )
 
@@ -171,6 +205,12 @@ def profile():
         profile_ready=bundle["profile_ready"],
         profile_missing_labels=bundle["profile_missing_labels"],
         next_step=next_step,
+        field_options=explore_service.list_field_of_study_options(
+            include=bundle["profile"].get("field_of_study")
+        ),
+        education_options=explore_service.list_education_level_options(
+            include=bundle["profile"].get("current_education_level")
+        ),
     )
 
 
@@ -201,13 +241,15 @@ def explore_page():
 
 @app.route("/analytics")
 def analytics_page():
-    get_or_create_student()
+    bundle = _saved_profile_bundle()
     payload = analytics_service.build_analytics()
     return render_template(
         "analytics.html",
         summary=payload["summary"],
         charts=payload["charts"],
         insights=payload.get("insights") or [],
+        profile_ready=bundle["profile_ready"],
+        profile=bundle["profile"],
     )
 
 
@@ -408,12 +450,17 @@ def api_post_message(thread_id):
         return jsonify({"error": "empty"}), 400
 
     student_id = get_or_create_student()
-    conversation_service.upsert_conversation(thread_id=thread_id, student_id=student_id)
+    uni = (data.get("university_id") or "").strip() or None
+    conversation_service.upsert_conversation(
+        thread_id=thread_id,
+        student_id=student_id,
+        university_filter=uni if uni and uni != "all" else "all",
+    )
     conversation_service.append_message(thread_id, "user", text)
 
     graph = get_graph()
     config = {"configurable": {"thread_id": thread_id}}
-    state = _prepare_agent_state(graph, config, student_id, text)
+    state = _prepare_agent_state(graph, config, student_id, text, university_id=uni)
     before_count = len(state.get("messages") or [])
 
     try:
@@ -449,21 +496,55 @@ def api_stream_message(thread_id):
         return jsonify({"error": "empty"}), 400
 
     student_id = get_or_create_student()
-    conversation_service.upsert_conversation(thread_id=thread_id, student_id=student_id)
+    uni = (data.get("university_id") or "").strip() or None
+    conversation_service.upsert_conversation(
+        thread_id=thread_id,
+        student_id=student_id,
+        university_filter=uni if uni and uni != "all" else "all",
+    )
     conversation_service.append_message(thread_id, "user", text)
 
     graph = get_graph()
     config = {"configurable": {"thread_id": thread_id}}
-    state = _prepare_agent_state(graph, config, student_id, text)
+    state = _prepare_agent_state(graph, config, student_id, text, university_id=uni)
     before_count = len(state.get("messages") or [])
 
     def event_stream():
         yield _sse({"type": "status", "text": "Agent started — working through your request…"})
         final_state = state
+        events: queue.Queue = queue.Queue()
+
+        def _worker():
+            try:
+                for mode, chunk in graph.stream(
+                    state, config=config, stream_mode=["custom", "values"]
+                ):
+                    events.put(("chunk", mode, chunk))
+                events.put(("ok", None, None))
+            except Exception as exc:
+                events.put(("err", exc, None))
+
+        worker = threading.Thread(target=_worker, daemon=True)
+        worker.start()
+
         try:
-            for mode, chunk in graph.stream(
-                state, config=config, stream_mode=["custom", "values"]
-            ):
+            while True:
+                try:
+                    kind, mode_or_exc, chunk = events.get(timeout=10)
+                except queue.Empty:
+                    # Keep proxies / Vercel from closing idle streams → 503.
+                    yield ": ping\n\n"
+                    yield _sse({"type": "heartbeat", "text": "still working…"})
+                    if not worker.is_alive() and events.empty():
+                        break
+                    continue
+
+                if kind == "ok":
+                    break
+                if kind == "err":
+                    raise mode_or_exc
+
+                mode, chunk = mode_or_exc, chunk
                 if mode == "custom" and isinstance(chunk, dict):
                     event_type = chunk.get("type") or "thought"
                     event_text = chunk.get("text") or ""
@@ -474,6 +555,7 @@ def api_stream_message(thread_id):
                     phase = chunk.get("current_phase")
                     if phase:
                         yield _sse({"type": "phase", "text": phase, "phase": phase})
+
             payload = _finalize_agent_turn(thread_id, final_state, before_count, student_id)
             payload["type"] = "done"
             yield _sse(payload)
@@ -482,7 +564,10 @@ def api_stream_message(thread_id):
                 "Sorry — I hit an error talking to the model. "
                 "Please try again in a moment."
             )
-            conversation_service.append_message(thread_id, "assistant", fallback)
+            try:
+                conversation_service.append_message(thread_id, "assistant", fallback)
+            except Exception:
+                pass
             yield _sse(
                 {
                     "type": "done",
@@ -500,8 +585,9 @@ def api_stream_message(thread_id):
         event_stream(),
         mimetype="text/event-stream",
         headers={
-            "Cache-Control": "no-cache",
+            "Cache-Control": "no-cache, no-transform",
             "X-Accel-Buffering": "no",
+            "Connection": "keep-alive",
         },
     )
 
@@ -510,18 +596,35 @@ def _sse(payload: dict) -> str:
     return f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
 
 
-def _prepare_agent_state(graph, config, student_id: str, text: str) -> dict:
+def _prepare_agent_state(
+    graph,
+    config,
+    student_id: str,
+    text: str,
+    *,
+    university_id: str | None = None,
+) -> dict:
     snapshot = graph.get_state(config)
     if snapshot.values and snapshot.values.get("messages"):
         state = dict(snapshot.values)
     else:
         state = initial_state()
-        saved = profile_service.get_saved_profile(student_id) or {}
-        saved_profile = saved.get("profile") or {}
-        if saved_profile:
-            state["student_profile"] = {
-                k: v for k, v in saved_profile.items() if v not in (None, "", [], {})
-            }
+
+    # Always refresh saved profile into state so tools stay profile-aware.
+    saved = profile_service.get_saved_profile(student_id) or {}
+    saved_profile = saved.get("profile") or {}
+    if saved_profile:
+        merged = dict(state.get("student_profile") or {})
+        for k, v in saved_profile.items():
+            if v not in (None, "", [], {}):
+                merged[k] = v
+        state["student_profile"] = merged
+
+    # Explicit lock / unlock from the chat UI (including "all" to clear).
+    if university_id is not None:
+        uid = (university_id or "").strip()
+        state["selected_university"] = uid if uid and uid != "all" else "all"
+
     messages = list(state.get("messages") or [])
     messages.append({"role": "user", "content": text})
     state["messages"] = messages
@@ -562,4 +665,7 @@ def _finalize_agent_turn(thread_id: str, state: dict, before_count: int, student
 
 
 if __name__ == "__main__":
+    from src.config import CHAT_MODEL, LLM_PROVIDER
+
+    print(f"UniMate LLM: {LLM_PROVIDER or 'none'} ({CHAT_MODEL})")
     app.run(host="127.0.0.1", port=5000, debug=True)

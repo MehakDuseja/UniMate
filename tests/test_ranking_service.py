@@ -75,7 +75,27 @@ def test_explain_ranking_includes_factors():
 def test_is_ranking_explanation_question():
     assert is_ranking_explanation_question("Why is FAST ranked #1?")
     assert is_ranking_explanation_question("Explain the ranking for IBA")
+    assert is_ranking_explanation_question(
+        "Why is FAST University a fit for my profile? Break down the match factors"
+    )
     assert not is_ranking_explanation_question("What is the fee at FAST?")
+
+
+def test_is_university_followup_question_routes_qa_not_rerank():
+    from services.ranking_service import is_explicit_rerank_request, is_university_followup_question
+
+    assert is_university_followup_question(
+        "Why is FAST University a fit for my profile? Break down the match factors using my saved details."
+    )
+    assert is_university_followup_question(
+        "Give me a practical application plan for FAST University based on my profile: documents, entry tests, deadlines."
+    )
+    assert is_university_followup_question("Answer about FAST University only. What scholarships could I get?")
+    assert not is_university_followup_question(
+        "Compare Habib University, DHA Suffa, FAST University, and SZABIST for my profile."
+    )
+    assert is_explicit_rerank_request("Recommend the best university fits for me now.")
+    assert not is_university_followup_question("Recommend the best university fits for me now.")
 
 
 def test_find_recommendation_by_name_and_rank():

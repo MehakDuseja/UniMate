@@ -1,0 +1,22 @@
+[project]
+name = "unimate"
+version = "0.1.0"
+description = "University admissions agent for Pakistani universities."
+requires-python = ">=3.11"
+# Keep the Vercel bundle lean. Heavy ML/scraping deps stay in requirements.txt
+# for local ingest — on Vercel the agent uses structured JSON fallbacks.
+dependencies = [
+  "requests==2.34.2",
+  "beautifulsoup4==4.15.0",
+  "pandas==3.0.5",
+  "pydantic==2.13.4",
+  "langgraph==1.2.9",
+  "langgraph-checkpoint-sqlite==3.1.0",
+  "python-dotenv==1.2.2",
+  "google-genai==2.14.0",
+  "openai>=1.40.0",
+  "Flask",
+]
+
+[tool.vercel]
+entrypoint = "web_app.app:app"

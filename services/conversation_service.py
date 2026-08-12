@@ -9,13 +9,46 @@ from typing import Any, Optional
 from db.connection import get_connection
 
 
-def _title_from_message(message: str, max_len: int = 48) -> str:
-    text = re.sub(r"\s+", " ", message.strip())
+def _title_from_message(message: str, max_len: int = 72) -> str:
+    """Build a short sidebar title from the first user message.
+
+    Strips tool-prompt boilerplate so titles stay readable (e.g. "Why is FAST
+    a fit…" instead of "Always use my saved profile…").
+    """
+    text = re.sub(r"\s+", " ", (message or "").strip())
     if not text:
         return "New Chat"
+
+    # Drop injected / tool boilerplate that used to pollute conversation titles.
+    lower = text.lower()
+    if lower.startswith("always use my saved profile"):
+        marker = re.search(r"unless something is missing\.?\s*", text, flags=re.IGNORECASE)
+        text = text[marker.end() :].strip() if marker else re.sub(
+            r"^Always use my saved profile\b[^.]*(?:\.[^.]*)?\.\s*",
+            "",
+            text,
+            flags=re.IGNORECASE,
+        )
+
+    text = re.sub(
+        r"^Answer about .+? only\.\s*(?:Do not recommend other universities\.\s*)?",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"^Limit the answer to .+? only\s*[—\-–]?\s*(?:do not recommend other universities\.\s*)?",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\s+", " ", text).strip(" .")
+    if not text:
+        return "New Chat"
+
     if len(text) <= max_len:
         return text
-    return text[: max_len - 1].rstrip() + "…"
+    return text[: max_len - 1].rstrip(" ,;:") + "…"
 
 
 def create_chat(student_id: str, title: str = "New Chat", *, university_filter: str = "all") -> str:

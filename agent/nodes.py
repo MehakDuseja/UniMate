@@ -11,6 +11,7 @@ from langgraph.config import get_stream_writer
 from .geo import geocode_area
 from .llm import generate_json_live
 from .prompts import (
+    ANALYTICS_EXPLAIN_SYSTEM,
     PROFILE_BUILDER_SYSTEM,
     QA_SYSTEM,
     REFINE_CLASSIFIER_SYSTEM,
@@ -30,7 +31,9 @@ from services.ranking_service import (
     find_recommendation,
     format_comparison_message,
     format_recommendations_message,
+    is_explicit_rerank_request,
     is_ranking_explanation_question,
+    is_university_followup_question,
     rank_candidates,
 )
 from .state import REQUIRED_PROFILE_FIELDS, AgentState
@@ -199,7 +202,29 @@ _QUESTION_INDICATOR_RE = re.compile(
 
 
 def _looks_like_question(text: str) -> bool:
-    return bool(text) and bool(_QUESTION_INDICATOR_RE.search(text))
+    t = (text or "").strip()
+    if not t:
+        return False
+    if _is_analytics_explain_question(t):
+        return False
+    return "?" in t or bool(
+        re.search(
+            r"\b(what|which|how|when|where|why|tell me|explain|compare|show me)\b",
+            t,
+            re.I,
+        )
+    )
+
+
+def _is_analytics_explain_question(text: str) -> bool:
+    lower = (text or "").lower()
+    return (
+        "analytics chart" in lower
+        or "unimate analytics" in lower
+        or "chart data snapshot" in lower
+        or "agent takeaways" in lower
+        or "university dataset field completeness" in lower
+    )
 
 
 def _structured_fee_snippet(university_id: Optional[str]) -> str:
@@ -389,6 +414,30 @@ def profile_builder_node(state: AgentState) -> dict[str, Any]:
     last_message = _last_user_message(state)
     last_question = _last_assistant_message(state)
     missing_before = _missing_fields(profile)
+
+    # Analytics chart / takeaway questions already carry their data snapshot —
+    # answer them directly instead of profiling or retrieving random chunks.
+    if _is_analytics_explain_question(last_message):
+        _trace(writer, "thought", "This is an Analytics chart question — I'll explain the dataset snapshot, not your profile progress.")
+        _trace(writer, "action", "Reading the chart snapshot from your message…")
+        result = _run_live(ANALYTICS_EXPLAIN_SYSTEM, last_message, ["thinking", "answer"])
+        answer = ""
+        if isinstance(result, dict):
+            answer = (result.get("answer") or result.get("reply") or "").strip()
+        if not answer:
+            answer = (
+                "That Analytics chart measures how complete UniMate's university dataset is for each field "
+                "(e.g. how many schools have a fee or eligibility figure), not how complete your personal profile is. "
+                "Ask me again with the snapshot if you want a field-by-field breakdown."
+            )
+        _trace(writer, "observation", "Explained the Analytics chart from the provided snapshot.")
+        return {
+            "student_profile": profile,
+            "profile_complete": not missing_before,
+            "messages": [{"role": "assistant", "content": answer}],
+            "current_phase": "profiling" if missing_before else "refining",
+            "recommendations_requested": False,
+        }
 
     # Cheap local retrieval (no LLM call) so a question asked mid-profiling
     # ("what is the fee structure of FAST") can be answered directly with
@@ -669,6 +718,27 @@ def presenter_node(state: AgentState) -> dict[str, Any]:
 
 def refine_node(state: AgentState) -> dict[str, Any]:
     last_message = _last_user_message(state)
+
+    # Analytics explain requests should answer immediately, not re-rank.
+    if _is_analytics_explain_question(last_message):
+        writer = get_stream_writer()
+        _trace(writer, "thought", "Analytics chart follow-up — explaining the dataset snapshot directly.")
+        result = _run_live(ANALYTICS_EXPLAIN_SYSTEM, last_message, ["thinking", "answer"])
+        answer = ""
+        if isinstance(result, dict):
+            answer = (result.get("answer") or result.get("reply") or "").strip()
+        if not answer:
+            answer = (
+                "That chart is about UniMate's university dataset coverage, not your profile completeness. "
+                "Share the snapshot again if you want a field-by-field read."
+            )
+        return {
+            "student_profile": state.get("student_profile") or {},
+            "current_phase": "refining",
+            "refine_action": "chitchat",
+            "messages": [{"role": "assistant", "content": answer}],
+        }
+
     result = _run_live(REFINE_CLASSIFIER_SYSTEM, f"Student's message: {last_message}", ["thinking"])
 
     action = "end"
@@ -679,9 +749,17 @@ def refine_node(state: AgentState) -> dict[str, Any]:
         updates = result.get("updates", {})
         reply = result.get("reply", "")
 
-    # Named compare/shortlist sets must re-enter retrieval+ranking, not Q&A.
-    if extract_focus_university_ids(last_message):
+    # Deterministic overrides — the classifier often mislabels single-university
+    # Q&A ("Why is FAST a fit?", "application plan for NED") as "refine", which
+    # reprints the ranked list via presenter. Multi-uni compare still re-ranks.
+    # Explicit "Recommend…" / re-rank asks must also re-enter ranking even if the
+    # model picks answer_question.
+    focus_ids = extract_focus_university_ids(last_message)
+    locked = is_university_locked(state.get("selected_university"))
+    if focus_ids or is_explicit_rerank_request(last_message):
         action = "refine"
+    elif locked or is_university_followup_question(last_message):
+        action = "answer_question"
 
     profile = _merge_profile_updates(state.get("student_profile") or {}, _sanitize_profile_updates(updates))
 

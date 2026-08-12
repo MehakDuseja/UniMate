@@ -40,6 +40,16 @@ def test_conversation_crud():
     assert conversation_service.list_conversations(student_id) == []
 
 
+def test_title_from_message_strips_tool_boilerplate():
+    title = conversation_service._title_from_message(
+        "Always use my saved profile (Computer Science, Bachelor). Do not ask me to restate these "
+        "unless something is missing. Answer about FAST University only. Do not recommend other "
+        "universities. Why is FAST University a fit for my profile?"
+    )
+    assert "Always use my saved profile" not in title
+    assert "Why is FAST" in title
+
+
 def test_chat_history_persistence_and_restore():
     student_id = profile_service.ensure_student(str(uuid.uuid4()))
     chat_id = conversation_service.create_chat(student_id, "NED admission requirements")
