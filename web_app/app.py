@@ -316,7 +316,10 @@ def api_export_recommendations_pdf():
     if not recs:
         return jsonify({"error": "No recommendations to export. Ask the agent to recommend fits first."}), 400
 
-    pdf_bytes = export_service.build_recommendations_pdf(recs, profile=profile)
+    try:
+        pdf_bytes = export_service.build_recommendations_pdf(recs, profile=profile)
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
     return send_file(
         BytesIO(pdf_bytes),
         mimetype="application/pdf",
@@ -353,9 +356,12 @@ def api_export_profile_pdf():
     profile = saved.get("profile") or {}
     if not profile:
         return jsonify({"error": "Save a profile first."}), 400
-    pdf_bytes = export_service.build_profile_pdf(
-        profile, completeness_pct=int(saved.get("completeness_pct") or 0)
-    )
+    try:
+        pdf_bytes = export_service.build_profile_pdf(
+            profile, completeness_pct=int(saved.get("completeness_pct") or 0)
+        )
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
     return send_file(
         BytesIO(pdf_bytes),
         mimetype="application/pdf",

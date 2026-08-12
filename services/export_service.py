@@ -6,7 +6,24 @@ from datetime import datetime, timezone
 from io import BytesIO
 from typing import Any, Optional
 
-import fitz
+# PyMuPDF (`fitz`) is optional — not shipped on the slim Vercel bundle.
+# Markdown export works without it; PDF endpoints fail with a clear error.
+fitz = None  # type: ignore[assignment]
+
+
+def _require_fitz():
+    global fitz
+    if fitz is not None:
+        return fitz
+    try:
+        import fitz as _fitz  # PyMuPDF
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError(
+            "PDF export requires PyMuPDF (pip install PyMuPDF). "
+            "Use the Markdown export on this deployment, or install PyMuPDF locally."
+        ) from exc
+    fitz = _fitz
+    return fitz
 
 
 def _safe(text: Any, fallback: str = "—") -> str:
@@ -31,11 +48,12 @@ def _wrap_lines(text: str, width: int = 92) -> list[str]:
     return lines
 
 
-def _new_page(doc: fitz.Document) -> fitz.Page:
+def _new_page(doc: Any) -> Any:
     return doc.new_page(width=595, height=842)  # A4
 
 
-def _draw_header(page: fitz.Page, title: str, subtitle: str) -> float:
+def _draw_header(page: Any, title: str, subtitle: str) -> float:
+    _fitz = _require_fitz()
     y = 48
     page.insert_text((48, y), "UniMate", fontsize=11, fontname="helv", color=(0.06, 0.64, 0.50))
     y += 22
@@ -43,11 +61,11 @@ def _draw_header(page: fitz.Page, title: str, subtitle: str) -> float:
     y += 16
     page.insert_text((48, y), subtitle, fontsize=9, fontname="helv", color=(0.4, 0.4, 0.45))
     y += 10
-    page.draw_line(fitz.Point(48, y), fitz.Point(547, y), color=(0.85, 0.85, 0.88), width=0.8)
+    page.draw_line(_fitz.Point(48, y), _fitz.Point(547, y), color=(0.85, 0.85, 0.88), width=0.8)
     return y + 22
 
 
-def _ensure_space(doc: fitz.Document, page: fitz.Page, y: float, need: float = 40) -> tuple[fitz.Page, float]:
+def _ensure_space(doc: Any, page: Any, y: float, need: float = 40) -> tuple[Any, float]:
     if y + need < 800:
         return page, y
     page = _new_page(doc)
@@ -61,7 +79,8 @@ def build_recommendations_pdf(
     title: str = "University recommendations",
 ) -> bytes:
     """Return PDF bytes for a ranked recommendation list."""
-    doc = fitz.open()
+    _fitz = _require_fitz()
+    doc = _fitz.open()
     page = _new_page(doc)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     y = _draw_header(page, title, f"Generated {stamp}")
@@ -152,7 +171,8 @@ def build_recommendations_pdf(
 
 
 def build_profile_pdf(profile: dict[str, Any], *, completeness_pct: int = 0) -> bytes:
-    doc = fitz.open()
+    _fitz = _require_fitz()
+    doc = _fitz.open()
     page = _new_page(doc)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     y = _draw_header(page, "Student profile", f"Completeness {completeness_pct}% · {stamp}")
