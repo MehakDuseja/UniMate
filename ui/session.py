@@ -47,13 +47,10 @@ def init_session_state(get_graph: Callable[[], Any]) -> None:
 
     defaults = {
         "error": None,
-        "audio_cache": {},
-        "pending_voice": "",
+        "pending_turn": False,
         "current_view": "chat",
         "show_profile": False,
         "show_notifications": False,
-        "voice_enabled": True,
-        "voice_error": None,
         "selected_university": "all",
         "rename_thread_id": None,
         "saved_profile_meta": None,
@@ -130,13 +127,8 @@ def start_new_chat(get_graph: Callable[[], Any]) -> None:
     fresh["messages"] = []
     st.session_state.state = fresh
 
-    st.session_state.composer_prompt = ""
-    st.session_state.pending_composer_text = ""
-    st.session_state.transcribed_recording = None
     st.session_state.error = None
-    st.session_state.audio_cache = {}
-    st.session_state.pending_voice = ""
-    st.session_state.voice_error = None
+    st.session_state.pending_turn = False
     conversation_service.upsert_conversation(
         thread_id=new_thread_id,
         student_id=st.session_state.student_id,
@@ -158,8 +150,7 @@ def switch_conversation(thread_id: str, get_graph: Callable[[], Any]) -> None:
         base_state["selected_university"] = st.session_state.selected_university
     st.session_state.state = base_state
     st.session_state.error = None
-    st.session_state.audio_cache = {}
-    st.session_state.pending_voice = ""
+    st.session_state.pending_turn = False
 
 
 def record_user_message(message: str) -> None:

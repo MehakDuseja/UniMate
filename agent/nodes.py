@@ -658,11 +658,17 @@ def refine_node(state: AgentState) -> dict[str, Any]:
         "current_phase": "refining",
         "refine_action": action,
     }
-    # "end" routes straight to END in the graph (see _route_after_refine) -
-    # without a reply here, the student would get nothing back at all for
-    # that turn (this is also the fallback when JSON parsing fails), which
-    # looks like the app silently died rather than concluding gracefully.
-    if action == "end":
+    # "chitchat" and "end" both route straight to END in the graph (see
+    # _route_after_refine) - without a reply here, the student would get
+    # nothing back at all for that turn (this is also the fallback when JSON
+    # parsing fails), which looks like the app silently died rather than
+    # responding at all.
+    if action == "chitchat":
+        output["messages"] = [{
+            "role": "assistant",
+            "content": reply or "Hey! Ask me anything about your recommendations, or let me know if you'd like to tweak your criteria.",
+        }]
+    elif action == "end":
         output["messages"] = [{
             "role": "assistant",
             "content": reply or "Glad I could help! Good luck with your applications - feel free to come back anytime.",

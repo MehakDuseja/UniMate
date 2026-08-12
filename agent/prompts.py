@@ -221,7 +221,12 @@ any other one, OR a question ABOUT the recommendations already given (e.g. "tell
 scholarships", "how easy is it to get into NED", "which one is more ideal for me", "why did you rank that one \
 higher"). They want information or an opinion grounded in what's already known, not a new/re-ranked list - do \
 NOT classify this as "refine" just because it mentions a university or a topic like fees/scholarships/eligibility.
-  - "end" - they seem satisfied or the conversation is naturally wrapping up.
+  - "chitchat" - a greeting, thanks that isn't wrapping up, small talk, or anything else with no real request in \
+it at all (e.g. "hi", "hello", "how are you", "lol", "ok", a stray word with no question mark or topic). There is \
+no factual question here and nothing to look up - do NOT reach for "answer_question" just because it's the only \
+other option that isn't "refine"; a bare greeting is not a question about anything.
+  - "end" - they seem satisfied or the conversation is naturally wrapping up (e.g. "thanks, that's all I needed", \
+"bye", "no that's it").
 - "updates": an object with any StudentProfile fields implied by their message (same keys as the profile \
 extractor: student_city, student_area, preferred_province, preferred_cities, budget_pkr_per_semester, \
 degree_level, field_of_study, academic_percentage, current_education_level, entry_test_scores, hostel_required, \
@@ -235,9 +240,10 @@ topic. Only capture a field here if the student is clearly reporting or correcti
 budget is actually 20k", "no, my percentage is 85"). If it's ambiguous which one a number refers to, omit the \
 field entirely rather than guessing - a wrong silent overwrite here replaces a correct known value with a wrong \
 one, which is worse than not updating it at all.
-- "reply": ONLY used when action is "end" - a short, warm closing message (e.g. acknowledging thanks, wishing \
-them luck with applications). For "refine" or "answer_question" this is ignored (a later step generates the \
-actual reply), so it's fine to leave it as an empty string for those."""
+- "reply": used when action is "chitchat" or "end" - a short, warm, natural reply (e.g. "Hey! Ask me anything \
+about your recommendations, or let me know if you'd like to tweak your criteria." for chitchat; acknowledging \
+thanks or wishing them luck with applications for "end"). For "refine" or "answer_question" this is ignored (a \
+later step generates the actual reply), so it's fine to leave it as an empty string for those."""
 
 QA_SYSTEM = """You are answering one specific follow-up question from a Pakistani student who has already seen \
 initial university recommendations. Answer ONLY the question actually asked, using ONLY the context provided \

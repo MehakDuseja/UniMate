@@ -43,6 +43,8 @@ def _route_after_refine(state: AgentState) -> str:
         return "retriever"
     if action == "answer_question":
         return "qa"
+    # "chitchat" and "end" both reply straight from refine_node itself, no
+    # retrieval or ranking needed - see refine_node.
     return END
 
 
