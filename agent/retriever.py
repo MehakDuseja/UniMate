@@ -8,10 +8,12 @@ import re
 import sqlite3
 from typing import Any, Optional
 
-import chromadb
+try:
+    import chromadb
+except ImportError:  # pragma: no cover - optional on Vercel serverless
+    chromadb = None  # type: ignore[assignment]
 
 from src.config import CHROMA_DIR, INGEST_DB
-from src.vector_store import get_local_embeddings
 
 COLLECTION_NAME = "university_semantic_chunks"
 ALL_UNIVERSITIES = "all"
@@ -165,6 +167,8 @@ def detect_category_hints(text: str) -> list[str]:
 
 
 def _get_collection():
+    if chromadb is None:
+        raise RuntimeError("chromadb is not installed")
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
     return client.get_collection(COLLECTION_NAME)
 
@@ -174,7 +178,7 @@ def _safe_get_collection():
         from src.config import IS_SERVERLESS
 
         # Serverless deploys skip Chroma (bundle size + /tmp cold builds).
-        if IS_SERVERLESS:
+        if IS_SERVERLESS or chromadb is None:
             return None
         return _get_collection()
     except Exception:
@@ -235,6 +239,8 @@ def retrieve_for_question(
     if collection is None:
         return []
     try:
+        from src.vector_store import get_local_embeddings
+
         query_vector = get_local_embeddings([question])[0]
     except Exception:
         return []
@@ -449,6 +455,8 @@ def get_candidate_universities(
     query_vector = None
     if collection is not None:
         try:
+            from src.vector_store import get_local_embeddings
+
             query_vector = get_local_embeddings([query_text])[0]
         except Exception:
             query_vector = None

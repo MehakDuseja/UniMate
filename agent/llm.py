@@ -12,7 +12,14 @@ import re
 import time
 from typing import Any, Optional
 
-from langsmith import traceable
+try:
+    from langsmith import traceable
+except ImportError:  # pragma: no cover - langsmith is optional on slim deploys
+    def traceable(*_args, **_kwargs):  # type: ignore[misc]
+        def _decorator(fn):
+            return fn
+
+        return _decorator
 
 from src.config import (
     GEMINI_API_KEY,

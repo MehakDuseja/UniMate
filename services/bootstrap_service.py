@@ -7,9 +7,7 @@ import logging
 import os
 
 from src.config import CHROMA_DIR, INGEST_DB, IS_SERVERLESS, SEMANTIC_CHUNKS_DIR
-from src.chunker import build_chunks
 from src.ingest import ingest_to_sqlite
-from src.vector_store import build_chroma_collection
 
 logger = logging.getLogger(__name__)
 COLLECTION_NAME = "university_semantic_chunks"
@@ -80,6 +78,9 @@ def ensure_retrieval_stores(*, force: bool = False) -> dict[str, bool | str]:
         sqlite_ok = _sqlite_ready()
     if force or not chroma_ok:
         logger.info("Building semantic chunks + Chroma collection…")
+        from src.chunker import build_chunks
+        from src.vector_store import build_chroma_collection
+
         build_chunks()
         chunks = []
         for path in sorted(SEMANTIC_CHUNKS_DIR.glob("*_chunks.json")):

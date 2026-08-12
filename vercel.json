@@ -2,8 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "web_app/app.py": {
-      "maxDuration": 300,
-      "memory": 1024
+      "maxDuration": 60,
+      "memory": 1024,
+      "excludeFiles": "{tests/**,output_json/**,data/chroma_db/**,data/parsed_universities/**,data/semantic_chunks/**,**/*.pyc,__pycache__/**,.venv/**}"
     }
   }
 }
